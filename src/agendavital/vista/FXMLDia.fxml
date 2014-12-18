@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #786f52;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane layoutX="175.0" layoutY="141.0" prefHeight="200.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <bottom>
+            <AnchorPane prefHeight="22.0" prefWidth="750.0" style="-fx-background-color: #786F52;" BorderPane.alignment="CENTER">
+               <children>
+                  <Text layoutX="364.0" layoutY="16.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+               </children>
+               <opaqueInsets>
+                  <Insets top="1.0" />
+               </opaqueInsets>
+            </AnchorPane>
+         </bottom>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <right>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A44A3F; -fx-border-color: #474A48; -fx-border-width: 6;" BorderPane.alignment="CENTER">
+               <children>
+                  <Text fill="#786f52" layoutX="22.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Donde Encontrar actualidad?" />
+                  <Hyperlink layoutX="50.0" layoutY="45.0" text="El Pais" />
+                  <Hyperlink layoutX="51.0" layoutY="67.0" text="El Mundo" />
+                  <Hyperlink layoutX="52.0" layoutY="115.0" text="Diario de Cadiz" />
+                  <Hyperlink layoutX="52.0" layoutY="91.0" text="ABC" />
+               </children>
+            </AnchorPane>
+         </right>
+         <top>
+            <AnchorPane prefHeight="45.0" prefWidth="1200.0" style="-fx-background-color: #A44A3F;" BorderPane.alignment="CENTER">
+               <children>
+                  <Text fill="#786f52" layoutX="538.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agenda Vital">
+                     <font>
+                        <Font name="Lucida Sans Demibold Roman" size="19.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </top>
+         <left>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A44A3F; -fx-border-width: 5; -fx-border-color: #474A48;" BorderPane.alignment="CENTER">
+               <children>
+                  <Line endX="-30.0" layoutX="112.0" layoutY="368.0" startX="-100.0" stroke="#474a48" strokeWidth="2.0" />
+                  <Line endX="-30.0" fill="BLACK" layoutX="218.0" layoutY="368.0" startX="-100.0" stroke="#474a48" strokeWidth="2.0" />
+                  <Circle fill="#1f93ff00" layoutX="100.0" layoutY="368.0" radius="10.0" stroke="#474a48" strokeType="INSIDE" strokeWidth="2.0" />
+                  <TextField layoutX="17.0" layoutY="419.0" promptText="        Buscar" style="-fx-background-radius: 30;">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fitHeight="36.0" fitWidth="16.0" layoutX="28.0" layoutY="423.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@lupa.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="74.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tags">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="15.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu ">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+                  <Pane layoutY="148.0" prefHeight="29.0" prefWidth="187.0">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="22.0" layoutX="18.0" layoutY="4.0" opacity="0.49" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@3711.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="55.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ayuda">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="179.0" prefHeight="29.0" prefWidth="187.0">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="22.0" layoutX="18.0" layoutY="4.0" opacity="0.49" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@llave.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="55.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administracion">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </left>
+         <center>
+            <AnchorPane minWidth="-Infinity" prefHeight="200.0" prefWidth="900.0" style="-fx-background-color: #c97c5d; -fx-border-width: 6; -fx-border-color: #474A48;" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <children>
+                  <StackPane layoutX="74.0" layoutY="109.0" prefHeight="506.0" prefWidth="184.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="648.0">
+                     <children>
+                        <GridPane prefHeight="421.0" prefWidth="250.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />                          </rowConstraints>
+                        </GridPane>
+                     </children>
+                  </StackPane>
+                  <StackPane layoutX="445.0" layoutY="27.5" AnchorPane.leftAnchor="445.0" AnchorPane.rightAnchor="426.0" />
+                  <Text boundsType="LOGICAL_VERTICAL_CENTER" layoutX="439.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textOrigin="CENTER" AnchorPane.leftAnchor="439.0" AnchorPane.rightAnchor="438.86328125" />
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

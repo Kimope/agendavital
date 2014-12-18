@@ -57,7 +57,7 @@ public class Noticia {
         this.categoria = categoria;
     }
     
-    public ArrayList<Noticia> getNoticias(int dia_, int mes_, int ano_) throws SQLException{
+    public static ArrayList<Noticia> getNoticias(int dia_, int mes_, int ano_) throws SQLException{
         String fecha = "";
         if(dia_ < 10) fecha +="0";
         fecha+=dia_;

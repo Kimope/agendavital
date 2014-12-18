@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+       <Noticia>
+         <titulo>Dos atentados suicidas en el metro de Moscú dejan 39 muertos</titulo>
+         <fecha>29-03-2010</fecha>
+         <categoria>Noticias Internacionales</categoria>
+         <link>http://www.elmundo.es/elmundo/2010/03/29/internacional/1269836997.html</link>
+         <tag>rusia</tag>
+         <tag>moscu</tag>
+         <tag>metro</tag>
+         <tag>terrorismo</tag>
+     </Noticia>
+</Noticias>

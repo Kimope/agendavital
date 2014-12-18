@@ -44,5 +44,6 @@
             <Rectangle2D />
          </viewport>
       </ImageView>
+      <Label fx:id="error_login" layoutX="147.0" layoutY="335.0" textFill="#e4dd00" />
    </children>
 </Pane>

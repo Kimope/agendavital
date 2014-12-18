@@ -24,6 +24,7 @@ import agendavital.modelo.data.Usuario;
 import agendavital.modelo.excepciones.ContrasenaMalIntroducida;
 import agendavital.modelo.excepciones.NickMalIntroducido;
 import java.sql.SQLException;
+import javafx.scene.control.Label;
 
 /**
  * @author Enrique
@@ -57,6 +58,7 @@ public class FXMLLoginController implements Initializable
     @FXML private Line lineacerrar2;
     
     @FXML private Circle circulocerr;
+    @FXML private Label error_login;
     //------------------------------------------------------------//
 
     @Override
@@ -119,11 +121,15 @@ public class FXMLLoginController implements Initializable
             ventanaPrincipal.show(); //Mostramos la pantalla principal
         }catch(SQLException ex)
         {
-            System.err.println("No se ha podido acceder a la BD"); //Pantalla de error con este texto
+            
+            //System.err.println("No se ha podido acceder a la BD"); //Pantalla de error con este texto
         } catch (NickMalIntroducido ex) {
-            System.err.println(ex.getMensaje()); //Pantalla con la llamada a este metodo
+            error_login.setText("Nombre de usuario incorrecto");
+            tfUsuario.setStyle("-fx-background-color:#F6F740");
         } catch (ContrasenaMalIntroducida ex) {
-            System.err.println(ex.getMensaje());//Lo mismo
+            error_login.setText("Contraseña incorrecta");
+            tfContra.setStyle("-fx-background-color:#F6F740");
+            
         }
         /*Y cuando acabeis, quitad los System.err...*/
     }

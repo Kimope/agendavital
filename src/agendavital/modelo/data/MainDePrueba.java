@@ -5,6 +5,9 @@
  */
 package agendavital.modelo.data;
 
+import agendavital.modelo.util.UsuarioLogueado;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -13,18 +16,13 @@ import java.util.ArrayList;
  * @author ramon
  */
 public class MainDePrueba {
-    public static void main(String [] args) throws SQLException{
-        String titulo = "EY";
-        String link = "http://";
-        String categoria = "Noticias Internacionales";
-        String fecha = "28-09-1992";
-        String cuerpo = "lllll";
-        String tag = "ramon";
-        String tag2 = "ramirez";
-        ArrayList<String> tags = new ArrayList<String>();
-        tags.add(tag);
-        tags.add(tag2);
-       Noticia.Insert(titulo, link, fecha, categoria, cuerpo, tags);
+    public static void main(String [] args) throws SQLException, IOException{
+        String fecha = "01-11-2014";
+        String descripcion = "HOLAAAALALALALAA";
+        String color = "red";
+       Momento momento = Momento.insert(fecha, descripcion, color, 1);
+        File origen = new File("/home/ramon/Linuxdoc-Ejemplo.pdf");
+        momento.asociarDocumento(origen);
         
         
     }

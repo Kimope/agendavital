@@ -1,1 +1,1 @@
-select * from noticias
+select * from momentos

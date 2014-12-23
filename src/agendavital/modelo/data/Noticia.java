@@ -28,6 +28,11 @@ public class Noticia {
     String cuerpo;
     ArrayList<Integer> tags;
 
+    /**Constructor de noticia.
+     * 
+     * @param _id ID de la noticia en la BD
+     * @throws SQLException 
+     */
     public Noticia(int _id) throws SQLException {
         id = _id;
         tags = new ArrayList<>();
@@ -107,11 +112,33 @@ public class Noticia {
         this.cuerpo = cuerpo;
     }
     
-    
-
+    /**Funcion que devuelve las noticias en una fecha
+     * 
+     * @param fecha La fecha en formato DD-MM-AAAA
+     * @return
+     * @throws SQLException 
+     */
+    public static ArrayList<Noticia> Select(String fecha) throws SQLException{
+        ResultSet rs = null;
+        ArrayList<Noticia> noticias = null;
+        try (Connection conexion = ConfigBD.conectar()) {
+            noticias = new ArrayList<>();
+            String consulta = String.format("SELECT id_noticia from Noticias WHERE fecha = %s;", ConfigBD.String2Sql(fecha, false));
+            rs = conexion.createStatement().executeQuery(consulta);
+            while (rs.next()){
+                noticias.add(new Noticia(rs.getInt("id_noticia")));
+            }
+            return noticias;
+        }catch (SQLException e) {
+            throw e;
+        }
+}
+    /**Funcion coloreadora del calendario
+     * 
+     * @return
+     * @throws SQLException 
+     */
     public static ArrayList<Pair<LocalDate, Noticia>> getNoticiasFecha() throws SQLException {
-
-        Connection connection = null;
         ResultSet rs = null;
         ArrayList<Pair<LocalDate, Noticia>> noticias = new ArrayList<>();
         try (Connection conexion = ConfigBD.conectar()) {
@@ -130,6 +157,17 @@ public class Noticia {
         return noticias;
     }
 
+    /** Funcion que inserta la noticia en la BD
+     * 
+     * @param titulo
+     * @param link
+     * @param fecha
+     * @param categoria
+     * @param cuerpo
+     * @param tags
+     * @return
+     * @throws SQLException 
+     */
     public static Noticia Insert(String titulo, String link, String fecha, String categoria, String cuerpo, ArrayList<String> tags) throws SQLException {
         int nuevoId = 0;
         try (Connection conexion = ConfigBD.conectar()) {
@@ -158,6 +196,10 @@ public class Noticia {
         return new Noticia(nuevoId);
     }
 
+    /**Funcion modificadora de noticias
+     * 
+     * @throws SQLException 
+     */
     public void Update() throws SQLException {
         try (Connection conexion = ConfigBD.conectar()) {
             String update = String.format("UPDATE noticias SET titulo = %s, link = %s, fecha = %s, categoria = %s, cuerpo = %s WHERE id_noticia = %d;", ConfigBD.String2Sql(getTitulo(), false), ConfigBD.String2Sql(getLink(), false), ConfigBD.String2Sql(getFecha(), false), ConfigBD.String2Sql(getCategoria(), false), ConfigBD.String2Sql(getCuerpo(), false), getId());
@@ -167,6 +209,11 @@ public class Noticia {
         }
     }
 
+    /**Funcion que elimina las noticias
+     * 
+     * @return
+     * @throws SQLException 
+     */
     public boolean Delete() throws SQLException {
         try (Connection conexion = ConfigBD.conectar()) {
             String delete = String.format("Delete from noticias WHERE id_noticia = %d;", getId());

@@ -5,10 +5,6 @@
  */
 package agendavital.modelo.data;
 
-import agendavital.modelo.util.ConfigBD;
-import java.io.File;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

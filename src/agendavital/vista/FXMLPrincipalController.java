@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -58,22 +57,26 @@ public class FXMLPrincipalController implements Initializable {
             @Override
             public void updateItem(LocalDate item, boolean empty) {
                 super.updateItem(item, empty);
-                ArrayList<Pair<LocalDate, String>> fechas = null;
+                ArrayList<Pair<LocalDate, Noticia>> fechas = null;
                 try {
                     fechas = Noticia.getNoticiasFecha();
                 } catch (SQLException ex) {
                     Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                for(int i = 0; i < fechas.size(); i++){
-                   if(item.equals(fechas.get(i).getKey())) {
-                       System.out.println("KIKE");
-                       if(fechas.get(i).getValue().equals("Noticias Internacionales")){
-                           System.out.println("GAY");
-                           setStyle("-fx-background-color: #A8F9FF");
-                       }
-                       else if(fechas.get(i).getValue().equals("Noticias ESIanas"))setStyle("-fx-background-color: red");
-                       
-                   }
+                for (Pair<LocalDate, Noticia> fecha : fechas) {
+                    if (item.equals(fecha.getKey())) {
+                        switch (fecha.getValue().getCategoria()) {
+                            case "Noticias Internacionales":
+                                setStyle("-fx-background-color: #A8F9FF");
+                                break;
+                            case "Noticias ESIanas":
+                                setStyle("-fx-background-color: red");
+                                break;
+                            default:
+                                setStyle("-fx-background-color: blue");
+                                break;
+                        }
+                    }
                 }
 
                 if (item.isBefore(LocalDate.of(1965, 01, 01)) || item.isAfter(LocalDate.now().plusYears(1))) {

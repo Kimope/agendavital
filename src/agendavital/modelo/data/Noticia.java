@@ -106,26 +106,28 @@ public class Noticia {
     public void setCuerpo(String cuerpo) {
         this.cuerpo = cuerpo;
     }
+    
+    
 
-    public static ArrayList<Pair<LocalDate, String>> getNoticiasFecha() throws SQLException {
+    public static ArrayList<Pair<LocalDate, Noticia>> getNoticiasFecha() throws SQLException {
 
         Connection connection = null;
         ResultSet rs = null;
-        ArrayList<Pair<LocalDate, String>> fechas = new ArrayList<>();
+        ArrayList<Pair<LocalDate, Noticia>> noticias = new ArrayList<>();
         try (Connection conexion = ConfigBD.conectar()) {
-            String consulta = String.format("SELECT fecha, categoria from Noticias;");
+            String consulta = String.format("SELECT id_noticia, fecha from Noticias;");
             rs = conexion.createStatement().executeQuery(consulta);
             while (rs.next()) {
+                int id = rs.getInt("id_noticia");
                 String fecha = rs.getString("fecha");
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 LocalDate date = LocalDate.parse(fecha, formatter);
-                String categoria = rs.getString("categoria");
-                fechas.add(new Pair<>(date, categoria));
+                noticias.add(new Pair<>(date, new Noticia((id))));
             }
         } catch (SQLException e) {
             throw e;
         }
-        return fechas;
+        return noticias;
     }
 
     public static Noticia Insert(String titulo, String link, String fecha, String categoria, String cuerpo, ArrayList<String> tags) throws SQLException {

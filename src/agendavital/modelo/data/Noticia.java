@@ -9,13 +9,21 @@ import agendavital.modelo.util.ConfigBD;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import javafx.util.Pair;
 
 /**
  *
  * @author rr
  */
 public class Noticia {
+
     public int id;
     public String titulo;
     public String fecha;
@@ -24,7 +32,6 @@ public class Noticia {
     public Noticia() {
     }
 
-    
     public int getId() {
         return id;
     }
@@ -56,30 +63,26 @@ public class Noticia {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-    
-    public static ArrayList<Noticia> getNoticias(int dia_, int mes_, int ano_) throws SQLException{
-        String fecha = "";
-        if(dia_ < 10) fecha +="0";
-        fecha+=dia_;
-        if(mes_ < 10) fecha +="0";
-        fecha+=mes_;
-        fecha+=ano_;
+
+    public static ArrayList<Pair<LocalDate, String>> getNoticiasFecha() throws SQLException {
+
         Connection connection = null;
         ResultSet rs = null;
-        ArrayList<Noticia> noticias = new ArrayList<Noticia>();
+        ArrayList<Pair<LocalDate, String>> fechas = new ArrayList<>();
         try (Connection conexion = ConfigBD.conectar()) {
-            String insert = String.format("SELECT * from Noticias WHERE fecha = %s;", ConfigBD.String2Sql(fecha, false));
+            String insert = String.format("SELECT * from Noticias;");
             rs = conexion.createStatement().executeQuery(insert);
-            Noticia noticia = new Noticia();
-            noticia.setId(rs.getInt("id"));
-            noticia.setTitulo(rs.getString("titulo"));
-            noticia.setFecha(rs.getString("fecha"));
-            noticia.setCategoria(rs.getString("categoria"));
-            noticias.add(noticia);
+            while (rs.next()) {
+                String fecha = rs.getString("fecha");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                LocalDate date = LocalDate.parse(fecha, formatter);
+                String categoria = rs.getString("categoria");
+                fechas.add(new Pair<>(date, categoria));
+            }
         } catch (SQLException e) {
             throw e;
         }
-        return noticias;
+        return fechas;
     }
-    
+
 }

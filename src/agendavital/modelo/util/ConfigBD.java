@@ -31,20 +31,20 @@ public class ConfigBD {
         return conexion;
     }
     
-    public static int LastId() throws SQLException{
+    public static int LastId(String _tabla) throws SQLException{
          Connection conexion = null;
          ResultSet rs = null;
         try{
             conexion = conectar();
-            rs = conexion.createStatement().executeQuery("select last_insert_rowid();");
+            rs = conexion.createStatement().executeQuery(String.format("select seq from sqlite_sequence where name=%s;", ConfigBD.String2Sql(_tabla, false)));
             rs.next();
+            return rs.getInt(1);
         }catch(SQLException e){
             throw e;
         }
         finally{
             if(conexion != null) conexion.close();
         }
-        return rs.getByte(1);
     }
     
      /**Metodo convertidor de cadena a formato SQL

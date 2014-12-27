@@ -7,7 +7,7 @@ package agendavital.modelo.data;
 
 import agendavital.modelo.util.ConfigBD;
 import agendavital.modelo.util.UsuarioLogueado;
-import agendavital.modelo.util.UtilidadesMomento;
+import agendavital.modelo.util.UtilidadesNoticia;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;

@@ -22,15 +22,15 @@ import java.sql.SQLException;
 public class ConfigBD {
 
     private static String ruta = "";
-    private static String SO = System.getProperty("os.name").toLowerCase();
+    private static final String SO = System.getProperty("os.name").toLowerCase();
     
     public static boolean inicializarEstructura() throws IOException{
         File origen = new File("BD/agenda.db");
         File destino = null;
         if(SO.contains("win")){
-            File Windows = new File("%APPDATA%/AgendaVital");
+            File Windows = new File(System.getenv("APPDATA")+"/AgendaVital");
             Windows.mkdir();
-            destino = new File("%APPDATA%/AgendaVital/agenda.db");
+            destino = new File(System.getenv("APPDATA")+"/AgendaVital/agenda.db");
         }
         else if(SO.contains("nix")|| SO.contains("nux") || SO.contains("aix") || SO.contains("mac")){
             File Linux = new File(System.getProperty( "user.home" )+"/.AgendaVital");
@@ -46,7 +46,7 @@ public class ConfigBD {
     public static boolean estructuraInicializada(){
         File BD = null;
         if(SO.contains("win")){
-            BD = new File("%APPDATA%/AgendaVital/agenda.db");
+            BD = new File(System.getenv("APPDATA")+"/AgendaVital/agenda.db");
         }
         else if(SO.contains("nix")|| SO.contains("nux") || SO.contains("aix") || SO.contains("mac")){
             BD = new File(System.getProperty( "user.home" )+"/.AgendaVital/agenda.db");

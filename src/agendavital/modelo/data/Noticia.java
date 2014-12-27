@@ -5,7 +5,10 @@
  */
 package agendavital.modelo.data;
 
+import static agendavital.modelo.data.MainDePrueba.formatearFecha;
+import agendavital.modelo.excepciones.ErrorConexionFeedzilla;
 import agendavital.modelo.util.ConfigBD;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,6 +16,15 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javafx.util.Pair;
+import org.apache.http.HttpResponse;
+import org.apache.http.ParseException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -28,10 +40,11 @@ public class Noticia {
     String cuerpo;
     ArrayList<Integer> tags;
 
-    /**Constructor de noticia.
-     * 
+    /**
+     * Constructor de noticia.
+     *
      * @param _id ID de la noticia en la BD
-     * @throws SQLException 
+     * @throws SQLException
      */
     public Noticia(int _id) throws SQLException {
         id = _id;
@@ -48,10 +61,10 @@ public class Noticia {
             this.setCategoria(rs.getString("categoria"));
             this.setCuerpo(rs.getString("cuerpo"));
             rs = conexion.createStatement().executeQuery(String.format("SELECT id_etiqueta from momentos_noticias_etiquetas WHERE id_noticia = %d", id));
-            while(rs.next()){
+            while (rs.next()) {
                 tags.add(rs.getInt("id_etiqueta"));
             }
-            
+
         } catch (SQLException ee) {
             throw ee;
         } finally {
@@ -62,6 +75,10 @@ public class Noticia {
                 conexion.close();
             }
         }
+    }
+
+    Noticia() {
+
     }
 
     public int getId() {
@@ -111,32 +128,35 @@ public class Noticia {
     public void setCuerpo(String cuerpo) {
         this.cuerpo = cuerpo;
     }
-    
-    /**Funcion que devuelve las noticias en una fecha
-     * 
+
+    /**
+     * Funcion que devuelve las noticias en una fecha
+     *
      * @param fecha La fecha en formato DD-MM-AAAA
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
-    public static ArrayList<Noticia> Select(String fecha) throws SQLException{
+    public static ArrayList<Noticia> Select(String fecha) throws SQLException {
         ResultSet rs = null;
         ArrayList<Noticia> noticias = null;
         try (Connection conexion = ConfigBD.conectar()) {
             noticias = new ArrayList<>();
             String consulta = String.format("SELECT id_noticia from Noticias WHERE fecha = %s;", ConfigBD.String2Sql(fecha, false));
             rs = conexion.createStatement().executeQuery(consulta);
-            while (rs.next()){
+            while (rs.next()) {
                 noticias.add(new Noticia(rs.getInt("id_noticia")));
             }
             return noticias;
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw e;
         }
-}
-    /**Funcion coloreadora del calendario
-     * 
+    }
+
+    /**
+     * Funcion coloreadora del calendario
+     *
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     public static ArrayList<Pair<LocalDate, Noticia>> getNoticiasFecha() throws SQLException {
         ResultSet rs = null;
@@ -157,8 +177,9 @@ public class Noticia {
         return noticias;
     }
 
-    /** Funcion que inserta la noticia en la BD
-     * 
+    /**
+     * Funcion que inserta la noticia en la BD
+     *
      * @param titulo
      * @param link
      * @param fecha
@@ -166,7 +187,7 @@ public class Noticia {
      * @param cuerpo
      * @param tags
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     public static Noticia Insert(String titulo, String link, String fecha, String categoria, String cuerpo, ArrayList<String> tags) throws SQLException {
         int nuevoId = 0;
@@ -177,13 +198,13 @@ public class Noticia {
                     ConfigBD.String2Sql(cuerpo, false));
             int executeUpdate = conexion.createStatement().executeUpdate(insert);
             nuevoId = ConfigBD.LastId("noticias");
-            for (int i = 0; i < tags.size(); i++) {
-                String consultaTag = String.format("SELECT id_etiqueta from etiquetas WHERE Nombre = %s;", ConfigBD.String2Sql(tags.get(i), false));
+            for (String tag : tags) {
+                String consultaTag = String.format("SELECT id_etiqueta from etiquetas WHERE Nombre = %s;", ConfigBD.String2Sql(tag, false));
                 ResultSet rs = conexion.createStatement().executeQuery(consultaTag);
                 rs.next();
-                int idTag = (rs.getRow()==1)?rs.getInt("id_etiqueta"):-1;
+                int idTag = (rs.getRow() == 1) ? rs.getInt("id_etiqueta") : -1;
                 if (idTag == -1) {
-                    String insertTag = String.format("INSERT INTO etiquetas (nombre) VALUES (%s);", ConfigBD.String2Sql(tags.get(i), false));
+                    String insertTag = String.format("INSERT INTO etiquetas (nombre) VALUES (%s);", ConfigBD.String2Sql(tag, false));
                     conexion.createStatement().executeUpdate(insertTag);
                     idTag = ConfigBD.LastId("etiquetas");
                 }
@@ -196,9 +217,10 @@ public class Noticia {
         return new Noticia(nuevoId);
     }
 
-    /**Funcion modificadora de noticias
-     * 
-     * @throws SQLException 
+    /**
+     * Funcion modificadora de noticias
+     *
+     * @throws SQLException
      */
     public void Update() throws SQLException {
         try (Connection conexion = ConfigBD.conectar()) {
@@ -209,10 +231,11 @@ public class Noticia {
         }
     }
 
-    /**Funcion que elimina las noticias
-     * 
+    /**
+     * Funcion que elimina las noticias
+     *
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     public boolean Delete() throws SQLException {
         try (Connection conexion = ConfigBD.conectar()) {
@@ -225,5 +248,36 @@ public class Noticia {
             return false;
         }
     }
+        
+        
 
+    public static ArrayList<Noticia> getNoticiasFeedZilla() throws java.text.ParseException {
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet("http://api.feedzilla.com/v1/categories/100/articles.json");
+        httpGet.setHeader("Content-Type", "application/json");
+        String respStr = null;
+        ArrayList<Noticia> arrayNoticias = null;
+        try {
+            HttpResponse response = httpClient.execute(httpGet);
+            respStr = EntityUtils.toString(response.getEntity());
+            JSONObject jsonObject = new JSONObject(respStr);
+            JSONArray noticias = jsonObject.getJSONArray("articles");
+            arrayNoticias = new ArrayList<>();
+            for (int i = 0; i < noticias.length(); i++) {
+                Noticia noticia = new Noticia();
+                JSONObject jsonNoticia = noticias.getJSONObject(i);
+                noticia.setTitulo(jsonNoticia.getString("title"));
+                noticia.setCategoria("Noticias Internacionales");
+                noticia.setCuerpo(jsonNoticia.getString("summary"));
+                noticia.setLink(jsonNoticia.getString("url"));
+                System.out.println(formatearFecha(jsonNoticia.getString("publish_date")));
+                arrayNoticias.add(noticia);
+            }
+            
+        } catch (IOException | ParseException | JSONException e) {
+            System.out.println(ErrorConexionFeedzilla.getMensaje());
+        }
+        return arrayNoticias;
+    }
+    
 }

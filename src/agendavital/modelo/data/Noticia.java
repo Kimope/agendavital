@@ -5,9 +5,10 @@
  */
 package agendavital.modelo.data;
 
-import static agendavital.modelo.data.MainDePrueba.formatearFecha;
+
 import agendavital.modelo.excepciones.ErrorConexionFeedzilla;
 import agendavital.modelo.util.ConfigBD;
+import agendavital.modelo.util.UtilidadesNoticia;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -270,7 +271,7 @@ public class Noticia {
                 noticia.setCategoria("Noticias Internacionales");
                 noticia.setCuerpo(jsonNoticia.getString("summary"));
                 noticia.setLink(jsonNoticia.getString("url"));
-                System.out.println(formatearFecha(jsonNoticia.getString("publish_date")));
+                System.out.println(UtilidadesNoticia.formatearFecha(jsonNoticia.getString("publish_date")));
                 arrayNoticias.add(noticia);
             }
             

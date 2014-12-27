@@ -5,6 +5,7 @@
  */
 package agendavital.vista;
 
+import agendavital.modelo.data.Noticia;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;

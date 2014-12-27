@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import agendavital.modelo.util.ConfigBD;
 
 /**
  * @author Enrique
@@ -69,8 +70,10 @@ public class AgendaVital extends Application
 
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        if(!ConfigBD.estructuraInicializada()) ConfigBD.inicializarEstructura();
         launch(args);
     }
     

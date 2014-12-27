@@ -5,6 +5,11 @@
  */
 package agendavital.modelo.util;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -16,7 +21,40 @@ import java.sql.SQLException;
  */
 public class ConfigBD {
 
-    private static final String ruta = "BD/agenda.db";
+    private static String ruta = "";
+    private static String SO = System.getProperty("os.name").toLowerCase();
+    
+    public static boolean inicializarEstructura() throws IOException{
+        File origen = new File("BD/agenda.db");
+        File destino = null;
+        if(SO.contains("win")){
+            File Windows = new File("%APPDATA%/AgendaVital");
+            Windows.mkdir();
+            destino = new File("%APPDATA%/AgendaVital/agenda.db");
+        }
+        else if(SO.contains("nix")|| SO.contains("nux") || SO.contains("aix") || SO.contains("mac")){
+            File Linux = new File(System.getProperty( "user.home" )+"/.AgendaVital");
+            Linux.mkdir();
+            destino = new File(System.getProperty( "user.home" )+"/.AgendaVital/agenda.db");
+        }
+        else return false;  
+        copyFile(origen, destino);
+        ruta = destino.getAbsolutePath();
+        return true;
+    }
+    
+    public static boolean estructuraInicializada(){
+        File BD = null;
+        if(SO.contains("win")){
+            BD = new File("%APPDATA%/AgendaVital/agenda.db");
+        }
+        else if(SO.contains("nix")|| SO.contains("nux") || SO.contains("aix") || SO.contains("mac")){
+            BD = new File(System.getProperty( "user.home" )+"/.AgendaVital/agenda.db");
+        }
+        else return false;
+        ruta = BD.getAbsolutePath();
+        return (BD.exists());
+    }
 
     public static Connection conectar() {
        Connection conexion = null;
@@ -59,5 +97,31 @@ public class ConfigBD {
 	  if(bAddWildcards) return "'%%"+sCadena+"%%'";
 	  else return "'"+sCadena+"'";
   }
+  
+  @SuppressWarnings("empty-statement")
+    public static void copyFile(File sourceFile, File destFile) throws IOException {
+    if(!destFile.exists()) {
+        destFile.createNewFile();
+    }
+ 
+    FileChannel origen = null;
+    FileChannel destino = null;
+    try {
+        origen = new FileInputStream(sourceFile).getChannel();
+        destino = new FileOutputStream(destFile).getChannel();
+ 
+        long count = 0;
+        long size = origen.size();             
+        while((count += destino.transferFrom(origen, count, size-count))<size);
+    }
+    finally {
+        if(origen != null) {
+            origen.close();
+        }
+        if(destino != null) {
+            destino.close();
+        }
+    }
+}
     
 }

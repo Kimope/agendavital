@@ -203,7 +203,7 @@ public class Momento {
         File destino = new File(UsuarioLogueado.nick);
         destino.mkdir();
         File destino2 = new File("Documentos/"+UsuarioLogueado.nick+"/"+Documento.getName());
-        UtilidadesMomento.copyFile(Documento, destino2);
+        ConfigBD.copyFile(Documento, destino2);
         ResultSet rs = null;
         try (Connection conexion = ConfigBD.conectar()) {
         String insertDocumento = String.format("INSERT INTO Documentos (ruta_doc) VALUES (%s);", ConfigBD.String2Sql(destino2.getCanonicalPath(), false));

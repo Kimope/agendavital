@@ -5,7 +5,6 @@
  */
 package agendavital.modelo.data;
 
-
 import agendavital.modelo.excepciones.ErrorConexionFeedzilla;
 import agendavital.modelo.util.ConfigBD;
 import agendavital.modelo.util.UtilidadesNoticia;
@@ -56,11 +55,11 @@ public class Noticia {
             conexion = ConfigBD.conectar();
             rs = conexion.createStatement().executeQuery(String.format("SELECT * FROM noticias WHERE id_noticia = %d;", id));
             rs.next();
-            this.setTitulo(rs.getString("titulo"));
-            this.setFecha(rs.getString("fecha"));
-            this.setLink(rs.getString("link"));
-            this.setCategoria(rs.getString("categoria"));
-            this.setCuerpo(rs.getString("cuerpo"));
+            this.titulo = rs.getString("titulo");
+            this.fecha = rs.getString("fecha");
+            this.link = rs.getString("link");
+            this.categoria = rs.getString("categoria");
+            this.cuerpo = rs.getString("cuerpo");
             rs = conexion.createStatement().executeQuery(String.format("SELECT id_etiqueta from momentos_noticias_etiquetas WHERE id_noticia = %d", id));
             while (rs.next()) {
                 tags.add(rs.getInt("id_etiqueta"));
@@ -249,8 +248,6 @@ public class Noticia {
             return false;
         }
     }
-        
-        
 
     public static ArrayList<Noticia> getNoticiasFeedZilla() throws java.text.ParseException {
         HttpClient httpClient = new DefaultHttpClient();
@@ -274,11 +271,11 @@ public class Noticia {
                 System.out.println(UtilidadesNoticia.formatearFecha(jsonNoticia.getString("publish_date")));
                 arrayNoticias.add(noticia);
             }
-            
+
         } catch (IOException | ParseException | JSONException e) {
             System.out.println(ErrorConexionFeedzilla.getMensaje());
         }
         return arrayNoticias;
     }
-    
+
 }

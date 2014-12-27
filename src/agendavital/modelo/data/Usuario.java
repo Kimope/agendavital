@@ -16,6 +16,7 @@ import agendavital.modelo.util.UtilidadesLogin;
 import agendavital.modelo.excepciones.ContrasenaMalIntroducida;
 import agendavital.modelo.excepciones.NickYaExiste;
 import agendavital.modelo.excepciones.ContrasenaCaracteresRaros;
+import agendavital.modelo.excepciones.FechaInvalida;
 import agendavital.modelo.excepciones.NickMuyCorto;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -32,8 +33,6 @@ public class Usuario {
     private String nombre;
     private String apellido;
     private String contrasena;
-    private String correo;
-    private String ciudad;
     private String fecha_nac;
 
     public Usuario(String _nick) throws SQLException {
@@ -44,10 +43,10 @@ public class Usuario {
             conexion = ConfigBD.conectar();
             rs = conexion.createStatement().executeQuery(String.format("SELECT * FROM usuarios WHERE nick = %s", ConfigBD.String2Sql(nick, false)));
             rs.next();
-            this.setNombre(rs.getString("nombre"));
-            this.setApellido(rs.getString("apellido"));
-            this.setContrasena(null);
-            this.setFecha_nac(rs.getNString("fecha_nac"));
+            this.nombre = rs.getString("nombre");
+            this.apellido = rs.getString("apellido");
+            this.contrasena = null;
+            this.fecha_nac = rs.getNString("fecha_nac");
         } catch (SQLException ee) {
             throw ee;
         } finally {
@@ -130,34 +129,6 @@ public class Usuario {
         this.fecha_nac = fecha_nac;
     }
 
-    /**
-     * @return the correo
-     */
-    public String getCorreo() {
-        return correo;
-    }
-
-    /**
-     * @param correo the correo to set
-     */
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    /**
-     * @return the ciudad
-     */
-    public String getCiudad() {
-        return ciudad;
-    }
-
-    /**
-     * @param ciudad the ciudad to set
-     */
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
     public static boolean usuarioExiste(String _nick, String _contrasena) throws SQLException, NickMalIntroducido, ContrasenaMalIntroducida {
 
         if (!UtilidadesLogin.nickBienIntroducido(_nick)) {
@@ -179,13 +150,16 @@ public class Usuario {
 
     }
 
-    public static Usuario Insert(String _nick, String _nombre, String _apellido, String _contrasena, String _contrasena2, String _fecha_nac) throws SQLException, ContrasenaMalRepetida, ContrasenaMuyCorta, ContrasenaCaracteresRaros, ContrasenaSinMayuscula, ContrasenaSinNumeros, NickYaExiste, NickMuyCorto {
+    public static Usuario Insert(String _nick, String _nombre, String _apellido, String _contrasena, String _contrasena2, String _fecha_nac) throws SQLException, ContrasenaMalRepetida, ContrasenaMuyCorta, ContrasenaCaracteresRaros, ContrasenaSinMayuscula, ContrasenaSinNumeros, NickYaExiste, NickMuyCorto, FechaInvalida {
         Usuario nuevo = null;
         if (!UtilidadesRegistro.nickLongitudValida(_nick)){
             throw new NickMuyCorto();
         }
         if (UtilidadesRegistro.nickYaExiste(_nick)) {
             throw new NickYaExiste();
+        }
+        if (!UtilidadesRegistro.FechaValida(_fecha_nac)){
+            throw new FechaInvalida();
         }
         if (!UtilidadesRegistro.contrasenaLongitudValida(_contrasena)) {
             throw new ContrasenaMuyCorta();

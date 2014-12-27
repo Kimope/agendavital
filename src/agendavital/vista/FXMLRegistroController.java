@@ -26,6 +26,7 @@ import agendavital.modelo.excepciones.ContrasenaMalRepetida;
 import agendavital.modelo.excepciones.ContrasenaMuyCorta;
 import agendavital.modelo.excepciones.ContrasenaSinMayuscula;
 import agendavital.modelo.excepciones.ContrasenaSinNumeros;
+import agendavital.modelo.excepciones.FechaInvalida;
 import agendavital.modelo.excepciones.NickMuyCorto;
 import agendavital.modelo.excepciones.NickYaExiste;
 import java.sql.SQLException;
@@ -183,7 +184,12 @@ public class FXMLRegistroController implements Initializable {
         if (name && apellido && nick && contraseña1 && contraseña2) {
             try {
                 Parent root = null;
-                String fechaNac = (String) cbaño.getValue() + "/"+ (String) cbmes.getValue() +"/"+ (String) cbdia.getValue() ;
+                String dia = (String) cbdia.getValue();
+                if(dia.length() == 1) dia = "0"+dia;
+                String mes = (String) cbmes.getValue();
+                if(mes.length() == 1) mes = "0"+mes;
+                String anyo = (String) cbaño.getValue();
+                String fechaNac = dia + "-" + mes + "-" +anyo;
                 /*AQUI VIENE EL PUNTO CLAVE. Hacer solo una pantalla de error*/
                 Usuario.Insert(tfnick.getText(), tfnombre.getText(), tfapellido.getText(), tfcontraseña.getText(), tfcontraseña2.getText(), fechaNac);
                 ventanaRegistroCompletado = new Stage();
@@ -213,6 +219,9 @@ public class FXMLRegistroController implements Initializable {
                 textError.setText(ex.getMensaje());
                 tfnick.setStyle("-fx-background-color:#F6F740");
                 textError.setFill(Color.YELLOW);
+            } catch (FechaInvalida ex) {
+                textError.setText(ex.getMensaje());
+                textError.setStyle("-fx-background-color:#F6F740");
             } catch (ContrasenaMalRepetida ex) {
                 textError.setText(ex.getMensaje());
                 tfcontraseña2.setStyle("-fx-background-color:#F6F740");

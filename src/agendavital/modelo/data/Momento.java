@@ -7,7 +7,6 @@ package agendavital.modelo.data;
 
 import agendavital.modelo.util.ConfigBD;
 import agendavital.modelo.util.UsuarioLogueado;
-import agendavital.modelo.util.UtilidadesNoticia;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
@@ -46,10 +45,10 @@ public class Momento {
             conexion = ConfigBD.conectar();
             rs = conexion.createStatement().executeQuery(String.format("SELECT * FROM momentos WHERE id_momento = %d;", id));
             rs.next();
-            this.setFecha(rs.getString("fecha"));
-            this.setDescripcion(rs.getString("descripcion"));
-            this.setId_documento(rs.getInt("id_documento"));
-            this.setId_noticia(rs.getInt("id_noticia"));
+            this.fecha = (rs.getString("fecha"));
+            this.descripcion = (rs.getString("descripcion"));
+            this.id_documento = (rs.getInt("id_documento"));
+            this.id_noticia = (rs.getInt("id_noticia"));
             rs = conexion.createStatement().executeQuery(String.format("SELECT id_etiqueta from momentos_noticias_etiquetas WHERE id_momento = %d", id));
             while (rs.next()) {
                 tags.add(rs.getInt("id_etiqueta"));

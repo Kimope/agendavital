@@ -30,4 +30,5 @@ public class UtilidadesLogin {
         String contrasenaCifrada = UtilidadesRegistro.getStringMessageDigest(_constrasena);
         return contrasenaCifrada.equals(contrasenaEncontrada);
     }
+    
 }

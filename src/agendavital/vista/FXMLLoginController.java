@@ -21,6 +21,7 @@ import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import agendavital.modelo.data.Usuario;
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import agendavital.modelo.excepciones.ContrasenaMalIntroducida;
 import agendavital.modelo.excepciones.NickMalIntroducido;
 import java.sql.SQLException;
@@ -96,7 +97,7 @@ public class FXMLLoginController implements Initializable
     
     //Método que sirve para realizar las acciones que ocurrirán al pulsar el botón de login
     @FXML
-    public void login() throws IOException
+    public void login() throws IOException, ConexionBDIncorrecta
     {
         try{
             Parent root = null; //Creamos el parent

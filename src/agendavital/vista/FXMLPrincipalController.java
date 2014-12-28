@@ -1,6 +1,7 @@
 package agendavital.vista;
 
 import agendavital.modelo.data.Noticia;
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import java.io.IOException;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
@@ -60,7 +61,7 @@ public class FXMLPrincipalController implements Initializable {
                 ArrayList<Pair<LocalDate, Noticia>> fechas = null;
                 try {
                     fechas = Noticia.getNoticiasFecha();
-                } catch (SQLException ex) {
+                } catch (ConexionBDIncorrecta ex) {
                     Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 for (Pair<LocalDate, Noticia> fecha : fechas) {

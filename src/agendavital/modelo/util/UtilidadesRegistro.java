@@ -5,14 +5,12 @@
  */
 package agendavital.modelo.util;
 
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  *
@@ -61,7 +59,7 @@ public class UtilidadesRegistro {
         return toHexadecimal(digest);
     }
 
-    public static boolean nickYaExiste(String _nick) throws SQLException {
+    public static boolean nickYaExiste(String _nick) throws ConexionBDIncorrecta, SQLException {
         Connection conexion = null;
         ResultSet rs = null;
         try {
@@ -69,14 +67,14 @@ public class UtilidadesRegistro {
             String consultaNick = String.format("SELECT (nick) from usuarios WHERE nick = %s;", ConfigBD.String2Sql(_nick, false));
             rs = conexion.createStatement().executeQuery(consultaNick);
             rs.next();
+            return (rs.getRow() == 1);
         } catch (SQLException e) {
-            throw e;
+            throw new ConexionBDIncorrecta();
         } finally {
             if (conexion != null) {
                 conexion.close();
             }
         }
-        return (rs.getRow() == 1);
     }
 
     public static boolean nickLongitudValida(String _nick) {

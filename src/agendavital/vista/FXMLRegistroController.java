@@ -21,6 +21,7 @@ import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import agendavital.modelo.data.Usuario;
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import agendavital.modelo.excepciones.ContrasenaCaracteresRaros;
 import agendavital.modelo.excepciones.ContrasenaMalRepetida;
 import agendavital.modelo.excepciones.ContrasenaMuyCorta;
@@ -172,7 +173,7 @@ public class FXMLRegistroController implements Initializable {
 
     ////////////////////Comprobación de campos y registro de usuarios////////////////////
     @FXML
-    public void registra_usuario() throws IOException {
+    public void registra_usuario() throws IOException, ConexionBDIncorrecta {
         //Comprueban si un campo está vacío o no
         boolean name = FormValidation.textFieldEmpty(tfnombre);
         boolean apellido = FormValidation.textFieldEmpty(tfapellido);

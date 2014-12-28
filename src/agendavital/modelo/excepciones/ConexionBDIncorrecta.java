@@ -9,10 +9,14 @@ package agendavital.modelo.excepciones;
  *
  * @author ramon
  */
-public class ErrorConexionFeedzilla extends Exception {
-     private static final String mensaje = "Imposible conectarse a FeedZilla";
-     
-       public String getMensaje() {
+public class ConexionBDIncorrecta extends Exception{
+
+    private static final String mensaje = "La contraseña contiene caracteres no permitidos";
+   
+    /*
+     * @return the mensaje
+     */
+    public String getMensaje() {
         return mensaje;
     }
 }

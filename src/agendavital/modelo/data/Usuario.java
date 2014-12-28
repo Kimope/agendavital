@@ -5,6 +5,7 @@
  */
 package agendavital.modelo.data;
 
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import agendavital.modelo.util.UtilidadesRegistro;
 import agendavital.modelo.excepciones.ContrasenaMuyCorta;
 import agendavital.modelo.excepciones.ContrasenaSinNumeros;
@@ -35,7 +36,7 @@ public class Usuario {
     private String contrasena;
     private String fecha_nac;
 
-    public Usuario(String _nick) throws SQLException {
+    public Usuario(String _nick) throws SQLException, ConexionBDIncorrecta {
         nick = _nick;
         Connection conexion = null;
         ResultSet rs = null;
@@ -48,7 +49,7 @@ public class Usuario {
             this.contrasena = null;
             this.fecha_nac = rs.getNString("fecha_nac");
         } catch (SQLException ee) {
-            throw ee;
+            throw new ConexionBDIncorrecta();
         } finally {
             if (rs != null) {
                 rs.close();
@@ -129,7 +130,7 @@ public class Usuario {
         this.fecha_nac = fecha_nac;
     }
 
-    public static boolean usuarioExiste(String _nick, String _contrasena) throws SQLException, NickMalIntroducido, ContrasenaMalIntroducida {
+    public static boolean usuarioExiste(String _nick, String _contrasena) throws SQLException, NickMalIntroducido, ContrasenaMalIntroducida, ConexionBDIncorrecta {
 
         if (!UtilidadesLogin.nickBienIntroducido(_nick)) {
             throw new NickMalIntroducido();
@@ -140,17 +141,17 @@ public class Usuario {
         return true;
     }
 
-    public void Update() throws SQLException {
+    public void Update() throws ConexionBDIncorrecta  {
         try (Connection conexion = ConfigBD.conectar()) {
             String update = String.format("UPDATE usuarios SET contrasena = %s WHERE nick = %s;", ConfigBD.String2Sql(UtilidadesRegistro.getStringMessageDigest(getContrasena()), false), ConfigBD.String2Sql(getNick(), false));
             conexion.createStatement().executeUpdate(update);
         } catch (SQLException e) {
-            throw e;
+            throw new ConexionBDIncorrecta();
         }
 
     }
 
-    public static Usuario Insert(String _nick, String _nombre, String _apellido, String _contrasena, String _contrasena2, String _fecha_nac) throws SQLException, ContrasenaMalRepetida, ContrasenaMuyCorta, ContrasenaCaracteresRaros, ContrasenaSinMayuscula, ContrasenaSinNumeros, NickYaExiste, NickMuyCorto, FechaInvalida {
+    public static Usuario Insert(String _nick, String _nombre, String _apellido, String _contrasena, String _contrasena2, String _fecha_nac) throws ContrasenaMalRepetida, ContrasenaMuyCorta, ContrasenaCaracteresRaros, ContrasenaSinMayuscula, ContrasenaSinNumeros, NickYaExiste, NickMuyCorto, FechaInvalida, ConexionBDIncorrecta, SQLException {
         Usuario nuevo = null;
         if (!UtilidadesRegistro.nickLongitudValida(_nick)){
             throw new NickMuyCorto();
@@ -181,7 +182,7 @@ public class Usuario {
             conexion.createStatement().executeUpdate(insert);
            nuevo = new Usuario(_nick);
         } catch (SQLException e) {
-            throw e;
+            throw new ConexionBDIncorrecta();
         }
         return nuevo;
     }

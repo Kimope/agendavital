@@ -5,6 +5,7 @@
  */
 package agendavital.modelo.data;
 
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
  */
 public class InicializarBD {
 
-    public static void cargarXMLS() throws JDOMException, IOException, SQLException {
+    public static void cargarXMLS() throws JDOMException, IOException, SQLException, ConexionBDIncorrecta {
         SAXBuilder builder = new SAXBuilder();
         File xmlFolder = new File("Noticias");
         File[] xmlFile = xmlFolder.listFiles();

@@ -5,6 +5,7 @@
  */
 package agendavital.modelo.data;
 
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import agendavital.modelo.excepciones.ErrorConexionFeedzilla;
 import agendavital.modelo.util.ConfigBD;
 import agendavital.modelo.util.UtilidadesNoticia;
@@ -44,9 +45,10 @@ public class Noticia {
      * Constructor de noticia.
      *
      * @param _id ID de la noticia en la BD
-     * @throws SQLException
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
+     * @throws java.sql.SQLException
      */
-    public Noticia(int _id) throws SQLException {
+    public Noticia(int _id) throws ConexionBDIncorrecta, SQLException {
         id = _id;
         tags = new ArrayList<>();
         Connection conexion = null;
@@ -66,7 +68,7 @@ public class Noticia {
             }
 
         } catch (SQLException ee) {
-            throw ee;
+            throw new ConexionBDIncorrecta();
         } finally {
             if (rs != null) {
                 rs.close();
@@ -134,9 +136,9 @@ public class Noticia {
      *
      * @param fecha La fecha en formato DD-MM-AAAA
      * @return
-     * @throws SQLException
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      */
-    public static ArrayList<Noticia> Select(String fecha) throws SQLException {
+    public static ArrayList<Noticia> Select(String fecha) throws ConexionBDIncorrecta {
         ResultSet rs = null;
         ArrayList<Noticia> noticias = null;
         try (Connection conexion = ConfigBD.conectar()) {
@@ -148,7 +150,7 @@ public class Noticia {
             }
             return noticias;
         } catch (SQLException e) {
-            throw e;
+            throw new ConexionBDIncorrecta();
         }
     }
 
@@ -156,9 +158,10 @@ public class Noticia {
      * Funcion coloreadora del calendario
      *
      * @return
-     * @throws SQLException
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
+     * 
      */
-    public static ArrayList<Pair<LocalDate, Noticia>> getNoticiasFecha() throws SQLException {
+    public static ArrayList<Pair<LocalDate, Noticia>> getNoticiasFecha() throws ConexionBDIncorrecta {
         ResultSet rs = null;
         ArrayList<Pair<LocalDate, Noticia>> noticias = new ArrayList<>();
         try (Connection conexion = ConfigBD.conectar()) {
@@ -172,7 +175,7 @@ public class Noticia {
                 noticias.add(new Pair<>(date, new Noticia((id))));
             }
         } catch (SQLException e) {
-            throw e;
+            throw new ConexionBDIncorrecta();
         }
         return noticias;
     }
@@ -187,9 +190,9 @@ public class Noticia {
      * @param cuerpo
      * @param tags
      * @return
-     * @throws SQLException
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      */
-    public static Noticia Insert(String titulo, String link, String fecha, String categoria, String cuerpo, ArrayList<String> tags) throws SQLException {
+    public static Noticia Insert(String titulo, String link, String fecha, String categoria, String cuerpo, ArrayList<String> tags) throws ConexionBDIncorrecta, SQLException {
         int nuevoId = 0;
         try (Connection conexion = ConfigBD.conectar()) {
             String insert = "INSERT INTO noticias (titulo, link, fecha, categoria, cuerpo)";
@@ -212,7 +215,7 @@ public class Noticia {
                 conexion.createStatement().executeUpdate(insertNoticiaEtiqueta);
             }
         } catch (SQLException e) {
-            throw e;
+            throw new ConexionBDIncorrecta();
         }
         return new Noticia(nuevoId);
     }
@@ -220,36 +223,34 @@ public class Noticia {
     /**
      * Funcion modificadora de noticias
      *
-     * @throws SQLException
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      */
-    public void Update() throws SQLException {
+    public void Update() throws ConexionBDIncorrecta {
         try (Connection conexion = ConfigBD.conectar()) {
             String update = String.format("UPDATE noticias SET titulo = %s, link = %s, fecha = %s, categoria = %s, cuerpo = %s WHERE id_noticia = %d;", ConfigBD.String2Sql(getTitulo(), false), ConfigBD.String2Sql(getLink(), false), ConfigBD.String2Sql(getFecha(), false), ConfigBD.String2Sql(getCategoria(), false), ConfigBD.String2Sql(getCuerpo(), false), getId());
             conexion.createStatement().executeUpdate(update);
         } catch (SQLException e) {
-            throw e;
+            throw new ConexionBDIncorrecta();
         }
     }
 
     /**
      * Funcion que elimina las noticias
      *
-     * @return
-     * @throws SQLException
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      */
-    public boolean Delete() throws SQLException {
+    public void Delete() throws ConexionBDIncorrecta {
         try (Connection conexion = ConfigBD.conectar()) {
             String delete = String.format("Delete from noticias WHERE id_noticia = %d;", getId());
             conexion.createStatement().executeUpdate(delete);
             String deleteTag = String.format("Delete from momentos_noticias_etiquetas WHERE id_noticia = %d;", getId());
             conexion.createStatement().executeUpdate(deleteTag);
-            return true;
         } catch (SQLException e) {
-            return false;
+            throw new ConexionBDIncorrecta();
         }
     }
 
-    public static ArrayList<Noticia> getNoticiasFeedZilla() throws java.text.ParseException {
+    public static ArrayList<Noticia> getNoticiasFeedZilla() throws java.text.ParseException, ErrorConexionFeedzilla {
         HttpClient httpClient = new DefaultHttpClient();
         HttpGet httpGet = new HttpGet("http://api.feedzilla.com/v1/categories/100/articles.json");
         httpGet.setHeader("Content-Type", "application/json");
@@ -273,9 +274,24 @@ public class Noticia {
             }
 
         } catch (IOException | ParseException | JSONException e) {
-            System.out.println(ErrorConexionFeedzilla.getMensaje());
+            throw new ErrorConexionFeedzilla();
         }
         return arrayNoticias;
     }
 
+    public static ArrayList<Noticia> buscar(String _tag) throws ConexionBDIncorrecta{
+        ArrayList<Noticia> busqueda = null;
+        try (Connection conexion = ConfigBD.conectar()) {
+            busqueda = new ArrayList<>();
+            String buscar = String.format("SELECT id_Noticia from momentos_noticias_etiquetas "
+                    + "WHERE id_Etiqueta IN (SELECT id_Etiqueta from etiquetas "
+                    + "WHERE nombre LIKE %s);", ConfigBD.String2Sql(_tag, true));
+            ResultSet rs = conexion.createStatement().executeQuery(buscar);
+            while(rs.next()) busqueda.add(new Noticia(rs.getInt("id_Noticia")));
+        } catch (SQLException e){
+            throw new ConexionBDIncorrecta();
+        }
+        return busqueda;
+    }
+    
 }

@@ -5,6 +5,7 @@
  */
 package agendavital.modelo.data;
 
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import agendavital.modelo.util.ConfigBD;
 import agendavital.modelo.util.UsuarioLogueado;
 import java.io.File;
@@ -35,8 +36,9 @@ public class Momento {
      * 
      * @param _id
      * @throws SQLException 
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta 
      */
-    public Momento(int _id) throws SQLException {
+    public Momento(int _id) throws SQLException, ConexionBDIncorrecta {
         id = _id;
         tags = new ArrayList<>();
         Connection conexion = null;
@@ -55,7 +57,7 @@ public class Momento {
             }
 
         } catch (SQLException ee) {
-            throw ee;
+           throw new ConexionBDIncorrecta();
         } finally {
             if (rs != null) {
                 rs.close();
@@ -117,10 +119,10 @@ public class Momento {
     /**Funcion que devuelves los momentos dada una fecha
      * 
      * @param fecha Fecha en formato DD-MM-AAAA
-     * @return
-     * @throws SQLException 
+     * @return 
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta 
      */
-    public static ArrayList<Momento> Select(String fecha) throws SQLException {
+    public static ArrayList<Momento> Select(String fecha) throws ConexionBDIncorrecta {
         ResultSet rs = null;
         ArrayList<Momento> momentos = null;
         try (Connection conexion = ConfigBD.conectar()) {
@@ -132,7 +134,7 @@ public class Momento {
             }
             return momentos;
         } catch (SQLException e) {
-            throw e;
+            throw new ConexionBDIncorrecta();
         }
     }
 
@@ -143,9 +145,9 @@ public class Momento {
      * @param color
      * @param id_noticia
      * @return
-     * @throws SQLException 
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta 
      */
-    public static Momento insert(String fecha, String descripcion, String color, int id_noticia) throws SQLException {
+    public static Momento insert(String fecha, String descripcion, String color, int id_noticia) throws ConexionBDIncorrecta {
         int nuevoId = 0;
         Momento nuevo = null;
         try (Connection conexion = ConfigBD.conectar()) {
@@ -157,37 +159,35 @@ public class Momento {
             nuevo = new Momento(nuevoId);
             return nuevo;
         } catch (SQLException e) {
-            throw e;
+            throw new ConexionBDIncorrecta();
         }
     }
 
     /**Funcion modificadora
      * 
-     * @throws SQLException 
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      */
-    public void Update() throws SQLException {
+    public void Update() throws ConexionBDIncorrecta {
         try (Connection conexion = ConfigBD.conectar()) {
             String update = String.format("UPDATE noticias SET fecha = %s, descripcion = %s, color = %s WHERE id_momento = %d;", ConfigBD.String2Sql(getFecha(), false), ConfigBD.String2Sql(getDescripcion(), false), ConfigBD.String2Sql(getColor(), false), getId());
             conexion.createStatement().executeUpdate(update);
         } catch (SQLException e) {
-            throw e;
+            throw new ConexionBDIncorrecta();
         }
     }
     
     /**Funcion que elimina el momento
      * 
-     * @return
-     * @throws SQLException 
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta 
      */
-    public boolean Delete() throws SQLException {
+    public void Delete() throws ConexionBDIncorrecta {
         try (Connection conexion = ConfigBD.conectar()) {
             String delete = String.format("Delete from momentos WHERE id_momento = %d;", getId());
             conexion.createStatement().executeUpdate(delete);
             String deleteTag = String.format("Delete from momentos_noticias_etiquetas WHERE id_momento = %d;", getId());
             conexion.createStatement().executeUpdate(deleteTag);
-            return true;
         } catch (SQLException e) {
-            return false;
+            throw new ConexionBDIncorrecta();
         }
     }
     
@@ -196,9 +196,9 @@ public class Momento {
      * @param Documento
      * @return
      * @throws IOException
-     * @throws SQLException 
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta 
      */
-    public boolean asociarDocumento(File Documento) throws IOException, SQLException{
+    public boolean asociarDocumento(File Documento) throws IOException,  ConexionBDIncorrecta{
         File destino = new File(UsuarioLogueado.nick);
         destino.mkdir();
         File destino2 = new File("Documentos/"+UsuarioLogueado.nick+"/"+Documento.getName());
@@ -212,16 +212,16 @@ public class Momento {
         conexion.createStatement().executeUpdate(update);
         return true;
         } catch (SQLException e) {
-            throw e;
+            throw new ConexionBDIncorrecta();
         }
     }
     
     /**Funcion coloreadora del calendario
      * 
      * @return
-     * @throws SQLException 
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta 
      */
-     public static ArrayList<Pair<LocalDate, String>> getNoticiasFecha() throws SQLException {
+     public static ArrayList<Pair<LocalDate, String>> getNoticiasFecha() throws ConexionBDIncorrecta {
         ResultSet rs = null;
         ArrayList<Pair<LocalDate, String>> fechasMomentos = new ArrayList<>();
         try (Connection conexion = ConfigBD.conectar()) {
@@ -235,8 +235,25 @@ public class Momento {
                 fechasMomentos.add(new Pair<>(date, color));
             }
         } catch (SQLException e) {
-            throw e;
+           throw new ConexionBDIncorrecta();
         }
         return fechasMomentos;
+    }
+     
+      public static ArrayList<Momento> buscar(String _tag) throws ConexionBDIncorrecta {
+        ArrayList<Momento> busqueda = null;
+        try (Connection conexion = ConfigBD.conectar()){
+            busqueda = new ArrayList<>();
+            String buscar = String.format("SELECT id_Momento from momentos_noticias_etiquetas "
+                    + "WHERE id_Etiqueta IN (SELECT id_Etiqueta from etiquetas "
+                    + "WHERE nombre LIKE %s);", ConfigBD.String2Sql(_tag, true));
+            ResultSet rs = conexion.createStatement().executeQuery(buscar);
+            while (rs.next()) {
+                busqueda.add(new Momento(rs.getInt("id_Momento")));
+            }
+        } catch (SQLException e) {
+            throw new ConexionBDIncorrecta();
+        }
+        return busqueda;
     }
 }

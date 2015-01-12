@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+        <Noticia>
+         <titulo>Muere el ex dictador chileno Augusto Pinochet</titulo>
+         <fecha>11-12-2006</fecha>
+         <categoria>Noticias Internacionales</categoria>
+         <link>http://www.elmundo.es/elmundo/2006/12/10/internacional/1165772627.html</link>
+         <tag>peru</tag>
+         <tag>dictador</tag>
+         <tag>pinochet</tag>
+         <tag>augusto</tag>
+     </Noticia>
+</Noticias>

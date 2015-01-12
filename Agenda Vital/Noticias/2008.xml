@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+        <Noticia>
+         <titulo>Estalla la crisis económica</titulo>
+         <fecha>01-01-2008</fecha>
+         <categoria>Noticias Internacionales</categoria>
+         <categoria>Noticias Locales</categoria>
+         <link>http://www.mivino.es/index.php/reportajes/reportaje/item/18765-2008-estalla-la-crisis-econ%C3%B3mica</link>
+         <tag>crisis</tag>
+         <tag>economica</tag>
+     </Noticia>
+</Noticias>

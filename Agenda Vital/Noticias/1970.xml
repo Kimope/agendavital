@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Houston, tenemos un problema</titulo>
+        <fecha>11-04-1970</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://blogs.elcorreo.com/taldiacomohoy/2010/04/13/en-1970-apolo-13-anuncia-la-nasa-houston-tenemos-un/</link>
+        <tag>eeuu</tag>
+        <tag>apolo</tag>
+        <tag>houston</tag>
+    </Noticia>
+</Noticias>

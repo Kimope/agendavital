@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>My Lai: 45 años de la masacre que conmocionó a los Estados Unidos</titulo>
+        <fecha>16-03-1968</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://www.abc.es/internacional/20130316/abci-aniversario-201303152038.html</link>
+        <tag>eeuu</tag>
+        <tag>matanza</tag>
+        <tag>my</tag>
+        <tag>lai</tag>
+    </Noticia>
+    <Noticia>
+        <titulo>Robert Kennedy, también asesinado</titulo>
+        <fecha>05-06-1968</fecha>
+        <link>http://historiausa.about.com/od/relev/fl/Robert-Kennedy-tmabien-asesinado.htm</link>
+        <tag>eeuu</tag>
+        <tag>asesinato</tag>
+        <tag>robert</tag>
+        <tag>kennedy</tag>
+    </Noticia>
+</Noticias>

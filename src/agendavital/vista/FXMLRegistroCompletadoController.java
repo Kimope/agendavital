@@ -1,7 +1,6 @@
 package agendavital.vista;
 
-import agendavital.modelo.data.Usuario;
-import static agendavital.vista.FXMLRegistroController.ventanaRegistroCompletado;
+import agendavital.vista.FXMLRegistroController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,15 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;

@@ -54,7 +54,6 @@ public class AgendaVital extends Application
         stage.setAlwaysOnTop(true);  //Siempre va a estar visible, no se puede minimizar
         Scene scene = new Scene(root); //Creamos una escena en el root creado, que es una clase contenedora del escenario gráfico, en este caso con la ventana que se muestra por pantalla
         scene.setFill( Color.TRANSPARENT ); //Para que no se vea la escena (lo usamos para que no se vean los picos de los bordes
-        scene.getStylesheets().add("prueba.css");
         stage.setScene(scene); //Cargamos la escena
         Image icon = new Image(getClass().getResourceAsStream("vista/logo.png")); //Creamos y cargamos un icono de la carpeta
         stage.getIcons().add(icon); //Cargamos la imagen como icono de la app

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+  <Noticia>
+         <titulo>Cómo surgió el Estado Islámico</titulo>
+         <fecha>01-01-2003</fecha>
+         <categoria>Noticias Internacionales</categoria>
+         <link>http://noticieros.televisa.com/mundo/1410/como-surgio-estado-islamico/</link>
+         <tag>irak</tag>
+         <tag>siria</tag>
+         <tag>estado</tag>
+         <tag>islamico</tag>
+       </Noticia>
+  <Noticia>
+     <titulo>Comienzan los bombardeos de EEUU sobre Irak</titulo>
+         <fecha>20-03-2003</fecha>
+         <categoria>Noticias Internacionales</categoria>
+         <link>http://noticias.universia.es/movilidad-academica/noticia/2003/03/20/619638/comienzan-bombardeos-eeuu-irak.html</link>
+         <tag>guerra</tag>
+         <tag>eeuu</tag>
+         <tag>irak</tag>
+     </Noticia>
+</Noticias>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+        <Noticia>
+         <titulo>Muere el Papa Juan Pablo II</titulo>
+         <fecha>02-04-2005</fecha>
+         <categoria>Noticias Internacionales</categoria>
+         <link>http://www.elmundo.es/elmundo/2005/04/01/sociedad/1112343824.html</link>
+         <tag>vaticano</tag>
+         <tag>papa</tag>
+         <tag>juan</tag>
+         <tag>pablo</tag>
+     </Noticia>
+     <Noticia>
+         <titulo>Ratzinger, Benedicto XVI</titulo>
+         <fecha>24-04-2005</fecha>
+         <categoria>Noticias Internacionales</categoria>
+         <link>http://www.elmundo.es/elmundo/2005/04/19/enespecial/1113928488.html</link>
+         <tag>vaticano</tag>
+         <tag>papa</tag>
+         <tag>ratzinger</tag>
+         <tag>benedicto</tag>
+     </Noticia>
+          <Noticia>
+         <titulo>El Congreso aprueba la ley del matrimonio homosexual</titulo>
+         <fecha>30-06-2005</fecha>
+         <link>http://sociedad.elpais.com/sociedad/2005/06/30/actualidad/1120082402_850215.html</link>
+         <categoria>Noticias Locales</categoria>
+         <tag>españa</tag>
+         <tag>matrimonio</tag>
+         <tag>homosexualidad</tag>
+         <tag>gobierno</tag>
+     </Noticia>
+     <Noticia>
+         <titulo>Cadena de explosiones en el centro de Londres</titulo>
+         <fecha>07-07-2005</fecha>
+         <categoria>Noticias Internacionales</categoria>
+         <link>http://www.elmundo.es/elmundo/2005/07/07/internacional/1120725107.html</link>
+         <tag>inglaterra</tag>
+         <tag>londres</tag>
+         <tag>terrorismo</tag>
+         <tag>al-qaeda</tag>
+     </Noticia>
+</Noticias>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>El día en que mataron al arquitecto del apartheid</titulo>
+        <fecha>06-09-1966</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://www.economiadigital.es/es/notices/2013/12/el_dia_en_que_mataron_al_arquitecto_del_apartheid_48290.php</link>
+        <tag>apartheid</tag>
+        <tag>sudafrica</tag>
+        <tag>nelson</tag>
+        <tag>mandela</tag>
+    </Noticia>
+</Noticias>

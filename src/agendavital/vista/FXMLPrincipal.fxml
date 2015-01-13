@@ -55,10 +55,10 @@
          <left>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A44A3F; -fx-border-width: 5; -fx-border-color: #474A48;" BorderPane.alignment="CENTER">
                <children>
-                  <Line endX="-30.0" layoutX="112.0" layoutY="368.0" startX="-100.0" stroke="#474a48" strokeWidth="2.0" />
-                  <Line endX="-30.0" fill="BLACK" layoutX="218.0" layoutY="368.0" startX="-100.0" stroke="#474a48" strokeWidth="2.0" />
-                  <Circle fill="#1f93ff00" layoutX="100.0" layoutY="368.0" radius="10.0" stroke="#474a48" strokeType="INSIDE" strokeWidth="2.0" />
-                  <TextField layoutX="17.0" layoutY="419.0" promptText="        Buscar" style="-fx-background-radius: 30;">
+                  <Line endX="-30.0" layoutX="112.0" layoutY="250.0" startX="-100.0" stroke="#474a48" strokeWidth="2.0" />
+                  <Line endX="-30.0" fill="BLACK" layoutX="218.0" layoutY="250.0" startX="-100.0" stroke="#474a48" strokeWidth="2.0" />
+                  <Circle fill="#1f93ff00" layoutX="100.0" layoutY="250.0" radius="10.0" stroke="#474a48" strokeType="INSIDE" strokeWidth="2.0" />
+                  <TextField layoutX="18.0" layoutY="286.0" promptText="        Buscar" style="-fx-background-radius: 30;">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -66,50 +66,155 @@
                         <Font size="13.0" />
                      </font>
                   </TextField>
-                  <ImageView fitHeight="36.0" fitWidth="16.0" layoutX="28.0" layoutY="423.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@lupa.png" />
-                     </image>
-                  </ImageView>
-                  <Text layoutX="74.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tags">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="15.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu ">
+                  <Text layoutX="12.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu ">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Text>
-                  <Pane layoutY="148.0" prefHeight="29.0" prefWidth="187.0">
+                  <Pane layoutY="38.0" prefHeight="30.0" prefWidth="180.0">
                      <children>
-                        <ImageView fitHeight="35.0" fitWidth="22.0" layoutX="18.0" layoutY="4.0" opacity="0.49" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="37.0" fitWidth="53.0" layoutX="6.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@3711.png" />
+                              <Image url="@../../../../../../../Desktop/17743.png" />
                            </image>
                         </ImageView>
-                        <Text layoutX="55.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ayuda">
+                        <Text layoutX="26.0" layoutY="22.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="INSIDE" strokeWidth="0.5" text="Inicio" textAlignment="CENTER" wrappingWidth="79.556640625">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
                      </children>
                   </Pane>
-                  <Pane layoutY="179.0" prefHeight="29.0" prefWidth="187.0">
+                  <Pane layoutY="70.0" prefHeight="30.0" prefWidth="180.0">
                      <children>
-                        <ImageView fitHeight="35.0" fitWidth="22.0" layoutX="18.0" layoutY="4.0" opacity="0.49" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="24.0" fitWidth="29.0" layoutX="12.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@llave.png" />
+                              <Image url="@../../../../../../../Desktop/17868.png" />
                            </image>
                         </ImageView>
-                        <Text layoutX="55.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administracion">
+                        <Text layoutX="26.0" layoutY="22.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="INSIDE" strokeWidth="0.5" text="Añadir Momento" textAlignment="CENTER" wrappingWidth="170.556640625">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="18.0" />
                            </font>
                         </Text>
                      </children>
                   </Pane>
-                  <Button fx:id="btnnoticia" layoutX="64.0" layoutY="88.0" mnemonicParsing="false" onAction="#pulsado" text="Button" />
+                  <Pane layoutY="102.0" prefHeight="30.0" prefWidth="180.0">
+                     <children>
+                        <ImageView fitHeight="28.0" fitWidth="35.0" layoutX="11.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../Desktop/News-icon.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="43.0" layoutY="21.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="INSIDE" strokeWidth="0.5" text="Añadir Noticia" textAlignment="CENTER" wrappingWidth="115.556640625">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="134.0" prefHeight="30.0" prefWidth="180.0">
+                     <children>
+                        <ImageView fitHeight="24.0" fitWidth="30.0" layoutX="13.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../Desktop/39460.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="42.0" layoutY="21.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="INSIDE" strokeWidth="0.5" text="Administración" textAlignment="CENTER" wrappingWidth="125.556640625">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="166.0" prefHeight="30.0" prefWidth="180.0">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="26.0" layoutX="15.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../Desktop/3711.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="45.0" layoutY="21.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="INSIDE" strokeWidth="0.5" text="Ayuda" textAlignment="CENTER" wrappingWidth="52.556640625">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="199.0" prefHeight="30.0" prefWidth="180.0">
+                     <children>
+                        <ImageView fitHeight="23.0" fitWidth="26.0" layoutX="15.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../../Desktop/16043.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="44.0" layoutY="22.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="BEVEL" strokeType="INSIDE" strokeWidth="0.5" text="Acerca De" textAlignment="CENTER" wrappingWidth="85.556640625">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="28.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../Desktop/search1.gif" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="25.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tag1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="103.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tag2">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="137.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tag3">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="74.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tag4">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="65.0" layoutY="458.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tag5">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="20.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tag6">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="143.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tag7">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="20.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tag8">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="119.0" layoutY="488.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tag9">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="63.0" layoutY="515.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tag10">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="13.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tags">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
          </left>
@@ -119,116 +224,6 @@
                   <Insets />
                </BorderPane.margin>
                <children>
-                  <StackPane layoutX="177.0" layoutY="120.0" prefHeight="35.0" prefWidth="447.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
-                     <children>
-                        <GridPane>
-                           <children>
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: yellow;" GridPane.columnIndex="1" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: orange;" GridPane.columnIndex="2" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: pink;" GridPane.columnIndex="3" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.columnIndex="4" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: blue;" GridPane.columnIndex="6" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: green;" GridPane.columnIndex="7" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: purple;" GridPane.columnIndex="8" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="9" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: brown;" GridPane.columnIndex="10" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: darkblue;" GridPane.columnIndex="11" />
-                           </children>
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                        </GridPane>
-                     </children>
-                  </StackPane>
-                  <StackPane layoutX="177.0" layoutY="270.0" prefHeight="35.0" prefWidth="447.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
-                     <children>
-                        <GridPane>
-                           <children>
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: yellow;" GridPane.columnIndex="1" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: orange;" GridPane.columnIndex="2" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: pink;" GridPane.columnIndex="3" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.columnIndex="4" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: blue;" GridPane.columnIndex="6" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: green;" GridPane.columnIndex="7" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: purple;" GridPane.columnIndex="8" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="9" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: brown;" GridPane.columnIndex="10" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: darkblue;" GridPane.columnIndex="11" />
-                           </children>
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                        </GridPane>
-                     </children>
-                  </StackPane>
-                  <StackPane layoutX="177.0" layoutY="420.0" prefHeight="35.0" prefWidth="447.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
-                     <children>
-                        <GridPane>
-                           <children>
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: yellow;" GridPane.columnIndex="1" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: orange;" GridPane.columnIndex="2" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: pink;" GridPane.columnIndex="3" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.columnIndex="4" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: blue;" GridPane.columnIndex="6" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: green;" GridPane.columnIndex="7" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: purple;" GridPane.columnIndex="8" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" GridPane.columnIndex="9" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: brown;" GridPane.columnIndex="10" />
-                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: darkblue;" GridPane.columnIndex="11" />
-                           </children>
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                        </GridPane>
-                     </children>
-                  </StackPane>
-                  <StackPane layoutX="445.0" layoutY="27.5" AnchorPane.leftAnchor="445.0" AnchorPane.rightAnchor="426.0" />
-                  <Text boundsType="LOGICAL_VERTICAL_CENTER" layoutX="439.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textOrigin="CENTER" AnchorPane.leftAnchor="432.13671875" AnchorPane.rightAnchor="438.86328125" />
                   <DatePicker fx:id="cal" layoutX="287.0" layoutY="200.0" />
                </children>
             </AnchorPane>

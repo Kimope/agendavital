@@ -1,6 +1,5 @@
 package agendavital.vista;
 
-import agendavital.vista.FXMLRegistroController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,13 +9,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -42,18 +41,9 @@ public class FXMLRegistroCompletadoController implements Initializable
         private double initY=ALTO/2;    
         //------------------------------------------------------------//
     @FXML
-    private Label contraseña2label;
+    private Text text1;
     @FXML
-    private Label contraseña1label;
-    @FXML
-    private Label correolabel;
-    @FXML
-    private Label ciudadlabel;
-    @FXML
-    private Label apellidolabel;
-    @FXML
-    private Label nombrelabel;
-     
+    private Text text2;
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {

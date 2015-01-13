@@ -186,12 +186,12 @@
       </Label>
       <Line endX="402.0" layoutX="243.0" layoutY="263.0" rotate="90.0" startX="-100.0" strokeWidth="10.0" />
       <Line endX="200.0" fill="BLACK" layoutX="544.0" layoutY="373.0" startX="-100.0" stroke="#00000085" strokeWidth="2.0" />
-      <Text layoutX="491.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="kokokokoko">
+      <Text id="text2" layoutX="491.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font name="Cooper Black" size="27.0" />
          </font>
       </Text>
-      <Text layoutX="450.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="...yayayayaya">
+      <Text id="text1" layoutX="450.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font name="Cooper Black" size="27.0" />
          </font>

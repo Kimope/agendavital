@@ -128,4 +128,44 @@ public class UtilidadesRegistro {
         int _dia = Integer.parseInt(_fecha.substring(0, 2));
         return _dia <= diasmes[_mes + 1];
     }
+
+    public static String acontecimientoMasRelevante(int _anyo) {
+        switch (_anyo) {
+            case 1964:
+                return "el Che Guevara diserto su discuso mas importante?";
+            case 1965:
+                return "fallece, en Londres, el escritor Thomas S. Eliot?";
+            case 1966:
+                return "EEUU lanzo a la Luna el primer cohete automatico?";
+            case 1967:
+                return "comenzo la guerra de los seis dias?";
+            case 1968:
+                return "Guinea Ecuatorial se independizo de España?";
+            case 1969:
+                return "Neil Armstrong piso la Luna?";
+            case 1970:
+                return "dijeron, en el Apolo 13, 'Houston, tenemos un problema'?";
+            case 1971:
+                return "se independizo Bangladesh?";
+            case 1972:
+                return "acercaron posturas para acabar con la Guerra Fria?";
+            case 1973:
+                return "Reino Unido permitio operar en bolsa a las mujeres?";
+            case 1974:
+                return "dimitio Richard Nixon, presidente de EEUU?";
+            case 1975:
+                return "murio Francisco Franco?";
+            case 1976:
+                return "el Rey nombro a Adolfo Suarez nuevo presidente del gobierno?";
+            case 1977:
+                return "se legalizo el Partido Comunista?";
+            case 1978:
+                return "se proclamo nuestra constitucion?";
+            case 1979:
+                return "se celebraron, 4 decadas despues, elecciones municipales?";
+            default:
+                return "";
+        }
+    }
+
 }

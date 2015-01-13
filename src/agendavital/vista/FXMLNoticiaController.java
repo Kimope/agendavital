@@ -5,7 +5,6 @@
  */
 package agendavital.vista;
 
-import agendavital.modelo.data.Noticia;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -55,13 +54,19 @@ public class FXMLNoticiaController implements Initializable {
     private Text txtTag;
     @FXML
     private Button btnModificar;
+    public String fechaSeleccionada;
+    FXMLPrincipalController principalController;
+    
+
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       fechaSeleccionada = FXMLPrincipalController.fechaSeleccionada;
+       txtTitular.setText(fechaSeleccionada);
+        
     }    
 
     @FXML

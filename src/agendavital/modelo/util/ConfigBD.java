@@ -21,7 +21,7 @@ import java.sql.SQLException;
  */
 public class ConfigBD {
 
-    private static String ruta = "/home/ramon/.AgendaVital/agenda.db";
+    private static String ruta = "";
     private static final String SO = System.getProperty("os.name").toLowerCase();
     
     public static boolean inicializarEstructura() throws IOException{
@@ -45,6 +45,7 @@ public class ConfigBD {
     
     public static boolean estructuraInicializada(){
         File BD = null;
+        System.out.println(System.getenv("APPDATA")+"/AgendaVital/agenda.db");
         if(SO.contains("win")){
             BD = new File(System.getenv("APPDATA")+"/AgendaVital/agenda.db");
         }

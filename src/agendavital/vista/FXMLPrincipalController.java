@@ -8,7 +8,6 @@ import javafx.scene.control.Menu;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.net.URL;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -23,7 +22,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import javafx.util.Pair;
@@ -35,10 +33,10 @@ import javafx.util.StringConverter;
 public class FXMLPrincipalController implements Initializable {
 
     //Se declaran los atributos de FXMLPrincipal, con el nombre del #id que tienen en JavaFX
-
     public static Stage ventanaRegistro;
     public static Stage ventanaMes;
     public static Stage ventanaNoticia;
+    public static String fechaSeleccionada = null;
 
     @FXML
     private Menu menuInicio;
@@ -48,13 +46,14 @@ public class FXMLPrincipalController implements Initializable {
     private Text textPrueba;
     @FXML
     private DatePicker cal;
+     final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         cal.setValue(LocalDate.now());
 
-        Callback<DatePicker, DateCell> dayCellFactory = dp -> new DateCell() {
+        Callback<DatePicker, DateCell> dayCellFactory =( DatePicker dp) -> new DateCell() {
             @Override
             public void updateItem(LocalDate item, boolean empty) {
                 super.updateItem(item, empty);
@@ -79,121 +78,102 @@ public class FXMLPrincipalController implements Initializable {
                         }
                     }
                 }
-
-                if (item.isBefore(LocalDate.of(1965, 01, 01)) || item.isAfter(LocalDate.now().plusYears(1))) {
-                    /*String kk = new String("blue");
-                     setStyle("-fx-background-color: "+kk+";");*/
-                    setStyle("-fx-background-color: #474A48");
-                    setDisable(true);
-
-                    /* When Hijri Dates are shown, setDisable() doesn't work. Here is a workaround */
-                    addEventFilter(MouseEvent.MOUSE_CLICKED, e -> e.consume());
-                }
-                
-                /*try {
-                    ArrayList<Noticia> noticias = Noticia.getNoticias(01, 01, 2000);
-                } catch (SQLException ex) {
-                    Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-                }*/
-                
-                if(item.isEqual(LocalDate.of(2000, 01, 01)))
-                {
-                    setStyle("-fx-background-color: blue");
-                    setDisable(false);
-                }
-            }
+             }
         };
+          
+        
 
-        StringConverter converter = new StringConverter<LocalDate>() {
-            final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                StringConverter converter = new StringConverter<LocalDate>() {
+                   
 
-            @Override
-            public String toString(LocalDate date) {
-                if (date != null) {
-                    return dateFormatter.format(date);
-                } else {
-                    return "";
-                }
-            }
-
-            @Override
-            public LocalDate fromString(String string) {
-                if (string != null && !string.isEmpty()) {
-                    LocalDate date = LocalDate.parse(string, dateFormatter);
-
-                    if (date.isBefore(LocalDate.now()) || date.isAfter(LocalDate.now().plusYears(1))) {
-                        return cal.getValue();
-                    } else {
-                        return date;
+                    @Override
+                    public String toString(LocalDate date) {
+                        if (date != null) {
+                            return dateFormatter.format(date);
+                        } else {
+                            return "";
+                        }
                     }
-                } else {
-                    return null;
-                }
+
+                    @Override
+                    public LocalDate fromString(String string) {
+                        if (string != null && !string.isEmpty()) {
+                            LocalDate date = LocalDate.parse(string, dateFormatter);
+
+                            if (date.isBefore(LocalDate.now()) || date.isAfter(LocalDate.now().plusYears(1))) {
+                                return cal.getValue();
+                            } else {
+                                return date;
+                            }
+                        } else {
+                            return null;
+                        }
+                    }
+                };
+
+                cal.setDayCellFactory(dayCellFactory);
+                cal.setConverter(converter);
+                cal.setPromptText("dd-MM-yyyy");
             }
-        };
 
-        cal.setDayCellFactory(dayCellFactory);
-        cal.setConverter(converter);
-        cal.setPromptText("dd/MM/yyyy");
-    }
+            @FXML
+            public void pulsado() throws IOException {
+                Parent root = null;
+                fechaSeleccionada = dateFormatter.format(cal.getValue());
+                ventanaNoticia = new Stage();
+                Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+                ventanaNoticia.getIcons().add(icon);
+                ventanaNoticia.setTitle("Registro Completo");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLNoticia.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    System.out.println("No se puede encontrar el fichero FXML");
+                }
 
-    @FXML
-    public void pulsado() throws IOException {
-        Parent root = null;
+                Scene escenaNoticia = new Scene(root);
+                FXMLNoticiaController controller = loader.getController();
+                ventanaNoticia.setScene(escenaNoticia);
+                ventanaNoticia.initStyle(StageStyle.UNDECORATED);
+                ventanaNoticia.show();
+            }
 
-        ventanaNoticia = new Stage();
-        Image icon = new Image(getClass().getResourceAsStream("logo.png"));
-        ventanaNoticia.getIcons().add(icon);
-        ventanaNoticia.setTitle("Registro Completo");
+            //Metodo para modificar acciones o estilos del menuInicio cuando pasas por encima con el ratón
+            public void menuInicioEntered() throws IOException {
+                menuInicio.setStyle("-fx-background-color:#43818c;");
+            }
 
-        try {
-            root = FXMLLoader.load(getClass().getResource("FXMLNoticia.fxml"));
-        } catch (IOException e) {
-            System.out.println("No se puede encontrar el fichero FXML");
+            public void textPrueba() throws IOException {
+                textPrueba.setStyle("-fx-font-family: Prueba");
+            }
+
+            public void pacoEntered() throws IOException {
+                myButton.setStyle(
+                        "-fx-background-color:#43818c; -fx--moz-border-radius:15px; -fx-border:3px solid #181a18;"
+                );
+            }
+
+            public void pacoExited() throws IOException {
+                myButton.setStyle(
+                        "-fx-background-color:white; -fx--moz-border-radius:15px; -fx-border:3px solid #181a18;"
+                );
+            }
+
+            public void pacoClicked() throws IOException {
+                myButton.setStyle(
+                        "-fx-background-color:black; -fx--moz-border-radius:15px; -fx-border:3px solid #181a18;"
+                );
+            }
+
+            public void paco() throws IOException {
+                myButton.setStyle(
+                        "-fx-background-color:black; -fx--moz-border-radius:15px; -fx-border:3px solid #181a18;"
+                );
+            }
+
+            public void pacoDragged() throws IOException {
+                myButton.setStyle(
+                        "-fx-background-color:red; -fx--moz-border-radius:15px; -fx-border:3px solid #181a18;"
+                );
+            }
         }
-
-        Scene escenaNoticia = new Scene(root);
-        ventanaNoticia.setScene(escenaNoticia);
-        ventanaNoticia.initStyle(StageStyle.UNDECORATED);
-        ventanaNoticia.show();
-    }
-
-    //Metodo para modificar acciones o estilos del menuInicio cuando pasas por encima con el ratón
-    public void menuInicioEntered() throws IOException {
-        menuInicio.setStyle("-fx-background-color:#43818c;");
-    }
-
-    public void textPrueba() throws IOException {
-        textPrueba.setStyle("-fx-font-family: Prueba");
-    }
-
-    public void pacoEntered() throws IOException {
-        myButton.setStyle(
-                "-fx-background-color:#43818c; -fx--moz-border-radius:15px; -fx-border:3px solid #181a18;"
-        );
-    }
-
-    public void pacoExited() throws IOException {
-        myButton.setStyle(
-                "-fx-background-color:white; -fx--moz-border-radius:15px; -fx-border:3px solid #181a18;"
-        );
-    }
-
-    public void pacoClicked() throws IOException {
-        myButton.setStyle(
-                "-fx-background-color:black; -fx--moz-border-radius:15px; -fx-border:3px solid #181a18;"
-        );
-    }
-
-    public void paco() throws IOException {
-        myButton.setStyle(
-                "-fx-background-color:black; -fx--moz-border-radius:15px; -fx-border:3px solid #181a18;"
-        );
-    }
-
-    public void pacoDragged() throws IOException {
-        myButton.setStyle(
-                "-fx-background-color:red; -fx--moz-border-radius:15px; -fx-border:3px solid #181a18;"
-        );
-    }
-}

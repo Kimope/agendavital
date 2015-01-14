@@ -19,6 +19,7 @@ import agendavital.modelo.excepciones.NickYaExiste;
 import agendavital.modelo.excepciones.ContrasenaCaracteresRaros;
 import agendavital.modelo.excepciones.FechaInvalida;
 import agendavital.modelo.excepciones.NickMuyCorto;
+import agendavital.modelo.util.UsuarioLogueado;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.ResultSet;
@@ -138,6 +139,7 @@ public class Usuario {
         if (!UtilidadesLogin.contrasenaBienIntroducida(_nick, _contrasena)) {
             throw new ContrasenaMalIntroducida();
         }
+        UsuarioLogueado.setLogueado(new Usuario(_nick));
         return true;
     }
 

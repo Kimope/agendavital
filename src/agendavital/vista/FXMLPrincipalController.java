@@ -66,6 +66,8 @@ public class FXMLPrincipalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         cal.setValue(LocalDate.now());
+        cal.setStyle("-fx-font: 16pt Arial;");
+
 
         Callback<DatePicker, DateCell> dayCellFactory =( DatePicker dp) -> new DateCell() {
             @Override

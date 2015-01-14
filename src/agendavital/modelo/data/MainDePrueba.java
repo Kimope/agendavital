@@ -6,7 +6,6 @@
 package agendavital.modelo.data;
 
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,7 +27,7 @@ public class MainDePrueba {
         ArrayList<String> tags = new ArrayList<>();
         tags.add("prueba");
         tags.add("marca");
-        Noticia.Insert("Prueba", "http://www.marca.com", "13-01-2015", "Noticias Internacionales", "Esto es una prueba", tags);
+        Noticia.Insert("Prueba 3", "http://www.as.com", "12-01-2015", "Noticias Nacionales", "Esto es una prueba", tags);
        
     }
 

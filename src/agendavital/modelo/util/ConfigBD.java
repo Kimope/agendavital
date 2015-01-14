@@ -21,7 +21,7 @@ import java.sql.SQLException;
  */
 public class ConfigBD {
 
-    private static String ruta = "";
+    private static String ruta = "BD/agenda.db";
     private static final String SO = System.getProperty("os.name").toLowerCase();
     
     public static boolean inicializarEstructura() throws IOException{

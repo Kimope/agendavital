@@ -22,7 +22,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
@@ -250,6 +249,6 @@ public class FXMLPrincipalController implements Initializable {
                 ventanaNoticia.setScene(escenaNoticia);
                 ventanaNoticia.initStyle(StageStyle.UNDECORATED);
                 ventanaNoticia.show();
+                //Muestra ventana
             }
 }
-   

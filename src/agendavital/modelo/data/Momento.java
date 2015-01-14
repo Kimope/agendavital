@@ -151,7 +151,7 @@ public class Momento {
         int nuevoId = 0;
         Momento nuevo = null;
         try (Connection conexion = ConfigBD.conectar()) {
-            String insert = String.format("INSERT INTO momentos (fecha, descripcion, id_noticia, color, id_usuario) VALUES (%s, %s, %d, %s, %s);", ConfigBD.String2Sql(fecha, false), ConfigBD.String2Sql(descripcion, false), id_noticia, ConfigBD.String2Sql(color, false), ConfigBD.String2Sql(UsuarioLogueado.nick, false));
+            String insert = String.format("INSERT INTO momentos (fecha, descripcion, id_noticia, color, id_usuario) VALUES (%s, %s, %d, %s, %s);", ConfigBD.String2Sql(fecha, false), ConfigBD.String2Sql(descripcion, false), id_noticia, ConfigBD.String2Sql(color, false), ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
             int executeUpdate = conexion.createStatement().executeUpdate(insert);
             nuevoId = ConfigBD.LastId("momentos");
             String asociarConNoticia = String.format("UPDATE momentos_noticias_etiquetas SET id_momento = %d WHERE id_noticia = %d", nuevoId, id_noticia);
@@ -199,9 +199,9 @@ public class Momento {
      * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta 
      */
     public boolean asociarDocumento(File Documento) throws IOException,  ConexionBDIncorrecta{
-        File destino = new File(UsuarioLogueado.nick);
+        File destino = new File(UsuarioLogueado.getLogueado().getNick());
         destino.mkdir();
-        File destino2 = new File("Documentos/"+UsuarioLogueado.nick+"/"+Documento.getName());
+        File destino2 = new File("Documentos/"+UsuarioLogueado.getLogueado().getNick()+"/"+Documento.getName());
         ConfigBD.copyFile(Documento, destino2);
         ResultSet rs = null;
         try (Connection conexion = ConfigBD.conectar()) {

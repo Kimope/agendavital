@@ -10,19 +10,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="anclaje" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#moverPantalla2" onMousePressed="#moverPantalla" prefHeight="525.0" prefWidth="770.0" style="-fx-background-color: #A44A3F; -fx-background-radius: 7; -fx-border-color: #e79f30; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLRegistroCompletadoController">
+<AnchorPane fx:id="anclaje" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#moverPantalla2" onMousePressed="#moverPantalla" prefHeight="525.0" prefWidth="770.0" style="-fx-background-color: #93C6D6; -fx-background-radius: 7; -fx-border-color: #0F5257; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLRegistroCompletadoController">
    <children>
+      <Line endX="404.0" layoutX="242.0" layoutY="263.0" rotate="90.0" startX="-100.0" stroke="#0f5257" strokeWidth="10.0" />
       <Circle fx:id="circulomin" fill="#ff000000" layoutX="720.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" onMouseExited="#minimizarSalida" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="716.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
       <Circle fx:id="circulocerr" fill="#ff000000" layoutX="745.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Line fx:id="lineacerrar1" endX="9.0" fill="BLACK" layoutX="741.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="-40.0" strokeWidth="2.0" />
       <Line fx:id="lineacerrar2" endX="9.0" fill="BLACK" layoutX="741.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="40.0" strokeWidth="2.0" />
-      <Text fill="#c77b5d" layoutX="90.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Registro">
+      <Text fill="#0f5257" layoutX="90.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Registro">
          <font>
             <Font name="Cooper Black" size="45.0" />
          </font>
       </Text>
-      <Text fill="#c97c5d" layoutX="456.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Completado!">
+      <Text fill="#0f5257" layoutX="456.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Completado!">
          <font>
             <Font name="Cooper Black" size="44.0" />
          </font>
@@ -109,21 +110,21 @@
       <Circle layoutX="408.0" layoutY="48.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle layoutX="408.0" layoutY="29.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Line endX="200.0" fill="BLACK" layoutX="141.0" layoutY="224.0" startX="-100.0" stroke="#00000085" strokeWidth="2.0" />
-      <Text layoutX="47.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Sabias que  el año de">
+      <Text fill="#0f5257" layoutX="47.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Sabias que  el año de">
          <font>
             <Font name="Cooper Black" size="27.0" />
          </font>
       </Text>
-      <Text layoutX="71.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tu nacimiento...?">
+      <Text fill="#0f5257" layoutX="71.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tu nacimiento...?">
          <font>
             <Font name="Cooper Black" size="27.0" />
          </font>
       </Text>
       <Line endX="200.0" fill="BLACK" layoutX="141.0" layoutY="273.0" startX="-100.0" stroke="#00000085" strokeWidth="2.0" />
-      <Circle fill="#1f93ff00" layoutX="594.0" layoutY="130.0" radius="8.0" stroke="#c97c5d" strokeType="INSIDE" strokeWidth="2.0" />
-      <Line endX="100.0" layoutX="480.0" layoutY="130.0" startX="-30.0" stroke="#c97c5d" strokeWidth="2.0" />
-      <Line endX="100.0" layoutX="640.0" layoutY="130.0" startX="-30.0" stroke="#c97c5d" strokeWidth="2.0" />
-      <Button fx:id="btnprimerapregunta" layoutX="531.0" layoutY="469.0" mnemonicParsing="false" onAction="#primerapregunta" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #E3C16F; -fx-background-radius: 80;" text="Empezar" />
+      <Circle fill="#1f93ff00" layoutX="594.0" layoutY="130.0" radius="8.0" stroke="#0f5257" strokeType="INSIDE" strokeWidth="2.0" />
+      <Line endX="100.0" layoutX="480.0" layoutY="130.0" startX="-30.0" stroke="#0f5257" strokeWidth="2.0" />
+      <Line endX="100.0" layoutX="640.0" layoutY="130.0" startX="-30.0" stroke="#0f5257" strokeWidth="2.0" />
+      <Button fx:id="btnprimerapregunta" layoutX="531.0" layoutY="469.0" mnemonicParsing="false" onAction="#primerapregunta" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #508991; -fx-background-radius: 80;" text="Empezar" />
       <Circle layoutX="379.0" layoutY="48.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle layoutX="379.0" layoutY="391.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle layoutX="379.0" layoutY="193.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
@@ -151,9 +152,9 @@
       <Circle layoutX="379.0" layoutY="265.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle layoutX="379.0" layoutY="338.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle layoutX="378.0" layoutY="319.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <Circle fill="#1f93ff00" layoutX="192.0" layoutY="130.0" radius="8.0" stroke="#c97c5d" strokeType="INSIDE" strokeWidth="2.0" />
-      <Line endX="100.0" layoutX="78.0" layoutY="130.0" startX="-30.0" stroke="#c97c5d" strokeWidth="2.0" />
-      <Line endX="100.0" layoutX="238.0" layoutY="130.0" startX="-30.0" stroke="#c97c5d" strokeWidth="2.0" />
+      <Circle fill="#1f93ff00" layoutX="192.0" layoutY="130.0" radius="8.0" stroke="#0f5257" strokeType="INSIDE" strokeWidth="2.0" />
+      <Line endX="100.0" layoutX="78.0" layoutY="130.0" startX="-30.0" stroke="#0f5257" strokeWidth="2.0" />
+      <Line endX="100.0" layoutX="238.0" layoutY="130.0" startX="-30.0" stroke="#0f5257" strokeWidth="2.0" />
       <Label fx:id="contraseña2label" layoutX="329.0" layoutY="422.0" text="*" textFill="#f6f740" visible="false">
          <font>
             <Font size="27.0" />
@@ -184,7 +185,6 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <Line endX="402.0" layoutX="243.0" layoutY="263.0" rotate="90.0" startX="-100.0" strokeWidth="10.0" />
       <Line endX="200.0" fill="BLACK" layoutX="544.0" layoutY="373.0" startX="-100.0" stroke="#00000085" strokeWidth="2.0" />
       <Text id="text2" layoutX="491.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>

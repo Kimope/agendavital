@@ -163,6 +163,8 @@ public class UtilidadesRegistro {
                 return "se proclamo nuestra constitucion?";
             case 1979:
                 return "se celebraron, 4 decadas despues, elecciones municipales?";
+            case 1980:
+                return "";
             default:
                 return "";
         }

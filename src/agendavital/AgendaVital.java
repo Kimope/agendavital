@@ -72,7 +72,6 @@ public class AgendaVital extends Application
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
-        if(!ConfigBD.estructuraInicializada()) ConfigBD.inicializarEstructura();
         launch(args);
     }
     

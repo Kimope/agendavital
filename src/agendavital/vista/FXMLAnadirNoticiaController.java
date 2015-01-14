@@ -21,6 +21,8 @@ public class FXMLAnadirNoticiaController implements Initializable {
     @FXML private ComboBox cbcategoria;
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) 

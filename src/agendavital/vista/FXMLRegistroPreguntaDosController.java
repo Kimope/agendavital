@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package agendavital.vista;
 
-import static agendavital.vista.FXMLRegistroCompletadoController.ventanaPrimeraPregunta;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -37,8 +31,8 @@ import javafx.stage.StageStyle;
  *
  * @author Enrique
  */
-public class FXMLRegistroPreguntaUnoController implements Initializable {
-    static Stage ventanaSegundaPregunta;
+public class FXMLRegistroPreguntaDosController implements Initializable {
+    static Stage ventanaTerceraPregunta;
     @FXML
     private AnchorPane anclaje;
     @FXML
@@ -71,7 +65,7 @@ public class FXMLRegistroPreguntaUnoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        File file = new File("imagenes/bebe.jpg");
+        File file = new File("imagenes/queen.jpg");
         InputStream is = null;
         try {
             is = new FileInputStream(file);
@@ -139,25 +133,25 @@ public class FXMLRegistroPreguntaUnoController implements Initializable {
     }
     
     @FXML
-    public void segundapregunta() throws IOException
+    public void tercerapregunta() throws IOException
     {
                 Parent root = null;
-                ventanaSegundaPregunta = new Stage();
+                ventanaTerceraPregunta = new Stage();
                 Image icon = new Image(getClass().getResourceAsStream("logo.png"));
-                ventanaSegundaPregunta.getIcons().add(icon);
-                ventanaSegundaPregunta.setTitle("Primeros Pasos");
+                ventanaTerceraPregunta.getIcons().add(icon);
+                ventanaTerceraPregunta.setTitle("Primeros Pasos");
 
                 try {
-                    root = FXMLLoader.load(getClass().getResource("FXMLRegistroPreguntaDos.fxml"));
+                    root = FXMLLoader.load(getClass().getResource("FXMLRegistroPreguntaTres.fxml"));
                 } catch (IOException e) {
                     System.out.println("No se puede encontrar el fichero FXML");
                 }
 
-                Scene escenaSegundaPregunta = new Scene(root);
-                ventanaSegundaPregunta.setScene(escenaSegundaPregunta);
-                ventanaSegundaPregunta.initStyle(StageStyle.UNDECORATED);
-                ventanaSegundaPregunta.show();
-                FXMLRegistroCompletadoController.ventanaPrimeraPregunta.close();
+                Scene escenaTerceraPregunta = new Scene(root);
+                ventanaTerceraPregunta.setScene(escenaTerceraPregunta);
+                ventanaTerceraPregunta.initStyle(StageStyle.UNDECORATED);
+                ventanaTerceraPregunta.show();
+                FXMLRegistroPreguntaUnoController.ventanaSegundaPregunta.close();
     }
     
 }

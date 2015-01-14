@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package agendavital.vista;
 
 import java.io.File;

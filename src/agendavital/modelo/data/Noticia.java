@@ -215,7 +215,7 @@ public class Noticia {
                 conexion.createStatement().executeUpdate(insertNoticiaEtiqueta);
             }
         } catch (SQLException e) {
-            throw new ConexionBDIncorrecta();
+          e.printStackTrace();
         }
         return new Noticia(nuevoId);
     }

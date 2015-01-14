@@ -52,13 +52,9 @@ public class FXMLRegistroCompletadoController implements Initializable
     @FXML
     public void moverPantalla() throws IOException
     {
-        anclaje.setOnMousePressed(new EventHandler<MouseEvent>() 
-        {
-                public void handle(MouseEvent me) 
-                {
-                    initX = me.getScreenX() - FXMLLoginController.ventanaRegistro.getX();
-                    initY = me.getScreenY() - FXMLLoginController.ventanaRegistro.getY();
-                }
+        anclaje.setOnMousePressed((MouseEvent me) -> {
+            initX = me.getScreenX() - FXMLLoginController.ventanaRegistro.getX();
+            initY = me.getScreenY() - FXMLLoginController.ventanaRegistro.getY();
         });
     }
     
@@ -100,13 +96,9 @@ public class FXMLRegistroCompletadoController implements Initializable
     @FXML
     public void moverPantalla2() throws IOException
     {
-        anclaje.setOnMouseDragged(new EventHandler<MouseEvent>() 
-        {
-                public void handle(MouseEvent me) 
-                {
-                    FXMLLoginController.ventanaRegistro.setX(me.getScreenX() - initX);
-                    FXMLLoginController.ventanaRegistro.setY(me.getScreenY() - initY);
-                }
+        anclaje.setOnMouseDragged((MouseEvent me) -> {
+            FXMLLoginController.ventanaRegistro.setX(me.getScreenX() - initX);
+            FXMLLoginController.ventanaRegistro.setY(me.getScreenY() - initY);
         });
     }
     //-----------------------------------------------------------------------------------------------//

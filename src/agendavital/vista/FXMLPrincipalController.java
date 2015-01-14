@@ -85,7 +85,7 @@ public class FXMLPrincipalController implements Initializable {
                             case "Noticias Internacionales":
                                 setStyle("-fx-background-color: #A8F9FF");
                                 break;
-                            case "Noticias ESIanas":
+                            case "Noticias Nacionales":
                                 setStyle("-fx-background-color: red");
                                 break;
                             default:

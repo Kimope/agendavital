@@ -24,11 +24,10 @@ public class MainDePrueba {
          Momento momento = Momento.insert(fecha, descripcion, color, 1);
          File origen = new File("/home/ramon/Linuxdoc-Ejemplo.pdf");
          momento.asociarDocumento(origen);*/
-        
-        ArrayList<Noticia> momentos = Noticia.buscar("irez");
-        for (Noticia noticia : momentos) {
-            System.out.println(noticia.getTitulo());
-        }
+        ArrayList<String> tags = new ArrayList<>();
+        tags.add("prueba");
+        tags.add("marca");
+        Noticia.Insert("Prueba 3", "http://www.as.com", "12-01-2015", "Noticias Nacionales", "Esto es una prueba", tags);
        
     }
 

@@ -21,7 +21,7 @@ import java.sql.SQLException;
  */
 public class ConfigBD {
 
-    private static String ruta = "";
+    private static String ruta = "BD/agenda.db";
     private static final String SO = System.getProperty("os.name").toLowerCase();
     
     public static boolean inicializarEstructura() throws IOException{
@@ -70,12 +70,24 @@ public class ConfigBD {
         return conexion;
     }
     
+    private static String listaIDS(String _tabla){
+        switch(_tabla){
+            case "etiquetas": return "id_etiqueta";
+            case "noticias": return "id_noticia";
+            case "momentos_noticias_etiquetas": return "id_momento_noticia_etiqueta";
+            case "preguntas": return "id_pregunta";
+            case "momentos": return "id_momento";
+            case "documentos": return "id_documento";
+        }
+        return "";
+    }
+    
     public static int LastId(String _tabla) throws SQLException{
          Connection conexion = null;
          ResultSet rs = null;
         try{
             conexion = conectar();
-            rs = conexion.createStatement().executeQuery(String.format("select seq from sqlite_sequence where name=%s;", ConfigBD.String2Sql(_tabla, false)));
+            rs = conexion.createStatement().executeQuery(String.format("select MAX(%s) from %s;", listaIDS(_tabla), ConfigBD.String2Sql(_tabla, false)));
             rs.next();
             return rs.getInt(1);
         }catch(SQLException e){

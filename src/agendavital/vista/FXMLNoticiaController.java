@@ -55,12 +55,13 @@ public class FXMLNoticiaController implements Initializable {
     @FXML
     private Button btnModificar;
     public String fechaSeleccionada;
-    FXMLPrincipalController principalController;
     
 
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

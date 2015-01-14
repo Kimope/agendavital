@@ -22,6 +22,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Line;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import javafx.util.Pair;
@@ -37,7 +39,20 @@ public class FXMLPrincipalController implements Initializable {
     public static Stage ventanaMes;
     public static Stage ventanaNoticia;
     public static String fechaSeleccionada = null;
-
+    @FXML
+    private Line lineamenu1;
+    @FXML
+    private Line lineamenu2;
+    @FXML
+    private Line lineamenu3;
+    @FXML
+    private Line lineamenu4;
+    @FXML
+    private Line lineamenu5;
+    @FXML
+    private Line lineamenu6;
+    
+    
     @FXML
     private Menu menuInicio;
     @FXML
@@ -115,15 +130,57 @@ public class FXMLPrincipalController implements Initializable {
                 cal.setConverter(converter);
                 cal.setPromptText("dd-MM-yyyy");
             }
-
-            @FXML
-            public void pulsado() throws IOException {
+    
+    
+            ////////////MENU///////////////////
+            public void ini() throws IOException {
+                lineamenu1.setVisible(true);
+            }
+            public void ini_salida() throws IOException {
+                lineamenu1.setVisible(false);
+            }
+            
+            public void moment() throws IOException {
+                lineamenu2.setVisible(true);
+            }
+            public void moment_salida() throws IOException {
+                lineamenu2.setVisible(false);
+            }
+            
+            public void not() throws IOException {
+                lineamenu3.setVisible(true);
+            }
+            public void not_salida() throws IOException {
+                lineamenu3.setVisible(false);
+            }
+            
+            public void adm() throws IOException {
+                lineamenu4.setVisible(true);
+            }
+            public void adm_salida() throws IOException {
+                lineamenu4.setVisible(false);
+            }
+            
+            public void ayu() throws IOException {
+                lineamenu5.setVisible(true);
+            }
+            public void ayu_salida() throws IOException {
+                lineamenu5.setVisible(false);
+            }
+            
+            public void acerca() throws IOException {
+                lineamenu6.setVisible(true);
+            }
+            public void acerca_salida() throws IOException {
+                lineamenu6.setVisible(false);
+            }
+            
+            public void botonnoticia() throws IOException {
                 Parent root = null;
-                fechaSeleccionada = dateFormatter.format(cal.getValue());
                 ventanaNoticia = new Stage();
                 Image icon = new Image(getClass().getResourceAsStream("logo.png"));
                 ventanaNoticia.getIcons().add(icon);
-                ventanaNoticia.setTitle("Registro Completo");
+                ventanaNoticia.setTitle("Nueva noticia");
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLNoticia.fxml"));
                 try {
                     root = loader.load();
@@ -137,43 +194,62 @@ public class FXMLPrincipalController implements Initializable {
                 ventanaNoticia.initStyle(StageStyle.UNDECORATED);
                 ventanaNoticia.show();
             }
+            public void botonmomento() throws IOException {
+                Parent root = null;
+                ventanaNoticia = new Stage();
+                Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+                ventanaNoticia.getIcons().add(icon);
+                ventanaNoticia.setTitle("Nuevo Momento");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMomento.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    System.out.println("No se puede encontrar el fichero FXML");
+                }
 
-            //Metodo para modificar acciones o estilos del menuInicio cuando pasas por encima con el ratón
-            public void menuInicioEntered() throws IOException {
-                menuInicio.setStyle("-fx-background-color:#43818c;");
+                Scene escenaNoticia = new Scene(root);
+                //FXMLNoticiaController controller = loader.getController();
+                ventanaNoticia.setScene(escenaNoticia);
+                ventanaNoticia.initStyle(StageStyle.UNDECORATED);
+                ventanaNoticia.show();
             }
+            public void botonacerca() throws IOException {
+                Parent root = null;
+                ventanaNoticia = new Stage();
+                Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+                ventanaNoticia.getIcons().add(icon);
+                ventanaNoticia.setTitle("Acerca De");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAcercaDe.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    System.out.println("No se puede encontrar el fichero FXML");
+                }
 
-            public void textPrueba() throws IOException {
-                textPrueba.setStyle("-fx-font-family: Prueba");
+                Scene escenaNoticia = new Scene(root);
+                //FXMLAcercaDeController controller = loader.getController();
+                ventanaNoticia.setScene(escenaNoticia);
+                ventanaNoticia.initStyle(StageStyle.UNDECORATED);
+                ventanaNoticia.show();
             }
+            public void botonayuda() throws IOException {
+                Parent root = null;
+                ventanaNoticia = new Stage();
+                Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+                ventanaNoticia.getIcons().add(icon);
+                ventanaNoticia.setTitle("Ayuda");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAyuda.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    System.out.println("No se puede encontrar el fichero FXML");
+                }
 
-            public void pacoEntered() throws IOException {
-                myButton.setStyle(
-                        "-fx-background-color:#43818c; -fx--moz-border-radius:15px; -fx-border:3px solid #181a18;"
-                );
+                Scene escenaNoticia = new Scene(root);
+                //FXMLNoticiaController controller = loader.getController();
+                ventanaNoticia.setScene(escenaNoticia);
+                ventanaNoticia.initStyle(StageStyle.UNDECORATED);
+                ventanaNoticia.show();
             }
-
-            public void pacoExited() throws IOException {
-                myButton.setStyle(
-                        "-fx-background-color:white; -fx--moz-border-radius:15px; -fx-border:3px solid #181a18;"
-                );
-            }
-
-            public void pacoClicked() throws IOException {
-                myButton.setStyle(
-                        "-fx-background-color:black; -fx--moz-border-radius:15px; -fx-border:3px solid #181a18;"
-                );
-            }
-
-            public void paco() throws IOException {
-                myButton.setStyle(
-                        "-fx-background-color:black; -fx--moz-border-radius:15px; -fx-border:3px solid #181a18;"
-                );
-            }
-
-            public void pacoDragged() throws IOException {
-                myButton.setStyle(
-                        "-fx-background-color:red; -fx--moz-border-radius:15px; -fx-border:3px solid #181a18;"
-                );
-            }
-        }
+}
+   

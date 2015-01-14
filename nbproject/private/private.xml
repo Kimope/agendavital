@@ -12,9 +12,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Enrique/Desktop/agendavital/src/agendavital/vista/FXMLPrincipalController.java</file>
-            <file>file:/C:/Users/Enrique/Desktop/agendavital/src/agendavital/modelo/data/Momento.java</file>
-            <file>file:/C:/Users/Enrique/Desktop/agendavital/src/agendavital/modelo/data/Noticia.java</file>
+            <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLPrincipalController.java</file>
+            <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLAcercaDe.fxml</file>
+            <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLAcercaDeController.java</file>
+            <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLAnadirNoticia.fxml</file>
         </group>
     </open-files>
 </project-private>

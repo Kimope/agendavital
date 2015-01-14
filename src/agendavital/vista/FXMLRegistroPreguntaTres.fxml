@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="anclaje" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#moverPantalla2" onMousePressed="#moverPantalla" prefHeight="525.0" prefWidth="770.0" style="-fx-background-color: #A44A3F; -fx-background-radius: 7; -fx-border-color: #e79f30; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLRegistroPreguntaUnoController">
+<AnchorPane fx:id="anclaje" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#moverPantalla2" onMousePressed="#moverPantalla" prefHeight="525.0" prefWidth="770.0" style="-fx-background-color: #A44A3F; -fx-background-radius: 7; -fx-border-color: #e79f30; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLRegistroPreguntaTresController">
    <children>
       <Circle fx:id="circulomin" fill="#ff000000" layoutX="720.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" onMouseExited="#minimizarSalida" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="716.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
@@ -109,12 +109,12 @@
       <Circle layoutX="408.0" layoutY="48.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle layoutX="408.0" layoutY="29.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Line endX="200.0" fill="BLACK" layoutX="141.0" layoutY="158.0" startX="-100.0" stroke="#00000085" strokeWidth="2.0" />
-      <Text layoutX="47.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Cuándo empezaste ">
+      <Text layoutX="42.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Recuerdas tu último">
          <font>
             <Font name="Cooper Black" size="27.0" />
          </font>
       </Text>
-      <Text layoutX="115.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="la escuela?">
+      <Text layoutX="85.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="viaje? ¡Cuéntalo!">
          <font>
             <Font name="Cooper Black" size="27.0" />
          </font>
@@ -123,7 +123,7 @@
       <Circle fill="#1f93ff00" layoutX="594.0" layoutY="94.0" radius="8.0" stroke="#c97c5d" strokeType="INSIDE" strokeWidth="2.0" />
       <Line endX="100.0" layoutX="480.0" layoutY="94.0" startX="-30.0" stroke="#c97c5d" strokeWidth="2.0" />
       <Line endX="100.0" layoutX="640.0" layoutY="94.0" startX="-30.0" stroke="#c97c5d" strokeWidth="2.0" />
-      <Button layoutX="465.0" layoutY="470.0" mnemonicParsing="false" onAction="#segundapregunta" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #E3C16F; -fx-background-radius: 80;" text="Añadir" />
+      <Button layoutX="465.0" layoutY="470.0" mnemonicParsing="false" onAction="#principal" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #E3C16F; -fx-background-radius: 80;" text="Añadir" />
       <Circle layoutX="379.0" layoutY="48.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle layoutX="379.0" layoutY="391.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle layoutX="379.0" layoutY="193.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
@@ -185,30 +185,19 @@
          </font>
       </Label>
       <Line endX="402.0" layoutX="243.0" layoutY="263.0" rotate="90.0" startX="-100.0" strokeWidth="10.0" />
-      <Line endX="200.0" fill="BLACK" layoutX="544.0" layoutY="207.0" startX="-100.0" stroke="#00000085" strokeWidth="2.0" />
-      <Text layoutX="491.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="aquel momento?">
-         <font>
-            <Font name="Cooper Black" size="27.0" />
-         </font>
-      </Text>
-      <Text layoutX="450.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Recuerdas algo de">
-         <font>
-            <Font name="Cooper Black" size="27.0" />
-         </font>
-      </Text>
-      <Line endX="200.0" fill="BLACK" layoutX="544.0" layoutY="158.0" startX="-100.0" stroke="#00000085" strokeWidth="2.0" />
-      <DatePicker layoutX="100.0" layoutY="224.0" />
-      <Button layoutX="608.0" layoutY="470.0" mnemonicParsing="false" onAction="#segundapregunta" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #E3C16F; -fx-background-radius: 80;" text="Saltar" />
-      <Button layoutX="124.0" layoutY="475.0" mnemonicParsing="false" onAction="#anadir" prefHeight="25.0" prefWidth="123.0" text="Modificar imagen" />
-      <AnchorPane layoutX="76.0" layoutY="270.0" prefHeight="191.0" prefWidth="225.0">
+      <DatePicker layoutX="231.0" layoutY="223.0" prefHeight="25.0" prefWidth="108.0" />
+      <Button layoutX="608.0" layoutY="470.0" mnemonicParsing="false" onAction="#principal" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #E3C16F; -fx-background-radius: 80;" text="Saltar" />
+      <Button layoutX="533.0" layoutY="404.0" mnemonicParsing="false" onAction="#anadir" prefHeight="25.0" prefWidth="123.0" text="Modificar imagen" />
+      <AnchorPane layoutX="440.0" layoutY="117.0" prefHeight="263.0" prefWidth="308.0">
          <children>
-            <ImageView fx:id="imgImagen" fitHeight="191.0" fitWidth="225.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ImageView fx:id="imgImagen" fitHeight="263.0" fitWidth="308.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <viewport>
                   <Rectangle2D />
                </viewport>
             </ImageView>
          </children>
       </AnchorPane>
-      <TextArea layoutX="438.0" layoutY="228.0" prefHeight="224.0" prefWidth="302.0" wrapText="true" />
+      <TextArea layoutX="38.0" layoutY="258.0" prefHeight="224.0" prefWidth="302.0" promptText="Por ejemplo: El primer día fuimos al London Eye..." wrapText="true" />
+      <TextField layoutX="38.0" layoutY="223.0" prefHeight="25.0" prefWidth="186.0" promptText="Por ejemplo: Londres" />
    </children>
 </AnchorPane>

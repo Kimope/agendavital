@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package agendavital.vista;
 
-import static agendavital.vista.FXMLRegistroCompletadoController.ventanaPrimeraPregunta;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -37,9 +31,8 @@ import javafx.stage.StageStyle;
  *
  * @author Enrique
  */
-public class FXMLRegistroPreguntaUnoController implements Initializable {
-
-    static Stage ventanaSegundaPregunta;
+public class FXMLRegistroPreguntaTresController implements Initializable {
+    static Stage ventanaPrincipal;
     @FXML
     private AnchorPane anclaje;
     @FXML
@@ -65,14 +58,14 @@ public class FXMLRegistroPreguntaUnoController implements Initializable {
     @FXML
     private Label nombrelabel;
     @FXML
-    private ImageView imgImagen;
+    private ImageView imgImagen; 
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        File file = new File("imagenes/bebe.jpg");
+        File file = new File("imagenes/londres.jpg");
         InputStream is = null;
         try {
             is = new FileInputStream(file);
@@ -81,14 +74,15 @@ public class FXMLRegistroPreguntaUnoController implements Initializable {
         }
         double width = 191;
         double heigth = 167;
-        Image imagen = new Image(is, width, heigth, false, true);
+        Image imagen = new Image(is,width,heigth,false,false);
         imgImagen.setImage(imagen);
-    }
-
+    }    
+    
     @FXML
-    public void anadir() {
+    public void anadir()
+    {
         FileChooser chooser = new FileChooser();
-         chooser.getExtensionFilters().addAll(
+        chooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Todas las imagenes", "*.*"),
                 new FileChooser.ExtensionFilter("JPG", "*.jpg"),
                 new FileChooser.ExtensionFilter("JPEG", "*.jpeg"),
@@ -105,7 +99,7 @@ public class FXMLRegistroPreguntaUnoController implements Initializable {
         }
         double width = 191;
         double heigth = 167;
-        Image imagen = new Image(is, width, heigth, false, false);
+        Image imagen = new Image(is,width,heigth,false,true);
         imgImagen.setImage(imagen);
     }
 
@@ -144,26 +138,27 @@ public class FXMLRegistroPreguntaUnoController implements Initializable {
     @FXML
     private void moverPantalla(MouseEvent event) {
     }
-
+    
     @FXML
-    public void segundapregunta() throws IOException {
-        Parent root = null;
-        ventanaSegundaPregunta = new Stage();
-        Image icon = new Image(getClass().getResourceAsStream("logo.png"));
-        ventanaSegundaPregunta.getIcons().add(icon);
-        ventanaSegundaPregunta.setTitle("Primeros Pasos");
+    public void principal() throws IOException
+    {
+                Parent root = null;
+                ventanaPrincipal = new Stage();
+                Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+                ventanaPrincipal.getIcons().add(icon);
+                ventanaPrincipal.setTitle("Primeros Pasos");
 
-        try {
-            root = FXMLLoader.load(getClass().getResource("FXMLRegistroPreguntaDos.fxml"));
-        } catch (IOException e) {
-            System.out.println("No se puede encontrar el fichero FXML");
-        }
+                try {
+                    root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
+                } catch (IOException e) {
+                    System.out.println("No se puede encontrar el fichero FXML");
+                }
 
-        Scene escenaSegundaPregunta = new Scene(root);
-        ventanaSegundaPregunta.setScene(escenaSegundaPregunta);
-        ventanaSegundaPregunta.initStyle(StageStyle.UNDECORATED);
-        ventanaSegundaPregunta.show();
-        FXMLRegistroCompletadoController.ventanaPrimeraPregunta.close();
+                Scene escenaPrincipal = new Scene(root);
+                ventanaPrincipal.setScene(escenaPrincipal);
+                //ventanaPrincipal.initStyle(StageStyle.UNDECORATED);
+                ventanaPrincipal.show();
+                FXMLRegistroPreguntaDosController.ventanaTerceraPregunta.close();
     }
-
+    
 }

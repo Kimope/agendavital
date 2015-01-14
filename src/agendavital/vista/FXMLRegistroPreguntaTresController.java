@@ -82,7 +82,14 @@ public class FXMLRegistroPreguntaTresController implements Initializable {
     public void anadir()
     {
         FileChooser chooser = new FileChooser();
-
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Todas las imagenes", "*.*"),
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("JPEG", "*.jpeg"),
+                new FileChooser.ExtensionFilter("GIF", "*.gif"),
+                new FileChooser.ExtensionFilter("BMP", "*.bmp"),
+                new FileChooser.ExtensionFilter("PNG", "*.png")
+        );
         File file = chooser.showOpenDialog(new Stage());
         InputStream is = null;
         try {

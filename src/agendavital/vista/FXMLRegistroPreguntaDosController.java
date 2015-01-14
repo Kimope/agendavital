@@ -84,6 +84,14 @@ public class FXMLRegistroPreguntaDosController implements Initializable {
         FileChooser chooser = new FileChooser();
 
         File file = chooser.showOpenDialog(new Stage());
+         chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Todas las imagenes", "*.*"),
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("JPEG", "*.jpeg"),
+                new FileChooser.ExtensionFilter("GIF", "*.gif"),
+                new FileChooser.ExtensionFilter("BMP", "*.bmp"),
+                new FileChooser.ExtensionFilter("PNG", "*.png")
+        );
         InputStream is = null;
         try {
             is = new FileInputStream(file);

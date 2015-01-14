@@ -10,8 +10,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="anclaje" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#moverPantalla2" onMousePressed="#moverPantalla" prefHeight="525.0" prefWidth="770.0" style="-fx-background-color: #A44A3F; -fx-background-radius: 7; -fx-border-color: #e79f30; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLRegistroController">
+<AnchorPane fx:id="anclaje" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#moverPantalla2" onMousePressed="#moverPantalla" prefHeight="525.0" prefWidth="770.0" style="-fx-background-color: #93C6D6; -fx-background-radius: 7; -fx-border-color: #0F5257; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLRegistroController">
    <children>
+      <Line endX="404.0" layoutX="243.0" layoutY="263.0" rotate="90.0" startX="-100.0" stroke="#0f5257" strokeWidth="10.0" />
       <Circle fx:id="circulomin" fill="#ff000000" layoutX="720.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" onMouseExited="#minimizarSalida" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="716.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
       <Circle fx:id="circulocerr" fill="#ff000000" layoutX="745.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
@@ -99,21 +100,21 @@
       <Circle layoutX="408.0" layoutY="48.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle layoutX="408.0" layoutY="29.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Line endX="200.0" fill="BLACK" layoutX="551.0" layoutY="224.0" startX="-100.0" stroke="#00000085" strokeWidth="2.0" />
-      <Text layoutX="457.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Este es el principio">
+      <Text fill="#0f5257" layoutX="457.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Este es el principio">
          <font>
             <Font name="Cooper Black" size="27.0" />
          </font>
       </Text>
-      <Text layoutX="486.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="del resto de tu vida">
+      <Text fill="#0f5257" layoutX="486.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="del resto de tu vida">
          <font>
             <Font name="Cooper Black" size="27.0" />
          </font>
       </Text>
       <Line endX="200.0" fill="BLACK" layoutX="551.0" layoutY="273.0" startX="-100.0" stroke="#00000085" strokeWidth="2.0" />
-      <Circle fill="#1f93ff00" layoutX="589.0" layoutY="130.0" radius="8.0" stroke="#c97c5d" strokeType="INSIDE" strokeWidth="2.0" />
-      <Line endX="100.0" layoutX="475.0" layoutY="130.0" startX="-30.0" stroke="#c97c5d" strokeWidth="2.0" />
-      <Line endX="100.0" layoutX="635.0" layoutY="130.0" startX="-30.0" stroke="#c97c5d" strokeWidth="2.0" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="487.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true" styleClass="-fx">
+      <Circle fill="#1f93ff00" layoutX="589.0" layoutY="130.0" radius="8.0" stroke="#0f5257" strokeType="INSIDE" strokeWidth="2.0" />
+      <Line endX="100.0" layoutX="475.0" layoutY="130.0" startX="-30.0" stroke="#0f5257" strokeWidth="2.0" />
+      <Line endX="100.0" layoutX="635.0" layoutY="130.0" startX="-30.0" stroke="#0f5257" strokeWidth="2.0" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="487.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true" styleClass="-fx">
          <viewport>
             <Rectangle2D />
          </viewport>
@@ -148,27 +149,10 @@
       <Circle layoutX="379.0" layoutY="265.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle layoutX="379.0" layoutY="338.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle layoutX="378.0" layoutY="319.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <Circle fill="#1f93ff00" layoutX="192.0" layoutY="130.0" radius="8.0" stroke="#c97c5d" strokeType="INSIDE" strokeWidth="2.0" />
-      <Line endX="100.0" layoutX="78.0" layoutY="130.0" startX="-30.0" stroke="#c97c5d" strokeWidth="2.0" />
-      <Line endX="100.0" layoutX="238.0" layoutY="130.0" startX="-30.0" stroke="#c97c5d" strokeWidth="2.0" />
-      <ImageView fitHeight="158.0" fitWidth="233.0" layoutX="83.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@vsital.png" />
-         </image>
-         <viewport>
-            <Rectangle2D />
-         </viewport>
-      </ImageView>
-      <Line endX="402.0" layoutX="243.0" layoutY="263.0" rotate="90.0" startX="-100.0" strokeWidth="10.0" />
-      <ImageView fitHeight="158.0" fitWidth="233.0" layoutX="476.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@vsital.png" />
-         </image>
-         <viewport>
-            <Rectangle2D />
-         </viewport>
-      </ImageView>
-      <TextField fx:id="tfnick" layoutX="57.0" layoutY="160.0" onMouseClicked="#blanquearnombre" prefHeight="25.0" prefWidth="265.0" promptText="Nombre de usuario" style="-fx-background-radius: 2px; -fx-background-color: #FCF0CC;">
+      <Circle fill="#1f93ff00" layoutX="192.0" layoutY="130.0" radius="8.0" stroke="#0f5257" strokeType="INSIDE" strokeWidth="2.0" />
+      <Line endX="100.0" layoutX="78.0" layoutY="130.0" startX="-30.0" stroke="#0f5257" strokeWidth="2.0" />
+      <Line endX="100.0" layoutX="238.0" layoutY="130.0" startX="-30.0" stroke="#0f5257" strokeWidth="2.0" />
+      <TextField fx:id="tfnick" layoutX="57.0" layoutY="160.0" onMouseClicked="#blanquearnombre" prefHeight="25.0" prefWidth="265.0" promptText="Nombre de usuario" style="-fx-border-color: #0F5257;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -176,7 +160,7 @@
             <Font size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="tfnombre" layoutX="57.0" layoutY="210.0" onMouseClicked="#blanquearnombre" prefHeight="25.0" prefWidth="265.0" promptText="Nombre" style="-fx-background-radius: 2px; -fx-background-color: #FCF0CC;">
+      <TextField fx:id="tfnombre" layoutX="57.0" layoutY="210.0" onMouseClicked="#blanquearnombre" prefHeight="25.0" prefWidth="265.0" promptText="Nombre" style="-fx-border-color: #0F5257;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -184,7 +168,7 @@
             <Font size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="tfapellido" layoutX="57.0" layoutY="260.0" onMouseClicked="#blanquearapellido" prefHeight="25.0" prefWidth="265.0" promptText="Apellido" style="-fx-background-radius: 2px; -fx-background-color: #FCF0CC;">
+      <TextField fx:id="tfapellido" layoutX="57.0" layoutY="260.0" onMouseClicked="#blanquearapellido" prefHeight="25.0" prefWidth="265.0" promptText="Apellido" style="-fx-border-color: #0F5257;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -192,10 +176,10 @@
             <Font size="13.0" />
          </font>
       </TextField>
-      <ComboBox fx:id="cbdia" layoutX="57.0" layoutY="310.0" prefHeight="25.0" prefWidth="61.0" style="-fx-background-color: #FCF0CC;" />
-      <ComboBox fx:id="cbmes" layoutX="125.0" layoutY="310.0" prefHeight="25.0" prefWidth="61.0" style="-fx-background-color: #FCF0CC;" />
-      <ComboBox fx:id="cbaño" layoutX="193.0" layoutY="310.0" prefHeight="25.0" prefWidth="74.0" style="-fx-background-color: #FCF0CC;" />
-      <PasswordField fx:id="tfcontraseña" layoutX="57.0" layoutY="360.0" onMouseClicked="#blanquearcontraseña" prefHeight="25.0" prefWidth="265.0" promptText="Contraseña" style="-fx-background-radius: 2px; -fx-background-color: #FCF0CC;">
+      <ComboBox fx:id="cbdia" layoutX="57.0" layoutY="310.0" prefHeight="25.0" prefWidth="61.0" style="-fx-border-color: #0F5257;" />
+      <ComboBox fx:id="cbmes" layoutX="125.0" layoutY="310.0" prefHeight="25.0" prefWidth="61.0" style="-fx-border-color: #0F5257;" />
+      <ComboBox fx:id="cbaño" layoutX="193.0" layoutY="310.0" prefHeight="25.0" prefWidth="74.0" style="-fx-border-color: #0F5257;" />
+      <PasswordField fx:id="tfcontraseña" layoutX="57.0" layoutY="360.0" onMouseClicked="#blanquearcontraseña" prefHeight="25.0" prefWidth="265.0" promptText="Contraseña" style="-fx-border-color: #0F5257;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -203,7 +187,7 @@
             <Font size="13.0" />
          </font>
       </PasswordField>
-      <PasswordField fx:id="tfcontraseña2" layoutX="57.0" layoutY="410.0" onMouseClicked="#blanquearcontraseña2" prefHeight="25.0" prefWidth="265.0" promptText="Repetir contraseña" style="-fx-background-radius: 2px; -fx-background-color: #FCF0CC;">
+      <PasswordField fx:id="tfcontraseña2" layoutX="57.0" layoutY="410.0" onMouseClicked="#blanquearcontraseña2" prefHeight="25.0" prefWidth="265.0" promptText="Repetir contraseña" style="-fx-border-color: #0F5257;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -216,10 +200,20 @@
             <Text fx:id="textError" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" />
          </children>
       </TextFlow>
-      <Button fx:id="butregistrarse" layoutX="537.0" layoutY="474.0" mnemonicParsing="false" onAction="#registra_usuario" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #E3C16F; -fx-background-radius: 80;" text="Registrarse">
+      <Button fx:id="butregistrarse" layoutX="537.0" layoutY="474.0" mnemonicParsing="false" onAction="#registra_usuario" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #508991; -fx-background-radius: 80;" text="Registrarse">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <ImageView fitHeight="314.0" fitWidth="349.0" layoutX="26.0" layoutY="-78.0">
+         <image>
+            <Image url="@agenda.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="314.0" fitWidth="349.0" layoutX="415.0" layoutY="-74.0">
+         <image>
+            <Image url="@vital.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

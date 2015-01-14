@@ -26,11 +26,9 @@ public class MainDePrueba {
          File origen = new File("/home/ramon/Linuxdoc-Ejemplo.pdf");
          momento.asociarDocumento(origen);*/
         ArrayList<String> tags = new ArrayList<>();
-        File file = new File("kkk");
-        System.out.println(file.getAbsoluteFile());
         tags.add("prueba");
         tags.add("marca");
-        Noticia.Insert("Prueba", "http://www.marca.com", "14-01-2015", "Noticias Internacionales", "Esto es una prueba", tags);
+        Noticia.Insert("Prueba", "http://www.marca.com", "13-01-2015", "Noticias Internacionales", "Esto es una prueba", tags);
        
     }
 

@@ -185,7 +185,7 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <DatePicker layoutX="231.0" layoutY="223.0" prefHeight="25.0" prefWidth="108.0" style="-fx-border-color: #0f5257;" />
+      <DatePicker fx:id="dpFecha" layoutX="231.0" layoutY="223.0" prefHeight="25.0" prefWidth="108.0" style="-fx-border-color: #0f5257;" />
       <Button layoutX="608.0" layoutY="470.0" mnemonicParsing="false" onAction="#principal" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #508991; -fx-background-radius: 80;" text="Saltar" />
       <Button layoutX="533.0" layoutY="404.0" mnemonicParsing="false" onAction="#anadir" prefHeight="25.0" prefWidth="123.0" text="Modificar imagen" />
       <AnchorPane layoutX="440.0" layoutY="117.0" prefHeight="263.0" prefWidth="308.0">
@@ -197,7 +197,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <TextArea layoutX="38.0" layoutY="258.0" prefHeight="224.0" prefWidth="302.0" promptText="Por ejemplo: El primer día fuimos al London Eye..." style="-fx-border-color: #0f5257;" wrapText="true" />
-      <TextField layoutX="38.0" layoutY="223.0" prefHeight="25.0" prefWidth="186.0" promptText="Por ejemplo: Londres" style="-fx-border-color: #0f5257;" />
+      <TextArea fx:id="txtDescripcion" layoutX="38.0" layoutY="258.0" prefHeight="224.0" prefWidth="302.0" promptText="Por ejemplo: El primer día fuimos al London Eye..." style="-fx-border-color: #0f5257;" wrapText="true" />
+      <TextField fx:id="txtTitulo" layoutX="38.0" layoutY="223.0" prefHeight="25.0" prefWidth="186.0" promptText="Por ejemplo: Londres" style="-fx-border-color: #0f5257;" />
    </children>
 </AnchorPane>

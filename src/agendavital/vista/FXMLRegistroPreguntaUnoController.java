@@ -5,7 +5,6 @@
  */
 package agendavital.vista;
 
-import static agendavital.vista.FXMLRegistroCompletadoController.ventanaPrimeraPregunta;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -21,7 +20,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -66,6 +67,10 @@ public class FXMLRegistroPreguntaUnoController implements Initializable {
     private Label nombrelabel;
     @FXML
     private ImageView imgImagen;
+    @FXML
+    private TextArea txtDescripcion;
+    @FXML
+    private DatePicker dpFecha;
 
     /**
      * Initializes the controller class.

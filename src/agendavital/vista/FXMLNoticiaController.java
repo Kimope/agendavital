@@ -5,8 +5,13 @@
  */
 package agendavital.vista;
 
+import agendavital.modelo.data.Noticia;
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -67,6 +72,16 @@ public class FXMLNoticiaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
        fechaSeleccionada = FXMLPrincipalController.fechaSeleccionada;
        txtTitular.setText(fechaSeleccionada);
+       ArrayList<Noticia> noticias = null;
+        try {
+            noticias = Noticia.Select("14-01-2015");
+        } catch (ConexionBDIncorrecta ex) {
+            Logger.getLogger(FXMLNoticiaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       Noticia noticia = noticias.get(0);
+       noticia.getTitulo();
+               noticia.getLink();
+                       
         
     }    
 

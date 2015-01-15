@@ -27,15 +27,24 @@
       <Circle fx:id="circulomin" fill="#ff000000" layoutX="715.0" layoutY="25.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" onMouseExited="#minimizarSalida" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <TextFlow fx:id="tfTitular" layoutX="34.0" layoutY="117.0" prefHeight="68.0" prefWidth="700.0">
          <children>
-            <Text fx:id="txtTitular" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="700.0" />
+            <Text fx:id="txtTitular" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="700.0">
+               <font>
+                  <Font size="27.0" />
+               </font></Text>
          </children></TextFlow>
       <TextFlow fx:id="tfCuerpo" layoutX="34.0" layoutY="200.0" prefHeight="343.0" prefWidth="433.0">
          <children>
-            <Text fx:id="txtCuerpo" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="txtCuerpo" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
          </children></TextFlow>
       <TextFlow fx:id="tfLink" layoutX="34.0" layoutY="552.0" prefHeight="28.0" prefWidth="433.0">
          <children>
-            <Text fx:id="txtLink" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="txtLink" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="22.0" />
+               </font></Text>
          </children></TextFlow>
       <TextFlow fx:id="tfCategoria" layoutX="493.0" layoutY="325.0" prefHeight="28.0" prefWidth="245.0">
          <children>
@@ -47,5 +56,6 @@
          </children></TextFlow>
       <Button fx:id="btnModificar" layoutX="493.0" layoutY="554.0" mnemonicParsing="false" text="Modificar noticia" />
       <Button layoutX="625.0" layoutY="554.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Borrar noticia" />
+      <ImageView fx:id="prueba" fitHeight="150.0" fitWidth="200.0" layoutX="510.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

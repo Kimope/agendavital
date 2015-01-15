@@ -125,7 +125,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Pane>
-                  <Pane layoutY="134.0" onMouseEntered="#adm" onMouseExited="#adm_salida" prefHeight="30.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <Pane layoutY="134.0" onMouseClicked="#botonaadmin" onMouseEntered="#adm" onMouseExited="#adm_salida" prefHeight="30.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
                         <Line fx:id="lineamenu4" endX="20.0" layoutX="-2.0" layoutY="13.0" rotate="90.0" strokeWidth="4.0" visible="false" />
                         <ImageView fitHeight="24.0" fitWidth="30.0" layoutX="17.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">

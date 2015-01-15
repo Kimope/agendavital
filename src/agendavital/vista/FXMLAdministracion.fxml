@@ -10,4 +10,84 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="473.0" prefWidth="425.0" style="-fx-background-color: #A44A3F; -fx-background-radius: 7; -fx-border-color: #e79f30; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLAdministracionController">
+   <children>
+      <ImageView fitHeight="122.0" fitWidth="220.0" layoutX="128.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@vsital.png" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <TextField fx:id="campo_usuario" disable="true" layoutX="204.0" layoutY="94.0" />
+      <TextField fx:id="campo_nombre" disable="true" layoutX="204.0" layoutY="145.0" />
+      <TextField fx:id="campo_apellido" disable="true" layoutX="204.0" layoutY="193.0" />
+      <TextField fx:id="campo_contraseña" disable="true" layoutX="204.0" layoutY="240.0" />
+      <TextField fx:id="campo_contraseña_nueva" disable="true" layoutX="204.0" layoutY="287.0" />
+      <Text layoutX="43.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de Usuario:" />
+      <Text layoutX="43.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" />
+      <Text layoutX="43.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido:" />
+      <Text layoutX="43.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña Actual:" />
+      <Text layoutX="43.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nueva contraseña" />
+      <Button layoutX="189.0" layoutY="411.0" mnemonicParsing="false" onAction="#update" text="Editar" />
+      <ImageView fx:id="edit_usuario" fitHeight="17.0" fitWidth="19.0" layoutX="371.0" layoutY="98.0" onMouseClicked="#edita_usuario" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagenes_interfaz/update.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <ImageView fx:id="edit_nombre" fitHeight="17.0" fitWidth="19.0" layoutX="371.0" layoutY="149.0" onMouseClicked="#edita_nombre" pickOnBounds="true" preserveRatio="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <image>
+            <Image url="@imagenes_interfaz/update.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="edit_apellido" fitHeight="17.0" fitWidth="19.0" layoutX="371.0" layoutY="197.0" onMouseClicked="#edita_apellido" pickOnBounds="true" preserveRatio="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <image>
+            <Image url="@imagenes_interfaz/update.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="edit_contraseña" fitHeight="17.0" fitWidth="19.0" layoutX="371.0" layoutY="243.0" onMouseClicked="#edita_contraseña" pickOnBounds="true" preserveRatio="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <image>
+            <Image url="@imagenes_interfaz/update.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="43.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Repetir nueva contraseña" />
+      <TextField fx:id="campo_repetir_contraseña_nueva" disable="true" layoutX="204.0" layoutY="333.0" />
+      <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#abrir_nota" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagenes_interfaz/3711.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="ayuda" prefHeight="129.0" prefWidth="200.0" style="-fx-background-color: #FCF0AD;" visible="false">
+         <children>
+            <Text layoutX="82.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ayuda:" />
+            <Text layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pulse sobre el icono" />
+            <ImageView fitHeight="25.0" fitWidth="17.0" layoutX="126.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes_interfaz/update.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="150.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="en los" />
+            <Text layoutX="14.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="campos que desee editar, introduzca la contraseña actual y presione el boton Editar." wrappingWidth="169.0955810546875" />
+            <ImageView fitHeight="24.0" fitWidth="17.0" layoutX="173.0" layoutY="6.0" onMouseClicked="#cerrar_nota" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagenes_interfaz/cerrar.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Label fx:id="error" layoutX="190.0" layoutY="442.0" textFill="#f2ff00" />
+   </children>
+</AnchorPane>

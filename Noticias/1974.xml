@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>El presidente norteamericano Richard Nixon dimite por el escándalo Watergate.</titulo>
+        <fecha>08-08-1974</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://es.wikipedia.org/wiki/Esc%C3%A1ndalo_Watergate</link>
+        <tag>EEUU</tag>
+        <tag>Política</tag>
+        <cuerpo>El escándalo del Watergate (o Watergate) fue un escándalo político en los Estados Unidos que ocurrió en 1972 durante el mandato de Richard Nixon, que culminó con la imputación de cargos a algunos consejeros muy cercanos al presidente, y con la dimisión de éste, el 9 de agosto de 1974.</cuerpo>
+    </Noticia>
+</Noticias>

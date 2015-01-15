@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+<<<<<<< HEAD
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
         <file>
             <url>src/data/test.java</url>
@@ -17,6 +18,14 @@
             <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLPrincipalController.java</file>
             <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLRegistroPreguntaTresController.java</file>
             <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLRegistroPreguntaUnoController.java</file>
+=======
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLPrincipalController.java</file>
+            <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLAdministracionController.java</file>
+            <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLAdministracion.fxml</file>
+>>>>>>> 9858171383b5eb953aba668244c99ba54bdf800b
         </group>
     </open-files>
 </project-private>

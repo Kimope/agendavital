@@ -336,9 +336,11 @@ public class FXMLPrincipalController implements Initializable {
                 }
 
                 Scene escenaNoticia = new Scene(root);
-                //FXMLNoticiaController controller = loader.getController();
-                ventanaNoticia.setScene(escenaNoticia);
                 ventanaNoticia.initStyle(StageStyle.UNDECORATED);
+                //FXMLNoticiaController controller = loader.getController();
+                escenaNoticia.setFill( Color.TRANSPARENT );
+                ventanaNoticia.setScene(escenaNoticia);
+                ventanaNoticia.initStyle(StageStyle.TRANSPARENT);
                 ventanaNoticia.show();
                 //Muestra ventana
             }

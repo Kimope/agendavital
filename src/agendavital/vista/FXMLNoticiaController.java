@@ -22,10 +22,14 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -68,6 +72,8 @@ public class FXMLNoticiaController implements Initializable {
     public String fechaSeleccionada;
     @FXML
     private ImageView prueba;
+    @FXML
+    private Pane paneluno;
     
 
 

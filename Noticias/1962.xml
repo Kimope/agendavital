@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+   <Noticia>
+        <titulo>Don Juan Carlos y Doña Sofía: la boda que «conmovió al mundo»</titulo>
+        <fecha>14-05-1962</fecha>
+        <categoria>Noticias Nacionales</categoria>
+        <link>http://www.abc.es/20120514/estilo-casas-reales/abci-boda-reyes-ceremonia-201205101801.html</link>
+        <tag>politica</tag>
+        <tag>rey</tag>
+        <tag>españa</tag>
+        <cuerpo> La boda se celebró en Atenas el 14 de mayo de 1962, arropados los prometidos por el calor de, según las crónicas de entonces, más de medio millón de personas que «vitoreaban con entusiasmo a una bella Princesa griega de veinticuatro años» y a aquel «joven teniente del Ejército español, heredero legítimo de los Reyes de España»</cuerpo>
+   </Noticia>
+   <Noticia>
+       <titulo>Argelia culmina su guerra de liberación y conquista su independencia de Francia</titulo>
+       <fecha>03-07-1962</fecha>
+       <categoria>Noticias Internacionales</categoria>
+       <link>http://es.wikipedia.org/wiki/Guerra_de_Independencia_de_Argelia</link>
+       <tag>guerra</tag>
+       <tag>independencia</tag>
+       <tag>argelia</tag>
+       <tag>francia</tag>
+       <cuerpo>La guerra terminó con el reconocimiento, por parte de Francia, a través de los acuerdos de Evian de la independencia de Argelia el 5 de julio de 1962. Significó la expulsión de unos 350 000 colonos europeos de origen francés, español e italiano y miembros de minorías como judíos.7</cuerpo>
+   </Noticia>
+
+</Noticias>

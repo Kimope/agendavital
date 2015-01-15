@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Nelson Mandela condenado a cadena perpetua</titulo>
+        <fecha>12-06-1964</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://www.voltairenet.org/article125848.html</link>
+        <tag>sudafrica</tag>
+        <tag>mandela</tag>
+        <tag>politica</tag>
+        <cuerpo> Vilipendiado por sus actividades políticas, Mandela será encarcelado en 1962, luego condenado a cadena perpetua el 12 de junio de 1964, cuando el ANC y el Congreso Panafricano continúan su lucha contra el régimen racista. Presentado como un peligroso criminal, rechazará toda forma de libertad condicional, manteniendo intactas sus convicciones durante su largo encarcelamiento. </cuerpo>
+    </Noticia>
+</Noticias>

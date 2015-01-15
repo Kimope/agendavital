@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+   <Noticia>
+        <titulo>Se vendió por primera vez la píldora anticonceptiva</titulo>
+        <fecha>11-05-1960</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://noticias.universia.es/en-portada/noticia/2012/05/11/929416/vendio-primera-vez-pildora-anticonceptiva.html</link>
+        <tag>medicina</tag>
+        <tag>inventos</tag>
+        <tag>eeuu</tag>
+        <cuerpo>El 11 de mayo de 1960 se puso a la venta en Estados Unidos. Su descubrimiento puede adjudicarse a varios científicos, ya que cada uno descubrió elementos que hicieron a la formación química de la primera pastilla. </cuerpo>
+   </Noticia>
+</Noticias>

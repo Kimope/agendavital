@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+   <Noticia>
+        <titulo>Ejerce como presidente John Fitzgerald Kennedy</titulo>
+        <fecha>20-01-1961</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://es.wikipedia.org/wiki/John_F._Kennedy</link>
+        <tag>politica</tag>
+        <tag>elecciones</tag>
+        <tag>eeuu</tag>
+        <cuerpo>Ejerció como Presidente desde el 20 de enero de 1961 hasta su asesinato el 22 de noviembre de 1963. Durante su gobierno tuvo lugar la invasión de Bahía de Cochinos, la crisis de los misiles de Cuba, la construcción del Muro de Berlín, el inicio de la carrera espacial y la consolidación del Movimiento por los Derechos Civiles en Estados Unidos, así como los primeros eventos de la Guerra de Vietnam.</cuerpo>
+   </Noticia>
+   <Noticia>
+       <titulo>The Beatles, 50 años de su primera vez</titulo>
+       <fecha>09-02-1961</fecha>
+       <categoria>Noticias Internacionales</categoria>
+       <link>http://www.elmundo.es/elmundo/2011/02/08/cultura/1297179451.html</link>
+       <tag>musica</tag>
+       <tag>reino unido</tag>
+       <cuerpo>9 de febrero de 1961. El reloj marcaba la hora de comer y cuatro jóvenes algo raritos subían al escenario de The Cavern. Su nombre: 'The Beatles'. Era la primera actuación de las más de 300 que darían allí a lo largo de los dos años siguientes. Ahora se cumplen 50 años del estreno de los cuatro magníficos y los fans han querido celebrarlo por todo lo alto. El lugar, no podía ser otro, Liverpool.</cuerpo>
+   </Noticia>
+
+</Noticias>

@@ -7,6 +7,10 @@ package agendavital.vista;
 
 import agendavital.modelo.data.Noticia;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -15,6 +19,8 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -60,6 +66,8 @@ public class FXMLNoticiaController implements Initializable {
     @FXML
     private Button btnModificar;
     public String fechaSeleccionada;
+    @FXML
+    private ImageView prueba;
     
 
 
@@ -79,8 +87,23 @@ public class FXMLNoticiaController implements Initializable {
             Logger.getLogger(FXMLNoticiaController.class.getName()).log(Level.SEVERE, null, ex);
         }
        Noticia noticia = noticias.get(0);
-       noticia.getTitulo();
-               noticia.getLink();
+       txtTitular.setText(noticia.getTitulo());
+       txtCuerpo.setText(noticia.getCuerpo());
+       txtLink.setText(noticia.getLink());
+       txtCategoria.setText(noticia.getCategoria());
+       File file = null;
+        file = new File("imagenes/queen.jpg");
+        InputStream is = null;
+        try {
+            is = new FileInputStream(file);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FXMLRegistroPreguntaUnoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        double width = 191;
+        double heigth = 167;
+        Image imagen = new Image("http://www.webmallindia.com/img/film/malayalam/mal_lokanathan_ias.jpg",width,heigth,false,true);
+        prueba.setImage(imagen);
+       
                        
         
     }    

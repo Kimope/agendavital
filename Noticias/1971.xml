@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Nace Greenpeace, en protesta ante la práctica nuclear estadounidense en el archipiélago de Amchitka (Alaska).</titulo>
+        <fecha>01-01-1971</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://es.wikipedia.org/wiki/Greenpeace</link>
+        <tag>medio ambiente</tag>
+        <tag>ONG</tag>
+        <cuerpo>El movimiento ecologista nació en 1971 cuando un grupo de activistas antinucleares estadounidenses formaron una pequeña organización llamada Don't Make a Wave Committee (Comité No Provoques un Maremoto) para evitar que los Estados Unidos llevara a cabo una segunda prueba nuclear en el archipiélago de Amchitka (Alaska), al norte de Canadá.</cuerpo>
+    </Noticia>
+</Noticias>

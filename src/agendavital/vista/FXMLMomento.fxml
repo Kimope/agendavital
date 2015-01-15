@@ -37,7 +37,6 @@
          <children>
             <Text fx:id="txtLocalizacion" strokeType="OUTSIDE" strokeWidth="0.0" />
          </children></TextFlow>
-      <ImageView fx:id="ivImagen" fitHeight="195.0" fitWidth="245.0" layoutX="493.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" />
       <TextFlow fx:id="tfCategoria" layoutX="493.0" layoutY="325.0" prefHeight="28.0" prefWidth="245.0">
          <children>
             <Text fx:id="txtCategoria" strokeType="OUTSIDE" strokeWidth="0.0" />
@@ -48,5 +47,14 @@
          </children></TextFlow>
       <Button fx:id="btnModificar" layoutX="493.0" layoutY="554.0" mnemonicParsing="false" text="Modificar momento" />
       <Button layoutX="625.0" layoutY="554.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" text="Borrar momento" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="254.0" layoutX="493.0" layoutY="99.0" stroke="BLACK" strokeType="INSIDE" width="245.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#575b5e" height="186.0" layoutX="516.0" layoutY="117.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <Circle fill="#5d3614" layoutX="616.0" layoutY="99.0" radius="10.0" stroke="#513621" strokeType="INSIDE" />
+      <ImageView fx:id="ivImagen" fitHeight="186.0" fitWidth="200.0" layoutX="515.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="138.0" fitWidth="137.0" layoutX="618.0" layoutY="270.0">
+         <image>
+            <Image url="@vital.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

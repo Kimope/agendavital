@@ -1,11 +1,15 @@
 package agendavital.vista;
 
+import agendavital.modelo.data.Momento;
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -68,13 +72,17 @@ public class FXMLRegistroPreguntaDosController implements Initializable {
     private DatePicker dpFecha;
     @FXML
     private TextField txtTitulo;
+    private Momento momento;
+    final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private File file = null;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        File file = new File("imagenes/queen.jpg");
+        dpFecha.setValue(LocalDate.now());
+        file = new File("imagenes/queen.jpg");
         InputStream is = null;
         try {
             is = new FileInputStream(file);
@@ -92,7 +100,7 @@ public class FXMLRegistroPreguntaDosController implements Initializable {
     {
         FileChooser chooser = new FileChooser();
 
-        File file = chooser.showOpenDialog(new Stage());
+        file = chooser.showOpenDialog(new Stage());
          chooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Todas las imagenes", "*.*"),
                 new FileChooser.ExtensionFilter("JPG", "*.jpg"),
@@ -147,6 +155,14 @@ public class FXMLRegistroPreguntaDosController implements Initializable {
 
     @FXML
     private void moverPantalla(MouseEvent event) {
+    }
+
+    @FXML
+    public void anadirmomento() throws ConexionBDIncorrecta, IOException{
+        String fecha = dateFormatter.format(dpFecha.getValue());
+        momento = Momento.insert(fecha, "Concierto de "+txtTitulo.getText()+". "+txtDescripcion.getText(), "-fx-background-color: blue");
+        momento.asociarDocumento(file);
+        tercerapregunta();
     }
     
     @FXML

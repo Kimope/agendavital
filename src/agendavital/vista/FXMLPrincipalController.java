@@ -2,6 +2,7 @@ package agendavital.vista;
 
 import agendavital.modelo.data.Noticia;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
+import java.io.File;
 import java.io.IOException;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
@@ -17,11 +18,16 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Pagination;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
@@ -38,6 +44,7 @@ public class FXMLPrincipalController implements Initializable {
     public static Stage ventanaMes;
     public static Stage ventanaNoticia;
     public static String fechaSeleccionada = null;
+    private Image[] images = new Image[7];
     @FXML
     private Line lineamenu1;
     @FXML
@@ -60,11 +67,50 @@ public class FXMLPrincipalController implements Initializable {
     private Text textPrueba;
     @FXML
     private DatePicker cal;
+    @FXML
+    private Pagination paginate;
+    @FXML
+    private AnchorPane panecentral;
+    
      final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
+     public int itemsPerPage() {
+        return 1;
+    }
+     public VBox createPage(int pageIndex) {
+        VBox box = new VBox();
+        int page = pageIndex * itemsPerPage();
+        for (int i = page; i < page + itemsPerPage(); i++) {
+            VBox element = new VBox();
+            File file = null;
+            file = new File("imagenes_interfaz/16043.png");
+            ImageView im = new ImageView("http://3.bp.blogspot.com/-h39N3aAGu-I/UuSxOHsTduI/AAAAAAAAB5o/r1mSr4ROcXU/s1600/imagenes-de-amor+(95).jpg");
+            element.getChildren().addAll(im);
+            box.getChildren().add(element);
+        }
+        return box;
+    }
+     
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
+    public void initialize(URL url, ResourceBundle rb) {  
+        
+        paginate = new Pagination(10, 0);
+        paginate.getStyleClass().add(Pagination.STYLE_CLASS_BULLET);
+        AnchorPane.setRightAnchor(paginate, 30.0);
+        AnchorPane.setTopAnchor(paginate, 20.0);
+        paginate.setPageFactory(new Callback<Integer, Node>() {
+            @Override
+            public Node call(Integer pageIndex) {
+                return createPage(pageIndex);
+            }
+        });
+       
+        panecentral.getChildren().addAll(paginate);
+        
+        
+        
+        
+        
         cal.setValue(LocalDate.now());
         cal.setStyle("-fx-font: 16pt Arial;");
 

@@ -100,7 +100,7 @@ public class FXMLAdministracionController implements Initializable {
             usuario.setNick(campo_usuario.getText());
             usuario.setNombre(campo_nombre.getText());
             usuario.setApellido(campo_apellido.getText());
-            if(!edit_contraseña.isDisable())  //si no se quiere modificar la contraseña
+            if(edit_contraseña.isVisible())  //si no se quiere modificar la contraseña
             {
                 usuario.setContrasena(campo_contraseña.getText());
             }

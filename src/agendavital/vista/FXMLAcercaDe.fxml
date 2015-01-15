@@ -65,5 +65,13 @@
             <Image url="@vital.png" />
          </image>
       </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a44a3f" height="5.0" layoutX="2.0" layoutY="243.0" stroke="#a44a3f" strokeType="INSIDE" width="12.0" />
+      <Circle fill="#a44a3f" layoutX="19.0" layoutY="164.0" radius="8.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a44a3f" height="5.0" layoutX="2.0" layoutY="179.0" stroke="#a44a3f" strokeType="INSIDE" width="12.0" />
+      <Circle fill="#a44a3f" layoutX="19.0" layoutY="185.0" radius="8.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a44a3f" height="5.0" layoutX="3.0" layoutY="209.0" stroke="#a44a3f" strokeType="INSIDE" width="12.0" />
+      <Circle fill="#a44a3f" layoutX="19.0" layoutY="206.0" radius="8.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Circle fill="#a44a3f" layoutX="19.0" layoutY="226.0" radius="8.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Circle fill="#a44a3f" layoutX="19.0" layoutY="246.0" radius="8.0" stroke="TRANSPARENT" strokeType="INSIDE" />
    </children>
 </AnchorPane>

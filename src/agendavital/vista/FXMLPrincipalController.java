@@ -22,6 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
@@ -290,9 +291,11 @@ public class FXMLPrincipalController implements Initializable {
                 }
 
                 Scene escenaNoticia = new Scene(root);
-                //FXMLNoticiaController controller = loader.getController();
-                ventanaNoticia.setScene(escenaNoticia);
                 ventanaNoticia.initStyle(StageStyle.UNDECORATED);
+                //FXMLNoticiaController controller = loader.getController();
+                escenaNoticia.setFill( Color.TRANSPARENT );
+                ventanaNoticia.setScene(escenaNoticia);
+                ventanaNoticia.initStyle(StageStyle.TRANSPARENT);
                 ventanaNoticia.show();
                 //Muestra ventana
             }

@@ -253,4 +253,31 @@ public class FXMLPrincipalController implements Initializable {
                 ventanaNoticia.show();
                 //Muestra ventana
             }
+            
+            
+            
+            public void consultar_dia() throws IOException {
+                Parent root = null;
+                ventanaNoticia = new Stage();
+                Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+                ventanaNoticia.getIcons().add(icon);
+                ventanaNoticia.setTitle("Noticia");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLNoticia.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    System.out.println("No se puede encontrar el fichero FXML");
+                }
+
+                Scene escenaNoticia = new Scene(root);
+                //FXMLNoticiaController controller = loader.getController();
+                ventanaNoticia.setScene(escenaNoticia);
+                ventanaNoticia.initStyle(StageStyle.UNDECORATED);
+                ventanaNoticia.show();
+                //Muestra ventana
+            }
+            
+            
+            
+            
 }

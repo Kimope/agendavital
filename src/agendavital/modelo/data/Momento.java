@@ -137,6 +137,7 @@ public class Momento {
             throw new ConexionBDIncorrecta();
         }
     }
+    
 
     /**Funcion que inserta momentos
      * 
@@ -156,6 +157,29 @@ public class Momento {
             nuevoId = ConfigBD.LastId("momentos");
             String asociarConNoticia = String.format("UPDATE momentos_noticias_etiquetas SET id_momento = %d WHERE id_noticia = %d", nuevoId, id_noticia);
             conexion.createStatement().executeUpdate(asociarConNoticia);
+            nuevo = new Momento(nuevoId);
+            return nuevo;
+        } catch (SQLException e) {
+            throw new ConexionBDIncorrecta();
+        }
+    }
+    
+     /**Funcion que inserta momentos
+     * 
+     * @param fecha
+     * @param descripcion
+     * @param color
+     * @return
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta 
+     */
+    public static Momento insert(String fecha, String descripcion, String color) throws ConexionBDIncorrecta {
+        System.out.println(fecha+" "+descripcion+" "+color);
+        int nuevoId = 0;
+        Momento nuevo = null;
+        try (Connection conexion = ConfigBD.conectar()) {
+            String insert = String.format("INSERT INTO momentos (fecha, descripcion, color, id_usuario) VALUES (%s, %s, %s, %s);", ConfigBD.String2Sql(fecha, false), ConfigBD.String2Sql(descripcion, false), ConfigBD.String2Sql(color, false), ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
+            int executeUpdate = conexion.createStatement().executeUpdate(insert);
+            nuevoId = ConfigBD.LastId("momentos");
             nuevo = new Momento(nuevoId);
             return nuevo;
         } catch (SQLException e) {
@@ -199,13 +223,16 @@ public class Momento {
      * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta 
      */
     public boolean asociarDocumento(File Documento) throws IOException,  ConexionBDIncorrecta{
-        File destino = new File(UsuarioLogueado.getLogueado().getNick());
-        destino.mkdir();
-        File destino2 = new File("Documentos/"+UsuarioLogueado.getLogueado().getNick()+"/"+Documento.getName());
-        ConfigBD.copyFile(Documento, destino2);
+        File destino = new File("Momentos");
+        if(!destino.exists()) destino.mkdir();
+        File destino2 = new File("Momentos/"+UsuarioLogueado.getLogueado().getNick());
+        if(!destino2.exists()) destino2.mkdir();
+        System.out.println(destino.getAbsolutePath());
+        File destino3 = new File("Momentos/"+UsuarioLogueado.getLogueado().getNick()+"/"+Documento.getName());
+        ConfigBD.copyFile(Documento, destino3);
         ResultSet rs = null;
         try (Connection conexion = ConfigBD.conectar()) {
-        String insertDocumento = String.format("INSERT INTO Documentos (ruta_doc) VALUES (%s);", ConfigBD.String2Sql(destino2.getCanonicalPath(), false));
+        String insertDocumento = String.format("INSERT INTO Documentos (ruta_doc) VALUES (%s);", ConfigBD.String2Sql(destino3.getCanonicalPath(), false));
         conexion.createStatement().executeUpdate(insertDocumento);
         int idDoc = ConfigBD.LastId("documentos");
         String update = String.format("UPDATE momentos SET id_documento = %d WHERE id_momento = %d;",  idDoc, getId());

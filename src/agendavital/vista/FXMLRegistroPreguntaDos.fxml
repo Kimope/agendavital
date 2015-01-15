@@ -124,7 +124,7 @@
       <Circle fill="#1f93ff00" layoutX="594.0" layoutY="94.0" radius="8.0" stroke="#0f5257" strokeType="INSIDE" strokeWidth="2.0" />
       <Line endX="100.0" layoutX="480.0" layoutY="94.0" startX="-30.0" stroke="#0f5257" strokeWidth="2.0" />
       <Line endX="100.0" layoutX="640.0" layoutY="94.0" startX="-30.0" stroke="#0f5257" strokeWidth="2.0" />
-      <Button layoutX="465.0" layoutY="470.0" mnemonicParsing="false" onAction="#tercerapregunta" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #508991; -fx-background-radius: 80;" text="Añadir" />
+      <Button layoutX="465.0" layoutY="470.0" mnemonicParsing="false" onAction="#anadirmomento" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #508991; -fx-background-radius: 80;" text="Añadir" />
       <Circle layoutX="379.0" layoutY="48.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle layoutX="379.0" layoutY="391.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle layoutX="379.0" layoutY="193.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />

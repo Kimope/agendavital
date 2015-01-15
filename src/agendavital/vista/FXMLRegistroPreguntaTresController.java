@@ -1,11 +1,15 @@
 package agendavital.vista;
 
+import agendavital.modelo.data.Momento;
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -68,13 +72,17 @@ public class FXMLRegistroPreguntaTresController implements Initializable {
     private DatePicker dpFecha;
     @FXML
     private TextField txtTitulo;
+    private Momento momento = null;
+    final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private File file = null;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        File file = new File("imagenes/londres.jpg");
+          dpFecha.setValue(LocalDate.now());
+        file = new File("imagenes/londres.jpg");
         InputStream is = null;
         try {
             is = new FileInputStream(file);
@@ -99,7 +107,7 @@ public class FXMLRegistroPreguntaTresController implements Initializable {
                 new FileChooser.ExtensionFilter("BMP", "*.bmp"),
                 new FileChooser.ExtensionFilter("PNG", "*.png")
         );
-        File file = chooser.showOpenDialog(new Stage());
+        file = chooser.showOpenDialog(new Stage());
         InputStream is = null;
         try {
             is = new FileInputStream(file);
@@ -148,6 +156,14 @@ public class FXMLRegistroPreguntaTresController implements Initializable {
     private void moverPantalla(MouseEvent event) {
     }
     
+     @FXML
+    public void anadirmomento() throws ConexionBDIncorrecta, IOException{
+        String fecha = dateFormatter.format(dpFecha.getValue());
+        momento = Momento.insert(fecha, "Mi viaje a "+txtTitulo.getText()+". "+txtDescripcion.getText(), "-fx-background-color: blue");
+        momento.asociarDocumento(file);
+        principal();
+    }
+    
     @FXML
     public void principal() throws IOException
     {
@@ -155,7 +171,7 @@ public class FXMLRegistroPreguntaTresController implements Initializable {
                 ventanaPrincipal = new Stage();
                 Image icon = new Image(getClass().getResourceAsStream("logo.png"));
                 ventanaPrincipal.getIcons().add(icon);
-                ventanaPrincipal.setTitle("Primeros Pasos");
+                ventanaPrincipal.setTitle("Agenda Vital");
 
                 try {
                     root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));

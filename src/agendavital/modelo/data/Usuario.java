@@ -186,6 +186,7 @@ public class Usuario {
         } catch (SQLException e) {
             throw new ConexionBDIncorrecta();
         }
+        UsuarioLogueado.setLogueado(new Usuario(_nick));
         return nuevo;
     }
 }

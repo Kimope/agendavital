@@ -171,7 +171,7 @@ public class Momento {
         int nuevoId = 0;
         Momento nuevo = null;
         try (Connection conexion = ConfigBD.conectar()) {
-            String insert = String.format("INSERT INTO momentos (titulo, fecha, descripcion, id_noticia, color, id_usuario) VALUES (%s, %s, %d, %s, %s);", ConfigBD.String2Sql(titulo, false), ConfigBD.String2Sql(fecha, false), ConfigBD.String2Sql(descripcion, false), id_noticia, ConfigBD.String2Sql(color, false), ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
+            String insert = String.format("INSERT INTO momentos (titulo, fecha, descripcion, id_noticia, color, id_usuario) VALUES (%s, %s, %s, %d, %s, %s);", ConfigBD.String2Sql(titulo, false), ConfigBD.String2Sql(fecha, false), ConfigBD.String2Sql(descripcion, false), id_noticia, ConfigBD.String2Sql(color, false), ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
             int executeUpdate = conexion.createStatement().executeUpdate(insert);
             nuevoId = ConfigBD.LastId("momentos");
             String asociarConNoticia = String.format("UPDATE momentos_noticias_etiquetas SET id_momento = %d WHERE id_noticia = %d", nuevoId, id_noticia);
@@ -195,7 +195,7 @@ public class Momento {
         int nuevoId = 0;
         Momento nuevo = null;
         try (Connection conexion = ConfigBD.conectar()) {
-            String insert = String.format("INSERT INTO momentos (titulo, fecha, descripcion, color, id_usuario) VALUES (%s, %s, %s, %s);", ConfigBD.String2Sql(titulo, false), ConfigBD.String2Sql(fecha, false), ConfigBD.String2Sql(descripcion, false), ConfigBD.String2Sql(color, false), ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
+            String insert = String.format("INSERT INTO momentos (titulo, fecha, descripcion, color, id_usuario) VALUES (%s, %s, %s, %s, %s);", ConfigBD.String2Sql(titulo, false), ConfigBD.String2Sql(fecha, false), ConfigBD.String2Sql(descripcion, false), ConfigBD.String2Sql(color, false), ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
             int executeUpdate = conexion.createStatement().executeUpdate(insert);
             nuevoId = ConfigBD.LastId("momentos");
             nuevo = new Momento(nuevoId);

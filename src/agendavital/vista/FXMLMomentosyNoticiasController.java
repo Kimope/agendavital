@@ -85,7 +85,7 @@ public class FXMLMomentosyNoticiasController implements Initializable {
         }
         if(!momentos.isEmpty()){
             for (Momento momento : momentos) {
-            Text text = new Text(momento.getDescripcion());
+            Text text = new Text(momento.getTitulo());
             text.setStyle("-fx-color:black");
             addLink2(text.getText(), momento);
         }

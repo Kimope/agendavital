@@ -2,6 +2,7 @@ package agendavital.vista;
 
 import agendavital.modelo.data.Noticia;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
+import agendavital.modelo.util.UsuarioLogueado;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -92,8 +93,8 @@ public class FXMLPrincipalController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {  
-
-        String s= "imagenes";
+        String s="imagenes";
+        //String s= "Momentos/"+UsuarioLogueado.getLogueado().getNick();
         File f=new File(s);
         System.out.print(f.getPath());
         if (f.exists()){

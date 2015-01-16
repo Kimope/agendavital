@@ -3,7 +3,10 @@ package agendavital.vista;
 import agendavital.modelo.data.Noticia;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.text.Text;
@@ -28,6 +31,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
@@ -44,7 +48,7 @@ public class FXMLPrincipalController implements Initializable {
     public static Stage ventanaMes;
     public static Stage ventanaNoticia;
     public static String fechaSeleccionada = null;
-    private Image[] images = new Image[7];
+    File filesJpg[];
     @FXML
     private Line lineamenu1;
     @FXML
@@ -57,18 +61,8 @@ public class FXMLPrincipalController implements Initializable {
     private Line lineamenu5;
     @FXML
     private Line lineamenu6;
-    
-    
-    @FXML
-    private Menu menuInicio;
-    @FXML
-    private Button myButton;
-    @FXML
-    private Text textPrueba;
     @FXML
     private DatePicker cal;
-    @FXML
-    private Pagination paginate;
     @FXML
     private AnchorPane panecentral;
     
@@ -79,38 +73,49 @@ public class FXMLPrincipalController implements Initializable {
     }
      public VBox createPage(int pageIndex) {
         VBox box = new VBox();
-        int page = pageIndex * itemsPerPage();
-        for (int i = page; i < page + itemsPerPage(); i++) {
-            VBox element = new VBox();
-            File file = null;
-            file = new File("imagenes_interfaz/16043.png");
-            ImageView im = new ImageView("http://3.bp.blogspot.com/-h39N3aAGu-I/UuSxOHsTduI/AAAAAAAAB5o/r1mSr4ROcXU/s1600/imagenes-de-amor+(95).jpg");
-            element.getChildren().addAll(im);
-            box.getChildren().add(element);
+            ImageView im= new ImageView();
+            File file = filesJpg[pageIndex];
+            InputStream is = null;
+        try {
+            is = new FileInputStream(file);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FXMLRegistroPreguntaUnoController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        double width = 350;
+        double heigth = 300;
+        Image imagen = new Image(is,width,heigth,false,true);
+        im.setImage(imagen);
+        box.getChildren().add(im);
+        
         return box;
     }
-     
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {  
+
+        String s= "imagenes";
+        File f=new File(s);
+        System.out.print(f.getPath());
+        if (f.exists()){
+        filesJpg = f.listFiles();
+        }
+        else{System.out.print("ERROR NO SE HA ENCONTRADO EL DIRECTORIO");}
         
-        paginate = new Pagination(10, 0);
-        paginate.getStyleClass().add(Pagination.STYLE_CLASS_BULLET);
-        AnchorPane.setRightAnchor(paginate, 30.0);
-        AnchorPane.setTopAnchor(paginate, 20.0);
-        paginate.setPageFactory(new Callback<Integer, Node>() {
+        int numOfPage = filesJpg.length;
+        Pagination pagination = new Pagination(numOfPage);
+        pagination.setPageFactory(new Callback<Integer, Node>() {
             @Override
             public Node call(Integer pageIndex) {
                 return createPage(pageIndex);
             }
         });
-       
-        panecentral.getChildren().addAll(paginate);
+        AnchorPane.setTopAnchor(pagination, 30.0);
+        AnchorPane.setRightAnchor(pagination, 25.0);
+        pagination.getStyleClass().add(Pagination.STYLE_CLASS_BULLET);
+        panecentral.getChildren().add(pagination);
         
         
-        
-        
-        
+        ////////////COLOREADO DE FECHAS/////////////
         cal.setValue(LocalDate.now());
         cal.setStyle("-fx-font: 16pt Arial;");
 
@@ -336,14 +341,36 @@ public class FXMLPrincipalController implements Initializable {
                 }
 
                 Scene escenaNoticia = new Scene(root);
-                ventanaNoticia.initStyle(StageStyle.UNDECORATED);
-                //FXMLNoticiaController controller = loader.getController();
-                escenaNoticia.setFill( Color.TRANSPARENT );
-                ventanaNoticia.setScene(escenaNoticia);
                 ventanaNoticia.initStyle(StageStyle.TRANSPARENT);
+                //FXMLNoticiaController controller = loader.getController();
+                escenaNoticia.setFill(Color.TRANSPARENT);
+                ventanaNoticia.setScene(escenaNoticia);
                 ventanaNoticia.show();
                 //Muestra ventana
             }
+            public void momentosynoticias() throws IOException {
+                Parent root = null;
+                ventanaNoticia = new Stage();
+                Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+                ventanaNoticia.getIcons().add(icon);
+                ventanaNoticia.setTitle("Noticia");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMomentosyNoticias.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    System.out.println("No se puede encontrar el fichero FXML");
+                }
+
+                Scene escenaNoticia = new Scene(root);
+                ventanaNoticia.initStyle(StageStyle.TRANSPARENT);
+                //FXMLNoticiaController controller = loader.getController();
+                escenaNoticia.setFill(Color.TRANSPARENT);
+                ventanaNoticia.setScene(escenaNoticia);
+                ventanaNoticia.show();
+                //Muestra ventana
+            }
+
+    
             
             
             

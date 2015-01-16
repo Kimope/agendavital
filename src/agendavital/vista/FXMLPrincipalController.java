@@ -351,6 +351,7 @@ public class FXMLPrincipalController implements Initializable {
             public void momentosynoticias() throws IOException {
                 Parent root = null;
                 ventanaNoticia = new Stage();
+                fechaSeleccionada = dateFormatter.format(cal.getValue());
                 Image icon = new Image(getClass().getResourceAsStream("logo.png"));
                 ventanaNoticia.getIcons().add(icon);
                 ventanaNoticia.setTitle("Noticia");

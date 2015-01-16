@@ -5,17 +5,24 @@
  */
 package agendavital.vista;
 
+<<<<<<< HEAD
 import static agendavital.vista.FXMLPrincipalController.ventanaNoticia;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+=======
+import agendavital.modelo.data.Momento;
+import agendavital.modelo.data.Noticia;
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
+>>>>>>> 41d93d8a06e43593d7fb77a92186eaa4593b8dbf
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.event.EventHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -57,6 +64,7 @@ public class FXMLMomentosyNoticiasController implements Initializable {
    
     @Override
     public void initialize(URL url, ResourceBundle rb) { 
+<<<<<<< HEAD
        /*INICIAR VARIABLES*/ 
         Text l1=new Text("NOTICIA1");
         Text l2=new Text("NOTICIA2");
@@ -84,6 +92,29 @@ public class FXMLMomentosyNoticiasController implements Initializable {
         addLink(l4.getText());
         
         ///////////////////
+=======
+         ArrayList<Noticia> noticias = null;
+         ArrayList<Momento> momentos = null;
+        try {
+            /*INICIAR VARIABLES*/
+           noticias = Noticia.Select(FXMLPrincipalController.fechaSeleccionada);
+           momentos = Momento.Select(FXMLPrincipalController.fechaSeleccionada);
+        } catch (ConexionBDIncorrecta ex) {
+            Logger.getLogger(FXMLMomentosyNoticiasController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(!noticias.isEmpty()){
+        for (Noticia noticia : noticias) {
+            Text text = new Text(noticia.getTitulo());
+            text.setStyle("-fx-color:black");
+            addLink(text.getText());
+        }
+        }
+        else{
+            Text text = new Text("No hay registrada ninguna noticia para esta fecha");
+            text.setStyle("-fx-color:black");
+            addLink(text.getText());
+        }
+>>>>>>> 41d93d8a06e43593d7fb77a92186eaa4593b8dbf
         VBox vBox = new VBox();
         VBox vBox2 = new VBox();
         vBox.getChildren().add(listView);
@@ -122,6 +153,7 @@ public class FXMLMomentosyNoticiasController implements Initializable {
     
 private void addLink(final String url) {
         final Text link = new Text(url);
+<<<<<<< HEAD
 
         link.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
@@ -152,6 +184,12 @@ private void addLink(final String url) {
                 }           
             }
 
+=======
+        link.setOnMouseClicked((MouseEvent t) -> {
+            AnchorPane pane = new AnchorPane();
+            Text txt = new Text(link.getText());
+            pane.getChildren().add(txt);
+>>>>>>> 41d93d8a06e43593d7fb77a92186eaa4593b8dbf
         });
         listView.getItems().add(link);
     }

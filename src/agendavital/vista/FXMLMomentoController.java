@@ -69,9 +69,10 @@ public class FXMLMomentoController implements Initializable {
         // TODO
     }    
      public void imprimir(Momento momento){
-        txtTitular.setText("No hay na de titulo en la BD..ya lo pondre");
-        txtCategoria.setText("los momentos tienen categorias?");
+        txtTitular.setText(momento.getTitulo());
+        txtCategoria.setText(momento.getFecha());
         txtCuerpo.setText(momento.getDescripcion());
+        
     }
 
     @FXML

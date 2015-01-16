@@ -17,23 +17,13 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #786f52;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLPrincipalController">
    <children>
       <BorderPane layoutX="175.0" layoutY="141.0" prefHeight="200.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <bottom>
-            <AnchorPane prefHeight="22.0" prefWidth="750.0" style="-fx-background-color: #786F52;" BorderPane.alignment="CENTER">
-               <children>
-                  <Text layoutX="364.0" layoutY="16.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-               </children>
-               <opaqueInsets>
-                  <Insets top="1.0" />
-               </opaqueInsets>
-            </AnchorPane>
-         </bottom>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <right>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A44A3F; -fx-border-color: #474A48; -fx-border-width: 6;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #508991; -fx-border-color: #0F5257; -fx-border-width: 6;" BorderPane.alignment="CENTER">
                <children>
-                  <Text fill="#786f52" layoutX="22.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Donde Encontrar actualidad?" />
+                  <Text fill="#0f5257" layoutX="22.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Donde Encontrar actualidad?" />
                   <Hyperlink layoutX="50.0" layoutY="45.0" text="El Pais" />
                   <Hyperlink layoutX="51.0" layoutY="67.0" text="El Mundo" />
                   <Hyperlink layoutX="52.0" layoutY="115.0" text="Diario de Cadiz" />
@@ -42,22 +32,37 @@
             </AnchorPane>
          </right>
          <top>
-            <AnchorPane prefHeight="45.0" prefWidth="1200.0" style="-fx-background-color: #A44A3F;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="100.0" prefWidth="1300.0" style="-fx-background-color: #508991;" BorderPane.alignment="CENTER">
                <children>
-                  <Text fill="#786f52" layoutX="538.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agenda Vital">
-                     <font>
-                        <Font name="Lucida Sans Demibold Roman" size="19.0" />
-                     </font>
-                  </Text>
+                  <ImageView fitHeight="69.0" fitWidth="266.0" layoutX="294.0" layoutY="13.0">
+                     <image>
+                        <Image url="@agenda.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="63.0" fitWidth="200.0" layoutX="790.0" layoutY="19.0">
+                     <image>
+                        <Image url="@vital.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="94.0" fitWidth="125.0" layoutX="23.0" layoutY="4.0">
+                     <image>
+                        <Image url="@logo.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="94.0" fitWidth="125.0" layoutX="1140.0" layoutY="4.0">
+                     <image>
+                        <Image url="@logo.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </top>
          <left>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #A44A3F; -fx-border-width: 5; -fx-border-color: #474A48;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #508991; -fx-border-width: 5; -fx-border-color: #0F5257;" BorderPane.alignment="CENTER">
                <children>
-                  <Line endX="-30.0" layoutX="112.0" layoutY="250.0" startX="-100.0" stroke="#474a48" strokeWidth="2.0" />
-                  <Line endX="-30.0" fill="BLACK" layoutX="218.0" layoutY="250.0" startX="-100.0" stroke="#474a48" strokeWidth="2.0" />
-                  <Circle fill="#1f93ff00" layoutX="100.0" layoutY="250.0" radius="10.0" stroke="#474a48" strokeType="INSIDE" strokeWidth="2.0" />
+                  <Line endX="-30.0" layoutX="112.0" layoutY="250.0" startX="-100.0" stroke="#0f5257" strokeWidth="2.0" />
+                  <Line endX="-30.0" fill="BLACK" layoutX="218.0" layoutY="250.0" startX="-100.0" stroke="#0f5257" strokeWidth="2.0" />
+                  <Circle fill="#1f93ff00" layoutX="100.0" layoutY="250.0" radius="10.0" stroke="#0f5257" strokeType="INSIDE" strokeWidth="2.0" />
                   <TextField layoutX="18.0" layoutY="286.0" promptText="        Buscar" style="-fx-background-radius: 30;">
                      <opaqueInsets>
                         <Insets />
@@ -66,11 +71,6 @@
                         <Font size="13.0" />
                      </font>
                   </TextField>
-                  <Text layoutX="12.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu ">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Text>
                   <Pane layoutY="38.0" onMouseEntered="#ini" onMouseExited="#ini_salida" prefHeight="30.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
                         <Line fx:id="lineamenu1" endX="20.0" fill="BLACK" layoutX="-2.0" layoutY="13.0" rotate="90.0" strokeWidth="4.0" visible="false" />
@@ -234,22 +234,17 @@
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text layoutX="13.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tags">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Text>
                </children>
             </AnchorPane>
          </left>
          <center>
-            <AnchorPane fx:id="panecentral" minWidth="-Infinity" prefHeight="200.0" prefWidth="900.0" style="-fx-background-color: #c97c5d; -fx-border-width: 6; -fx-border-color: #474A48;" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="panecentral" minWidth="-Infinity" prefHeight="520.0" prefWidth="900.0" style="-fx-background-color: #93C6D6; -fx-border-width: 6; -fx-border-color: #0F5257;" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
                <children>
                   <DatePicker fx:id="cal" layoutX="58.0" layoutY="205.0" />
-                  <Line endY="520.0" layoutX="451.0" layoutY="176.0" stroke="#474a48" strokeWidth="10.0" AnchorPane.topAnchor="0.0" />
+                  <Line endY="534.0" layoutX="451.0" layoutY="176.0" stroke="#0f5257" strokeWidth="10.0" AnchorPane.topAnchor="0.0" />
                   <QuadCurve controlX="24.73" controlY="69.7" endX="10.0" endY="80.0" fill="#1f93ff00" layoutX="424.0" layoutY="-58.0" startX="44.84" startY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
                   <QuadCurve controlX="24.73" controlY="69.7" endX="10.0" endY="80.0" fill="#1f93ff00" layoutX="424.0" layoutY="-53.0" startX="44.84" startY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
                   <QuadCurve controlX="24.73" controlY="69.7" endX="10.0" endY="80.0" fill="#1f93ff00" layoutX="424.0" layoutY="-38.0" startX="44.84" startY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />

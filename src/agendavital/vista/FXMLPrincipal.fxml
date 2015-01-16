@@ -355,6 +355,7 @@
                   <Circle layoutX="436.0" layoutY="342.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
                   <Circle layoutX="436.0" layoutY="362.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
                   <Button alignment="TOP_LEFT" layoutX="180.0" layoutY="379.0" mnemonicParsing="false" onAction="#consultar_dia" text="consultar dia" />
+                  <Button layoutX="154.0" layoutY="104.0" mnemonicParsing="false" onAction="#momentosynoticias" text="momentosynoticias" />
                </children>
             </AnchorPane>
          </center>

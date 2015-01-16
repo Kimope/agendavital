@@ -40,6 +40,12 @@ import javafx.stage.StageStyle;
  */
 public class FXMLRegistroPreguntaTresController implements Initializable {
     static Stage ventanaPrincipal;
+         //////////////Variables de la ventana de registro//////////////
+        public static final double ANCHO = 596;
+	public static final double ALTO= 488;
+        private double initX=ANCHO/2;
+        private double initY=ALTO/2;    
+        //------------------------------------------------------------//
     @FXML
     private AnchorPane anclaje;
     @FXML
@@ -147,14 +153,6 @@ public class FXMLRegistroPreguntaTresController implements Initializable {
     @FXML
     private void acceso_principal(ActionEvent event) {
     }
-
-    @FXML
-    private void moverPantalla2(MouseEvent event) {
-    }
-
-    @FXML
-    private void moverPantalla(MouseEvent event) {
-    }
     
      @FXML
     public void anadirmomento() throws ConexionBDIncorrecta, IOException{
@@ -186,4 +184,21 @@ public class FXMLRegistroPreguntaTresController implements Initializable {
                 FXMLRegistroPreguntaDosController.ventanaTerceraPregunta.close();
     }
     
+                /////////////////////Métodos para mover la pantalla clickando en cualquier lugar/////////////////////
+    @FXML
+    public void moverPantalla() throws IOException {
+        anclaje.setOnMousePressed((MouseEvent me) -> {
+            initX = me.getScreenX() - FXMLRegistroPreguntaDosController.ventanaTerceraPregunta.getX();
+            initY = me.getScreenY() - FXMLRegistroPreguntaDosController.ventanaTerceraPregunta.getY();
+        });
+    }
+
+    @FXML
+    public void moverPantalla2() throws IOException {
+        anclaje.setOnMouseDragged((MouseEvent me) -> {
+            FXMLRegistroPreguntaDosController.ventanaTerceraPregunta.setX(me.getScreenX() - initX);
+            FXMLRegistroPreguntaDosController.ventanaTerceraPregunta.setY(me.getScreenY() - initY);
+        });
+    }
+    //-----------------------------------------------------------------------------------------------//
 }

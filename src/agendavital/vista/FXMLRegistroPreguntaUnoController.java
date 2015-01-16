@@ -45,6 +45,12 @@ import javafx.stage.StageStyle;
 public class FXMLRegistroPreguntaUnoController implements Initializable {
 
     static Stage ventanaSegundaPregunta;
+            //////////////Variables de la ventana de registro//////////////
+        public static final double ANCHO = 596;
+	public static final double ALTO= 488;
+        private double initX=ANCHO/2;
+        private double initY=ALTO/2;    
+        //------------------------------------------------------------//
     @FXML
     private AnchorPane anclaje;
     @FXML
@@ -123,42 +129,6 @@ public class FXMLRegistroPreguntaUnoController implements Initializable {
     }
 
     @FXML
-    private void minimizarSalida(MouseEvent event) {
-    }
-
-    @FXML
-    private void minimizarEncima(MouseEvent event) {
-    }
-
-    @FXML
-    private void minimizar(MouseEvent event) {
-    }
-
-    @FXML
-    private void cerrarSalida(MouseEvent event) {
-    }
-
-    @FXML
-    private void cerrarEncima(MouseEvent event) {
-    }
-
-    @FXML
-    private void cerrar(MouseEvent event) {
-    }
-
-    @FXML
-    private void acceso_principal(ActionEvent event) {
-    }
-
-    @FXML
-    private void moverPantalla2(MouseEvent event) {
-    }
-
-    @FXML
-    private void moverPantalla(MouseEvent event) {
-    }
-
-    @FXML
     public void anadirmomento() throws ConexionBDIncorrecta, IOException{
         String fecha = dateFormatter.format(dpFecha.getValue());
         momento = Momento.insert(fecha, txtDescripcion.getText(), "-fx-background-color: blue");
@@ -186,5 +156,23 @@ public class FXMLRegistroPreguntaUnoController implements Initializable {
         ventanaSegundaPregunta.show();
         FXMLRegistroCompletadoController.ventanaPrimeraPregunta.close();
     }
+    
+        /////////////////////Métodos para mover la pantalla clickando en cualquier lugar/////////////////////
+    @FXML
+    public void moverPantalla() throws IOException {
+        anclaje.setOnMousePressed((MouseEvent me) -> {
+            initX = me.getScreenX() - FXMLRegistroCompletadoController.ventanaPrimeraPregunta.getX();
+            initY = me.getScreenY() - FXMLRegistroCompletadoController.ventanaPrimeraPregunta.getY();
+        });
+    }
+
+    @FXML
+    public void moverPantalla2() throws IOException {
+        anclaje.setOnMouseDragged((MouseEvent me) -> {
+            FXMLRegistroCompletadoController.ventanaPrimeraPregunta.setX(me.getScreenX() - initX);
+            FXMLRegistroCompletadoController.ventanaPrimeraPregunta.setY(me.getScreenY() - initY);
+        });
+    }
+    //-----------------------------------------------------------------------------------------------//
 
 }

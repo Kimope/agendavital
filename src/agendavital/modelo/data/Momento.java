@@ -30,8 +30,8 @@ public class Momento {
     private int id_documento;
     private int id_noticia;
     private String color;
-    ArrayList<Integer> tags;
-
+    private ArrayList<Integer> tags;
+    private String nickUsuario = ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false);
     /**Constructor
      * 
      * @param _id
@@ -127,7 +127,7 @@ public class Momento {
         ArrayList<Momento> momentos = null;
         try (Connection conexion = ConfigBD.conectar()) {
             momentos = new ArrayList<>();
-            String consulta = String.format("SELECT id_momento from momentos WHERE fecha = %s;", ConfigBD.String2Sql(fecha, false));
+            String consulta = String.format("SELECT id_momento from momentos WHERE fecha = %s AND id_usuario = %s;", ConfigBD.String2Sql(fecha, false), ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
             rs = conexion.createStatement().executeQuery(consulta);
             while (rs.next()) {
                 momentos.add(new Momento(rs.getInt("id_momento")));
@@ -252,7 +252,7 @@ public class Momento {
         ResultSet rs = null;
         ArrayList<Pair<LocalDate, String>> fechasMomentos = new ArrayList<>();
         try (Connection conexion = ConfigBD.conectar()) {
-            String consulta = String.format("SELECT fecha, color from momentos;");
+            String consulta = String.format("SELECT fecha, color from momentos WHERE id_usario = %s;", ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
             rs = conexion.createStatement().executeQuery(consulta);
             while (rs.next()) {
                 String fecha = rs.getString("fecha");
@@ -273,7 +273,7 @@ public class Momento {
             busqueda = new ArrayList<>();
             String buscar = String.format("SELECT id_Momento from momentos_noticias_etiquetas "
                     + "WHERE id_Etiqueta IN (SELECT id_Etiqueta from etiquetas "
-                    + "WHERE nombre LIKE %s);", ConfigBD.String2Sql(_tag, true));
+                    + "WHERE nombre LIKE %s) AND id_Momento IN (SELECT id_Momento from momentos WHERE id_usuario = %s);", ConfigBD.String2Sql(_tag, true), ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
             ResultSet rs = conexion.createStatement().executeQuery(buscar);
             while (rs.next()) {
                 busqueda.add(new Momento(rs.getInt("id_Momento")));

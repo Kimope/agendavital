@@ -5,11 +5,15 @@
  */
 package agendavital.vista;
 
+import agendavital.modelo.data.Momento;
+import agendavital.modelo.data.Noticia;
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.event.EventHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
@@ -32,20 +36,27 @@ public class FXMLMomentosyNoticiasController implements Initializable {
    
     @Override
     public void initialize(URL url, ResourceBundle rb) { 
-       /*INICIAR VARIABLES*/ 
-        Text l1=new Text("NOTICIA1");
-        Text l2=new Text("NOTICIA2");
-        Text l3=new Text("NOTICIA3");
-        Text l4=new Text("NOTICIA4");
-        l1.setStyle("-fx-color:black");
-        l2.setStyle("fx-color:black");
-        l3.setStyle("fx-color:black");
-        l4.setStyle("-fx-color:black");
-        addLink(l1.getText());
-        addLink(l2.getText());
-        addLink(l3.getText());
-        addLink(l4.getText());
-        ///////////////////
+         ArrayList<Noticia> noticias = null;
+         ArrayList<Momento> momentos = null;
+        try {
+            /*INICIAR VARIABLES*/
+           noticias = Noticia.Select(FXMLPrincipalController.fechaSeleccionada);
+           momentos = Momento.Select(FXMLPrincipalController.fechaSeleccionada);
+        } catch (ConexionBDIncorrecta ex) {
+            Logger.getLogger(FXMLMomentosyNoticiasController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(!noticias.isEmpty()){
+        for (Noticia noticia : noticias) {
+            Text text = new Text(noticia.getTitulo());
+            text.setStyle("-fx-color:black");
+            addLink(text.getText());
+        }
+        }
+        else{
+            Text text = new Text("No hay registrada ninguna noticia para esta fecha");
+            text.setStyle("-fx-color:black");
+            addLink(text.getText());
+        }
         VBox vBox = new VBox();
         vBox.getChildren().add(listView);
         panecentral.getChildren().add(vBox);
@@ -59,15 +70,10 @@ public class FXMLMomentosyNoticiasController implements Initializable {
     
 private void addLink(final String url) {
         final Text link = new Text(url);
-        link.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-            @Override
-            public void handle(MouseEvent t) {     
-                AnchorPane pane = new AnchorPane();
-                Text txt = new Text(link.getText());
-                pane.getChildren().add(txt);            
-            }
-
+        link.setOnMouseClicked((MouseEvent t) -> {
+            AnchorPane pane = new AnchorPane();
+            Text txt = new Text(link.getText());
+            pane.getChildren().add(txt);
         });
         listView.getItems().add(link);
     }

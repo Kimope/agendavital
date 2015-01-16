@@ -12,6 +12,7 @@ and open the template in the editor.
         <fecha>16-03-1968</fecha>
         <categoria>Noticias Internacionales</categoria>
         <link>http://www.abc.es/internacional/20130316/abci-aniversario-201303152038.html</link>
+        <cuerpo>Este sábado se cumplen 45 años de la masacre de My Lai, la aldea vietnamita en la que el 16 de marzo de 1968 una compañía del Ejército de los Estados Unidos asesinó a medio millar de lugareños. La mayoría eran ancianos, mujeres, niños... y bebés. Dos años después, el periodista estadounidense Seymour M. Hersh publicó el reportaje que descubrió a sus compatriotas aquellos acontecimientos: «My Lai 4: Informe sobre la matanza y sus secuelas». Aquella tragedia conmocionó a los norteamericanos y al resto del mundo. Y marcó un antes y un después en el enjuiciamiento de los crímenes de guerra modernos... Sólo uno de los implicados fue condenado. </cuerpo>
         <tag>eeuu</tag>
         <tag>matanza</tag>
         <tag>my</tag>
@@ -21,6 +22,7 @@ and open the template in the editor.
         <titulo>Robert Kennedy, también asesinado</titulo>
         <fecha>05-06-1968</fecha>
         <link>http://historiausa.about.com/od/relev/fl/Robert-Kennedy-tmabien-asesinado.htm</link>
+        <cuerpo>Robert Kennedy fue asesinado el 5 de junio de 1968 en  Los Ángeles,  cinco años después que su hermano, el presidente  John F Kennedy, pocos  minutos después de que  proclamara su triunfo en las primarias presidenciales  del Partido Demócrata.</cuerpo>
         <tag>eeuu</tag>
         <tag>asesinato</tag>
         <tag>robert</tag>

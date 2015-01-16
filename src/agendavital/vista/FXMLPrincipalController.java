@@ -2,7 +2,11 @@ package agendavital.vista;
 
 import agendavital.modelo.data.Noticia;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.text.Text;
@@ -17,11 +21,17 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Pagination;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
@@ -38,6 +48,7 @@ public class FXMLPrincipalController implements Initializable {
     public static Stage ventanaMes;
     public static Stage ventanaNoticia;
     public static String fechaSeleccionada = null;
+    File filesJpg[];
     @FXML
     private Line lineamenu1;
     @FXML
@@ -50,21 +61,61 @@ public class FXMLPrincipalController implements Initializable {
     private Line lineamenu5;
     @FXML
     private Line lineamenu6;
-    
-    
-    @FXML
-    private Menu menuInicio;
-    @FXML
-    private Button myButton;
-    @FXML
-    private Text textPrueba;
     @FXML
     private DatePicker cal;
+    @FXML
+    private AnchorPane panecentral;
+    
      final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+     public int itemsPerPage() {
+        return 1;
+    }
+     public VBox createPage(int pageIndex) {
+        VBox box = new VBox();
+            ImageView im= new ImageView();
+            File file = filesJpg[pageIndex];
+            InputStream is = null;
+        try {
+            is = new FileInputStream(file);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FXMLRegistroPreguntaUnoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        double width = 350;
+        double heigth = 300;
+        Image imagen = new Image(is,width,heigth,false,true);
+        im.setImage(imagen);
+        box.getChildren().add(im);
+        
+        return box;
+    }
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {  
+
+        String s= "imagenes";
+        File f=new File(s);
+        System.out.print(f.getPath());
+        if (f.exists()){
+        filesJpg = f.listFiles();
+        }
+        else{System.out.print("ERROR NO SE HA ENCONTRADO EL DIRECTORIO");}
+        
+        int numOfPage = filesJpg.length;
+        Pagination pagination = new Pagination(numOfPage);
+        pagination.setPageFactory(new Callback<Integer, Node>() {
+            @Override
+            public Node call(Integer pageIndex) {
+                return createPage(pageIndex);
+            }
+        });
+        AnchorPane.setTopAnchor(pagination, 30.0);
+        AnchorPane.setRightAnchor(pagination, 25.0);
+        pagination.getStyleClass().add(Pagination.STYLE_CLASS_BULLET);
+        panecentral.getChildren().add(pagination);
+        
+        
+        ////////////COLOREADO DE FECHAS/////////////
         cal.setValue(LocalDate.now());
         cal.setStyle("-fx-font: 16pt Arial;");
 
@@ -253,6 +304,26 @@ public class FXMLPrincipalController implements Initializable {
                 ventanaNoticia.show();
                 //Muestra ventana
             }
+            public void botonaadmin() throws IOException {
+                Parent root = null;
+                ventanaNoticia = new Stage();
+                Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+                ventanaNoticia.getIcons().add(icon);
+                ventanaNoticia.setTitle("Ayuda");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAdministracion.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    System.out.println("No se puede encontrar el fichero FXML");
+                }
+
+                Scene escenaNoticia = new Scene(root);
+                //FXMLNoticiaController controller = loader.getController();
+                ventanaNoticia.setScene(escenaNoticia);
+                ventanaNoticia.initStyle(StageStyle.UNDECORATED);
+                ventanaNoticia.show();
+                //Muestra ventana
+            }
             
             
             
@@ -270,12 +341,36 @@ public class FXMLPrincipalController implements Initializable {
                 }
 
                 Scene escenaNoticia = new Scene(root);
+                ventanaNoticia.initStyle(StageStyle.TRANSPARENT);
                 //FXMLNoticiaController controller = loader.getController();
+                escenaNoticia.setFill(Color.TRANSPARENT);
                 ventanaNoticia.setScene(escenaNoticia);
-                ventanaNoticia.initStyle(StageStyle.UNDECORATED);
                 ventanaNoticia.show();
                 //Muestra ventana
             }
+            public void momentosynoticias() throws IOException {
+                Parent root = null;
+                ventanaNoticia = new Stage();
+                Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+                ventanaNoticia.getIcons().add(icon);
+                ventanaNoticia.setTitle("Noticia");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMomentosyNoticias.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    System.out.println("No se puede encontrar el fichero FXML");
+                }
+
+                Scene escenaNoticia = new Scene(root);
+                ventanaNoticia.initStyle(StageStyle.TRANSPARENT);
+                //FXMLNoticiaController controller = loader.getController();
+                escenaNoticia.setFill(Color.TRANSPARENT);
+                ventanaNoticia.setScene(escenaNoticia);
+                ventanaNoticia.show();
+                //Muestra ventana
+            }
+
+    
             
             
             

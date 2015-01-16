@@ -125,7 +125,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Pane>
-                  <Pane layoutY="134.0" onMouseEntered="#adm" onMouseExited="#adm_salida" prefHeight="30.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <Pane layoutY="134.0" onMouseClicked="#botonaadmin" onMouseEntered="#adm" onMouseExited="#adm_salida" prefHeight="30.0" prefWidth="180.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
                         <Line fx:id="lineamenu4" endX="20.0" layoutX="-2.0" layoutY="13.0" rotate="90.0" strokeWidth="4.0" visible="false" />
                         <ImageView fitHeight="24.0" fitWidth="30.0" layoutX="17.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
@@ -243,7 +243,7 @@
             </AnchorPane>
          </left>
          <center>
-            <AnchorPane minWidth="-Infinity" prefHeight="200.0" prefWidth="900.0" style="-fx-background-color: #c97c5d; -fx-border-width: 6; -fx-border-color: #474A48;" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="panecentral" minWidth="-Infinity" prefHeight="200.0" prefWidth="900.0" style="-fx-background-color: #c97c5d; -fx-border-width: 6; -fx-border-color: #474A48;" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
@@ -355,6 +355,7 @@
                   <Circle layoutX="436.0" layoutY="342.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
                   <Circle layoutX="436.0" layoutY="362.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
                   <Button alignment="TOP_LEFT" layoutX="180.0" layoutY="379.0" mnemonicParsing="false" onAction="#consultar_dia" text="consultar dia" />
+                  <Button layoutX="154.0" layoutY="104.0" mnemonicParsing="false" onAction="#momentosynoticias" text="momentosynoticias" />
                </children>
             </AnchorPane>
          </center>

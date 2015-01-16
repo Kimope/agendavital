@@ -1,29 +1,21 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
-    </open-files>
-</project-private>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
-        <file>
-            <url>src/data/test.java</url>
-            <bookmark id="1">
-                <name/>
-                <line>32</line>
-                <key/>
-            </bookmark>
-        </file>
-    </editor-bookmarks>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/src/agendavital/AgendaVital.java</file>
-            <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/src/agendavital/modelo/data/InicializarBD.java</file>
-            <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/src/agendavital/modelo/util/ConfigBD.java</file>
+<<<<<<< HEAD
+            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLRegistroPreguntaDosController.java</file>
+            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLNoticiaController.java</file>
+            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLPrincipalController.java</file>
+            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLLoginController.java</file>
+            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLRegistroPreguntaTresController.java</file>
+            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLRegistroPreguntaUnoController.java</file>
+=======
+            <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLPrincipalController.java</file>
+            <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLMomentosyNoticiasController.java</file>
+            <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLAcercaDeController.java</file>
+            <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLMomentosyNoticias.fxml</file>
+>>>>>>> ed1b3d64e560b5107ac4045dcbf84626ce55c0ab
         </group>
     </open-files>
 </project-private>
->>>>>>> 1e90bbcbc2a1dd2adaa444a3bc9ba5d227d0bad5

@@ -5,12 +5,16 @@
  */
 package agendavital.vista;
 
+import agendavital.modelo.data.Momento;
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -71,13 +75,17 @@ public class FXMLRegistroPreguntaUnoController implements Initializable {
     private TextArea txtDescripcion;
     @FXML
     private DatePicker dpFecha;
+    private Momento momento = null;
+    final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private File file = null;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        File file = new File("imagenes/bebe.jpg");
+        dpFecha.setValue(LocalDate.now());
+        file = new File("imagenes/bebe.jpg");
         InputStream is = null;
         try {
             is = new FileInputStream(file);
@@ -150,6 +158,14 @@ public class FXMLRegistroPreguntaUnoController implements Initializable {
     private void moverPantalla(MouseEvent event) {
     }
 
+    @FXML
+    public void anadirmomento() throws ConexionBDIncorrecta, IOException{
+        String fecha = dateFormatter.format(dpFecha.getValue());
+        momento = Momento.insert(fecha, txtDescripcion.getText(), "-fx-background-color: blue");
+        momento.asociarDocumento(file);
+        segundapregunta();
+    }
+    
     @FXML
     public void segundapregunta() throws IOException {
         Parent root = null;

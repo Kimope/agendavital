@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>El Partido Comunista de España, legalizado</titulo>
+        <fecha>10-04-1977</fecha>
+        <categoria>Noticias Nacionales</categoria>
+        <link>http://elpais.com/diario/1977/04/10/portada/229471201_850215.html</link>
+        <tag>españa</tag>
+        <tag>gobierno</tag>
+        <tag>partido</tag>
+        <tag>comunista</tag>
+        <cuerpo>El Partido Comunista de España fue legalizado ayer, después de estar cerca de cuarenta años proscrito, con su inscripción en el Registro de Asociaciones Políticas del Ministerio de la Gobernación. El hecho sé ha producido a los dos meses de que dicho partido hubiese solicitado su legalización y a la semana de que el Tribunal Supremo se declarase incompetente en el asunto y devolviese la documentación al Gobierno. La legalización constituyó, según parece, una sorpresa para los dirigentes del PCE, la mayor parte de los cuales se encuentran en estos días fuera de Madrid.</cuerpo>
+    </Noticia>
+</Noticias>

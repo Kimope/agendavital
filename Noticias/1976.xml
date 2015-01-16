@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Adolfo Suárez, presidente del Gobierno</titulo>
+        <fecha>03-07-1976</fecha>
+        <categoria>Noticias Nacionales</categoria>
+        <link>http://www.lavanguardia.com/politica/20110703/54179351453/adolfo-suarez-presidente-del-gobierno.html</link>
+        <tag>españa</tag>
+        <tag>gobierno</tag>
+        <tag>adolfo</tag>
+        <tag>suarez</tag>
+        <cuerpo>El 3 de julio de 1976, el rey Juan Carlos I, previa propuesta en la terna del Consejo del Reino, designa como presidente del Gobierno a Adolfo Suárez.  La elección sorprende a políticos, medios y, prácticamente, a la totalidad de la sociedad española. Pero, sin duda, es una operación cuidadosamente preparada para relanzar  las reformas. La frase del presidente del Consejo, Torcuato Fernández Miranda, al finalizar las deliberaciones: “Estoy en condiciones de ofrecer al rey lo que el rey me ha pedido”, así lo demuestra.</cuerpo>
+    </Noticia>
+</Noticias>

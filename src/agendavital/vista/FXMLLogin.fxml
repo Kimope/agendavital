@@ -36,7 +36,7 @@
       <Line fx:id="lineacerrar2" endX="9.0" fill="BLACK" layoutX="285.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="-40.0" strokeWidth="2.0" />
       <Line fx:id="lineacerrar1" endX="9.0" fill="BLACK" layoutX="285.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="40.0" strokeWidth="2.0" />
       <Label fx:id="error_login" layoutX="147.0" layoutY="335.0" textFill="#e4dd00" />
-      <ImageView fitHeight="281.0" fitWidth="353.0" layoutX="-18.0" layoutY="-54.0">
+      <ImageView fitHeight="81.0" fitWidth="187.0" layoutX="72.0" layoutY="14.0">
          <image>
             <Image url="@vital.png" />
          </image>

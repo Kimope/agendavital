@@ -10,27 +10,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456.0" prefWidth="600.0" style="-fx-background-color: #A44A3F; -fx-background-radius: 7; -fx-border-color: #e79f30; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLAnadirMomentoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456.0" prefWidth="600.0" style="-fx-background-color: #93C6D6; -fx-background-radius: 7; -fx-border-color: #0F5257; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLAnadirMomentoController">
    <children>
-      <ImageView fitHeight="159.0" fitWidth="238.0" layoutX="193.0" layoutY="-13.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@vsital.png" />
-         </image>
-         <viewport>
-            <Rectangle2D />
-         </viewport>
-      </ImageView>
-      <TextField layoutX="56.0" layoutY="91.0" prefHeight="25.0" prefWidth="494.0" promptText="Titular" />
-      <TextArea layoutX="56.0" layoutY="133.0" prefHeight="191.0" prefWidth="494.0" promptText="Descripción" wrapText="true" />
-      <DatePicker layoutX="56.0" layoutY="339.0" prefHeight="25.0" prefWidth="109.0" promptText="Elegir día" />
-      <ComboBox fx:id="cbcategoria" layoutX="184.0" layoutY="339.0" prefHeight="25.0" prefWidth="109.0" promptText="Categoría" />
-      <Button layoutX="311.0" layoutY="339.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Añadir imagen" />
-      <ColorPicker layoutX="441.0" layoutY="339.0" prefHeight="25.0" prefWidth="109.0" promptText="Color " />
-      <TextField layoutX="56.0" layoutY="376.0" prefHeight="25.0" prefWidth="109.0" promptText="Tag1" />
-      <TextField layoutX="184.0" layoutY="376.0" prefHeight="25.0" prefWidth="109.0" promptText="Tag2" />
-      <TextField layoutX="311.0" layoutY="376.0" prefHeight="25.0" prefWidth="109.0" promptText="Tag3" />
-      <TextField layoutX="441.0" layoutY="376.0" prefHeight="25.0" prefWidth="109.0" promptText="Tag4" />
-      <Button fx:id="butregistrarse" layoutX="258.0" layoutY="411.0" mnemonicParsing="false" onAction="#registra_usuario" prefHeight="31.0" prefWidth="91.0" style="-fx-background-color: #E3C16F; -fx-background-radius: 80;" text="Aceptar">
+      <TextField layoutX="56.0" layoutY="91.0" prefHeight="25.0" prefWidth="494.0" promptText="Titular" style="-fx-border-color: #0F5257;" />
+      <TextArea layoutX="56.0" layoutY="133.0" prefHeight="191.0" prefWidth="494.0" promptText="Descripción" style="-fx-border-color: #0F5257;" wrapText="true" />
+      <DatePicker layoutX="56.0" layoutY="339.0" prefHeight="25.0" prefWidth="109.0" promptText="Elegir día" style="-fx-border-color: #0F5257;" />
+      <ComboBox fx:id="cbcategoria" layoutX="184.0" layoutY="339.0" prefHeight="25.0" prefWidth="109.0" promptText="Categoría" style="-fx-border-color: #0F5257;" />
+      <Button layoutX="311.0" layoutY="339.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" style="-fx-border-color: #0F5257;" text="Añadir imagen" />
+      <ColorPicker layoutX="441.0" layoutY="339.0" prefHeight="25.0" prefWidth="109.0" promptText="Color " style="-fx-border-color: #0F5257;" />
+      <TextField layoutX="56.0" layoutY="376.0" prefHeight="25.0" prefWidth="109.0" promptText="Tag1" style="-fx-border-color: #0F5257;" />
+      <TextField layoutX="184.0" layoutY="376.0" prefHeight="25.0" prefWidth="109.0" promptText="Tag2" style="-fx-border-color: #0F5257;" />
+      <TextField layoutX="311.0" layoutY="376.0" prefHeight="25.0" prefWidth="109.0" promptText="Tag3" style="-fx-border-color: #0F5257;" />
+      <TextField layoutX="441.0" layoutY="376.0" prefHeight="25.0" prefWidth="109.0" promptText="Tag4" style="-fx-border-color: #0F5257;" />
+      <Button fx:id="butregistrarse" layoutX="258.0" layoutY="411.0" mnemonicParsing="false" onAction="#registra_usuario" prefHeight="31.0" prefWidth="91.0" style="-fx-background-color: #508991; -fx-background-radius: 80;" text="Aceptar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -40,5 +32,10 @@
       <Circle fx:id="circulocerr" fill="#ff000000" layoutX="565.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="536.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
       <Circle fx:id="circulomin" fill="#ff000000" layoutX="540.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" onMouseExited="#minimizarSalida" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <ImageView fitHeight="63.0" fitWidth="200.0" layoutX="204.0" layoutY="9.0">
+         <image>
+            <Image url="@vital.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

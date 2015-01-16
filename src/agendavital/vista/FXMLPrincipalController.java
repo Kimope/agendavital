@@ -1,5 +1,6 @@
 package agendavital.vista;
 
+import agendavital.modelo.data.Momento;
 import agendavital.modelo.data.Noticia;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import agendavital.modelo.util.UsuarioLogueado;
@@ -125,8 +126,10 @@ public class FXMLPrincipalController implements Initializable {
             public void updateItem(LocalDate item, boolean empty) {
                 super.updateItem(item, empty);
                 ArrayList<Pair<LocalDate, Noticia>> fechas = null;
+                ArrayList<Pair<LocalDate, String>> momentos = null;
                 try {
                     fechas = Noticia.getNoticiasFecha();
+                    momentos = Momento.getNoticiasFecha();
                 } catch (ConexionBDIncorrecta ex) {
                     Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -145,6 +148,11 @@ public class FXMLPrincipalController implements Initializable {
                         }
                     }
                 }
+                 for (Pair<LocalDate, String> momento : momentos) {
+                     if(item.equals(momento.getKey())){
+                         setStyle(momento.getValue());
+                     }
+                 }
              }
         };
           

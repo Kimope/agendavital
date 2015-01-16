@@ -159,7 +159,7 @@ public class FXMLRegistroPreguntaTresController implements Initializable {
      @FXML
     public void anadirmomento() throws ConexionBDIncorrecta, IOException{
         String fecha = dateFormatter.format(dpFecha.getValue());
-        momento = Momento.insert(fecha, "Mi viaje a "+txtTitulo.getText()+". "+txtDescripcion.getText(), "-fx-background-color: blue");
+        momento = Momento.insert("Mi viaje a "+txtTitulo.getText(), fecha, txtDescripcion.getText(), "-fx-background-color: blue");
         momento.asociarDocumento(file);
         principal();
     }

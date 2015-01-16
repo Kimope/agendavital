@@ -3,19 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLRegistroPreguntaDosController.java</file>
-            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLNoticiaController.java</file>
-            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLPrincipalController.java</file>
-            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLLoginController.java</file>
-            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLRegistroPreguntaTresController.java</file>
-            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLRegistroPreguntaUnoController.java</file>
-=======
-            <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLPrincipalController.java</file>
-            <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLMomentosyNoticiasController.java</file>
-            <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLAcercaDeController.java</file>
-            <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLMomentosyNoticias.fxml</file>
->>>>>>> ed1b3d64e560b5107ac4045dcbf84626ce55c0ab
+            <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/Noticias/1976.xml</file>
+            <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/src/agendavital/vista/FXMLMomento.fxml</file>
+            <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/src/agendavital/modelo/util/UtilidadesRegistro.java</file>
+            <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/src/agendavital/vista/FXMLMomentoController.java</file>
+            <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/src/agendavital/vista/FXMLNoticiaController.java</file>
+            <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/src/agendavital/vista/FXMLMomentosyNoticiasController.java</file>
+            <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/Noticias/1977.xml</file>
+            <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/Noticias/1978.xml</file>
         </group>
     </open-files>
 </project-private>

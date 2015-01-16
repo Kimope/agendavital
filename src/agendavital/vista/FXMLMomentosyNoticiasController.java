@@ -5,24 +5,24 @@
  */
 package agendavital.vista;
 
+<<<<<<< HEAD
 import static agendavital.vista.FXMLPrincipalController.ventanaNoticia;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+=======
+>>>>>>> cf4bdfc12e4493ac75802f674847c9b05e211000
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import static javafx.application.Application.launch;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+<<<<<<< HEAD
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -34,17 +34,20 @@ import javafx.scene.control.Pagination;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
+=======
+import javafx.scene.control.ListView;
+>>>>>>> cf4bdfc12e4493ac75802f674847c9b05e211000
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import static javafx.scene.paint.Color.BLUE;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
+<<<<<<< HEAD
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
+=======
+>>>>>>> cf4bdfc12e4493ac75802f674847c9b05e211000
 
 /**
  * FXML Controller class
@@ -55,7 +58,6 @@ public class FXMLMomentosyNoticiasController implements Initializable {
  
     List<Text> let = new ArrayList<>();
     final ListView listView = new ListView();
-    String textoamostrar="PACO" ;
     @FXML
     private AnchorPane panecentral;
    
@@ -135,103 +137,5 @@ private void addLink(final String url) {
         listView.getItems().add(link);
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /*   
-@FXML
-    private AnchorPane panecentral;
-private final ArrayList<Hyperlink> let= new ArrayList<Hyperlink>();*/
-    /**
-     * Initializes the controller class.
-     * @param url
-     * @param rb
-     */
-/*
-    public int itemsPerPage() {
-        return 1;
-    }
- 
-    public VBox createPage(int pageIndex) {
-        VBox box = new VBox(5);
-        int page = pageIndex * itemsPerPage();
-        for (int i = page; i < page + itemsPerPage(); i++) {
-            Hyperlink link = new Hyperlink(let.get(i).getText());       
-            box.getChildren().add(link);
-        }
-        return box;
-    }
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {  
-        
-        Hyperlink l1=new Hyperlink("NOTICIA1");
-        Hyperlink l2=new Hyperlink("NOTICIA2");
-        Hyperlink l3=new Hyperlink("NOTICIA3");
-        Hyperlink l4=new Hyperlink("NOTICIA4");
-        let.add(l1);
-        let.add(l2);
-        let.add(l3);
-        let.add(l4);
-        
-        
-        Pagination pagination = new Pagination(let.size(), 0);
-        pagination.setStyle("-fx-border-color:red;");
-        pagination.setPageFactory(new Callback<Integer, Node>() {
-            @Override
-            public Node call(Integer pageIndex) {
-                return createPage(pageIndex);
-            }
-        });
-        AnchorPane.setTopAnchor(pagination, 60.0);
-        AnchorPane.setRightAnchor(pagination, 10.0);
-        AnchorPane.setBottomAnchor(pagination, 320.0);
-        AnchorPane.setLeftAnchor(pagination, 10.0);
-        
-        /////////////////////////////////////////////////////////////
-        Pagination pagination2 = new Pagination(28, 0);
-        pagination2.setStyle("-fx-border-color:red;");
-        pagination2.setPageFactory(new Callback<Integer, Node>() {
-            @Override
-            public Node call(Integer pageIndex) {
-                return createPage(pageIndex);
-            }
-        });
-        AnchorPane.setTopAnchor(pagination2, 320.0);
-        AnchorPane.setRightAnchor(pagination2, 10.0);
-        AnchorPane.setBottomAnchor(pagination2, 25.0);
-        AnchorPane.setLeftAnchor(pagination2, 10.0);
-        
-        
-        
-        panecentral.getChildren().addAll(pagination,pagination2);  
-}*/
+   
 }

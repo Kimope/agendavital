@@ -96,7 +96,6 @@ public class FXMLPrincipalController implements Initializable {
         String s="imagenes";
         //String s= "Momentos/"+UsuarioLogueado.getLogueado().getNick();
         File f=new File(s);
-        System.out.print(f.getPath());
         if (f.exists()){
         filesJpg = f.listFiles();
         }

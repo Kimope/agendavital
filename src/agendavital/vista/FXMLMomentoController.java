@@ -5,6 +5,7 @@
  */
 package agendavital.vista;
 
+import agendavital.modelo.data.Momento;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -67,6 +68,11 @@ public class FXMLMomentoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+     public void imprimir(Momento momento){
+        txtTitular.setText("No hay na de titulo en la BD..ya lo pondre");
+        txtCategoria.setText("los momentos tienen categorias?");
+        txtCuerpo.setText(momento.getDescripcion());
+    }
 
     @FXML
     private void cerrarEncima(MouseEvent event) {

@@ -84,36 +84,14 @@ public class FXMLNoticiaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       fechaSeleccionada = FXMLPrincipalController.fechaSeleccionada;
-       txtTitular.setText(fechaSeleccionada);
-       ArrayList<Noticia> noticias = null;
-        try {
-            noticias = Noticia.Select("14-01-2015");
-        } catch (ConexionBDIncorrecta ex) {
-            Logger.getLogger(FXMLNoticiaController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       Noticia noticia = noticias.get(0);
-       txtTitular.setText(noticia.getTitulo());
-       txtCuerpo.setText(noticia.getCuerpo());
-       txtLink.setText(noticia.getLink());
-       txtCategoria.setText(noticia.getCategoria());
-       File file = null;
-        file = new File("imagenes/queen.jpg");
-        InputStream is = null;
-        try {
-            is = new FileInputStream(file);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(FXMLRegistroPreguntaUnoController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        double width = 191;
-        double heigth = 167;
-        Image imagen = new Image("http://www.webmallindia.com/img/film/malayalam/mal_lokanathan_ias.jpg",width,heigth,false,true);
-        prueba.setImage(imagen);
-       
-                       
-        
+     
     }    
-
+    public void imprimir(Noticia noticia){
+        txtTitular.setText(noticia.getTitulo());
+        txtCategoria.setText(noticia.getCategoria());
+        txtLink.setText(noticia.getLink());
+        txtCuerpo.setText(noticia.getCuerpo());
+    }
     @FXML
     private void cerrarEncima(MouseEvent event) {
     }

@@ -33,14 +33,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-<<<<<<< HEAD
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-=======
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
->>>>>>> 53e6c701fcf293caf3ebf63bbe55b2c3627fc3dc
 import javafx.util.Callback;
 
 /**
@@ -102,7 +99,7 @@ public class FXMLAnadirMomentoController implements Initializable {
      * @param url
      * @param rb
      */
-<<<<<<< HEAD
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cal.setValue(LocalDate.now());
@@ -137,10 +134,10 @@ public class FXMLAnadirMomentoController implements Initializable {
         double heigth = 167;
         Image imagen = new Image(is, width, heigth, false, false);
         imgImagen.setImage(imagen);
+
     }
-=======
+
                 ///////////////////Menu de botones esquina superior derecha///////////////////
->>>>>>> 53e6c701fcf293caf3ebf63bbe55b2c3627fc3dc
     @FXML
     public void minimizar() throws IOException {
         FXMLPrincipalController.ventanaNoticia.setIconified(true);
@@ -173,25 +170,6 @@ public class FXMLAnadirMomentoController implements Initializable {
     {
         circulocerr.setFill(Color.TRANSPARENT);
     }
-///////////////////////////////////////////////////////////
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        cal.setValue(LocalDate.now());
-         Callback<DatePicker, DateCell> dayCellFactory =( DatePicker dp) -> new DateCell() {
-            @Override
-            public void updateItem(LocalDate item, boolean empty) {
-                super.updateItem(item, empty);
-                if(item.isAfter(LocalDate.now())) setDisable(true);
-            }
-         };
-         cal.setDayCellFactory(dayCellFactory);
-    }    
-
-    @FXML
-    private void registra_usuario(ActionEvent event) {
-    }
-
     @FXML
     public void registra_momento() throws ConexionBDIncorrecta, IOException{
         String _titular = titular.getText();
@@ -202,16 +180,16 @@ public class FXMLAnadirMomentoController implements Initializable {
         if(!t3.getText().isEmpty()) tags.add(t3.getText());
         if(!t4.getText().isEmpty()) tags.add(t4.getText());
         String _fecha = dateFormatter.format(cal.getValue());
-        String _color = color.getPromptText();
-        Momento momento = Momento.insert(_titular, _fecha, _descripcion, _color);
+        String _color = color.getValue().toString();
+        _color = _color.replace("0x", "#");
+        _color = _color.substring(0, _color.length() - 2);
+        Momento momento = Momento.insert(_titular, _fecha, _descripcion, "-fx-background-color: "+_color);
         if (imagenFile != null) {
             momento.asociarDocumento(imagenFile);
             controllerPrincipal.mostrarImagenes();
         }
-        
     }
-    
-    @FXML
+     @FXML
     public void moverPantalla2() throws IOException {
         anclaje.setOnMouseDragged((MouseEvent me) -> {
             FXMLPrincipalController.ventanaNoticia.setX(me.getScreenX() - initX);
@@ -225,5 +203,4 @@ public class FXMLAnadirMomentoController implements Initializable {
             initY = me.getScreenY() - FXMLPrincipalController.ventanaNoticia.getY();
         });
     }
-
 }

@@ -6,6 +6,7 @@
 package agendavital.vista;
 
 import agendavital.modelo.data.Noticia;
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import static agendavital.vista.FXMLPrincipalController.ventanaNoticia;
 import java.io.IOException;
 import java.net.URL;
@@ -196,5 +197,10 @@ public class FXMLNoticiaController implements Initializable {
         ventanaNoticia.initStyle(StageStyle.UNDECORATED);
         ventanaNoticia.show();
     }
-    //-----------------------------------------------------------------------------------------------//
+   public void borrar_noticia() throws ConexionBDIncorrecta{
+       _noticia.Delete();
+       _noticia = null;
+       controllerMYN.cambiarDatos();
+       controllerPrincipal.colorearFechas();
+   }
 }

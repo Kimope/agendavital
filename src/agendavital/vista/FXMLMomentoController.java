@@ -6,12 +6,24 @@
 package agendavital.vista;
 
 import agendavital.modelo.data.Momento;
+import static agendavital.vista.FXMLPrincipalController.ventanaNoticia;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -20,6 +32,8 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -70,6 +84,16 @@ public class FXMLMomentoController implements Initializable {
     private Text txtTag;
     @FXML
     private Button btnModificar;
+    public Momento _momento = null;
+    public FXMLPrincipalController controllerPrincipal;
+
+    public void setMomento(Momento _momento) {
+        this._momento = _momento;
+    }
+
+    public void setControllerPrincipal(FXMLPrincipalController controllerPrincipal) {
+        this.controllerPrincipal = controllerPrincipal;
+    }
 
     /**
      * Initializes the controller class.
@@ -117,12 +141,26 @@ public class FXMLMomentoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-     public void imprimir(Momento momento){
+     public void imprimir(Momento momento) throws SQLException{
+         _momento = momento;
         txtTitular.setText(momento.getTitulo());
         txtCategoria.setText(momento.getFecha());
         txtCuerpo.setText(momento.getDescripcion());
-        
+        if (momento.getId_documento()!=0) {
+            File fileImagen = new File(momento.getRutaDocumento());
+            InputStream is = null;
+            try {
+                is = new FileInputStream(fileImagen);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(FXMLRegistroPreguntaUnoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            double width = 191;
+            double heigth = 167;
+            Image imagen = new Image(is, width, heigth, false, false);
+            ivImagen.setImage(imagen);
+        }
     }
+    
 
         /////////////////////Métodos para mover la pantalla clickando en cualquier lugar/////////////////////
    @FXML
@@ -142,5 +180,31 @@ public class FXMLMomentoController implements Initializable {
         });
     }
     //-----------------------------------------------------------------------------------------------//
-    
+    public void modificar_momento(){
+        Parent root = null;
+        ventanaNoticia = new Stage();
+        Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+        ventanaNoticia.getIcons().add(icon);
+        ventanaNoticia.setTitle("Modificar Noticia");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAnadirMomento.fxml"));
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Scene escenaNoticia = new Scene(root);
+        FXMLAnadirMomentoController controller = loader.getController();
+        controller.setModificarMomento(_momento);
+        controller.setControllerMomento(this);        
+        controller.setControllerPrincipal(controllerPrincipal);
+        try{
+            controller.inicializarVentana();
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        ventanaNoticia.setScene(escenaNoticia);
+        ventanaNoticia.initStyle(StageStyle.UNDECORATED);
+        ventanaNoticia.show();
+    }
 }

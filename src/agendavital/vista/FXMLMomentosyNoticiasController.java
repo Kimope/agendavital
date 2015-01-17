@@ -15,6 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -235,7 +236,7 @@ private void addLink(final String url, Noticia noticia) {
                         try {
                             root = loader.load();
                         } catch (IOException e) {
-                            System.out.println("No se puede encontrar el fichero FXML");
+                            e.printStackTrace();
                         }
 
                         Scene escenaNoticia = new Scene(root);
@@ -276,12 +277,16 @@ private void addLink(final String url, Noticia noticia) {
                         try {
                             root = loader.load();
                         } catch (IOException e) {
-                            System.out.println("No se puede encontrar el fichero FXML");
+                            e.printStackTrace();
                         }
 
                         Scene escenaNoticia = new Scene(root);
                         FXMLMomentoController controller = loader.getController();
-                        controller.imprimir(momento);
+                        try {
+                            controller.imprimir(momento);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(FXMLMomentosyNoticiasController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         ventanaNoticia.setScene(escenaNoticia);
                         ventanaNoticia.initStyle(StageStyle.UNDECORATED);
                         ventanaNoticia.show();

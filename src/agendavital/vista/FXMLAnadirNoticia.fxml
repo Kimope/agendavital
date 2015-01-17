@@ -12,13 +12,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456.0" prefWidth="600.0" style="-fx-background-color: #93C6D6; -fx-background-radius: 7; -fx-border-color: #0f5257; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLAnadirNoticiaController">
    <children>
-      <TextField layoutX="56.0" layoutY="91.0" prefHeight="25.0" prefWidth="494.0" promptText="Titular" style="-fx-border-color: #0f5257;" />
-      <TextArea layoutX="56.0" layoutY="133.0" prefHeight="191.0" prefWidth="494.0" promptText="Descripción" style="-fx-border-color: #0f5257;" wrapText="true" />
+      <TextField fx:id="titular" layoutX="56.0" layoutY="91.0" prefHeight="25.0" prefWidth="494.0" promptText="Titular" style="-fx-border-color: #0f5257;" />
+      <TextArea fx:id="descripcion" layoutX="56.0" layoutY="133.0" prefHeight="191.0" prefWidth="494.0" promptText="Descripción" style="-fx-border-color: #0f5257;" wrapText="true" />
       <ComboBox fx:id="cbcategoria" layoutX="224.0" layoutY="339.0" prefHeight="25.0" prefWidth="157.0" promptText="Categoría" style="-fx-border-color: #0f5257;" />
       <TextField layoutX="56.0" layoutY="376.0" prefHeight="25.0" prefWidth="157.0" promptText="Tag1" style="-fx-border-color: #0f5257;" />
       <TextField layoutX="224.0" layoutY="376.0" prefHeight="25.0" prefWidth="157.0" promptText="Tag2" style="-fx-border-color: #0f5257;" />
       <TextField layoutX="392.0" layoutY="376.0" prefHeight="25.0" prefWidth="157.0" promptText="Tag3" style="-fx-border-color: #0f5257;" />
-      <Button fx:id="butregistrarse" layoutX="258.0" layoutY="411.0" mnemonicParsing="false" onAction="#registra_usuario" prefHeight="31.0" prefWidth="91.0" style="-fx-background-color: #508991; -fx-background-radius: 80;" text="Aceptar">
+      <Button fx:id="butregistrarse" layoutX="258.0" layoutY="411.0" mnemonicParsing="false" onAction="#registra_noticia" prefHeight="31.0" prefWidth="91.0" style="-fx-background-color: #508991; -fx-background-radius: 80;" text="Aceptar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

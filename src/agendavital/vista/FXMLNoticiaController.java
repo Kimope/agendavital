@@ -10,6 +10,7 @@ import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.Pane;
@@ -37,6 +39,15 @@ import javafx.stage.StageStyle;
  * @author Enrique
  */
 public class FXMLNoticiaController implements Initializable {
+    
+    //////////////Variables de la ventana de registro//////////////
+        public static final double ANCHO = 783;
+	public static final double ALTO= 609;
+        private double initX=ANCHO/2;
+        private double initY=ALTO/2;    
+        //------------------------------------------------------------//
+    @FXML 
+    private AnchorPane anclaje;
     @FXML
     private Line lineacerrar2;
     @FXML
@@ -115,5 +126,22 @@ public class FXMLNoticiaController implements Initializable {
     @FXML
     private void minimizarSalida(MouseEvent event) {
     }
-    
+            /////////////////////Métodos para mover la pantalla clickando en cualquier lugar/////////////////////
+   @FXML
+    public void moverPantalla() throws IOException {
+        anclaje.setOnMousePressed((MouseEvent me) -> {
+            initX = me.getScreenX() - FXMLPrincipalController.ventanaNoticia.getX();
+            initY = me.getScreenY() - FXMLPrincipalController.ventanaNoticia.getY();
+        });
+     
+    }
+
+    @FXML
+    public void moverPantalla2() throws IOException {
+        anclaje.setOnMouseDragged((MouseEvent me) -> {
+            FXMLPrincipalController.ventanaNoticia.setX(me.getScreenX() - initX);
+            FXMLPrincipalController.ventanaNoticia.setY(me.getScreenY() - initY);
+        });
+    }
+    //-----------------------------------------------------------------------------------------------//
 }

@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="783.0" style="-fx-background-color: #93C6D6; -fx-background-radius: 7; -fx-border-color: #0F5257; -fx-border-radius: 2; -fx-border-width: 3px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLMomentoController">
+<AnchorPane fx:id="anclaje" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#moverPantalla2" onMousePressed="#moverPantalla" prefHeight="609.0" prefWidth="783.0" style="-fx-background-color: #93C6D6; -fx-background-radius: 7; -fx-border-color: #0F5257; -fx-border-radius: 2; -fx-border-width: 3px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLMomentoController">
    <children>
       <AnchorPane layoutX="33.0" layoutY="20.0" prefHeight="577.0" prefWidth="721.0" style="-fx-background-color: #F0ECEC; -fx-border-color: #0F5257; -fx-border-width: 3;">
          <children>

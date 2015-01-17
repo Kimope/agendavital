@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="panecentral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="783.0" style="-fx-background-color: #93C6D6; -fx-background-radius: 7; -fx-border-color: #0F5257; -fx-border-radius: 2; -fx-border-width: 3px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLMomentosyNoticiasController">
+<AnchorPane fx:id="panecentral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#moverPantalla2" onMousePressed="#moverPantalla" prefHeight="609.0" prefWidth="783.0" style="-fx-background-color: #93C6D6; -fx-background-radius: 7; -fx-border-color: #0F5257; -fx-border-radius: 2; -fx-border-width: 3px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLMomentosyNoticiasController">
    <children>
       <Text layoutX="365.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOTICIAS" />
       <Text layoutX="358.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MOMENTOS" />

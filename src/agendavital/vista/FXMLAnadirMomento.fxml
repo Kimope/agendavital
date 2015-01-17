@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456.0" prefWidth="600.0" style="-fx-background-color: #93C6D6; -fx-background-radius: 7; -fx-border-color: #0F5257; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLAnadirMomentoController">
+<AnchorPane fx:id="anclaje" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#moverPantalla2" onMousePressed="#moverPantalla" prefHeight="456.0" prefWidth="600.0" style="-fx-background-color: #93C6D6; -fx-background-radius: 7; -fx-border-color: #0F5257; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLAnadirMomentoController">
    <children>
       <TextField layoutX="56.0" layoutY="91.0" prefHeight="25.0" prefWidth="494.0" promptText="Titular" style="-fx-border-color: #0F5257;" />
       <TextArea layoutX="56.0" layoutY="133.0" prefHeight="191.0" prefWidth="494.0" promptText="Descripción" style="-fx-border-color: #0F5257;" wrapText="true" />

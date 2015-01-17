@@ -66,10 +66,61 @@ public class FXMLMomentosyNoticiasController implements Initializable {
         //------------------------------------------------------------//
     @FXML
     private AnchorPane panecentral;
+    public FXMLPrincipalController controllerPrincipal;
+
+    public void setControllerPrincipal(FXMLPrincipalController controllerPrincipal) {
+        this.controllerPrincipal = controllerPrincipal;
+    }
    
     @Override
     public void initialize(URL url, ResourceBundle rb) { 
            ArrayList<Noticia> noticias = null;
+         ArrayList<Momento> momentos = null;
+        try {
+            /*INICIAR VARIABLES*/
+           noticias = Noticia.Select(FXMLPrincipalController.fechaSeleccionada);
+           momentos = Momento.Select(FXMLPrincipalController.fechaSeleccionada);
+        } catch (ConexionBDIncorrecta ex) {
+            Logger.getLogger(FXMLMomentosyNoticiasController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(!noticias.isEmpty()){
+        for (Noticia noticia : noticias) {
+            Text text = new Text(noticia.getTitulo());
+            text.setStyle("-fx-color:black");
+            addLink(text.getText(), noticia);
+        }
+        }
+        else{
+            Text text = new Text("No hay registrada ninguna noticia para esta fecha");
+            text.setStyle("-fx-color:black");
+            addLink(text.getText(), null);
+        }
+        if(!momentos.isEmpty()){
+            for (Momento momento : momentos) {
+            Text text = new Text(momento.getTitulo());
+            text.setStyle("-fx-color:black");
+            addLink2(text.getText(), momento);
+        }
+        }
+        VBox vBox = new VBox();
+        VBox vBox2 = new VBox();
+        vBox.getChildren().add(listView);
+        vBox2.getChildren().add(listView2);
+        panecentral.getChildren().add(vBox);
+        panecentral.getChildren().add(vBox2);
+        AnchorPane.setTopAnchor(vBox, 60.0);
+        AnchorPane.setRightAnchor(vBox, 10.0);
+        AnchorPane.setBottomAnchor(vBox, 320.0);
+        AnchorPane.setLeftAnchor(vBox, 10.0);
+        AnchorPane.setTopAnchor(vBox2, 325.0);
+        AnchorPane.setRightAnchor(vBox2, 10.0);
+        AnchorPane.setBottomAnchor(vBox2, 45.0);
+        AnchorPane.setLeftAnchor(vBox2, 10.0);
+    }
+    
+    public void cambiarDatos(){
+        listView.getItems().clear();
+         ArrayList<Noticia> noticias = null;
          ArrayList<Momento> momentos = null;
         try {
             /*INICIAR VARIABLES*/
@@ -139,6 +190,8 @@ private void addLink(final String url, Noticia noticia) {
 
                         Scene escenaNoticia = new Scene(root);
                         FXMLNoticiaController controller = loader.getController();
+                        controller.setControllerMYN(FXMLMomentosyNoticiasController.this);
+                        controller.setControllerPrincipal(controllerPrincipal);
                         controller.imprimir(noticia);
                         ventanaNoticia.setScene(escenaNoticia);
                         ventanaNoticia.initStyle(StageStyle.UNDECORATED);

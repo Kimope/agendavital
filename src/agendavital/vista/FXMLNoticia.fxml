@@ -21,7 +21,7 @@
                   <Text fx:id="txtTag" strokeType="OUTSIDE" strokeWidth="0.0" />
                </children>
             </TextFlow>
-            <Button fx:id="btnModificar" layoutX="495.0" layoutY="504.0" mnemonicParsing="false" text="Modificar noticia" />
+            <Button fx:id="btnModificar" layoutX="495.0" layoutY="504.0" mnemonicParsing="false" onAction="#modificar_noticia" text="Modificar noticia" />
             <TextFlow fx:id="tfLink" layoutX="10.0" layoutY="495.0" prefHeight="32.0" prefWidth="476.0" style="-fx-border-color: black;">
                <children>
                   <Text fx:id="txtLink" strokeType="OUTSIDE" strokeWidth="0.0">

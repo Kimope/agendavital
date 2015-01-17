@@ -5,23 +5,16 @@
  */
 package agendavital.vista;
 
-import agendavital.modelo.data.Momento;
-import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 
 /**
  * FXML Controller class
@@ -34,22 +27,16 @@ public class FXMLAnadirMomentoController implements Initializable {
     @FXML
     private Button butregistrarse;
     @FXML
-    private TextField t1;
+    private Line lineacerrar2;
     @FXML
-    private TextField t2;
+    private Line lineacerrar1;
     @FXML
-    private TextField t3;
+    private Circle circulocerr;
     @FXML
-    private TextField t4;
+    private Line lineamin;
     @FXML
-    private TextArea descripcion;
-     @FXML
-    private TextField titular;
-    @FXML
-    private DatePicker cal;
-    @FXML
-    private ColorPicker color;
-    final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private Circle circulomin;
+
     /**
      * Initializes the controller class.
      * @param url
@@ -57,7 +44,7 @@ public class FXMLAnadirMomentoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cal.setValue(LocalDate.now());
+        // TODO
     }    
 
     @FXML
@@ -86,21 +73,6 @@ public class FXMLAnadirMomentoController implements Initializable {
 
     @FXML
     private void minimizarSalida(MouseEvent event) {
-    }
-    @FXML
-    public void registra_momento() throws ConexionBDIncorrecta{
-        String _titular = titular.getText();
-        String _descripcion = descripcion.getText();
-        ArrayList<String> tags = new ArrayList<>();
-        if(!t1.getText().isEmpty()) tags.add(t1.getText());
-        if(!t2.getText().isEmpty()) tags.add(t2.getText());
-        if(!t3.getText().isEmpty()) tags.add(t3.getText());
-        if(!t4.getText().isEmpty()) tags.add(t4.getText());
-        String _fecha = dateFormatter.format(cal.getValue());
-        String _color = color.getValue().toString();
-        System.out.println(_color);
-        Momento momento = Momento.insert(_titular, _fecha, _descripcion, _color);
-        
     }
     
 }

@@ -241,15 +241,15 @@ public class FXMLPrincipalController implements Initializable {
                 Image icon = new Image(getClass().getResourceAsStream("logo.png"));
                 ventanaNoticia.getIcons().add(icon);
                 ventanaNoticia.setTitle("Nueva noticia");
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAnadirNoticia.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLNoticia.fxml"));
                 try {
                     root = loader.load();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    System.out.println("No se puede encontrar el fichero FXML");
                 }
 
                 Scene escenaNoticia = new Scene(root);
-               // FXMLNoticiaController controller = loader.getController();
+                FXMLNoticiaController controller = loader.getController();
                 ventanaNoticia.setScene(escenaNoticia);
                 ventanaNoticia.initStyle(StageStyle.UNDECORATED);
                 ventanaNoticia.show();
@@ -260,7 +260,7 @@ public class FXMLPrincipalController implements Initializable {
                 Image icon = new Image(getClass().getResourceAsStream("logo.png"));
                 ventanaNoticia.getIcons().add(icon);
                 ventanaNoticia.setTitle("Nuevo Momento");
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAnadirMomento.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMomento.fxml"));
                 try {
                     root = loader.load();
                 } catch (IOException e) {

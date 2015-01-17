@@ -31,7 +31,7 @@ public class Momento {
     private int id_documento;
     private int id_noticia;
     private String color;
-    private ArrayList<Integer> tags;
+    private ArrayList<String> tags;
 
     /**
      * Constructor
@@ -54,9 +54,10 @@ public class Momento {
             this.descripcion = (rs.getString("descripcion"));
             this.id_documento = (rs.getInt("id_documento"));
             this.id_noticia = (rs.getInt("id_noticia"));
-            rs = conexion.createStatement().executeQuery(String.format("SELECT id_etiqueta from momentos_noticias_etiquetas WHERE id_momento = %d", id));
+            this.color = (rs.getString("color"));
+            rs = conexion.createStatement().executeQuery(String.format("SELECT nombre from etiquetas WHERE id_etiqueta IN (SELECT id_etiqueta from momentos_noticias_etiquetas WHERE id_momento = %d)", id));
             while (rs.next()) {
-                tags.add(rs.getInt("id_etiqueta"));
+                tags.add(rs.getString("nombre"));
             }
 
         } catch (SQLException ee) {
@@ -75,7 +76,7 @@ public class Momento {
         return titulo;
     }
 
-    public ArrayList<Integer> getTags() {
+    public ArrayList<String> getTags() {
         return tags;
     }
 
@@ -83,7 +84,7 @@ public class Momento {
         this.titulo = titulo;
     }
 
-    public void setTags(ArrayList<Integer> tags) {
+    public void setTags(ArrayList<String> tags) {
         this.tags = tags;
     }
 

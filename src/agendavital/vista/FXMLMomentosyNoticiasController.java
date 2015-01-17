@@ -236,7 +236,7 @@ private void addLink(final String url, Noticia noticia) {
                         try {
                             root = loader.load();
                         } catch (IOException e) {
-                            System.out.println("No se puede encontrar el fichero FXML");
+                            e.printStackTrace();
                         }
 
                         Scene escenaNoticia = new Scene(root);
@@ -277,7 +277,7 @@ private void addLink(final String url, Noticia noticia) {
                         try {
                             root = loader.load();
                         } catch (IOException e) {
-                            System.out.println("No se puede encontrar el fichero FXML");
+                            e.printStackTrace();
                         }
 
                         Scene escenaNoticia = new Scene(root);

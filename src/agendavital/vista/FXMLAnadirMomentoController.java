@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -46,12 +47,14 @@ import javafx.util.Callback;
  * @author Enrique
  */
 public class FXMLAnadirMomentoController implements Initializable {
-     //////////////Variables de la ventana de registro//////////////
-        public static final double ANCHO = 596;
-	public static final double ALTO= 488;
-        private double initX=ANCHO/2;
-        private double initY=ALTO/2;    
-        //------------------------------------------------------------//
+
+    //////////////Variables de la ventana de registro//////////////
+
+    public static final double ANCHO = 596;
+    public static final double ALTO = 488;
+    private double initX = ANCHO / 2;
+    private double initY = ALTO / 2;
+    //------------------------------------------------------------//
     @FXML
     private Circle circulomin;
     @FXML
@@ -62,7 +65,7 @@ public class FXMLAnadirMomentoController implements Initializable {
     private Line lineacerrar1;
     @FXML
     private Line lineacerrar2;
-        
+
     @FXML
     private AnchorPane anclaje;
     @FXML
@@ -79,7 +82,7 @@ public class FXMLAnadirMomentoController implements Initializable {
     private TextField t4;
     @FXML
     private TextArea descripcion;
-     @FXML
+    @FXML
     private TextField titular;
     @FXML
     private DatePicker cal;
@@ -89,13 +92,31 @@ public class FXMLAnadirMomentoController implements Initializable {
     private ImageView imgImagen;
     final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     public File imagenFile = null;
+    public File modificarFile = null;
+    public FXMLMomentoController controllerMomento;
     public FXMLPrincipalController controllerPrincipal;
+    public FXMLMomentosyNoticiasController controllerMYN;
+    public Momento modificarMomento;
+
+    public void setControllerMomento(FXMLMomentoController controllerMomento) {
+        this.controllerMomento = controllerMomento;
+    }
+
+    public void setControllerMYN(FXMLMomentosyNoticiasController controllerMYN) {
+        this.controllerMYN = controllerMYN;
+    }
+
+    public void setModificarMomento(Momento modificarMomento) {
+        this.modificarMomento = modificarMomento;
+    }
 
     public void setControllerPrincipal(FXMLPrincipalController controllerPrincipal) {
         this.controllerPrincipal = controllerPrincipal;
     }
+
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
@@ -103,19 +124,73 @@ public class FXMLAnadirMomentoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cal.setValue(LocalDate.now());
-         Callback<DatePicker, DateCell> dayCellFactory =( DatePicker dp) -> new DateCell() {
+        Callback<DatePicker, DateCell> dayCellFactory = (DatePicker dp) -> new DateCell() {
             @Override
             public void updateItem(LocalDate item, boolean empty) {
                 super.updateItem(item, empty);
-                if(item.isAfter(LocalDate.now())) setDisable(true);
+                if (item.isAfter(LocalDate.now())) {
+                    setDisable(true);
+                }
             }
-         };
-         cal.setDayCellFactory(dayCellFactory);
-    }    
-    
-    public void anadir_imagen(){
-         FileChooser chooser = new FileChooser();
-         chooser.getExtensionFilters().addAll(
+        };
+        cal.setDayCellFactory(dayCellFactory);
+    }
+
+    public void inicializarVentana() throws SQLException {
+        if (modificarMomento == null) {
+            cal.setValue(LocalDate.now());
+            cbcategoria.getSelectionModel().selectFirst();
+        } else {
+            cal.setValue(LocalDate.parse(modificarMomento.getFecha(), dateFormatter));
+            titular.setText(modificarMomento.getTitulo());
+            descripcion.setText(modificarMomento.getDescripcion());
+
+            /*  if (modificarMomento.getCategoria().equals("Noticias Nacionales")) {
+             cbcategoria.getSelectionModel().selectFirst();
+             } else {
+             cbcategoria.getSelectionModel().selectLast();
+             }*/
+            ArrayList<String> tags = modificarMomento.getTags();
+            if (tags.size() == 1) {
+                t1.setText(tags.get(0));
+            }
+            if (tags.size() == 2) {
+                t1.setText(tags.get(0));
+                t2.setText(tags.get(1));
+            }
+            if (tags.size() == 3) {
+                t1.setText(tags.get(0));
+                t2.setText(tags.get(1));
+                t3.setText(tags.get(2));
+            }
+            if (tags.size() == 4) {
+                t1.setText(tags.get(0));
+                t2.setText(tags.get(1));
+                t3.setText(tags.get(2));
+                t4.setText(tags.get(3));
+            }
+            String _color = modificarMomento.getColor().replace("-fx-background-color: ", "");
+            _color = _color.replace("#", "0x");
+            color.setValue(Color.web(_color));
+            if (modificarMomento.getId_documento() != 0) {
+                modificarFile = new File(modificarMomento.getRutaDocumento());
+                InputStream is = null;
+                try {
+                    is = new FileInputStream(modificarFile);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(FXMLRegistroPreguntaUnoController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                double width = 191;
+                double heigth = 167;
+                Image imagen = new Image(is, width, heigth, false, true);
+                imgImagen.setImage(imagen);
+            }
+        }
+    }
+
+    public void anadir_imagen() {
+        FileChooser chooser = new FileChooser();
+        chooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Todas las imagenes", "*.*"),
                 new FileChooser.ExtensionFilter("JPG", "*.jpg"),
                 new FileChooser.ExtensionFilter("JPEG", "*.jpeg"),
@@ -137,7 +212,7 @@ public class FXMLAnadirMomentoController implements Initializable {
 
     }
 
-                ///////////////////Menu de botones esquina superior derecha///////////////////
+    ///////////////////Menu de botones esquina superior derecha///////////////////
     @FXML
     public void minimizar() throws IOException {
         FXMLPrincipalController.ventanaNoticia.setIconified(true);
@@ -154,48 +229,67 @@ public class FXMLAnadirMomentoController implements Initializable {
     }
 
     @FXML
-    public void cerrar() throws IOException
-    {
+    public void cerrar() throws IOException {
         FXMLPrincipalController.ventanaNoticia.close();
     }
-    
+
     @FXML
-    public void cerrarEncima() throws IOException
-    {
-       circulocerr.setFill(Color.web("#D7F2E8"));
+    public void cerrarEncima() throws IOException {
+        circulocerr.setFill(Color.web("#D7F2E8"));
     }
-    
+
     @FXML
-    public void cerrarSalida() throws IOException
-    {
+    public void cerrarSalida() throws IOException {
         circulocerr.setFill(Color.TRANSPARENT);
     }
+
     @FXML
-    public void registra_momento() throws ConexionBDIncorrecta, IOException{
+    public void registra_momento() throws ConexionBDIncorrecta, IOException {
+        if(modificarMomento != null){
+         imagenFile.delete();
+        }
         String _titular = titular.getText();
         String _descripcion = descripcion.getText();
         ArrayList<String> tags = new ArrayList<>();
-        if(!t1.getText().isEmpty()) tags.add(t1.getText());
-        if(!t2.getText().isEmpty()) tags.add(t2.getText());
-        if(!t3.getText().isEmpty()) tags.add(t3.getText());
-        if(!t4.getText().isEmpty()) tags.add(t4.getText());
+        if (!t1.getText().isEmpty()) {
+            tags.add(t1.getText());
+        }
+        if (!t2.getText().isEmpty()) {
+            tags.add(t2.getText());
+        }
+        if (!t3.getText().isEmpty()) {
+            tags.add(t3.getText());
+        }
+        if (!t4.getText().isEmpty()) {
+            tags.add(t4.getText());
+        }
         String _fecha = dateFormatter.format(cal.getValue());
         String _color = color.getValue().toString();
         _color = _color.replace("0x", "#");
-        _color = _color.substring(0, _color.length() - 2);
-        Momento momento = Momento.insert(_titular, _fecha, _descripcion, "-fx-background-color: "+_color);
+        if(modificarMomento == null){
+        Momento momento = Momento.insert(_titular, _fecha, _descripcion, "-fx-background-color: " + _color);
         if (imagenFile != null) {
             momento.asociarDocumento(imagenFile);
             controllerPrincipal.mostrarImagenes();
         }
-    }
-     @FXML
+        }
+        modificarMomento.Update();
+        if (imagenFile != null) {
+            modificarMomento.asociarDocumento(imagenFile);
+            controllerPrincipal.mostrarImagenes();
+        }
+        }
+       
+    
+
+    @FXML
     public void moverPantalla2() throws IOException {
         anclaje.setOnMouseDragged((MouseEvent me) -> {
             FXMLPrincipalController.ventanaNoticia.setX(me.getScreenX() - initX);
             FXMLPrincipalController.ventanaNoticia.setY(me.getScreenY() - initY);
         });
     }
+
     @FXML
     public void moverPantalla() throws IOException {
         anclaje.setOnMousePressed((MouseEvent me) -> {

@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="473.0" prefWidth="425.0" style="-fx-background-color: #A44A3F; -fx-background-radius: 7; -fx-border-color: #e79f30; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLAdministracionController">
+<AnchorPane fx:id="anclaje" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#moverPantalla2" onMousePressed="#moverPantalla" prefHeight="473.0" prefWidth="425.0" style="-fx-background-color: #A44A3F; -fx-background-radius: 7; -fx-border-color: #e79f30; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLAdministracionController">
    <children>
       <ImageView fitHeight="122.0" fitWidth="220.0" layoutX="128.0" pickOnBounds="true" preserveRatio="true">
          <image>

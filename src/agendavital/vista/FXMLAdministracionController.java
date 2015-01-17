@@ -30,6 +30,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 /**
@@ -45,6 +47,14 @@ public class FXMLAdministracionController implements Initializable {
      * @param url
      * @param rb
      */
+    //////////////Variables de la ventana de registro//////////////
+        public static final double ANCHO = 425;
+	public static final double ALTO= 473;
+        private double initX=ANCHO/2;
+        private double initY=ALTO/2;    
+        //------------------------------------------------------------//
+    @FXML 
+    private AnchorPane anclaje;
     @FXML
     private TextField campo_usuario;
     @FXML
@@ -138,7 +148,25 @@ public class FXMLAdministracionController implements Initializable {
             error.setText(ex.getMensaje());
         } catch (ContrasenaSinNumeros ex) {
             error.setText(ex.getMensaje());
-        }
+        }  
 
     }
+        /////////////////////Métodos para mover la pantalla clickando en cualquier lugar/////////////////////
+   @FXML
+    public void moverPantalla() throws IOException {
+        anclaje.setOnMousePressed((MouseEvent me) -> {
+            initX = me.getScreenX() - FXMLPrincipalController.ventanaNoticia.getX();
+            initY = me.getScreenY() - FXMLPrincipalController.ventanaNoticia.getY();
+        });
+     
+    }
+
+    @FXML
+    public void moverPantalla2() throws IOException {
+        anclaje.setOnMouseDragged((MouseEvent me) -> {
+            FXMLPrincipalController.ventanaNoticia.setX(me.getScreenX() - initX);
+            FXMLPrincipalController.ventanaNoticia.setY(me.getScreenY() - initY);
+        });
+    }
+    //-----------------------------------------------------------------------------------------------//
 }

@@ -40,6 +40,12 @@ import javafx.stage.StageStyle;
  */
 public class FXMLRegistroPreguntaDosController implements Initializable {
     static Stage ventanaTerceraPregunta;
+     //////////////Variables de la ventana de registro//////////////
+        public static final double ANCHO = 596;
+	public static final double ALTO= 488;
+        private double initX=ANCHO/2;
+        private double initY=ALTO/2;    
+        //------------------------------------------------------------//
     @FXML
     private AnchorPane anclaje;
     @FXML
@@ -150,14 +156,6 @@ public class FXMLRegistroPreguntaDosController implements Initializable {
     }
 
     @FXML
-    private void moverPantalla2(MouseEvent event) {
-    }
-
-    @FXML
-    private void moverPantalla(MouseEvent event) {
-    }
-
-    @FXML
     public void anadirmomento() throws ConexionBDIncorrecta, IOException{
         String fecha = dateFormatter.format(dpFecha.getValue());
         momento = Momento.insert("Concierto de "+txtTitulo.getText(), fecha,txtDescripcion.getText(), "-fx-background-color: blue");
@@ -186,5 +184,23 @@ public class FXMLRegistroPreguntaDosController implements Initializable {
                 ventanaTerceraPregunta.show();
                 FXMLRegistroPreguntaUnoController.ventanaSegundaPregunta.close();
     }
+    
+            /////////////////////Métodos para mover la pantalla clickando en cualquier lugar/////////////////////
+    @FXML
+    public void moverPantalla() throws IOException {
+        anclaje.setOnMousePressed((MouseEvent me) -> {
+            initX = me.getScreenX() - FXMLRegistroPreguntaUnoController.ventanaSegundaPregunta.getX();
+            initY = me.getScreenY() - FXMLRegistroPreguntaUnoController.ventanaSegundaPregunta.getY();
+        });
+    }
+
+    @FXML
+    public void moverPantalla2() throws IOException {
+        anclaje.setOnMouseDragged((MouseEvent me) -> {
+            FXMLRegistroPreguntaUnoController.ventanaSegundaPregunta.setX(me.getScreenX() - initX);
+            FXMLRegistroPreguntaUnoController.ventanaSegundaPregunta.setY(me.getScreenY() - initY);
+        });
+    }
+    //-----------------------------------------------------------------------------------------------//
     
 }

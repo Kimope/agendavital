@@ -57,6 +57,13 @@ public class FXMLMomentosyNoticiasController implements Initializable {
     List<Text> let = new ArrayList<>();
     final ListView listView = new ListView();
     final ListView listView2 = new ListView();
+   
+    //////////////Variables de la ventana de registro//////////////
+        public static final double ANCHO = 425;
+	public static final double ALTO= 473;
+        private double initX=ANCHO/2;
+        private double initY=ALTO/2;    
+        //------------------------------------------------------------//
     @FXML
     private AnchorPane panecentral;
    
@@ -182,5 +189,24 @@ private void addLink(final String url, Noticia noticia) {
         });
         listView2.getItems().add(link);
     }
+    
+            /////////////////////Métodos para mover la pantalla clickando en cualquier lugar/////////////////////
+   @FXML
+    public void moverPantalla() throws IOException {
+        panecentral.setOnMousePressed((MouseEvent me) -> {
+            initX = me.getScreenX() - FXMLPrincipalController.ventanaNoticia.getX();
+            initY = me.getScreenY() - FXMLPrincipalController.ventanaNoticia.getY();
+        });
+     
+    }
+
+    @FXML
+    public void moverPantalla2() throws IOException {
+        panecentral.setOnMouseDragged((MouseEvent me) -> {
+            FXMLPrincipalController.ventanaNoticia.setX(me.getScreenX() - initX);
+            FXMLPrincipalController.ventanaNoticia.setY(me.getScreenY() - initY);
+        });
+    }
+    //-----------------------------------------------------------------------------------------------//
    
 }

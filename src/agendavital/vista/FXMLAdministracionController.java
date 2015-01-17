@@ -33,6 +33,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 
 /**
  * FXML Controller class
@@ -53,6 +56,18 @@ public class FXMLAdministracionController implements Initializable {
         private double initX=ANCHO/2;
         private double initY=ALTO/2;    
         //------------------------------------------------------------//
+        
+    @FXML
+    private Line lineacerrar2;
+    @FXML
+    private Line lineacerrar1;
+    @FXML
+    private Circle circulocerr;
+    @FXML
+    private Line lineamin;
+    @FXML
+    private Circle circulomin;
+    
     @FXML 
     private AnchorPane anclaje;
     @FXML
@@ -81,6 +96,41 @@ public class FXMLAdministracionController implements Initializable {
     private Label error;
     Usuario usuario = UsuarioLogueado.getLogueado();
 
+    
+                           ///////////////////Menu de botones esquina superior derecha///////////////////
+    @FXML
+    public void minimizar() throws IOException {
+        FXMLPrincipalController.ventanaNoticia.setIconified(true);
+    }
+
+    @FXML
+    public void minimizarEncima() throws IOException {
+        circulomin.setFill(Color.web("#D7F2E8"));
+    }
+
+    @FXML
+    public void minimizarSalida() throws IOException {
+        circulomin.setFill(Color.TRANSPARENT);
+    }
+
+    @FXML
+    public void cerrar() throws IOException
+    {
+        FXMLPrincipalController.ventanaNoticia.close();
+    }
+    
+    @FXML
+    public void cerrarEncima() throws IOException
+    {
+       circulocerr.setFill(Color.web("#D7F2E8"));
+    }
+    
+    @FXML
+    public void cerrarSalida() throws IOException
+    {
+        circulocerr.setFill(Color.TRANSPARENT);
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 

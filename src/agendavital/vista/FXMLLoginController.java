@@ -26,6 +26,7 @@ import agendavital.modelo.excepciones.ContrasenaMalIntroducida;
 import agendavital.modelo.excepciones.NickMalIntroducido;
 import java.sql.SQLException;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 
 /**
  * @author Enrique
@@ -53,23 +54,15 @@ public class FXMLLoginController implements Initializable
     @FXML private PasswordField txtPassword;
     
     @FXML private Button btnLogin;
-    @FXML private Button btnCancel;
-    
-    @FXML private Line lineacerrar1;
-    @FXML private Line lineacerrar2;
+    @FXML private Button btnCancel;   
+    @FXML private Label error_login;
     
     @FXML private Circle circulocerr;
-    @FXML private Label error_login;
+    @FXML private ImageView cruz;
     //------------------------------------------------------------//
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {}    
-    
-    @FXML
-    public void cerrar() throws IOException
-    {
-        AgendaVital.ventanaLogin.close();
-    }
     
     public void blanquearUsuario() throws IOException
     {
@@ -83,10 +76,17 @@ public class FXMLLoginController implements Initializable
         tfContra.setStyle("-fx-background-color: white");         
     }
     
+    ////////////////Metodos cerrar y minimizar/////////////////////
+    @FXML
+    public void cerrar() throws IOException
+    {
+        AgendaVital.ventanaLogin.close();
+    }
+    
     @FXML
     public void cerrarEncima() throws IOException
     {
-        circulocerr.setFill(Color.web("#c97c5d"));
+       circulocerr.setFill(Color.web("#D7F2E8"));
     }
     
     @FXML
@@ -95,6 +95,7 @@ public class FXMLLoginController implements Initializable
         circulocerr.setFill(Color.TRANSPARENT);
     }
     
+    ///////////////////////////////////////////////////////////////////
     //Método que sirve para realizar las acciones que ocurrirán al pulsar el botón de login
     @FXML
     public void login() throws IOException, ConexionBDIncorrecta

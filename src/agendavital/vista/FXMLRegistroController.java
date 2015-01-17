@@ -1,5 +1,6 @@
 package agendavital.vista;
 
+import agendavital.AgendaVital;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -90,6 +91,7 @@ public class FXMLRegistroController implements Initializable {
     private Circle circulomin;
     @FXML
     private Circle circulocerr;
+    
         //------------------------------------------------------------//
 
     ///////////////////Menu de botones esquina superior derecha///////////////////
@@ -100,7 +102,7 @@ public class FXMLRegistroController implements Initializable {
 
     @FXML
     public void minimizarEncima() throws IOException {
-        circulomin.setFill(Color.web("#c97c5d"));
+        circulomin.setFill(Color.web("#D7F2E8"));
     }
 
     @FXML
@@ -109,20 +111,23 @@ public class FXMLRegistroController implements Initializable {
     }
 
     @FXML
-    public void cerrar() throws IOException {
+    public void cerrar() throws IOException
+    {
         FXMLLoginController.ventanaRegistro.close();
     }
-
+    
     @FXML
-    public void cerrarEncima() throws IOException {
-        circulocerr.setFill(Color.web("#c97c5d"));
+    public void cerrarEncima() throws IOException
+    {
+       circulocerr.setFill(Color.web("#D7F2E8"));
     }
-
+    
     @FXML
-    public void cerrarSalida() throws IOException {
+    public void cerrarSalida() throws IOException
+    {
         circulocerr.setFill(Color.TRANSPARENT);
     }
-
+///////////////////////////////////////////////////////////
     // Maneja los colores de los fondos del formulario
 
     @FXML

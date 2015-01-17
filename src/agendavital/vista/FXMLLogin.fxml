@@ -32,13 +32,16 @@
       <PasswordField fx:id="tfContra" layoutX="79.0" layoutY="231.0" onMouseClicked="#blanquearContra" prefHeight="25.0" prefWidth="168.0" style="-fx-background-color: #FCF0CC;" />
       <Button fx:id="btnLogin" layoutX="122.0" layoutY="283.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="84.0" text="Login" />
       <Hyperlink layoutX="33.0" layoutY="320.0" onAction="#registro" style="-fx-underline: false;" text="Registrarme" textFill="#0f5257" visited="true" />
-      <Circle fx:id="circulocerr" fill="#ff000000" layoutX="289.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <Line fx:id="lineacerrar2" endX="9.0" fill="BLACK" layoutX="285.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="-40.0" strokeWidth="2.0" />
-      <Line fx:id="lineacerrar1" endX="9.0" fill="BLACK" layoutX="285.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="40.0" strokeWidth="2.0" />
+      <Circle fx:id="circulocerr" fill="#ff000000" layoutX="288.0" layoutY="27.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Label fx:id="error_login" layoutX="147.0" layoutY="335.0" textFill="#e4dd00" />
       <ImageView fitHeight="81.0" fitWidth="187.0" layoutX="72.0" layoutY="14.0">
          <image>
             <Image url="@vital.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cruz" fitHeight="17.0" fitWidth="12.0" layoutX="282.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagenes_interfaz/cross.png" />
          </image>
       </ImageView>
    </children>

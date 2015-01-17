@@ -31,6 +31,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.stage.FileChooser;
@@ -88,6 +89,44 @@ public class FXMLRegistroPreguntaUnoController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    
+        ///////////////////Menu de botones esquina superior derecha///////////////////
+    @FXML
+    public void minimizar() throws IOException {
+        FXMLRegistroCompletadoController.ventanaPrimeraPregunta.setIconified(true);
+    }
+
+    @FXML
+    public void minimizarEncima() throws IOException {
+        circulomin.setFill(Color.web("#D7F2E8"));
+    }
+
+    @FXML
+    public void minimizarSalida() throws IOException {
+        circulomin.setFill(Color.TRANSPARENT);
+    }
+
+    @FXML
+    public void cerrar() throws IOException
+    {
+        FXMLRegistroCompletadoController.ventanaPrimeraPregunta.close();
+    }
+    
+    @FXML
+    public void cerrarEncima() throws IOException
+    {
+       circulocerr.setFill(Color.web("#D7F2E8"));
+    }
+    
+    @FXML
+    public void cerrarSalida() throws IOException
+    {
+        circulocerr.setFill(Color.TRANSPARENT);
+    }
+///////////////////////////////////////////////////////////
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         dpFecha.setValue(LocalDate.now());

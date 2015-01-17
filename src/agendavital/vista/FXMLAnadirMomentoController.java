@@ -25,6 +25,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.util.Callback;
 
 /**
@@ -39,6 +42,17 @@ public class FXMLAnadirMomentoController implements Initializable {
         private double initX=ANCHO/2;
         private double initY=ALTO/2;    
         //------------------------------------------------------------//
+    @FXML
+    private Circle circulomin;
+    @FXML
+    private Line lineamin;
+    @FXML
+    private Circle circulocerr;
+    @FXML
+    private Line lineacerrar1;
+    @FXML
+    private Line lineacerrar2;
+        
     @FXML
     private AnchorPane anclaje;
     @FXML
@@ -67,6 +81,41 @@ public class FXMLAnadirMomentoController implements Initializable {
      * @param url
      * @param rb
      */
+                ///////////////////Menu de botones esquina superior derecha///////////////////
+    @FXML
+    public void minimizar() throws IOException {
+        FXMLPrincipalController.ventanaNoticia.setIconified(true);
+    }
+
+    @FXML
+    public void minimizarEncima() throws IOException {
+        circulomin.setFill(Color.web("#D7F2E8"));
+    }
+
+    @FXML
+    public void minimizarSalida() throws IOException {
+        circulomin.setFill(Color.TRANSPARENT);
+    }
+
+    @FXML
+    public void cerrar() throws IOException
+    {
+        FXMLPrincipalController.ventanaNoticia.close();
+    }
+    
+    @FXML
+    public void cerrarEncima() throws IOException
+    {
+       circulocerr.setFill(Color.web("#D7F2E8"));
+    }
+    
+    @FXML
+    public void cerrarSalida() throws IOException
+    {
+        circulocerr.setFill(Color.TRANSPARENT);
+    }
+///////////////////////////////////////////////////////////
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cal.setValue(LocalDate.now());
@@ -84,29 +133,6 @@ public class FXMLAnadirMomentoController implements Initializable {
     private void registra_usuario(ActionEvent event) {
     }
 
-    @FXML
-    private void cerrarEncima(MouseEvent event) {
-    }
-
-    @FXML
-    private void cerrar(MouseEvent event) {
-    }
-
-    @FXML
-    private void cerrarSalida(MouseEvent event) {
-    }
-
-    @FXML
-    private void minimizarEncima(MouseEvent event) {
-    }
-
-    @FXML
-    private void minimizar(MouseEvent event) {
-    }
-
-    @FXML
-    private void minimizarSalida(MouseEvent event) {
-    }
     @FXML
     public void registra_momento() throws ConexionBDIncorrecta{
         String _titular = titular.getText();

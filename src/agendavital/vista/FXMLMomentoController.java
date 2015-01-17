@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
@@ -75,6 +76,43 @@ public class FXMLMomentoController implements Initializable {
      * @param url
      * @param rb
      */
+    
+                        ///////////////////Menu de botones esquina superior derecha///////////////////
+    @FXML
+    public void minimizar() throws IOException {
+        FXMLPrincipalController.ventanaNoticia.setIconified(true);
+    }
+
+    @FXML
+    public void minimizarEncima() throws IOException {
+        circulomin.setFill(Color.web("#93C6D6"));
+    }
+
+    @FXML
+    public void minimizarSalida() throws IOException {
+        circulomin.setFill(Color.TRANSPARENT);
+    }
+
+    @FXML
+    public void cerrar() throws IOException
+    {
+        FXMLPrincipalController.ventanaNoticia.close();
+    }
+    
+    @FXML
+    public void cerrarEncima() throws IOException
+    {
+       circulocerr.setFill(Color.web("#93C6D6"));
+    }
+    
+    @FXML
+    public void cerrarSalida() throws IOException
+    {
+        circulocerr.setFill(Color.TRANSPARENT);
+    }
+///////////////////////////////////////////////////////////
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -86,30 +124,6 @@ public class FXMLMomentoController implements Initializable {
         
     }
 
-    @FXML
-    private void cerrarEncima(MouseEvent event) {
-    }
-
-    @FXML
-    private void cerrar(MouseEvent event) {
-    }
-
-    @FXML
-    private void cerrarSalida(MouseEvent event) {
-    }
-
-    @FXML
-    private void minimizarEncima(MouseEvent event) {
-    }
-
-    @FXML
-    private void minimizar(MouseEvent event) {
-    }
-
-    @FXML
-    private void minimizarSalida(MouseEvent event) {
-    }
-    
         /////////////////////Métodos para mover la pantalla clickando en cualquier lugar/////////////////////
    @FXML
     public void moverPantalla() throws IOException {

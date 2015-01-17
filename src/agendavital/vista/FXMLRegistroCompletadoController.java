@@ -57,7 +57,7 @@ public class FXMLRegistroCompletadoController implements Initializable
     @FXML
     public void minimizarEncima() throws IOException
     {
-        circulomin.setFill(Color.web("#c97c5d"));
+        circulomin.setFill(Color.web("#D7F2E8"));
     }
     @FXML
     public void minimizarSalida() throws IOException
@@ -72,7 +72,7 @@ public class FXMLRegistroCompletadoController implements Initializable
     @FXML
     public void cerrarEncima() throws IOException
     {
-        circulocerr.setFill(Color.web("#c97c5d"));
+        circulocerr.setFill(Color.web("#D7F2E8"));
     }
     @FXML
     public void cerrarSalida() throws IOException

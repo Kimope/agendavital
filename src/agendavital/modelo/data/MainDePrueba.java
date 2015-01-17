@@ -6,9 +6,9 @@
 package agendavital.modelo.data;
 
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
+import agendavital.modelo.util.ConfigBD;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  *
@@ -24,11 +24,12 @@ public class MainDePrueba {
          Momento momento = Momento.insert(fecha, descripcion, color, 1);
          File origen = new File("/home/ramon/Linuxdoc-Ejemplo.pdf");
          momento.asociarDocumento(origen);*/
-        ArrayList<String> tags = new ArrayList<>();
+     /*   ArrayList<String> tags = new ArrayList<>();
         tags.add("prueba");
         tags.add("marca");
         Noticia.Insert("Prueba 3", "http://www.as.com", "12-01-2015", "Noticias Nacionales", "Esto es una prueba", tags);
-       
+       */
+        ConfigBD.crearTablas();
     }
 
 }

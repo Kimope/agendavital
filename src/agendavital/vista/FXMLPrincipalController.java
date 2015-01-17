@@ -3,6 +3,7 @@ package agendavital.vista;
 import agendavital.modelo.data.Momento;
 import agendavital.modelo.data.Noticia;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
+import agendavital.modelo.util.UsuarioLogueado;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -65,6 +66,8 @@ public class FXMLPrincipalController implements Initializable {
     private AnchorPane panecentral;
 
     final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    public int nRecargas = 0;
+    Pagination pagination = null;
 
     public int itemsPerPage() {
         return 1;
@@ -91,28 +94,6 @@ public class FXMLPrincipalController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String s = "imagenes";
-        //String s= "Momentos/"+UsuarioLogueado.getLogueado().getNick();
-        File f = new File(s);
-        if (f.exists()) {
-            filesJpg = f.listFiles();
-        } else {
-            System.out.print("ERROR NO SE HA ENCONTRADO EL DIRECTORIO");
-        }
-
-        int numOfPage = filesJpg.length;
-        Pagination pagination = new Pagination(numOfPage);
-        pagination.setPageFactory(new Callback<Integer, Node>() {
-            @Override
-            public Node call(Integer pageIndex) {
-                return createPage(pageIndex);
-            }
-        });
-        AnchorPane.setTopAnchor(pagination, 30.0);
-        AnchorPane.setRightAnchor(pagination, 25.0);
-        pagination.getStyleClass().add(Pagination.STYLE_CLASS_BULLET);
-        panecentral.getChildren().add(pagination);
-
         ////////////COLOREADO DE FECHAS/////////////
         cal.setValue(LocalDate.now());
         cal.setStyle("-fx-font: 16pt Arial;");
@@ -142,9 +123,39 @@ public class FXMLPrincipalController implements Initializable {
                 }
             }
         };
+        mostrarImagenes();
         colorearFechas();
+        
         cal.setConverter(converter);
         cal.setPromptText("dd-MM-yyyy");
+    }
+    
+    public void mostrarImagenes(){
+        panecentral.getChildren().remove(pagination);
+         String s = "Momentos/"+UsuarioLogueado.getLogueado().getNick();
+        //String s= "Momentos/"+UsuarioLogueado.getLogueado().getNick();
+        File f = new File(s);
+        if (f.exists()) {
+            filesJpg = f.listFiles();
+        } else {
+            System.out.print("ERROR NO SE HA ENCONTRADO EL DIRECTORIO");
+        }
+
+        int numOfPage = filesJpg.length;
+        if(numOfPage > 0){
+         pagination = new Pagination(numOfPage);
+        pagination.setPageFactory(new Callback<Integer, Node>() {
+            @Override
+            public Node call(Integer pageIndex) {
+                return createPage(pageIndex);
+            }
+        });
+        AnchorPane.setTopAnchor(pagination, 30.0);
+        AnchorPane.setRightAnchor(pagination, 25.0);
+        pagination.getStyleClass().add(Pagination.STYLE_CLASS_BULLET);
+        panecentral.getChildren().add(pagination);
+        
+        }
     }
     
     public void colorearFechas(){
@@ -273,7 +284,8 @@ public class FXMLPrincipalController implements Initializable {
         }
 
         Scene escenaNoticia = new Scene(root);
-        //FXMLNoticiaController controller = loader.getController();
+        FXMLAnadirMomentoController controller = loader.getController();
+        controller.setControllerPrincipal(this);
         ventanaNoticia.setScene(escenaNoticia);
         ventanaNoticia.initStyle(StageStyle.UNDECORATED);
         ventanaNoticia.show();

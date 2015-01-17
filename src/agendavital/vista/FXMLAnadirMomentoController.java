@@ -5,18 +5,25 @@
  */
 package agendavital.vista;
 
+import agendavital.modelo.data.Momento;
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
 
 /**
  * FXML Controller class
@@ -24,7 +31,7 @@ import javafx.scene.shape.Line;
  * @author Enrique
  */
 public class FXMLAnadirMomentoController implements Initializable {
-        //////////////Variables de la ventana de registro//////////////
+     //////////////Variables de la ventana de registro//////////////
         public static final double ANCHO = 596;
 	public static final double ALTO= 488;
         private double initX=ANCHO/2;
@@ -37,16 +44,22 @@ public class FXMLAnadirMomentoController implements Initializable {
     @FXML
     private Button butregistrarse;
     @FXML
-    private Line lineacerrar2;
+    private TextField t1;
     @FXML
-    private Line lineacerrar1;
+    private TextField t2;
     @FXML
-    private Circle circulocerr;
+    private TextField t3;
     @FXML
-    private Line lineamin;
+    private TextField t4;
     @FXML
-    private Circle circulomin;
-
+    private TextArea descripcion;
+     @FXML
+    private TextField titular;
+    @FXML
+    private DatePicker cal;
+    @FXML
+    private ColorPicker color;
+    final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     /**
      * Initializes the controller class.
      * @param url
@@ -54,9 +67,8 @@ public class FXMLAnadirMomentoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        cal.setValue(LocalDate.now());
     }    
-    
 
     @FXML
     private void registra_usuario(ActionEvent event) {
@@ -85,7 +97,29 @@ public class FXMLAnadirMomentoController implements Initializable {
     @FXML
     private void minimizarSalida(MouseEvent event) {
     }
-    /////////////////////Métodos para mover la pantalla clickando en cualquier lugar/////////////////////
+    @FXML
+    public void registra_momento() throws ConexionBDIncorrecta{
+        String _titular = titular.getText();
+        String _descripcion = descripcion.getText();
+        ArrayList<String> tags = new ArrayList<>();
+        if(!t1.getText().isEmpty()) tags.add(t1.getText());
+        if(!t2.getText().isEmpty()) tags.add(t2.getText());
+        if(!t3.getText().isEmpty()) tags.add(t3.getText());
+        if(!t4.getText().isEmpty()) tags.add(t4.getText());
+        String _fecha = dateFormatter.format(cal.getValue());
+        String _color = color.getPromptText();
+        System.out.println(_color);
+        Momento momento = Momento.insert(_titular, _fecha, _descripcion, _color);
+        
+    }
+    
+    @FXML
+    public void moverPantalla2() throws IOException {
+        anclaje.setOnMouseDragged((MouseEvent me) -> {
+            FXMLPrincipalController.ventanaNoticia.setX(me.getScreenX() - initX);
+            FXMLPrincipalController.ventanaNoticia.setY(me.getScreenY() - initY);
+        });
+    }
     @FXML
     public void moverPantalla() throws IOException {
         anclaje.setOnMousePressed((MouseEvent me) -> {
@@ -94,11 +128,4 @@ public class FXMLAnadirMomentoController implements Initializable {
         });
     }
 
-    @FXML
-    public void moverPantalla2() throws IOException {
-        anclaje.setOnMouseDragged((MouseEvent me) -> {
-            FXMLPrincipalController.ventanaNoticia.setX(me.getScreenX() - initX);
-            FXMLPrincipalController.ventanaNoticia.setY(me.getScreenY() - initY);
-        });
-    }
 }

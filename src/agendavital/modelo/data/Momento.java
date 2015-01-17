@@ -201,8 +201,9 @@ public class Momento {
             nuevo = new Momento(nuevoId);
             return nuevo;
         } catch (SQLException e) {
-            throw new ConexionBDIncorrecta();
+           e.printStackTrace();
         }
+        return null;
     }
 
     /**Funcion modificadora

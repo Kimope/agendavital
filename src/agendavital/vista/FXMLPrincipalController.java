@@ -264,7 +264,7 @@ public class FXMLPrincipalController implements Initializable {
                 try {
                     root = loader.load();
                 } catch (IOException e) {
-                    System.out.println("No se puede encontrar el fichero FXML");
+                    e.printStackTrace();
                 }
 
                 Scene escenaNoticia = new Scene(root);

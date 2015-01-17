@@ -154,7 +154,7 @@ public class FXMLRegistroPreguntaUnoController implements Initializable {
                 new FileChooser.ExtensionFilter("BMP", "*.bmp"),
                 new FileChooser.ExtensionFilter("PNG", "*.png")
         );
-        File file = chooser.showOpenDialog(new Stage());
+        file = chooser.showOpenDialog(new Stage());
         InputStream is = null;
         try {
             is = new FileInputStream(file);

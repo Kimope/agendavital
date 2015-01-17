@@ -19,11 +19,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -68,6 +70,14 @@ public class FXMLAnadirMomentoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cal.setValue(LocalDate.now());
+         Callback<DatePicker, DateCell> dayCellFactory =( DatePicker dp) -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate item, boolean empty) {
+                super.updateItem(item, empty);
+                if(item.isAfter(LocalDate.now())) setDisable(true);
+            }
+         };
+         cal.setDayCellFactory(dayCellFactory);
     }    
 
     @FXML
@@ -108,7 +118,6 @@ public class FXMLAnadirMomentoController implements Initializable {
         if(!t4.getText().isEmpty()) tags.add(t4.getText());
         String _fecha = dateFormatter.format(cal.getValue());
         String _color = color.getPromptText();
-        System.out.println(_color);
         Momento momento = Momento.insert(_titular, _fecha, _descripcion, _color);
         
     }

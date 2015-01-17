@@ -253,7 +253,7 @@ public class FXMLPrincipalController implements Initializable {
         ventanaNoticia = new Stage();
         Image icon = new Image(getClass().getResourceAsStream("logo.png"));
         ventanaNoticia.getIcons().add(icon);
-        ventanaNoticia.setTitle("Nuevo Momento");
+        ventanaNoticia.setTitle("Nueva Noticia");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAnadirNoticia.fxml"));
         try {
             root = loader.load();

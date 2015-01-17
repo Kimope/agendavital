@@ -50,11 +50,11 @@
             </TextFlow>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#575b5e" height="186.0" layoutX="482.0" layoutY="58.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
             <Circle fill="#5d3614" layoutX="584.0" layoutY="40.0" radius="10.0" stroke="#513621" strokeType="INSIDE" />
+            <Circle fx:id="circulocerr" fill="#ff000000" layoutX="695.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
             <Line fx:id="lineacerrar2" endX="9.0" fill="BLACK" layoutX="691.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="-45.0" strokeWidth="2.0" />
             <Line fx:id="lineacerrar1" endX="9.0" fill="BLACK" layoutX="691.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="45.0" strokeWidth="2.0" />
-            <Circle fx:id="circulocerr" fill="#ff000000" layoutX="695.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-            <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="666.0" layoutY="21.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
             <Circle fx:id="circulomin" fill="#ff000000" layoutX="670.0" layoutY="21.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" onMouseExited="#minimizarSalida" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="666.0" layoutY="21.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
          </children>
       </AnchorPane>
       <QuadCurve controlX="30.0" controlY="69.7" endX="20.0" endY="80.0" fill="#1f93ff00" layoutX="9.0" layoutY="27.0" startX="44.84" startY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />

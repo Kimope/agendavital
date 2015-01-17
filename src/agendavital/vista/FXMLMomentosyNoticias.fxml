@@ -14,5 +14,10 @@
    <children>
       <Text layoutX="365.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOTICIAS" />
       <Text layoutX="358.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MOMENTOS" />
+      <Circle fx:id="circulocerr" fill="#ff000000" layoutX="758.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Line fx:id="lineacerrar2" endX="9.0" fill="BLACK" layoutX="754.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="-45.0" strokeWidth="2.0" />
+      <Line fx:id="lineacerrar1" endX="9.0" fill="BLACK" layoutX="754.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="45.0" strokeWidth="2.0" />
+      <Circle fx:id="circulomin" fill="#ff000000" layoutX="733.0" layoutY="21.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" onMouseExited="#minimizarSalida" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="729.0" layoutY="21.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
    </children>
 </AnchorPane>

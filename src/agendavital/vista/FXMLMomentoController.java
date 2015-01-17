@@ -23,6 +23,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
@@ -84,6 +85,7 @@ public class FXMLMomentoController implements Initializable {
      * @param url
      * @param rb
      */
+<<<<<<< HEAD
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -108,32 +110,64 @@ public class FXMLMomentoController implements Initializable {
         }
     }
 
+=======
+    
+                        ///////////////////Menu de botones esquina superior derecha///////////////////
+>>>>>>> 53e6c701fcf293caf3ebf63bbe55b2c3627fc3dc
     @FXML
-    private void cerrarEncima(MouseEvent event) {
+    public void minimizar() throws IOException {
+        FXMLPrincipalController.ventanaNoticia.setIconified(true);
     }
 
     @FXML
-    private void cerrar(MouseEvent event) {
+    public void minimizarEncima() throws IOException {
+        circulomin.setFill(Color.web("#93C6D6"));
     }
 
     @FXML
-    private void cerrarSalida(MouseEvent event) {
+    public void minimizarSalida() throws IOException {
+        circulomin.setFill(Color.TRANSPARENT);
     }
 
     @FXML
-    private void minimizarEncima(MouseEvent event) {
+    public void cerrar() throws IOException
+    {
+        FXMLPrincipalController.ventanaNoticia.close();
     }
-
+    
     @FXML
-    private void minimizar(MouseEvent event) {
+    public void cerrarEncima() throws IOException
+    {
+       circulocerr.setFill(Color.web("#93C6D6"));
     }
-
+    
     @FXML
-    private void minimizarSalida(MouseEvent event) {
+    public void cerrarSalida() throws IOException
+    {
+        circulocerr.setFill(Color.TRANSPARENT);
     }
+<<<<<<< HEAD
 
     /////////////////////Métodos para mover la pantalla clickando en cualquier lugar/////////////////////
     @FXML
+=======
+///////////////////////////////////////////////////////////
+    
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
+     public void imprimir(Momento momento){
+        txtTitular.setText(momento.getTitulo());
+        txtCategoria.setText(momento.getFecha());
+        txtCuerpo.setText(momento.getDescripcion());
+        
+    }
+
+        /////////////////////Métodos para mover la pantalla clickando en cualquier lugar/////////////////////
+   @FXML
+>>>>>>> 53e6c701fcf293caf3ebf63bbe55b2c3627fc3dc
     public void moverPantalla() throws IOException {
         anclaje.setOnMousePressed((MouseEvent me) -> {
             initX = me.getScreenX() - FXMLPrincipalController.ventanaNoticia.getX();

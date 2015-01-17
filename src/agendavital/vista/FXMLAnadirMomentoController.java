@@ -33,8 +33,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+<<<<<<< HEAD
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+=======
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
+>>>>>>> 53e6c701fcf293caf3ebf63bbe55b2c3627fc3dc
 import javafx.util.Callback;
 
 /**
@@ -49,6 +55,17 @@ public class FXMLAnadirMomentoController implements Initializable {
         private double initX=ANCHO/2;
         private double initY=ALTO/2;    
         //------------------------------------------------------------//
+    @FXML
+    private Circle circulomin;
+    @FXML
+    private Line lineamin;
+    @FXML
+    private Circle circulocerr;
+    @FXML
+    private Line lineacerrar1;
+    @FXML
+    private Line lineacerrar2;
+        
     @FXML
     private AnchorPane anclaje;
     @FXML
@@ -85,6 +102,7 @@ public class FXMLAnadirMomentoController implements Initializable {
      * @param url
      * @param rb
      */
+<<<<<<< HEAD
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cal.setValue(LocalDate.now());
@@ -120,33 +138,60 @@ public class FXMLAnadirMomentoController implements Initializable {
         Image imagen = new Image(is, width, heigth, false, false);
         imgImagen.setImage(imagen);
     }
+=======
+                ///////////////////Menu de botones esquina superior derecha///////////////////
+>>>>>>> 53e6c701fcf293caf3ebf63bbe55b2c3627fc3dc
+    @FXML
+    public void minimizar() throws IOException {
+        FXMLPrincipalController.ventanaNoticia.setIconified(true);
+    }
+
+    @FXML
+    public void minimizarEncima() throws IOException {
+        circulomin.setFill(Color.web("#D7F2E8"));
+    }
+
+    @FXML
+    public void minimizarSalida() throws IOException {
+        circulomin.setFill(Color.TRANSPARENT);
+    }
+
+    @FXML
+    public void cerrar() throws IOException
+    {
+        FXMLPrincipalController.ventanaNoticia.close();
+    }
+    
+    @FXML
+    public void cerrarEncima() throws IOException
+    {
+       circulocerr.setFill(Color.web("#D7F2E8"));
+    }
+    
+    @FXML
+    public void cerrarSalida() throws IOException
+    {
+        circulocerr.setFill(Color.TRANSPARENT);
+    }
+///////////////////////////////////////////////////////////
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        cal.setValue(LocalDate.now());
+         Callback<DatePicker, DateCell> dayCellFactory =( DatePicker dp) -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate item, boolean empty) {
+                super.updateItem(item, empty);
+                if(item.isAfter(LocalDate.now())) setDisable(true);
+            }
+         };
+         cal.setDayCellFactory(dayCellFactory);
+    }    
+
     @FXML
     private void registra_usuario(ActionEvent event) {
     }
 
-    @FXML
-    private void cerrarEncima(MouseEvent event) {
-    }
-
-    @FXML
-    private void cerrar(MouseEvent event) {
-    }
-
-    @FXML
-    private void cerrarSalida(MouseEvent event) {
-    }
-
-    @FXML
-    private void minimizarEncima(MouseEvent event) {
-    }
-
-    @FXML
-    private void minimizar(MouseEvent event) {
-    }
-
-    @FXML
-    private void minimizarSalida(MouseEvent event) {
-    }
     @FXML
     public void registra_momento() throws ConexionBDIncorrecta, IOException{
         String _titular = titular.getText();

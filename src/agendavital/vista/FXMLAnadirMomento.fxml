@@ -27,11 +27,11 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Circle fx:id="circulocerr" fill="#ff000000" layoutX="565.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Line fx:id="lineacerrar2" endX="9.0" fill="BLACK" layoutX="561.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="40.0" strokeWidth="2.0" />
       <Line fx:id="lineacerrar1" endX="9.0" fill="BLACK" layoutX="561.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="-40.0" strokeWidth="2.0" />
-      <Circle fx:id="circulocerr" fill="#ff000000" layoutX="565.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="536.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
       <Circle fx:id="circulomin" fill="#ff000000" layoutX="540.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" onMouseExited="#minimizarSalida" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="536.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
       <ImageView fitHeight="63.0" fitWidth="200.0" layoutX="204.0" layoutY="9.0">
          <image>
             <Image url="@vital.png" />

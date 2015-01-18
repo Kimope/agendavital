@@ -17,7 +17,6 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="254.0" layoutX="459.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="245.0" />
             <Button fx:id="btnModificar" layoutX="459.0" layoutY="535.0" mnemonicParsing="false" onAction="#modificar_momento" text="Modificar momento" />
             <Button layoutX="591.0" layoutY="535.0" mnemonicParsing="false" onAction="#borrar_momento" prefHeight="25.0" prefWidth="122.0" text="Borrar momento" />
-            <ImageView fx:id="ivImagen" fitHeight="186.0" fitWidth="200.0" layoutX="481.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" />
             <TextFlow fx:id="tfCategoria" layoutX="460.0" layoutY="314.0" prefHeight="28.0" prefWidth="245.0" style="-fx-border-color: black;">
                <children>
                   <Text fx:id="txtCategoria" strokeType="OUTSIDE" strokeWidth="0.0" />
@@ -55,6 +54,7 @@
             <Line fx:id="lineacerrar1" endX="9.0" fill="BLACK" layoutX="691.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="45.0" strokeWidth="2.0" />
             <Circle fx:id="circulomin" fill="#ff000000" layoutX="670.0" layoutY="21.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" onMouseExited="#minimizarSalida" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
             <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="666.0" layoutY="21.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
+            <ImageView fx:id="ivImagen" fitHeight="186.0" fitWidth="200.0" layoutX="481.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
       <QuadCurve controlX="30.0" controlY="69.7" endX="20.0" endY="80.0" fill="#1f93ff00" layoutX="9.0" layoutY="27.0" startX="44.84" startY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />

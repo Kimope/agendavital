@@ -109,18 +109,16 @@
       <Circle layoutX="408.0" layoutY="84.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle layoutX="408.0" layoutY="48.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle layoutX="408.0" layoutY="29.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <Line endX="200.0" fill="BLACK" layoutX="141.0" layoutY="224.0" startX="-100.0" stroke="#00000085" strokeWidth="2.0" />
-      <Text fill="#0f5257" layoutX="47.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Sabias que  el año de">
+      <Text fill="#0f5257" layoutX="77.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tu nacimiento...">
          <font>
             <Font name="Cooper Black" size="27.0" />
          </font>
       </Text>
-      <Text fill="#0f5257" layoutX="71.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="tu nacimiento...?">
+      <Text fill="#0f5257" layoutX="53.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Sabias que  el año de">
          <font>
             <Font name="Cooper Black" size="27.0" />
          </font>
       </Text>
-      <Line endX="200.0" fill="BLACK" layoutX="141.0" layoutY="273.0" startX="-100.0" stroke="#00000085" strokeWidth="2.0" />
       <Circle fill="#1f93ff00" layoutX="594.0" layoutY="130.0" radius="8.0" stroke="#0f5257" strokeType="INSIDE" strokeWidth="2.0" />
       <Line endX="100.0" layoutX="480.0" layoutY="130.0" startX="-30.0" stroke="#0f5257" strokeWidth="2.0" />
       <Line endX="100.0" layoutX="640.0" layoutY="130.0" startX="-30.0" stroke="#0f5257" strokeWidth="2.0" />
@@ -185,6 +183,10 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <TextArea fx:id="texto" layoutX="461.0" layoutY="312.0" prefHeight="121.0" prefWidth="267.0" style="-fx-background-color: #93C6D6; -fx-background-radius: 7; -fx-border-color: #0F5257; -fx-border-radius: 7; -fx-border-width: 6px;" />
+      <Text fx:id="texto2" fill="#0f5257" layoutX="443.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="302.0">
+         <font>
+            <Font name="Cooper Black" size="27.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

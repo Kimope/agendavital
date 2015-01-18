@@ -3,7 +3,7 @@ id_documento INT PRIMARY KEY,
 ruta_doc TEXT);
 ;
 CREATE TABLE momentos_noticias_etiquetas(
-id_momento_noticia_etiqueta INT PRIMARY KEY,
+id_momento_noticia_etiqueta INT PRIMARY KEY AUTOINCREMENT NOT NULL,
 id_momento INT,
 id_noticia INT,
 id_etiqueta INT,
@@ -25,11 +25,13 @@ id_noticia INT,
 FOREIGN KEY(id_noticia) REFERENCES noticias(id_noticia));
 ;
 CREATE TABLE momentos(
-id_momento INT PRIMARY KEY,
+id_momento INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 fecha TEXT,
 descripcion TEXT,
 id_documento INT,
 id_noticia  INT,
+id_etiqueta INT,
+FOREIGN KEY(id_etiqueta) REFERENCES etiquetas(id_etiqueta),
 FOREIGN KEY(id_documento) REFERENCES documentos(id_documento),
 FOREIGN KEY(id_noticia) REFERENCES noticias(id_noticia));
 ;
@@ -39,7 +41,9 @@ CREATE TABLE "noticias" (
     "link" TEXT,
     "cuerpo" TEXT,
     "categoria" TEXT,
-    "fecha" TEXT
+    "fecha" TEXT,
+    id_etiqueta INT,
+    FOREIGN KEY(id_etiqueta) REFERENCES etiquetas(id_etiqueta)
 );
 CREATE TABLE sqlite_sequence(name,seq);
 CREATE TABLE "etiquetas" (

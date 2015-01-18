@@ -3,15 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLAdministracionController.java</file>
-            <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLMomentosyNoticiasController.java</file>
-            <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLAcercaDeController.java</file>
-=======
+            <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/src/agendavital/vista/FXMLMomentoController.java</file>
             <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/src/agendavital/vista/FXMLAnadirMomentoController.java</file>
             <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/src/agendavital/modelo/data/Momento.java</file>
+            <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/src/agendavital/vista/FXMLMomentosyNoticiasController.java</file>
             <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/src/agendavital/vista/FXMLPrincipalController.java</file>
->>>>>>> 023d9d3907bb1f9ebd13a4cb0216a0f471b0cb0f
         </group>
     </open-files>
 </project-private>

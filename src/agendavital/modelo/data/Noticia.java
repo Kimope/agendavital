@@ -41,8 +41,6 @@ public class Noticia {
     String cuerpo;
     ArrayList<String> tags;
 
-   
-
     /**
      * Constructor de noticia.
      *
@@ -80,7 +78,6 @@ public class Noticia {
             }
         }
     }
-    
 
     Noticia() {
 
@@ -97,6 +94,7 @@ public class Noticia {
     public ArrayList<String> getTags() {
         return tags;
     }
+
     public String getTitulo() {
         return titulo;
     }
@@ -108,7 +106,8 @@ public class Noticia {
     public String getFecha() {
         return fecha;
     }
-     public void setTags(ArrayList<String> tags) {
+
+    public void setTags(ArrayList<String> tags) {
         this.tags = tags;
     }
 
@@ -140,6 +139,22 @@ public class Noticia {
         this.cuerpo = cuerpo;
     }
 
+    public static ArrayList<Noticia> getTodasNoticias() throws ConexionBDIncorrecta {
+        ResultSet rs = null;
+        ArrayList<Noticia> noticias = null;
+        try (Connection conexion = ConfigBD.conectar()) {
+            noticias = new ArrayList<>();
+            String consulta = String.format("SELECT id_noticia from Noticias;");
+            rs = conexion.createStatement().executeQuery(consulta);
+            while (rs.next()) {
+                noticias.add(new Noticia(rs.getInt("id_noticia")));
+            }
+            return noticias;
+        } catch (SQLException e) {
+            throw new ConexionBDIncorrecta();
+        }
+    }
+
     /**
      * Funcion que devuelve las noticias en una fecha
      *
@@ -168,7 +183,7 @@ public class Noticia {
      *
      * @return
      * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
-     * 
+     *
      */
     public static ArrayList<Pair<LocalDate, Noticia>> getNoticiasFecha() throws ConexionBDIncorrecta {
         ResultSet rs = null;
@@ -237,6 +252,8 @@ public class Noticia {
         try (Connection conexion = ConfigBD.conectar()) {
             String update = String.format("UPDATE noticias SET titulo = %s, link = %s, fecha = %s, categoria = %s, cuerpo = %s WHERE id_noticia = %d;", ConfigBD.String2Sql(getTitulo(), false), ConfigBD.String2Sql(getLink(), false), ConfigBD.String2Sql(getFecha(), false), ConfigBD.String2Sql(getCategoria(), false), ConfigBD.String2Sql(getCuerpo(), false), getId());
             conexion.createStatement().executeUpdate(update);
+            String eliminaMNE = String.format("DELETE from momentos_noticias_etiquetas WHERE id_noticia = %d", id);
+            conexion.createStatement().executeUpdate(eliminaMNE);
             for (String tag : tags) {
                 String consultaTag = String.format("SELECT id_etiqueta from etiquetas WHERE Nombre = %s;", ConfigBD.String2Sql(tag, false));
                 ResultSet rs = conexion.createStatement().executeQuery(consultaTag);
@@ -247,8 +264,8 @@ public class Noticia {
                     conexion.createStatement().executeUpdate(insertTag);
                     idTag = ConfigBD.LastId("etiquetas");
                 }
-                String updateNoticiaEtiqueta = String.format("Update momentos_noticias_etiquetas SET id_etiqueta = %d WHERE id_Noticia = %d;", idTag, id);
-                conexion.createStatement().executeUpdate(updateNoticiaEtiqueta);
+                String insertaMNE = String.format("INSERT INTO momentos_noticias_etiquetas (id_noticia, id_etiqueta) VALUES(%d, %d)", id, idTag);
+                conexion.createStatement().executeUpdate(insertaMNE);
             }
         } catch (SQLException e) {
             throw new ConexionBDIncorrecta();
@@ -262,10 +279,10 @@ public class Noticia {
      */
     public void Delete() throws ConexionBDIncorrecta {
         try (Connection conexion = ConfigBD.conectar()) {
-            String delete = String.format("Delete from noticias WHERE id_noticia = %d;", getId());
-            conexion.createStatement().executeUpdate(delete);
             String deleteMNE = String.format("UPDATE momentos_noticias_etiquetas SET id_noticia=NULL WHERE id_noticia = %d;", getId());
             conexion.createStatement().executeUpdate(deleteMNE);
+            String delete = String.format("Delete from noticias WHERE id_noticia = %d;", getId());
+            conexion.createStatement().executeUpdate(delete);
         } catch (SQLException e) {
             throw new ConexionBDIncorrecta();
         }
@@ -300,7 +317,7 @@ public class Noticia {
         return arrayNoticias;
     }
 
-    public static ArrayList<Noticia> buscar(String _tag) throws ConexionBDIncorrecta{
+    public static ArrayList<Noticia> buscar(String _tag) throws ConexionBDIncorrecta {
         ArrayList<Noticia> busqueda = null;
         try (Connection conexion = ConfigBD.conectar()) {
             busqueda = new ArrayList<>();
@@ -308,11 +325,13 @@ public class Noticia {
                     + "WHERE id_Etiqueta IN (SELECT id_Etiqueta from etiquetas "
                     + "WHERE nombre LIKE %s);", ConfigBD.String2Sql(_tag, true));
             ResultSet rs = conexion.createStatement().executeQuery(buscar);
-            while(rs.next()) busqueda.add(new Noticia(rs.getInt("id_Noticia")));
-        } catch (SQLException e){
+            while (rs.next()) {
+                busqueda.add(new Noticia(rs.getInt("id_Noticia")));
+            }
+        } catch (SQLException e) {
             throw new ConexionBDIncorrecta();
         }
         return busqueda;
     }
-    
+
 }

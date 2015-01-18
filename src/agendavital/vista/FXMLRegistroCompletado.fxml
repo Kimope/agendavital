@@ -185,17 +185,6 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <Line endX="200.0" fill="BLACK" layoutX="544.0" layoutY="373.0" startX="-100.0" stroke="#00000085" strokeWidth="2.0" />
-      <Text fx:id="text2" layoutX="491.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0">
-         <font>
-            <Font name="Cooper Black" size="27.0" />
-         </font>
-      </Text>
-      <Text fx:id="text1" layoutX="450.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0">
-         <font>
-            <Font name="Cooper Black" size="27.0" />
-         </font>
-      </Text>
-      <Line endX="200.0" fill="BLACK" layoutX="544.0" layoutY="324.0" startX="-100.0" stroke="#00000085" strokeWidth="2.0" />
+      <TextArea fx:id="texto" layoutX="461.0" layoutY="312.0" prefHeight="121.0" prefWidth="267.0" style="-fx-background-color: #93C6D6; -fx-background-radius: 7; -fx-border-color: #0F5257; -fx-border-radius: 7; -fx-border-width: 6px;" />
    </children>
 </AnchorPane>

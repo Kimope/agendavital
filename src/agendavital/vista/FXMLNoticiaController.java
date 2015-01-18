@@ -99,8 +99,7 @@ public class FXMLNoticiaController implements Initializable {
 
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
+     * @throws java.io.IOException
      */
                         ///////////////////Menu de botones esquina superior derecha///////////////////
     @FXML
@@ -187,7 +186,6 @@ public class FXMLNoticiaController implements Initializable {
         try {
             root = loader.load();
         } catch (IOException e) {
-            e.printStackTrace();
         }
 
         Scene escenaNoticia = new Scene(root);
@@ -205,7 +203,8 @@ public class FXMLNoticiaController implements Initializable {
    public void borrar_noticia() throws ConexionBDIncorrecta{
        _noticia.Delete();
        _noticia = null;
-       controllerMYN.cambiarDatos();
+       if(controllerMYN.isMostrandoTodo()) controllerMYN.mostrarTodo();
+       else controllerMYN.cambiarDatos();
        controllerPrincipal.colorearFechas();
    }
 }

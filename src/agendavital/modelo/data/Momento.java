@@ -258,7 +258,7 @@ public class Momento {
         try (Connection conexion = ConfigBD.conectar()) {
             String deleteTag = String.format("Delete from momentos_noticias_etiquetas WHERE id_momento = %d;", getId());
             conexion.createStatement().executeUpdate(deleteTag);
-            String deleteDocumento = String.format("DELETE from documentos WHERE id_documento IN (SELECT id_documento from momentos WHERE id_usuario = %d)", ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
+            String deleteDocumento = String.format("DELETE from documentos WHERE id_documento IN (SELECT id_documento from momentos WHERE id_usuario = %s AND id_momento = %d)", ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false), getId());
             conexion.createStatement().executeUpdate(deleteDocumento);
             String delete = String.format("Delete from momentos WHERE id_momento = %d;", getId());
             conexion.createStatement().executeUpdate(delete);

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Detectan una res con el mal de las 'vacas locas' en Galicia</titulo>
+        <fecha>23-11-2000</fecha>
+        <categoria>Noticias Nacionales</categoria>
+        <link>http://www.elmundo.es/elmundo/2000/11/22/sociedad/974926776.html</link>
+        <tag>vacas</tag>
+        <tag>locas</tag>
+        <cuerpo>El ministro de Agricultura, Miguel Arias Cañete, ha anunciado que en Galicia se ha dado el primer caso de encefalopatía espongiforme bovina (EEB) de España, y que un segundo caso, en esa misma comunidad, se confirmará con análisis hoy.</cuerpo>
+    </Noticia>
+</Noticias>

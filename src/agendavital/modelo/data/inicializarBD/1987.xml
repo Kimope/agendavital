@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Nace Leo Messi</titulo>
+        <fecha>24-06-1987</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://www.buscabiografias.com/bios/biografia/verDetalle/9780/Leo%20Messi%20-%20Lionel%20Messi</link>
+        <tag>messi</tag>
+        <cuerpo>Nació el 24 de junio de 1987 en Rosario, Santa Fe, Argentina. Criado en el seno de una familia humilde, es hijo de Jorge Horacio Messi, trabajador de una fábrica, y de Celia María Cuccittini, una limpiadora a media jornada. Con cinco años se inicia en el Grandoli, un pequeño equipo de su barrio que entrenaba su padre.</cuerpo>
+        </Noticia>
+</Noticias>

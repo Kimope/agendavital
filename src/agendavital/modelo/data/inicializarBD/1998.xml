@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Evolución de los móviles: Desde 1998 al día de hoy</titulo>
+        <fecha>01-01-1998</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://techyzmundo.com/evolucion-de-los-moviles/</link>
+        <tag>moviles</tag>
+        <cuerpo>Muchos contamos con móviles desde hace muchos años y cada cierto tiempo cambiamos de modelo, otros este año ha significado la compra de su primer móvil. Si nos ponemos a analizar no ha sido más de 20 años desde la incursión de los teléfonos móviles a nuestras vidas y no más de 5 años que los smartphones y todo el mundo de internet ha formado una parte fundamental en nuestro día a día.</cuerpo> 
+    </Noticia>
+</Noticias>

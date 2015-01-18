@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>¿Cuándo nació la oveja Dolly?</titulo>
+        <fecha>23-02-1997</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://www.muyinteresante.es/historia/preguntas-respuestas/icuando-nacio-la-oveja-dolly</link>
+        <tag>dolly</tag>
+       <tag>oveja</tag>
+       <tag>clonacion</tag>
+       <cuerpo>El 23 de febrero de 1997, la noticia del nacimiento de la oveja Dolly, el primer mamífero clonado a partir de una célula adulta, ocupó las portadas de medios de comunicación de todo el mundo. En realidad había nacido el 5 de julio de 1996, pero no saltó a la fama hasta siete meses después, el 23 de febrero de 1997, cuando los investigadores del Instituto Roslin de Edimburgo (Escocia), liderados por Ian Wilmut, la presentaron públicamente y revelaron que era el resultado de una trasferencia nuclear desde una célula donante adulta a un óvulo no fecundado y sin núcleo, que después fue implantado a una hembra portadora. </cuerpo>     
+    </Noticia>
+</Noticias>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>El 'zulo' de Ortega Lara</titulo>
+        <fecha>08-07-1996</fecha>
+        <categoria>Noticias Nacionales</categoria>
+        <link>http://elpais.com/diario/1997/07/08/espana/868312803_850215.html</link>
+        <tag>ortega</tag>
+       <tag>lara</tag>
+       <tag>secuestro</tag>
+       <cuerpo>Un cubil oscuro y siniestro. Con las paredes forradas en madera abombadas por el agua. Ese es el aspecto de lo que ETA llamaba cárcel del pueblo. Lo único que ha visto durante su cautiverio el funcionario de prisiones José Antonio Ortega Lara desde que fue secuestrado el 17 de enero de 1996. </cuerpo> 
+    </Noticia>
+</Noticias>

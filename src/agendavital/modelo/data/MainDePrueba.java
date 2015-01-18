@@ -8,6 +8,7 @@ package agendavital.modelo.data;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import agendavital.modelo.util.ConfigBD;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 
 /**
@@ -17,7 +18,7 @@ import java.sql.SQLException;
 public class MainDePrueba {
    
 
-    public static void main(String[] args) throws SQLException, IOException, java.text.ParseException, ConexionBDIncorrecta {
+    public static void main(String[] args) throws SQLException, IOException, java.text.ParseException, ConexionBDIncorrecta, URISyntaxException {
         /*  String fecha = "01-11-2014";
          String descripcion = "HOLAAAALALALALAA";
          String color = "red";
@@ -29,7 +30,8 @@ public class MainDePrueba {
         tags.add("marca");
         Noticia.Insert("Prueba 3", "http://www.as.com", "12-01-2015", "Noticias Nacionales", "Esto es una prueba", tags);
        */
-        ConfigBD.crearTablas();
+        ConfigBD.inicializarEstructura();
+        
     }
 
 }

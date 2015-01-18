@@ -224,5 +224,6 @@ public class FXMLMomentoController implements Initializable {
         if(controllerMYN.isMostrandoTodo()) controllerMYN.mostrarTodo();
        else controllerMYN.cambiarDatos();
        controllerPrincipal.colorearFechas();
+       controllerPrincipal.mostrarImagenes();
     }
 }

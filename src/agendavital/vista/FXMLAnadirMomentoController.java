@@ -285,6 +285,8 @@ public class FXMLAnadirMomentoController implements Initializable {
             modificarMomento.Update();
             if (modificarFile != null) {
                 if(imagenFile != null){
+                    System.out.println("Bien");
+                    System.out.println(imagenFile.getName());
                     imagenFile.deleteOnExit();
                     imagenFile = null;
                 }

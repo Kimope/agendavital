@@ -15,8 +15,8 @@
       <AnchorPane layoutX="33.0" layoutY="20.0" prefHeight="577.0" prefWidth="721.0" style="-fx-background-color: #F0ECEC; -fx-border-color: #0F5257; -fx-border-width: 3;">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="254.0" layoutX="459.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" width="245.0" />
-            <Button fx:id="btnModificar" layoutX="459.0" layoutY="535.0" mnemonicParsing="false" onAction="#modificar_momento" text="Modificar momento" />
-            <Button layoutX="591.0" layoutY="535.0" mnemonicParsing="false" onAction="#borrar_momento" prefHeight="25.0" prefWidth="122.0" text="Borrar momento" />
+            <Button fx:id="btnModificar" layoutX="459.0" layoutY="535.0" mnemonicParsing="false" onAction="#modificar_momento" style="-fx-background-radius: 80; -fx-background-color: #508991;" text="Modificar momento" />
+            <Button layoutX="591.0" layoutY="535.0" mnemonicParsing="false" onAction="#borrar_momento" prefHeight="25.0" prefWidth="122.0" style="-fx-background-radius: 80; -fx-background-color: #508991;" text="Borrar momento" />
             <TextFlow fx:id="tfCategoria" layoutX="460.0" layoutY="314.0" prefHeight="28.0" prefWidth="245.0" style="-fx-border-color: black;">
                <children>
                   <Text fx:id="txtCategoria" strokeType="OUTSIDE" strokeWidth="0.0" />

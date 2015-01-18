@@ -136,6 +136,22 @@ public class Momento {
         this.color = color;
     }
 
+    public static ArrayList<Momento> getTodosMomentos() throws ConexionBDIncorrecta{
+         ResultSet rs = null;
+        ArrayList<Momento> momentos = null;
+        try (Connection conexion = ConfigBD.conectar()) {
+            momentos = new ArrayList<>();
+            String consulta = String.format("SELECT id_momento from momentos WHERE id_usuario = %s;", ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
+            rs = conexion.createStatement().executeQuery(consulta);
+            while (rs.next()) {
+                momentos.add(new Momento(rs.getInt("id_momento")));
+            }
+            return momentos;
+        } catch (SQLException e) {
+            throw new ConexionBDIncorrecta();
+        }
+    }
+    
     /**
      * Funcion que devuelves los momentos dada una fecha
      *
@@ -162,22 +178,35 @@ public class Momento {
     /**
      * Funcion que inserta momentos
      *
+     * @param titulo
      * @param fecha
      * @param descripcion
      * @param color
+     * @param tags
      * @param id_noticia
      * @return
      * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      */
-    public static Momento insert(String titulo, String fecha, String descripcion, String color, int id_noticia) throws ConexionBDIncorrecta {
+    public static Momento insert(String titulo, String fecha, String descripcion, String color, ArrayList<String> tags) throws ConexionBDIncorrecta {
         int nuevoId = 0;
         Momento nuevo = null;
         try (Connection conexion = ConfigBD.conectar()) {
-            String insert = String.format("INSERT INTO momentos (titulo, fecha, descripcion, id_noticia, color, id_usuario) VALUES (%s, %s, %s, %d, %s, %s);", ConfigBD.String2Sql(titulo, false), ConfigBD.String2Sql(fecha, false), ConfigBD.String2Sql(descripcion, false), id_noticia, ConfigBD.String2Sql(color, false), ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
+            String insert = String.format("INSERT INTO momentos (titulo, fecha, descripcion, color, id_usuario) VALUES (%s, %s, %s, %s, %s);", ConfigBD.String2Sql(titulo, false), ConfigBD.String2Sql(fecha, false), ConfigBD.String2Sql(descripcion, false), ConfigBD.String2Sql(color, false), ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
             int executeUpdate = conexion.createStatement().executeUpdate(insert);
             nuevoId = ConfigBD.LastId("momentos");
-            String asociarConNoticia = String.format("UPDATE momentos_noticias_etiquetas SET id_momento = %d WHERE id_noticia = %d", nuevoId, id_noticia);
-            conexion.createStatement().executeUpdate(asociarConNoticia);
+            for (String tag : tags) {
+                String consultaTag = String.format("SELECT id_etiqueta from etiquetas WHERE Nombre = %s;", ConfigBD.String2Sql(tag, false));
+                ResultSet rs = conexion.createStatement().executeQuery(consultaTag);
+                rs.next();
+                int idTag = (rs.getRow() == 1) ? rs.getInt("id_etiqueta") : -1;
+                if (idTag == -1) {
+                    String insertTag = String.format("INSERT INTO etiquetas (nombre) VALUES (%s);", ConfigBD.String2Sql(tag, false));
+                    conexion.createStatement().executeUpdate(insertTag);
+                    idTag = ConfigBD.LastId("etiquetas");
+                }
+                String insertNoticiaEtiqueta = String.format("INSERT INTO momentos_noticias_etiquetas (id_momento, id_etiqueta) VALUES(%d, %d);", nuevoId, idTag);
+                conexion.createStatement().executeUpdate(insertNoticiaEtiqueta);
+            }
             nuevo = new Momento(nuevoId);
             return nuevo;
         } catch (SQLException e) {
@@ -185,30 +214,7 @@ public class Momento {
         }
     }
 
-    /**
-     * Funcion que inserta momentos
-     *
-     * @param fecha
-     * @param descripcion
-     * @param color
-     * @return
-     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
-     */
-    public static Momento insert(String titulo, String fecha, String descripcion, String color) throws ConexionBDIncorrecta {
-        int nuevoId = 0;
-        Momento nuevo = null;
-        try (Connection conexion = ConfigBD.conectar()) {
-            String insert = String.format("INSERT INTO momentos (titulo, fecha, descripcion, color, id_usuario) VALUES (%s, %s, %s, %s, %s);", ConfigBD.String2Sql(titulo, false), ConfigBD.String2Sql(fecha, false), ConfigBD.String2Sql(descripcion, false), ConfigBD.String2Sql(color, false), ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
-            int executeUpdate = conexion.createStatement().executeUpdate(insert);
-            nuevoId = ConfigBD.LastId("momentos");
-            nuevo = new Momento(nuevoId);
-            return nuevo;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
+    
     /**
      * Funcion modificadora
      *
@@ -216,10 +222,30 @@ public class Momento {
      */
     public void Update() throws ConexionBDIncorrecta {
         try (Connection conexion = ConfigBD.conectar()) {
-            String update = String.format("UPDATE noticias SET titulo = %s, fecha = %s, descripcion = %s, color = %s WHERE id_momento = %d;", ConfigBD.String2Sql(getTitulo(), false), ConfigBD.String2Sql(getFecha(), false), ConfigBD.String2Sql(getDescripcion(), false), ConfigBD.String2Sql(getColor(), false), getId());
+            String update = String.format("UPDATE momentos SET titulo = %s, fecha = %s, descripcion = %s, color = %s WHERE id_momento = %d;", ConfigBD.String2Sql(getTitulo(), false), ConfigBD.String2Sql(getFecha(), false), ConfigBD.String2Sql(getDescripcion(), false), ConfigBD.String2Sql(getColor(), false), getId());
             conexion.createStatement().executeUpdate(update);
+            String eliminaMNE = String.format("DELETE from momentos_noticias_etiquetas WHERE id_momento = %d", id);
+            conexion.createStatement().executeUpdate(eliminaMNE);
+            for (String tag : tags) {
+                String consultaTag = String.format("SELECT id_etiqueta from etiquetas WHERE Nombre = %s;", ConfigBD.String2Sql(tag, false));
+                ResultSet rs = conexion.createStatement().executeQuery(consultaTag);
+                rs.next();
+                int idTag = (rs.getRow() == 1) ? rs.getInt("id_etiqueta") : -1;
+                if (idTag == -1) {
+                    String insertTag = String.format("INSERT INTO etiquetas (nombre) VALUES (%s);", ConfigBD.String2Sql(tag, false));
+                    conexion.createStatement().executeUpdate(insertTag);
+                    idTag = ConfigBD.LastId("etiquetas");
+                    String insertaMNE = String.format("INSERT INTO momentos_noticias_etiquetas (id_momento, id_etiqueta) VALUES(%d, %d)", id, idTag);
+                    conexion.createStatement().executeUpdate(insertaMNE);
+                }
+                else{
+                String updateNoticiaEtiqueta = String.format("INSERT into momentos_noticias_etiquetas (id_etiqueta, id_momento) VALUES (%d, %d);", idTag, id);
+                conexion.createStatement().executeUpdate(updateNoticiaEtiqueta);
+                }
+               
+            }
         } catch (SQLException e) {
-            throw new ConexionBDIncorrecta();
+            e.printStackTrace();
         }
     }
 
@@ -230,10 +256,11 @@ public class Momento {
      */
     public void Delete() throws ConexionBDIncorrecta {
         try (Connection conexion = ConfigBD.conectar()) {
-            String delete = String.format("Delete from momentos WHERE id_momento = %d;", getId());
-            conexion.createStatement().executeUpdate(delete);
             String deleteTag = String.format("Delete from momentos_noticias_etiquetas WHERE id_momento = %d;", getId());
             conexion.createStatement().executeUpdate(deleteTag);
+            String delete = String.format("Delete from momentos WHERE id_momento = %d;", getId());
+            conexion.createStatement().executeUpdate(delete);
+            
         } catch (SQLException e) {
             throw new ConexionBDIncorrecta();
         }
@@ -263,12 +290,14 @@ public class Momento {
             String insertDocumento = String.format("INSERT INTO Documentos (ruta_doc) VALUES (%s);", ConfigBD.String2Sql(destino3.getCanonicalPath(), false));
             conexion.createStatement().executeUpdate(insertDocumento);
             int idDoc = ConfigBD.LastId("documentos");
+            id_documento = idDoc;
             String update = String.format("UPDATE momentos SET id_documento = %d WHERE id_momento = %d;", idDoc, getId());
             conexion.createStatement().executeUpdate(update);
             return true;
         } catch (SQLException e) {
-            throw new ConexionBDIncorrecta();
+            e.printStackTrace();
         }
+        return false;
     }
 
     public String getRutaDocumento() throws SQLException {

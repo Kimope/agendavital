@@ -5,6 +5,7 @@ import agendavital.modelo.data.Noticia;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import agendavital.modelo.util.UsuarioLogueado;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -176,22 +177,17 @@ public class FXMLPrincipalController implements Initializable {
          String s = "Momentos/"+UsuarioLogueado.getLogueado().getNick();
         //String s= "Momentos/"+UsuarioLogueado.getLogueado().getNick();
         File f = new File(s);
+        
         if (f.exists()) {
-            filesJpg = f.listFiles();
+            filesJpg = f.listFiles((File pathname) -> pathname.length() > 0 && !pathname.getName().contains("db"));
         } else {
             System.out.print("ERROR NO SE HA ENCONTRADO EL DIRECTORIO");
         }
-
         int numOfPage = filesJpg.length;
         if(numOfPage > 0){
          pagination = new Pagination(numOfPage);
          
-        pagination.setPageFactory(new Callback<Integer, Node>() {
-            @Override
-            public Node call(Integer pageIndex) {
-                return createPage(pageIndex);
-            }
-        });
+        pagination.setPageFactory((Integer pageIndex) -> createPage(pageIndex));
         AnchorPane.setTopAnchor(pagination, 30.0);
         AnchorPane.setRightAnchor(pagination, 25.0);
         pagination.getStyleClass().add(Pagination.STYLE_CLASS_BULLET);
@@ -417,14 +413,20 @@ public class FXMLPrincipalController implements Initializable {
         ventanaAdministracion.show();
         }
     }
-/*
-    public void consultar_dia() throws IOException {
+
+    public void consultar_todo() throws IOException {
+        if(ventanaDia.isShowing()){
+            ventanaDia.setIconified(false);
+            ventanaDia.toFront();
+            
+        }else{
         Parent root = null;
-        ventanaNoticia = new Stage();
+        ventanaDia = new Stage();
+        fechaSeleccionada = dateFormatter.format(cal.getValue());
         Image icon = new Image(getClass().getResourceAsStream("logo.png"));
-        ventanaNoticia.getIcons().add(icon);
-        ventanaNoticia.setTitle("Noticia");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLNoticia.fxml"));
+        ventanaDia.getIcons().add(icon);
+        ventanaDia.setTitle("Todas las noticias y momentos");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMomentosyNoticias.fxml"));
         try {
             root = loader.load();
         } catch (IOException e) {
@@ -432,13 +434,16 @@ public class FXMLPrincipalController implements Initializable {
         }
 
         Scene escenaNoticia = new Scene(root);
-        ventanaNoticia.initStyle(StageStyle.TRANSPARENT);
-        //FXMLNoticiaController controller = loader.getController();
+        ventanaDia.initStyle(StageStyle.TRANSPARENT);
+        FXMLMomentosyNoticiasController controller = loader.getController();
+        controller.setMostrandoTodo(true);
+        controller.setControllerPrincipal(this);
+        controller.mostrarTodo();
         escenaNoticia.setFill(Color.TRANSPARENT);
-        ventanaNoticia.setScene(escenaNoticia);
-        ventanaNoticia.show();
-        //Muestra ventana
-    }*/
+        ventanaDia.setScene(escenaNoticia);
+        ventanaDia.show();
+        }
+    }
 
     public void momentosynoticias() throws IOException {
         if(ventanaDia.isShowing()){
@@ -462,6 +467,8 @@ public class FXMLPrincipalController implements Initializable {
         Scene escenaNoticia = new Scene(root);
         ventanaDia.initStyle(StageStyle.TRANSPARENT);
         FXMLMomentosyNoticiasController controller = loader.getController();
+        controller.setMostrandoTodo(false);
+        controller.cambiarDatos();
         controller.setControllerPrincipal(this);
         escenaNoticia.setFill(Color.TRANSPARENT);
         ventanaDia.setScene(escenaNoticia);

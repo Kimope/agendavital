@@ -226,7 +226,8 @@ public class FXMLAnadirNoticiaController implements Initializable {
             modificarNoticia.setTags(tags);
             modificarNoticia.Update();
             controllerNoticia.imprimir(modificarNoticia);
-            controllerMYN.cambiarDatos();
+            if(controllerMYN.isMostrandoTodo()) controllerMYN.mostrarTodo();
+            else controllerMYN.cambiarDatos();
             if(colorear) controllerPrincipal.colorearFechas();
         }
     }

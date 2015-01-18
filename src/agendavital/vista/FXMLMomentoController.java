@@ -6,6 +6,7 @@
 package agendavital.vista;
 
 import agendavital.modelo.data.Momento;
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import static agendavital.vista.FXMLPrincipalController.ventanaAnadirMomento;
 import java.io.File;
 import java.io.FileInputStream;
@@ -86,6 +87,12 @@ public class FXMLMomentoController implements Initializable {
     private Button btnModificar;
     public Momento _momento = null;
     public FXMLPrincipalController controllerPrincipal;
+    public FXMLMomentosyNoticiasController controllerMYN;
+
+    public void setControllerMYN(FXMLMomentosyNoticiasController controllerMYN) {
+        this.controllerMYN = controllerMYN;
+    }
+    
 
     public void setMomento(Momento _momento) {
         this._momento = _momento;
@@ -97,8 +104,7 @@ public class FXMLMomentoController implements Initializable {
 
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
+     * @throws java.io.IOException
      */
     
                         ///////////////////Menu de botones esquina superior derecha///////////////////
@@ -189,7 +195,7 @@ public class FXMLMomentoController implements Initializable {
         ventanaAnadirMomento = new Stage();
         Image icon = new Image(getClass().getResourceAsStream("logo.png"));
         ventanaAnadirMomento.getIcons().add(icon);
-        ventanaAnadirMomento.setTitle("Modificar Noticia");
+        ventanaAnadirMomento.setTitle("Modificar Momento");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAnadirMomento.fxml"));
         try {
             root = loader.load();
@@ -200,16 +206,23 @@ public class FXMLMomentoController implements Initializable {
         Scene escenaNoticia = new Scene(root);
         FXMLAnadirMomentoController controller = loader.getController();
         controller.setModificarMomento(_momento);
+        controller.setControllerMYN(controllerMYN);
         controller.setControllerMomento(this);        
         controller.setControllerPrincipal(controllerPrincipal);
         try{
             controller.inicializarVentana();
         } catch(SQLException e){
-            e.printStackTrace();
         }
         ventanaAnadirMomento.setScene(escenaNoticia);
         ventanaAnadirMomento.initStyle(StageStyle.UNDECORATED);
         ventanaAnadirMomento.show();
     }
+    }
+    public void borrar_momento() throws ConexionBDIncorrecta{
+        _momento.Delete();
+        _momento = null;
+        if(controllerMYN.isMostrandoTodo()) controllerMYN.mostrarTodo();
+       else controllerMYN.cambiarDatos();
+       controllerPrincipal.colorearFechas();
     }
 }

@@ -275,14 +275,7 @@ public class Momento {
      * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      */
     public boolean asociarDocumento(File Documento) throws IOException, ConexionBDIncorrecta {
-        File destino = new File("Momentos");
-        if (!destino.exists()) {
-            destino.mkdir();
-        }
-        File destino2 = new File("Momentos/" + UsuarioLogueado.getLogueado().getNick());
-        if (!destino2.exists()) {
-            destino2.mkdir();
-        }
+  
         File destino3 = new File("Momentos/" + UsuarioLogueado.getLogueado().getNick() + "/" + Documento.getName());
         ConfigBD.copyFile(Documento, destino3);
         ResultSet rs = null;

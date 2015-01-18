@@ -31,6 +31,7 @@ import agendavital.modelo.excepciones.ContrasenaSinNumeros;
 import agendavital.modelo.excepciones.FechaInvalida;
 import agendavital.modelo.excepciones.NickMuyCorto;
 import agendavital.modelo.excepciones.NickYaExiste;
+import static agendavital.vista.FXMLPrincipalController.ventanaNoticia;
 import java.sql.SQLException;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -202,17 +203,19 @@ public class FXMLRegistroController implements Initializable {
                 Image icon = new Image(getClass().getResourceAsStream("logo.png"));
                 ventanaRegistroCompletado.getIcons().add(icon);
                 ventanaRegistroCompletado.setTitle("Registro Completo");
+FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLRegistroCompletado.fxml"));
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            System.out.println("No se puede encontrar el fichero FXML");
+        }
 
-                try {
-                    root = FXMLLoader.load(getClass().getResource("FXMLRegistroCompletado.fxml"));
-                } catch (IOException e) {
-                    System.out.println("No se puede encontrar el fichero FXML");
-                }
-
-                Scene escenaRegistroCompletado = new Scene(root);
-                ventanaRegistroCompletado.setScene(escenaRegistroCompletado);
-                ventanaRegistroCompletado.initStyle(StageStyle.UNDECORATED);
-                ventanaRegistroCompletado.show();
+        Scene escenaNoticia = new Scene(root);
+        FXMLRegistroCompletadoController controller = loader.getController();
+        controller.inicializarVentana();
+        ventanaRegistroCompletado.setScene(escenaNoticia);
+        ventanaRegistroCompletado.initStyle(StageStyle.UNDECORATED);
+        ventanaRegistroCompletado.show();
                 FXMLLoginController.ventanaRegistro.close();
             } catch (SQLException ex) {
                 textError.setText("Fallo al acceder a la BD"); //Meter en la pantalla este texto

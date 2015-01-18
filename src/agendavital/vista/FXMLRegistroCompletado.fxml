@@ -186,12 +186,12 @@
          </font>
       </Label>
       <Line endX="200.0" fill="BLACK" layoutX="544.0" layoutY="373.0" startX="-100.0" stroke="#00000085" strokeWidth="2.0" />
-      <Text id="text2" layoutX="491.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0">
+      <Text fx:id="text2" layoutX="491.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font name="Cooper Black" size="27.0" />
          </font>
       </Text>
-      <Text id="text1" layoutX="450.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0">
+      <Text fx:id="text1" layoutX="450.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font name="Cooper Black" size="27.0" />
          </font>

@@ -12,6 +12,7 @@ and open the template in the editor.
         <fecha>20-01-1961</fecha>
         <categoria>Noticias Internacionales</categoria>
         <link>http://es.wikipedia.org/wiki/John_F._Kennedy</link>
+        <cuerpo>John F. Kennedy juró como el 35.º presidente de los Estados Unidos el 20 de enero de 1961. En su discurso inaugural20 habló de la necesidad de que los ciudadanos estadounidenses fueran más activos, pronunciando una de sus frases más famosas: «No preguntes qué es lo que tu país puede hacer por ti; pregunta qué es lo que tú puedes hacer por tu país». </cuerpo>
         <tag>politica</tag>
         <tag>elecciones</tag>
         <tag>eeuu</tag>
@@ -22,6 +23,7 @@ and open the template in the editor.
        <fecha>09-02-1961</fecha>
        <categoria>Noticias Internacionales</categoria>
        <link>http://www.elmundo.es/elmundo/2011/02/08/cultura/1297179451.html</link>
+       <cuerpo>9 de febrero de 1961. El reloj marcaba la hora de comer y cuatro jóvenes algo raritos subían al escenario de The Cavern. Su nombre: 'The Beatles'. Era la primera actuación de las más de 300 que darían allí a lo largo de los dos años siguientes. Ahora se cumplen 50 años del estreno de los cuatro magníficos y los fans han querido celebrarlo por todo lo alto. El lugar, no podía ser otro, Liverpool.</cuerpo>
        <tag>musica</tag>
        <tag>reino unido</tag>
        <cuerpo>9 de febrero de 1961. El reloj marcaba la hora de comer y cuatro jóvenes algo raritos subían al escenario de The Cavern. Su nombre: 'The Beatles'. Era la primera actuación de las más de 300 que darían allí a lo largo de los dos años siguientes. Ahora se cumplen 50 años del estreno de los cuatro magníficos y los fans han querido celebrarlo por todo lo alto. El lugar, no podía ser otro, Liverpool.</cuerpo>

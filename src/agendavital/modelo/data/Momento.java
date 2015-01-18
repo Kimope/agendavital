@@ -25,18 +25,20 @@ import javafx.util.Pair;
 public class Momento {
 
     private int id;
+    private String titulo;
     private String fecha;
     private String descripcion;
     private int id_documento;
     private int id_noticia;
     private String color;
-    ArrayList<Integer> tags;
+    private ArrayList<String> tags;
 
-    /**Constructor
-     * 
+    /**
+     * Constructor
+     *
      * @param _id
-     * @throws SQLException 
-     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta 
+     * @throws SQLException
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      */
     public Momento(int _id) throws SQLException, ConexionBDIncorrecta {
         id = _id;
@@ -47,17 +49,19 @@ public class Momento {
             conexion = ConfigBD.conectar();
             rs = conexion.createStatement().executeQuery(String.format("SELECT * FROM momentos WHERE id_momento = %d;", id));
             rs.next();
+            this.titulo = rs.getString("titulo");
             this.fecha = (rs.getString("fecha"));
             this.descripcion = (rs.getString("descripcion"));
             this.id_documento = (rs.getInt("id_documento"));
             this.id_noticia = (rs.getInt("id_noticia"));
-            rs = conexion.createStatement().executeQuery(String.format("SELECT id_etiqueta from momentos_noticias_etiquetas WHERE id_momento = %d", id));
+            this.color = (rs.getString("color"));
+            rs = conexion.createStatement().executeQuery(String.format("SELECT nombre from etiquetas WHERE id_etiqueta IN (SELECT id_etiqueta from momentos_noticias_etiquetas WHERE id_momento = %d)", id));
             while (rs.next()) {
-                tags.add(rs.getInt("id_etiqueta"));
+                tags.add(rs.getString("nombre"));
             }
 
         } catch (SQLException ee) {
-           throw new ConexionBDIncorrecta();
+            throw new ConexionBDIncorrecta();
         } finally {
             if (rs != null) {
                 rs.close();
@@ -66,6 +70,22 @@ public class Momento {
                 conexion.close();
             }
         }
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public ArrayList<String> getTags() {
+        return tags;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setTags(ArrayList<String> tags) {
+        this.tags = tags;
     }
 
     public int getId() {
@@ -115,19 +135,20 @@ public class Momento {
     public void setColor(String color) {
         this.color = color;
     }
-    
-    /**Funcion que devuelves los momentos dada una fecha
-     * 
+
+    /**
+     * Funcion que devuelves los momentos dada una fecha
+     *
      * @param fecha Fecha en formato DD-MM-AAAA
-     * @return 
-     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta 
+     * @return
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      */
     public static ArrayList<Momento> Select(String fecha) throws ConexionBDIncorrecta {
         ResultSet rs = null;
         ArrayList<Momento> momentos = null;
         try (Connection conexion = ConfigBD.conectar()) {
             momentos = new ArrayList<>();
-            String consulta = String.format("SELECT id_momento from momentos WHERE fecha = %s;", ConfigBD.String2Sql(fecha, false));
+            String consulta = String.format("SELECT id_momento from momentos WHERE fecha = %s AND id_usuario = %s;", ConfigBD.String2Sql(fecha, false), ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
             rs = conexion.createStatement().executeQuery(consulta);
             while (rs.next()) {
                 momentos.add(new Momento(rs.getInt("id_momento")));
@@ -137,22 +158,22 @@ public class Momento {
             throw new ConexionBDIncorrecta();
         }
     }
-    
 
-    /**Funcion que inserta momentos
-     * 
+    /**
+     * Funcion que inserta momentos
+     *
      * @param fecha
      * @param descripcion
      * @param color
      * @param id_noticia
      * @return
-     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta 
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      */
-    public static Momento insert(String fecha, String descripcion, String color, int id_noticia) throws ConexionBDIncorrecta {
+    public static Momento insert(String titulo, String fecha, String descripcion, String color, int id_noticia) throws ConexionBDIncorrecta {
         int nuevoId = 0;
         Momento nuevo = null;
         try (Connection conexion = ConfigBD.conectar()) {
-            String insert = String.format("INSERT INTO momentos (fecha, descripcion, id_noticia, color, id_usuario) VALUES (%s, %s, %d, %s, %s);", ConfigBD.String2Sql(fecha, false), ConfigBD.String2Sql(descripcion, false), id_noticia, ConfigBD.String2Sql(color, false), ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
+            String insert = String.format("INSERT INTO momentos (titulo, fecha, descripcion, id_noticia, color, id_usuario) VALUES (%s, %s, %s, %d, %s, %s);", ConfigBD.String2Sql(titulo, false), ConfigBD.String2Sql(fecha, false), ConfigBD.String2Sql(descripcion, false), id_noticia, ConfigBD.String2Sql(color, false), ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
             int executeUpdate = conexion.createStatement().executeUpdate(insert);
             nuevoId = ConfigBD.LastId("momentos");
             String asociarConNoticia = String.format("UPDATE momentos_noticias_etiquetas SET id_momento = %d WHERE id_noticia = %d", nuevoId, id_noticia);
@@ -163,46 +184,49 @@ public class Momento {
             throw new ConexionBDIncorrecta();
         }
     }
-    
-     /**Funcion que inserta momentos
-     * 
+
+    /**
+     * Funcion que inserta momentos
+     *
      * @param fecha
      * @param descripcion
      * @param color
      * @return
-     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta 
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      */
-    public static Momento insert(String fecha, String descripcion, String color) throws ConexionBDIncorrecta {
-        System.out.println(fecha+" "+descripcion+" "+color);
+    public static Momento insert(String titulo, String fecha, String descripcion, String color) throws ConexionBDIncorrecta {
         int nuevoId = 0;
         Momento nuevo = null;
         try (Connection conexion = ConfigBD.conectar()) {
-            String insert = String.format("INSERT INTO momentos (fecha, descripcion, color, id_usuario) VALUES (%s, %s, %s, %s);", ConfigBD.String2Sql(fecha, false), ConfigBD.String2Sql(descripcion, false), ConfigBD.String2Sql(color, false), ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
+            String insert = String.format("INSERT INTO momentos (titulo, fecha, descripcion, color, id_usuario) VALUES (%s, %s, %s, %s, %s);", ConfigBD.String2Sql(titulo, false), ConfigBD.String2Sql(fecha, false), ConfigBD.String2Sql(descripcion, false), ConfigBD.String2Sql(color, false), ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
             int executeUpdate = conexion.createStatement().executeUpdate(insert);
             nuevoId = ConfigBD.LastId("momentos");
             nuevo = new Momento(nuevoId);
             return nuevo;
         } catch (SQLException e) {
-            throw new ConexionBDIncorrecta();
+            e.printStackTrace();
         }
+        return null;
     }
 
-    /**Funcion modificadora
-     * 
+    /**
+     * Funcion modificadora
+     *
      * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      */
     public void Update() throws ConexionBDIncorrecta {
         try (Connection conexion = ConfigBD.conectar()) {
-            String update = String.format("UPDATE noticias SET fecha = %s, descripcion = %s, color = %s WHERE id_momento = %d;", ConfigBD.String2Sql(getFecha(), false), ConfigBD.String2Sql(getDescripcion(), false), ConfigBD.String2Sql(getColor(), false), getId());
+            String update = String.format("UPDATE noticias SET titulo = %s, fecha = %s, descripcion = %s, color = %s WHERE id_momento = %d;", ConfigBD.String2Sql(getTitulo(), false), ConfigBD.String2Sql(getFecha(), false), ConfigBD.String2Sql(getDescripcion(), false), ConfigBD.String2Sql(getColor(), false), getId());
             conexion.createStatement().executeUpdate(update);
         } catch (SQLException e) {
             throw new ConexionBDIncorrecta();
         }
     }
-    
-    /**Funcion que elimina el momento
-     * 
-     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta 
+
+    /**
+     * Funcion que elimina el momento
+     *
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      */
     public void Delete() throws ConexionBDIncorrecta {
         try (Connection conexion = ConfigBD.conectar()) {
@@ -214,45 +238,63 @@ public class Momento {
             throw new ConexionBDIncorrecta();
         }
     }
-    
-    /**Funcion que asocia un documento con un momento
-     * 
+
+    /**
+     * Funcion que asocia un documento con un momento
+     *
      * @param Documento
      * @return
      * @throws IOException
-     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta 
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      */
-    public boolean asociarDocumento(File Documento) throws IOException,  ConexionBDIncorrecta{
+    public boolean asociarDocumento(File Documento) throws IOException, ConexionBDIncorrecta {
         File destino = new File("Momentos");
-        if(!destino.exists()) destino.mkdir();
-        File destino2 = new File("Momentos/"+UsuarioLogueado.getLogueado().getNick());
-        if(!destino2.exists()) destino2.mkdir();
-        System.out.println(destino.getAbsolutePath());
-        File destino3 = new File("Momentos/"+UsuarioLogueado.getLogueado().getNick()+"/"+Documento.getName());
+        if (!destino.exists()) {
+            destino.mkdir();
+        }
+        File destino2 = new File("Momentos/" + UsuarioLogueado.getLogueado().getNick());
+        if (!destino2.exists()) {
+            destino2.mkdir();
+        }
+        File destino3 = new File("Momentos/" + UsuarioLogueado.getLogueado().getNick() + "/" + Documento.getName());
         ConfigBD.copyFile(Documento, destino3);
         ResultSet rs = null;
         try (Connection conexion = ConfigBD.conectar()) {
-        String insertDocumento = String.format("INSERT INTO Documentos (ruta_doc) VALUES (%s);", ConfigBD.String2Sql(destino3.getCanonicalPath(), false));
-        conexion.createStatement().executeUpdate(insertDocumento);
-        int idDoc = ConfigBD.LastId("documentos");
-        String update = String.format("UPDATE momentos SET id_documento = %d WHERE id_momento = %d;",  idDoc, getId());
-        conexion.createStatement().executeUpdate(update);
-        return true;
+            String insertDocumento = String.format("INSERT INTO Documentos (ruta_doc) VALUES (%s);", ConfigBD.String2Sql(destino3.getCanonicalPath(), false));
+            conexion.createStatement().executeUpdate(insertDocumento);
+            int idDoc = ConfigBD.LastId("documentos");
+            String update = String.format("UPDATE momentos SET id_documento = %d WHERE id_momento = %d;", idDoc, getId());
+            conexion.createStatement().executeUpdate(update);
+            return true;
         } catch (SQLException e) {
             throw new ConexionBDIncorrecta();
         }
     }
-    
-    /**Funcion coloreadora del calendario
-     * 
+
+    public String getRutaDocumento() throws SQLException {
+        if (id_documento == 0) {
+            return "";
+        }
+        ResultSet rs = null;
+        try (Connection conexion = ConfigBD.conectar()) {
+            String consulta = String.format("SELECT ruta_doc from documentos WHERE id_documento IN (Select id_documento from momentos WHERE id_usuario = %s AND id_momento = %d);", ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false), id);
+            rs = conexion.createStatement().executeQuery(consulta);
+            rs.next();
+            return rs.getString("ruta_doc");
+        }
+    }
+
+    /**
+     * Funcion coloreadora del calendario
+     *
      * @return
-     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta 
+     * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      */
-     public static ArrayList<Pair<LocalDate, String>> getNoticiasFecha() throws ConexionBDIncorrecta {
+    public static ArrayList<Pair<LocalDate, String>> getNoticiasFecha() throws ConexionBDIncorrecta {
         ResultSet rs = null;
         ArrayList<Pair<LocalDate, String>> fechasMomentos = new ArrayList<>();
         try (Connection conexion = ConfigBD.conectar()) {
-            String consulta = String.format("SELECT fecha, color from momentos;");
+            String consulta = String.format("SELECT fecha, color from momentos WHERE id_usuario = %s;", ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
             rs = conexion.createStatement().executeQuery(consulta);
             while (rs.next()) {
                 String fecha = rs.getString("fecha");
@@ -262,18 +304,18 @@ public class Momento {
                 fechasMomentos.add(new Pair<>(date, color));
             }
         } catch (SQLException e) {
-           throw new ConexionBDIncorrecta();
+            throw new ConexionBDIncorrecta();
         }
         return fechasMomentos;
     }
-     
-      public static ArrayList<Momento> buscar(String _tag) throws ConexionBDIncorrecta {
+
+    public static ArrayList<Momento> buscar(String _tag) throws ConexionBDIncorrecta {
         ArrayList<Momento> busqueda = null;
-        try (Connection conexion = ConfigBD.conectar()){
+        try (Connection conexion = ConfigBD.conectar()) {
             busqueda = new ArrayList<>();
             String buscar = String.format("SELECT id_Momento from momentos_noticias_etiquetas "
                     + "WHERE id_Etiqueta IN (SELECT id_Etiqueta from etiquetas "
-                    + "WHERE nombre LIKE %s);", ConfigBD.String2Sql(_tag, true));
+                    + "WHERE nombre LIKE %s) AND id_Momento IN (SELECT id_Momento from momentos WHERE id_usuario = %s);", ConfigBD.String2Sql(_tag, true), ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
             ResultSet rs = conexion.createStatement().executeQuery(buscar);
             while (rs.next()) {
                 busqueda.add(new Momento(rs.getInt("id_Momento")));

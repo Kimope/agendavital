@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="766.0" style="-fx-border-radius: 7px; -fx-background-radius: 7px; -fx-background-color: #0f5257; -fx-border-width: 3; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLNoticiaController">
+<AnchorPane fx:id="anclaje" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#moverPantalla2" onMousePressed="#moverPantalla" prefHeight="609.0" prefWidth="766.0" style="-fx-border-radius: 7px; -fx-background-radius: 7px; -fx-background-color: #0f5257; -fx-border-width: 3; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLNoticiaController">
    <children>
       <Pane layoutX="29.0" layoutY="15.0" prefHeight="567.0" prefWidth="722.0" style="-fx-background-color: #BDBDBD; -fx-border-color: black; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" />
       <Pane fx:id="paneluno" layoutX="22.0" layoutY="22.0" prefHeight="567.0" prefWidth="722.0" style="-fx-background-color: #d7d2d2; -fx-border-color: black; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" />
@@ -21,7 +21,7 @@
                   <Text fx:id="txtTag" strokeType="OUTSIDE" strokeWidth="0.0" />
                </children>
             </TextFlow>
-            <Button fx:id="btnModificar" layoutX="495.0" layoutY="504.0" mnemonicParsing="false" text="Modificar noticia" />
+            <Button fx:id="btnModificar" layoutX="495.0" layoutY="504.0" mnemonicParsing="false" onAction="#modificar_noticia" text="Modificar noticia" />
             <TextFlow fx:id="tfLink" layoutX="10.0" layoutY="495.0" prefHeight="32.0" prefWidth="476.0" style="-fx-border-color: black;">
                <children>
                   <Text fx:id="txtLink" strokeType="OUTSIDE" strokeWidth="0.0">
@@ -31,7 +31,7 @@
                   </Text>
                </children>
             </TextFlow>
-            <Button layoutX="607.0" layoutY="504.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Borrar noticia" />
+            <Button layoutX="607.0" layoutY="504.0" mnemonicParsing="false" onAction="#borrar_noticia" prefHeight="25.0" prefWidth="105.0" text="Borrar noticia" />
             <ImageView fx:id="prueba" fitHeight="166.0" fitWidth="221.0" layoutX="493.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" />
             <TextFlow fx:id="tfTitular" layoutX="10.0" layoutY="70.0" prefHeight="68.0" prefWidth="703.0" style="-fx-border-color: black;">
                <children>
@@ -61,11 +61,11 @@
                   <Image url="@agendavital.png" />
                </image>
             </ImageView>
+            <Circle fx:id="circulocerr" fill="TRANSPARENT" layoutX="695.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
             <Line fx:id="lineacerrar2" endX="9.0" fill="BLACK" layoutX="691.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="-45.0" strokeWidth="2.0" />
             <Line fx:id="lineacerrar1" endX="9.0" fill="BLACK" layoutX="691.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="45.0" strokeWidth="2.0" />
-            <Circle fx:id="circulocerr" fill="#ff000000" layoutX="695.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-            <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="666.0" layoutY="21.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
             <Circle fx:id="circulomin" fill="#ff000000" layoutX="670.0" layoutY="21.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" onMouseExited="#minimizarSalida" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+            <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="666.0" layoutY="21.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
          </children>
       </AnchorPane>
    </children>

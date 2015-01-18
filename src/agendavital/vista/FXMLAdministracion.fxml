@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="473.0" prefWidth="425.0" style="-fx-background-color: #A44A3F; -fx-background-radius: 7; -fx-border-color: #e79f30; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLAdministracionController">
+<AnchorPane fx:id="anclaje" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#moverPantalla2" onMousePressed="#moverPantalla" prefHeight="473.0" prefWidth="425.0" style="-fx-background-color: #A44A3F; -fx-background-radius: 7; -fx-border-color: #e79f30; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLAdministracionController">
    <children>
       <ImageView fitHeight="122.0" fitWidth="220.0" layoutX="128.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -89,5 +89,10 @@
          </children>
       </Pane>
       <Label fx:id="error" layoutX="190.0" layoutY="442.0" textFill="#f2ff00" />
+      <Circle fx:id="circulomin" fill="#ff000000" layoutX="376.0" layoutY="24.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" onMouseExited="#minimizarSalida" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="372.0" layoutY="24.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
+      <Circle fx:id="circulocerr" fill="#ff000000" layoutX="401.0" layoutY="24.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Line fx:id="lineacerrar1" endX="9.0" fill="BLACK" layoutX="397.0" layoutY="24.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="-45.0" strokeWidth="2.0" />
+      <Line fx:id="lineacerrar2" endX="9.0" fill="BLACK" layoutX="397.0" layoutY="24.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="45.0" strokeWidth="2.0" />
    </children>
 </AnchorPane>

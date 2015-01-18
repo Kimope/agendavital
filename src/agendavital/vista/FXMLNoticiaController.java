@@ -7,28 +7,28 @@ package agendavital.vista;
 
 import agendavital.modelo.data.Noticia;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import static agendavital.vista.FXMLPrincipalController.ventanaNoticia;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.Border;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 /**
@@ -37,6 +37,15 @@ import javafx.stage.StageStyle;
  * @author Enrique
  */
 public class FXMLNoticiaController implements Initializable {
+    
+    //////////////Variables de la ventana de registro//////////////
+        public static final double ANCHO = 783;
+	public static final double ALTO= 609;
+        private double initX=ANCHO/2;
+        private double initY=ALTO/2;    
+        //------------------------------------------------------------//
+    @FXML 
+    private AnchorPane anclaje;
     @FXML
     private Line lineacerrar2;
     @FXML
@@ -74,6 +83,17 @@ public class FXMLNoticiaController implements Initializable {
     private ImageView prueba;
     @FXML
     private Pane paneluno;
+    Noticia _noticia;
+    FXMLMomentosyNoticiasController controllerMYN = null;
+    public FXMLPrincipalController controllerPrincipal;
+
+    public void setControllerPrincipal(FXMLPrincipalController controllerPrincipal) {
+        this.controllerPrincipal = controllerPrincipal;
+    }
+
+    public void setControllerMYN(FXMLMomentosyNoticiasController controllerMYN) {
+        this.controllerMYN = controllerMYN;
+    }
     
 
 
@@ -82,60 +102,105 @@ public class FXMLNoticiaController implements Initializable {
      * @param url
      * @param rb
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-       fechaSeleccionada = FXMLPrincipalController.fechaSeleccionada;
-       txtTitular.setText(fechaSeleccionada);
-       ArrayList<Noticia> noticias = null;
-        try {
-            noticias = Noticia.Select("14-01-2015");
-        } catch (ConexionBDIncorrecta ex) {
-            Logger.getLogger(FXMLNoticiaController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       Noticia noticia = noticias.get(0);
-       txtTitular.setText(noticia.getTitulo());
-       txtCuerpo.setText(noticia.getCuerpo());
-       txtLink.setText(noticia.getLink());
-       txtCategoria.setText(noticia.getCategoria());
-       File file = null;
-        file = new File("imagenes/queen.jpg");
-        InputStream is = null;
-        try {
-            is = new FileInputStream(file);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(FXMLRegistroPreguntaUnoController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        double width = 191;
-        double heigth = 167;
-        Image imagen = new Image("http://www.webmallindia.com/img/film/malayalam/mal_lokanathan_ias.jpg",width,heigth,false,true);
-        prueba.setImage(imagen);
-       
-                       
-        
-    }    
-
+                        ///////////////////Menu de botones esquina superior derecha///////////////////
     @FXML
-    private void cerrarEncima(MouseEvent event) {
+    public void minimizar() throws IOException {
+        FXMLPrincipalController.ventanaNoticia.setIconified(true);
     }
 
     @FXML
-    private void cerrar(MouseEvent event) {
+    public void minimizarEncima() throws IOException {
+        circulomin.setFill(Color.web("#D8D8D8"));
     }
 
     @FXML
-    private void cerrarSalida(MouseEvent event) {
+    public void minimizarSalida() throws IOException {
+        circulomin.setFill(Color.TRANSPARENT);
     }
 
     @FXML
-    private void minimizarEncima(MouseEvent event) {
-    }
-
-    @FXML
-    private void minimizar(MouseEvent event) {
-    }
-
-    @FXML
-    private void minimizarSalida(MouseEvent event) {
+    public void cerrar() throws IOException
+    {
+        FXMLPrincipalController.ventanaNoticia.close();
     }
     
+    @FXML
+    public void cerrarEncima() throws IOException
+    {
+       circulocerr.setFill(Color.web("#D8D8D8"));
+    }
+    
+    @FXML
+    public void cerrarSalida() throws IOException
+    {
+        circulocerr.setFill(Color.TRANSPARENT);
+    }
+///////////////////////////////////////////////////////////
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+     
+    }    
+    public void imprimir(Noticia noticia){
+        tfTags.getChildren().clear();
+        _noticia = noticia;
+        txtTitular.setText(noticia.getTitulo());
+        txtCategoria.setText(noticia.getCategoria());
+        txtLink.setText(noticia.getLink());
+        txtCuerpo.setText(noticia.getCuerpo());
+        ArrayList<String> tags = noticia.getTags();
+            for (String tag : tags) {
+                Text text = new Text(tag);
+                text.setStyle("-fx-color:black");
+                tfTags.getChildren().add(text);
+            }
+    }
+
+            /////////////////////Métodos para mover la pantalla clickando en cualquier lugar/////////////////////
+   @FXML
+    public void moverPantalla() throws IOException {
+        anclaje.setOnMousePressed((MouseEvent me) -> {
+            initX = me.getScreenX() - FXMLPrincipalController.ventanaNoticia.getX();
+            initY = me.getScreenY() - FXMLPrincipalController.ventanaNoticia.getY();
+        });
+     
+    }
+
+    @FXML
+    public void moverPantalla2() throws IOException {
+        anclaje.setOnMouseDragged((MouseEvent me) -> {
+            FXMLPrincipalController.ventanaNoticia.setX(me.getScreenX() - initX);
+            FXMLPrincipalController.ventanaNoticia.setY(me.getScreenY() - initY);
+        });
+    }
+    public void modificar_noticia(){
+        Parent root = null;
+        ventanaNoticia = new Stage();
+        Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+        ventanaNoticia.getIcons().add(icon);
+        ventanaNoticia.setTitle("Modificar Noticia");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAnadirNoticia.fxml"));
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Scene escenaNoticia = new Scene(root);
+        FXMLAnadirNoticiaController controller = loader.getController();
+        controller.setModificarNoticia(_noticia);
+        controller.setControllerMYN(this);
+        controller.setControllerMYN(controllerMYN);
+        controller.setControllerPrincipal(controllerPrincipal);
+        controller.inicializarVentana();
+        ventanaNoticia.setScene(escenaNoticia);
+        ventanaNoticia.initStyle(StageStyle.UNDECORATED);
+        ventanaNoticia.show();
+    }
+   public void borrar_noticia() throws ConexionBDIncorrecta{
+       _noticia.Delete();
+       _noticia = null;
+       controllerMYN.cambiarDatos();
+       controllerPrincipal.colorearFechas();
+   }
 }

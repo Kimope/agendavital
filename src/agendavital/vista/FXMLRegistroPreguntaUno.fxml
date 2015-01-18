@@ -13,11 +13,7 @@
 <AnchorPane fx:id="anclaje" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#moverPantalla2" onMousePressed="#moverPantalla" prefHeight="525.0" prefWidth="770.0" style="-fx-background-color: #93C6D6; -fx-background-radius: 7; -fx-border-color: #0f5257; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLRegistroPreguntaUnoController">
    <children>
       <Line endX="404.0" layoutX="242.0" layoutY="263.0" rotate="90.0" startX="-100.0" stroke="#0f5257" strokeWidth="10.0" />
-      <Circle fx:id="circulomin" fill="#ff000000" layoutX="720.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" onMouseExited="#minimizarSalida" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="716.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
-      <Circle fx:id="circulocerr" fill="#ff000000" layoutX="745.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <Line fx:id="lineacerrar1" endX="9.0" fill="BLACK" layoutX="741.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="-40.0" strokeWidth="2.0" />
-      <Line fx:id="lineacerrar2" endX="9.0" fill="BLACK" layoutX="741.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="40.0" strokeWidth="2.0" />
+      
       <Text fill="#0f5257" layoutX="90.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primeros">
          <font>
             <Font name="Cooper Black" size="45.0" />
@@ -210,5 +206,10 @@
          </children>
       </AnchorPane>
       <TextArea fx:id="txtDescripcion" layoutX="438.0" layoutY="228.0" prefHeight="224.0" prefWidth="302.0" style="-fx-border-color: #0f5257;" wrapText="true" />
+      <Circle fx:id="circulocerr" fill="#ff000000" layoutX="739.0" layoutY="26.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Line fx:id="lineacerrar2" endX="9.0" fill="BLACK" layoutX="735.0" layoutY="26.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="-45.0" strokeWidth="2.0" />
+      <Line fx:id="lineacerrar1" endX="9.0" fill="BLACK" layoutX="735.0" layoutY="26.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="45.0" strokeWidth="2.0" />
+      <Circle fx:id="circulomin" fill="#ff000000" layoutX="714.0" layoutY="26.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" onMouseExited="#minimizarSalida" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="710.0" layoutY="26.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
    </children>
 </AnchorPane>

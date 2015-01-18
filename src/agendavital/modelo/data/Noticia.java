@@ -39,7 +39,9 @@ public class Noticia {
     String categoria;
     String link;
     String cuerpo;
-    ArrayList<Integer> tags;
+    ArrayList<String> tags;
+
+   
 
     /**
      * Constructor de noticia.
@@ -62,9 +64,9 @@ public class Noticia {
             this.link = rs.getString("link");
             this.categoria = rs.getString("categoria");
             this.cuerpo = rs.getString("cuerpo");
-            rs = conexion.createStatement().executeQuery(String.format("SELECT id_etiqueta from momentos_noticias_etiquetas WHERE id_noticia = %d", id));
+            rs = conexion.createStatement().executeQuery(String.format("SELECT nombre from etiquetas WHERE id_etiqueta IN (SELECT id_etiqueta from momentos_noticias_etiquetas WHERE id_noticia = %d)", id));
             while (rs.next()) {
-                tags.add(rs.getInt("id_etiqueta"));
+                tags.add(rs.getString("nombre"));
             }
 
         } catch (SQLException ee) {
@@ -78,6 +80,7 @@ public class Noticia {
             }
         }
     }
+    
 
     Noticia() {
 
@@ -91,6 +94,9 @@ public class Noticia {
         this.id = id;
     }
 
+    public ArrayList<String> getTags() {
+        return tags;
+    }
     public String getTitulo() {
         return titulo;
     }
@@ -101,6 +107,9 @@ public class Noticia {
 
     public String getFecha() {
         return fecha;
+    }
+     public void setTags(ArrayList<String> tags) {
+        this.tags = tags;
     }
 
     public void setFecha(String fecha) {
@@ -215,7 +224,6 @@ public class Noticia {
                 conexion.createStatement().executeUpdate(insertNoticiaEtiqueta);
             }
         } catch (SQLException e) {
-          e.printStackTrace();
         }
         return new Noticia(nuevoId);
     }
@@ -229,6 +237,19 @@ public class Noticia {
         try (Connection conexion = ConfigBD.conectar()) {
             String update = String.format("UPDATE noticias SET titulo = %s, link = %s, fecha = %s, categoria = %s, cuerpo = %s WHERE id_noticia = %d;", ConfigBD.String2Sql(getTitulo(), false), ConfigBD.String2Sql(getLink(), false), ConfigBD.String2Sql(getFecha(), false), ConfigBD.String2Sql(getCategoria(), false), ConfigBD.String2Sql(getCuerpo(), false), getId());
             conexion.createStatement().executeUpdate(update);
+            for (String tag : tags) {
+                String consultaTag = String.format("SELECT id_etiqueta from etiquetas WHERE Nombre = %s;", ConfigBD.String2Sql(tag, false));
+                ResultSet rs = conexion.createStatement().executeQuery(consultaTag);
+                rs.next();
+                int idTag = (rs.getRow() == 1) ? rs.getInt("id_etiqueta") : -1;
+                if (idTag == -1) {
+                    String insertTag = String.format("INSERT INTO etiquetas (nombre) VALUES (%s);", ConfigBD.String2Sql(tag, false));
+                    conexion.createStatement().executeUpdate(insertTag);
+                    idTag = ConfigBD.LastId("etiquetas");
+                }
+                String updateNoticiaEtiqueta = String.format("Update momentos_noticias_etiquetas SET id_etiqueta = %d WHERE id_Noticia = %d;", idTag, id);
+                conexion.createStatement().executeUpdate(updateNoticiaEtiqueta);
+            }
         } catch (SQLException e) {
             throw new ConexionBDIncorrecta();
         }
@@ -243,8 +264,8 @@ public class Noticia {
         try (Connection conexion = ConfigBD.conectar()) {
             String delete = String.format("Delete from noticias WHERE id_noticia = %d;", getId());
             conexion.createStatement().executeUpdate(delete);
-            String deleteTag = String.format("Delete from momentos_noticias_etiquetas WHERE id_noticia = %d;", getId());
-            conexion.createStatement().executeUpdate(deleteTag);
+            String deleteMNE = String.format("UPDATE momentos_noticias_etiquetas SET id_noticia=NULL WHERE id_noticia = %d;", getId());
+            conexion.createStatement().executeUpdate(deleteMNE);
         } catch (SQLException e) {
             throw new ConexionBDIncorrecta();
         }

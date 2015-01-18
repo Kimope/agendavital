@@ -10,30 +10,30 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="456.0" prefWidth="600.0" style="-fx-background-color: #93C6D6; -fx-background-radius: 7; -fx-border-color: #0f5257; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLAnadirNoticiaController">
+<AnchorPane fx:id="anclaje" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#moverPantalla2" onMousePressed="#moverPantalla" prefHeight="456.0" prefWidth="600.0" style="-fx-background-color: #93C6D6; -fx-background-radius: 7; -fx-border-color: #0f5257; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLAnadirNoticiaController">
    <children>
-      <TextField layoutX="56.0" layoutY="91.0" prefHeight="25.0" prefWidth="494.0" promptText="Titular" style="-fx-border-color: #0f5257;" />
-      <TextArea layoutX="56.0" layoutY="133.0" prefHeight="191.0" prefWidth="494.0" promptText="Descripción" style="-fx-border-color: #0f5257;" wrapText="true" />
+      <TextField fx:id="titular" layoutX="56.0" layoutY="91.0" prefHeight="25.0" prefWidth="494.0" promptText="Titular" style="-fx-border-color: #0f5257;" />
+      <TextArea fx:id="descripcion" layoutX="56.0" layoutY="133.0" prefHeight="191.0" prefWidth="494.0" promptText="Descripción" style="-fx-border-color: #0f5257;" wrapText="true" />
       <ComboBox fx:id="cbcategoria" layoutX="224.0" layoutY="339.0" prefHeight="25.0" prefWidth="157.0" promptText="Categoría" style="-fx-border-color: #0f5257;" />
-      <TextField layoutX="56.0" layoutY="376.0" prefHeight="25.0" prefWidth="157.0" promptText="Tag1" style="-fx-border-color: #0f5257;" />
-      <TextField layoutX="224.0" layoutY="376.0" prefHeight="25.0" prefWidth="157.0" promptText="Tag2" style="-fx-border-color: #0f5257;" />
-      <TextField layoutX="392.0" layoutY="376.0" prefHeight="25.0" prefWidth="157.0" promptText="Tag3" style="-fx-border-color: #0f5257;" />
-      <Button fx:id="butregistrarse" layoutX="258.0" layoutY="411.0" mnemonicParsing="false" onAction="#registra_usuario" prefHeight="31.0" prefWidth="91.0" style="-fx-background-color: #508991; -fx-background-radius: 80;" text="Aceptar">
+      <TextField fx:id="t1" layoutX="56.0" layoutY="376.0" prefHeight="25.0" prefWidth="157.0" promptText="Tag1" style="-fx-border-color: #0f5257;" />
+      <TextField fx:id="t2" layoutX="224.0" layoutY="376.0" prefHeight="25.0" prefWidth="157.0" promptText="Tag2" style="-fx-border-color: #0f5257;" />
+      <TextField fx:id="t3" layoutX="392.0" layoutY="376.0" prefHeight="25.0" prefWidth="157.0" promptText="Tag3" style="-fx-border-color: #0f5257;" />
+      <Button fx:id="butanadir" layoutX="258.0" layoutY="411.0" mnemonicParsing="false" onAction="#registra_noticia" prefHeight="31.0" prefWidth="91.0" style="-fx-background-color: #508991; -fx-background-radius: 80;" text="Aceptar">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Line fx:id="lineacerrar2" endX="9.0" fill="BLACK" layoutX="561.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="40.0" strokeWidth="2.0" />
-      <Line fx:id="lineacerrar1" endX="9.0" fill="BLACK" layoutX="561.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="-40.0" strokeWidth="2.0" />
-      <Circle fx:id="circulocerr" fill="#ff000000" layoutX="565.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="536.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
-      <Circle fx:id="circulomin" fill="#ff000000" layoutX="540.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" onMouseExited="#minimizarSalida" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <TextField layoutX="392.0" layoutY="339.0" prefHeight="25.0" prefWidth="157.0" promptText="Link" style="-fx-border-color: #0f5257;" />
-      <DatePicker layoutX="56.0" layoutY="339.0" prefHeight="25.0" prefWidth="157.0" promptText="Elegir día" style="-fx-border-color: #0f5257;" />
+      <TextField fx:id="link" layoutX="392.0" layoutY="339.0" prefHeight="25.0" prefWidth="157.0" promptText="Link" style="-fx-border-color: #0f5257;" />
+      <DatePicker fx:id="cal" layoutX="56.0" layoutY="339.0" prefHeight="25.0" prefWidth="157.0" promptText="Elegir día" style="-fx-border-color: #0f5257;" />
       <ImageView fitHeight="63.0" fitWidth="200.0" layoutX="215.0" layoutY="16.0">
          <image>
             <Image url="@vital.png" />
          </image>
       </ImageView>
+      <Circle fx:id="circulomin" fill="#ff000000" layoutX="540.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" onMouseExited="#minimizarSalida" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="536.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
+      <Circle fx:id="circulocerr" fill="#ff000000" layoutX="565.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Line fx:id="lineacerrar1" endX="9.0" fill="BLACK" layoutX="561.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="-45.0" strokeWidth="2.0" />
+      <Line fx:id="lineacerrar2" endX="9.0" fill="BLACK" layoutX="561.0" layoutY="29.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="45.0" strokeWidth="2.0" />
    </children>
 </AnchorPane>

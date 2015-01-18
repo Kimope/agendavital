@@ -47,17 +47,7 @@ public class FXMLRegistroCompletadoController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-    }   
-    /////////////////////Métodos para mover la pantalla clickando en cualquier lugar/////////////////////
-    @FXML
-    public void moverPantalla() throws IOException
-    {
-        anclaje.setOnMousePressed((MouseEvent me) -> {
-            initX = me.getScreenX() - FXMLLoginController.ventanaRegistro.getX();
-            initY = me.getScreenY() - FXMLLoginController.ventanaRegistro.getY();
-        });
-    }
-    
+    }      
 @FXML
     public void minimizar() throws IOException
     {
@@ -67,7 +57,7 @@ public class FXMLRegistroCompletadoController implements Initializable
     @FXML
     public void minimizarEncima() throws IOException
     {
-        circulomin.setFill(Color.web("#c97c5d"));
+        circulomin.setFill(Color.web("#D7F2E8"));
     }
     @FXML
     public void minimizarSalida() throws IOException
@@ -82,7 +72,7 @@ public class FXMLRegistroCompletadoController implements Initializable
     @FXML
     public void cerrarEncima() throws IOException
     {
-        circulocerr.setFill(Color.web("#c97c5d"));
+        circulocerr.setFill(Color.web("#D7F2E8"));
     }
     @FXML
     public void cerrarSalida() throws IOException
@@ -92,14 +82,6 @@ public class FXMLRegistroCompletadoController implements Initializable
     @FXML
     public void acceso_principal() throws IOException
     {
-    }
-    @FXML
-    public void moverPantalla2() throws IOException
-    {
-        anclaje.setOnMouseDragged((MouseEvent me) -> {
-            FXMLLoginController.ventanaRegistro.setX(me.getScreenX() - initX);
-            FXMLLoginController.ventanaRegistro.setY(me.getScreenY() - initY);
-        });
     }
     //-----------------------------------------------------------------------------------------------//
     @FXML
@@ -123,4 +105,21 @@ public class FXMLRegistroCompletadoController implements Initializable
                 ventanaPrimeraPregunta.show();
                 FXMLRegistroController.ventanaRegistroCompletado.close();
     }
+    /////////////////////Métodos para mover la pantalla clickando en cualquier lugar/////////////////////
+    @FXML
+    public void moverPantalla() throws IOException {
+        anclaje.setOnMousePressed((MouseEvent me) -> {
+            initX = me.getScreenX() - FXMLRegistroController.ventanaRegistroCompletado.getX();
+            initY = me.getScreenY() - FXMLRegistroController.ventanaRegistroCompletado.getY();
+        });
+    }
+
+    @FXML
+    public void moverPantalla2() throws IOException {
+        anclaje.setOnMouseDragged((MouseEvent me) -> {
+            FXMLRegistroController.ventanaRegistroCompletado.setX(me.getScreenX() - initX);
+            FXMLRegistroController.ventanaRegistroCompletado.setY(me.getScreenY() - initY);
+        });
+    }
+    //-----------------------------------------------------------------------------------------------//
 }

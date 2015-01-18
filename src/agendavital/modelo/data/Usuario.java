@@ -32,6 +32,7 @@ public class Usuario {
 
 
     private String nick;
+    private String nickViejo;
     private String nombre;
     private String apellido;
     private String contrasena;
@@ -39,6 +40,7 @@ public class Usuario {
 
     public Usuario(String _nick) throws SQLException, ConexionBDIncorrecta {
         nick = _nick;
+        nickViejo = _nick;
         Connection conexion = null;
         ResultSet rs = null;
         try {
@@ -140,12 +142,14 @@ public class Usuario {
             throw new ContrasenaMalIntroducida();
         }
         UsuarioLogueado.setLogueado(new Usuario(_nick));
+        UsuarioLogueado.getLogueado().setContrasena(_contrasena);
         return true;
     }
 
     public void Update() throws ConexionBDIncorrecta  {
         try (Connection conexion = ConfigBD.conectar()) {
-            String update = String.format("UPDATE usuarios SET contrasena = %s WHERE nick = %s;", ConfigBD.String2Sql(UtilidadesRegistro.getStringMessageDigest(getContrasena()), false), ConfigBD.String2Sql(getNick(), false));
+            String update = String.format("UPDATE usuarios SET nick = %s, nombre = %s, apellido = %s, contrasena = %s WHERE nick = %s;", ConfigBD.String2Sql(nick, false), ConfigBD.String2Sql(nombre, false), ConfigBD.String2Sql(apellido, false), ConfigBD.String2Sql(UtilidadesRegistro.getStringMessageDigest(getContrasena()), false), ConfigBD.String2Sql(nickViejo, false));
+            System.out.println(update);
             conexion.createStatement().executeUpdate(update);
         } catch (SQLException e) {
             throw new ConexionBDIncorrecta();
@@ -187,6 +191,7 @@ public class Usuario {
             throw new ConexionBDIncorrecta();
         }
         UsuarioLogueado.setLogueado(new Usuario(_nick));
+        UsuarioLogueado.getLogueado().setContrasena(_contrasena);
         return nuevo;
     }
 }

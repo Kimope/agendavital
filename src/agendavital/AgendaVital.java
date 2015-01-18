@@ -72,7 +72,7 @@ public class AgendaVital extends Application
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
-        launch(args);
+        launch();
     }
     
 }

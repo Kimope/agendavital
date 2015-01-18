@@ -8,7 +8,7 @@ package agendavital.vista;
 import agendavital.modelo.data.Momento;
 import agendavital.modelo.data.Noticia;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
-import static agendavital.vista.FXMLPrincipalController.ventanaNoticia;
+//import static agendavital.vista.FXMLPrincipalController.ventanaNoticia;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -58,6 +58,8 @@ import javafx.util.Callback;
  */
 public class FXMLMomentosyNoticiasController implements Initializable {
  
+    public static Stage ventanaMomento=new Stage();
+    public static Stage ventanaNoticia=new Stage();
     List<Text> let = new ArrayList<>();
     final ListView listView = new ListView();
     final ListView listView2 = new ListView();
@@ -87,7 +89,7 @@ public class FXMLMomentosyNoticiasController implements Initializable {
                                       ///////////////////Menu de botones esquina superior derecha///////////////////
     @FXML
     public void minimizar() throws IOException {
-        FXMLPrincipalController.ventanaNoticia.setIconified(true);
+        FXMLPrincipalController.ventanaDia.setIconified(true);
     }
 
     @FXML
@@ -103,7 +105,7 @@ public class FXMLMomentosyNoticiasController implements Initializable {
     @FXML
     public void cerrar() throws IOException
     {
-        FXMLPrincipalController.ventanaNoticia.close();
+        FXMLPrincipalController.ventanaDia.close();
     }
     
     @FXML
@@ -227,6 +229,10 @@ private void addLink(final String url, Noticia noticia) {
                 {
                     if(t.getClickCount() == 2)
                     {
+                        if(ventanaNoticia.isShowing()){
+                            ventanaNoticia.setIconified(false);
+                            ventanaNoticia.toFront();
+                            }else{
                         Parent root = null;
                         ventanaNoticia = new Stage();
                         Image icon = new Image(getClass().getResourceAsStream("logo.png"));
@@ -247,6 +253,7 @@ private void addLink(final String url, Noticia noticia) {
                         ventanaNoticia.setScene(escenaNoticia);
                         ventanaNoticia.initStyle(StageStyle.UNDECORATED);
                         ventanaNoticia.show();
+                        }
                     }
                 }           
             }
@@ -268,11 +275,15 @@ private void addLink(final String url, Noticia noticia) {
                 {
                     if(t.getClickCount() == 2)
                     {
+                        if(ventanaMomento.isShowing()){
+                            ventanaMomento.setIconified(false);
+                            ventanaMomento.toFront();
+                            }else{
                         Parent root = null;
-                        ventanaNoticia = new Stage();
+                        ventanaMomento = new Stage();
                         Image icon = new Image(getClass().getResourceAsStream("logo.png"));
-                        ventanaNoticia.getIcons().add(icon);
-                        ventanaNoticia.setTitle("Acerca De");
+                        ventanaMomento.getIcons().add(icon);
+                        ventanaMomento.setTitle("Acerca De");
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMomento.fxml"));
                         try {
                             root = loader.load();
@@ -287,9 +298,10 @@ private void addLink(final String url, Noticia noticia) {
                         } catch (SQLException ex) {
                             Logger.getLogger(FXMLMomentosyNoticiasController.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                        ventanaNoticia.setScene(escenaNoticia);
-                        ventanaNoticia.initStyle(StageStyle.UNDECORATED);
-                        ventanaNoticia.show();
+                        ventanaMomento.setScene(escenaNoticia);
+                        ventanaMomento.initStyle(StageStyle.UNDECORATED);
+                        ventanaMomento.show();
+                        }
                     }
                 }           
             }
@@ -302,8 +314,8 @@ private void addLink(final String url, Noticia noticia) {
    @FXML
     public void moverPantalla() throws IOException {
         panecentral.setOnMousePressed((MouseEvent me) -> {
-            initX = me.getScreenX() - FXMLPrincipalController.ventanaNoticia.getX();
-            initY = me.getScreenY() - FXMLPrincipalController.ventanaNoticia.getY();
+            initX = me.getScreenX() - FXMLPrincipalController.ventanaDia.getX();
+            initY = me.getScreenY() - FXMLPrincipalController.ventanaDia.getY();
         });
      
     }
@@ -311,8 +323,8 @@ private void addLink(final String url, Noticia noticia) {
     @FXML
     public void moverPantalla2() throws IOException {
         panecentral.setOnMouseDragged((MouseEvent me) -> {
-            FXMLPrincipalController.ventanaNoticia.setX(me.getScreenX() - initX);
-            FXMLPrincipalController.ventanaNoticia.setY(me.getScreenY() - initY);
+            FXMLPrincipalController.ventanaDia.setX(me.getScreenX() - initX);
+            FXMLPrincipalController.ventanaDia.setY(me.getScreenY() - initY);
         });
     }
     //-----------------------------------------------------------------------------------------------//

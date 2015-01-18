@@ -182,6 +182,7 @@ public class FXMLRegistroPreguntaTresController implements Initializable {
                 Image icon = new Image(getClass().getResourceAsStream("logo.png"));
                 ventanaPrincipal.getIcons().add(icon);
                 ventanaPrincipal.setTitle("Agenda Vital");
+                
 
                 try {
                     root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));

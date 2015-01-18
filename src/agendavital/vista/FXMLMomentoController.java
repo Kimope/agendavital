@@ -6,7 +6,7 @@
 package agendavital.vista;
 
 import agendavital.modelo.data.Momento;
-import static agendavital.vista.FXMLPrincipalController.ventanaNoticia;
+import static agendavital.vista.FXMLPrincipalController.ventanaAnadirMomento;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -104,7 +104,7 @@ public class FXMLMomentoController implements Initializable {
                         ///////////////////Menu de botones esquina superior derecha///////////////////
     @FXML
     public void minimizar() throws IOException {
-        FXMLPrincipalController.ventanaNoticia.setIconified(true);
+        FXMLMomentosyNoticiasController.ventanaMomento.setIconified(true);
     }
 
     @FXML
@@ -120,7 +120,7 @@ public class FXMLMomentoController implements Initializable {
     @FXML
     public void cerrar() throws IOException
     {
-        FXMLPrincipalController.ventanaNoticia.close();
+        FXMLMomentosyNoticiasController.ventanaMomento.close();
     }
     
     @FXML
@@ -166,8 +166,8 @@ public class FXMLMomentoController implements Initializable {
    @FXML
     public void moverPantalla() throws IOException {
         anclaje.setOnMousePressed((MouseEvent me) -> {
-            initX = me.getScreenX() - FXMLPrincipalController.ventanaNoticia.getX();
-            initY = me.getScreenY() - FXMLPrincipalController.ventanaNoticia.getY();
+            initX = me.getScreenX() - FXMLMomentosyNoticiasController.ventanaMomento.getX();
+            initY = me.getScreenY() - FXMLMomentosyNoticiasController.ventanaMomento.getY();
         });
      
     }
@@ -175,17 +175,21 @@ public class FXMLMomentoController implements Initializable {
     @FXML
     public void moverPantalla2() throws IOException {
         anclaje.setOnMouseDragged((MouseEvent me) -> {
-            FXMLPrincipalController.ventanaNoticia.setX(me.getScreenX() - initX);
-            FXMLPrincipalController.ventanaNoticia.setY(me.getScreenY() - initY);
+            FXMLMomentosyNoticiasController.ventanaMomento.setX(me.getScreenX() - initX);
+            FXMLMomentosyNoticiasController.ventanaMomento.setY(me.getScreenY() - initY);
         });
     }
     //-----------------------------------------------------------------------------------------------//
     public void modificar_momento(){
+        if(ventanaAnadirMomento.isShowing()){
+            ventanaAnadirMomento.setIconified(false);
+            ventanaAnadirMomento.toFront();
+            }else{
         Parent root = null;
-        ventanaNoticia = new Stage();
+        ventanaAnadirMomento = new Stage();
         Image icon = new Image(getClass().getResourceAsStream("logo.png"));
-        ventanaNoticia.getIcons().add(icon);
-        ventanaNoticia.setTitle("Modificar Noticia");
+        ventanaAnadirMomento.getIcons().add(icon);
+        ventanaAnadirMomento.setTitle("Modificar Noticia");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAnadirMomento.fxml"));
         try {
             root = loader.load();
@@ -203,8 +207,9 @@ public class FXMLMomentoController implements Initializable {
         } catch(SQLException e){
             e.printStackTrace();
         }
-        ventanaNoticia.setScene(escenaNoticia);
-        ventanaNoticia.initStyle(StageStyle.UNDECORATED);
-        ventanaNoticia.show();
+        ventanaAnadirMomento.setScene(escenaNoticia);
+        ventanaAnadirMomento.initStyle(StageStyle.UNDECORATED);
+        ventanaAnadirMomento.show();
+    }
     }
 }

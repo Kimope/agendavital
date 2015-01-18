@@ -215,7 +215,7 @@ public class FXMLAnadirMomentoController implements Initializable {
     ///////////////////Menu de botones esquina superior derecha///////////////////
     @FXML
     public void minimizar() throws IOException {
-        FXMLPrincipalController.ventanaNoticia.setIconified(true);
+        FXMLPrincipalController.ventanaAnadirMomento.setIconified(true);
     }
 
     @FXML
@@ -230,7 +230,7 @@ public class FXMLAnadirMomentoController implements Initializable {
 
     @FXML
     public void cerrar() throws IOException {
-        FXMLPrincipalController.ventanaNoticia.close();
+        FXMLPrincipalController.ventanaAnadirMomento.close();
     }
 
     @FXML
@@ -285,16 +285,16 @@ public class FXMLAnadirMomentoController implements Initializable {
     @FXML
     public void moverPantalla2() throws IOException {
         anclaje.setOnMouseDragged((MouseEvent me) -> {
-            FXMLPrincipalController.ventanaNoticia.setX(me.getScreenX() - initX);
-            FXMLPrincipalController.ventanaNoticia.setY(me.getScreenY() - initY);
+            FXMLPrincipalController.ventanaAnadirMomento.setX(me.getScreenX() - initX);
+            FXMLPrincipalController.ventanaAnadirMomento.setY(me.getScreenY() - initY);
         });
     }
 
     @FXML
     public void moverPantalla() throws IOException {
         anclaje.setOnMousePressed((MouseEvent me) -> {
-            initX = me.getScreenX() - FXMLPrincipalController.ventanaNoticia.getX();
-            initY = me.getScreenY() - FXMLPrincipalController.ventanaNoticia.getY();
+            initX = me.getScreenX() - FXMLPrincipalController.ventanaAnadirMomento.getX();
+            initY = me.getScreenY() - FXMLPrincipalController.ventanaAnadirMomento.getY();
         });
     }
 }

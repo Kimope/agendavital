@@ -17,7 +17,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Text>
-      <Button layoutX="76.0" layoutY="49.0" mnemonicParsing="false" text="Confirmar" />
-      <Button layoutX="233.0" layoutY="49.0" mnemonicParsing="false" text="Cancelar" />
+      <Button layoutX="76.0" layoutY="49.0" mnemonicParsing="false" style="-fx-background-radius: 80; -fx-background-color: #508991;" text="Confirmar" />
+      <Button layoutX="233.0" layoutY="49.0" mnemonicParsing="false" style="-fx-background-radius: 80; -fx-background-color: #508991;" text="Cancelar" />
    </children>
 </AnchorPane>

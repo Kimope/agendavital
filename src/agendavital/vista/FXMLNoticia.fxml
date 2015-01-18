@@ -21,7 +21,7 @@
                   <Text fx:id="txtTag" strokeType="OUTSIDE" strokeWidth="0.0" />
                </children>
             </TextFlow>
-            <Button fx:id="btnModificar" layoutX="495.0" layoutY="504.0" mnemonicParsing="false" onAction="#modificar_noticia" text="Modificar noticia" />
+            <Button fx:id="btnModificar" layoutX="495.0" layoutY="504.0" mnemonicParsing="false" onAction="#modificar_noticia" style="-fx-background-radius: 80; -fx-background-color: #508991;" text="Modificar noticia" />
             <TextFlow fx:id="tfLink" layoutX="10.0" layoutY="495.0" prefHeight="32.0" prefWidth="476.0" style="-fx-border-color: black;">
                <children>
                   <Text fx:id="txtLink" strokeType="OUTSIDE" strokeWidth="0.0">
@@ -31,7 +31,7 @@
                   </Text>
                </children>
             </TextFlow>
-            <Button layoutX="607.0" layoutY="504.0" mnemonicParsing="false" onAction="#borrar_noticia" prefHeight="25.0" prefWidth="105.0" text="Borrar noticia" />
+            <Button layoutX="607.0" layoutY="504.0" mnemonicParsing="false" onAction="#borrar_noticia" prefHeight="25.0" prefWidth="105.0" style="-fx-background-radius: 80; -fx-background-color: #508991;" text="Borrar noticia" />
             <ImageView fx:id="prueba" fitHeight="166.0" fitWidth="221.0" layoutX="493.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" />
             <TextFlow fx:id="tfTitular" layoutX="10.0" layoutY="70.0" prefHeight="68.0" prefWidth="703.0" style="-fx-border-color: black;">
                <children>

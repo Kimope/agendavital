@@ -6,6 +6,7 @@
 package agendavital.modelo.util;
 
 import agendavital.modelo.data.Usuario;
+import java.io.File;
 
 /**
  *
@@ -20,6 +21,14 @@ public class UsuarioLogueado {
 
     public static void setLogueado(Usuario logueado) {
         UsuarioLogueado.logueado = logueado;
+        File destino = new File("Momentos");
+        if (!destino.exists()) {
+            destino.mkdir();
+        }
+        File destino2 = new File("Momentos/" + UsuarioLogueado.getLogueado().getNick());
+        if (!destino2.exists()) {
+            destino2.mkdir();
+        }
 
     }
     public UsuarioLogueado(Usuario _usuario){

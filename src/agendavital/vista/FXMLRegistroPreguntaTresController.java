@@ -196,6 +196,7 @@ public class FXMLRegistroPreguntaTresController implements Initializable {
 
                 Scene escenaPrincipal = new Scene(root);
                 ventanaPrincipal.setScene(escenaPrincipal);
+               
                 //ventanaPrincipal.initStyle(StageStyle.UNDECORATED);
                 ventanaPrincipal.show();
                 FXMLRegistroPreguntaDosController.ventanaTerceraPregunta.close();

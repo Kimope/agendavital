@@ -48,7 +48,6 @@ public class FXMLPrincipalController implements Initializable {
 
     //Se declaran los atributos de FXMLPrincipal, con el nombre del #id que tienen en JavaFX
     public static Stage ventanaRegistro;
-    public static Stage ventanaLogin=new Stage();
     public static Stage ventanaAnadirNoticia=new Stage();
     public static Stage ventanaAnadirMomento=new Stage();
     public static Stage ventanaAcercaDe=new Stage();

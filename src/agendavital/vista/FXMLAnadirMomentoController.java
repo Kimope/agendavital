@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -49,7 +48,6 @@ import javafx.util.Callback;
 public class FXMLAnadirMomentoController implements Initializable {
 
     //////////////Variables de la ventana de registro//////////////
-
     public static final double ANCHO = 596;
     public static final double ALTO = 488;
     private double initX = ANCHO / 2;
@@ -96,7 +94,7 @@ public class FXMLAnadirMomentoController implements Initializable {
     public FXMLMomentoController controllerMomento;
     public FXMLPrincipalController controllerPrincipal;
     public FXMLMomentosyNoticiasController controllerMYN;
-    public Momento modificarMomento;
+    public Momento modificarMomento = null;
 
     public void setControllerMomento(FXMLMomentoController controllerMomento) {
         this.controllerMomento = controllerMomento;
@@ -120,7 +118,6 @@ public class FXMLAnadirMomentoController implements Initializable {
      * @param url
      * @param rb
      */
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cal.setValue(LocalDate.now());
@@ -173,10 +170,10 @@ public class FXMLAnadirMomentoController implements Initializable {
             _color = _color.replace("#", "0x");
             color.setValue(Color.web(_color));
             if (modificarMomento.getId_documento() != 0) {
-                modificarFile = new File(modificarMomento.getRutaDocumento());
+                imagenFile = new File(modificarMomento.getRutaDocumento());
                 InputStream is = null;
                 try {
-                    is = new FileInputStream(modificarFile);
+                    is = new FileInputStream(imagenFile);
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(FXMLRegistroPreguntaUnoController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -198,12 +195,21 @@ public class FXMLAnadirMomentoController implements Initializable {
                 new FileChooser.ExtensionFilter("BMP", "*.bmp"),
                 new FileChooser.ExtensionFilter("PNG", "*.png")
         );
-        imagenFile = chooser.showOpenDialog(new Stage());
         InputStream is = null;
-        try {
-            is = new FileInputStream(imagenFile);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(FXMLRegistroPreguntaUnoController.class.getName()).log(Level.SEVERE, null, ex);
+        if (modificarMomento == null) {
+            imagenFile = chooser.showOpenDialog(new Stage());
+            try {
+                is = new FileInputStream(imagenFile);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(FXMLRegistroPreguntaUnoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            modificarFile = chooser.showOpenDialog(new Stage());
+            try {
+                is = new FileInputStream(modificarFile);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(FXMLRegistroPreguntaUnoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         double width = 191;
         double heigth = 167;
@@ -215,7 +221,7 @@ public class FXMLAnadirMomentoController implements Initializable {
     ///////////////////Menu de botones esquina superior derecha///////////////////
     @FXML
     public void minimizar() throws IOException {
-        FXMLPrincipalController.ventanaNoticia.setIconified(true);
+        FXMLPrincipalController.ventanaAnadirMomento.setIconified(true);
     }
 
     @FXML
@@ -230,7 +236,7 @@ public class FXMLAnadirMomentoController implements Initializable {
 
     @FXML
     public void cerrar() throws IOException {
-        FXMLPrincipalController.ventanaNoticia.close();
+        FXMLPrincipalController.ventanaAnadirMomento.close();
     }
 
     @FXML
@@ -244,10 +250,7 @@ public class FXMLAnadirMomentoController implements Initializable {
     }
 
     @FXML
-    public void registra_momento() throws ConexionBDIncorrecta, IOException {
-        if(modificarMomento != null){
-         imagenFile.delete();
-        }
+    public void registra_momento() throws ConexionBDIncorrecta, IOException, SQLException {
         String _titular = titular.getText();
         String _descripcion = descripcion.getText();
         ArrayList<String> tags = new ArrayList<>();
@@ -263,38 +266,54 @@ public class FXMLAnadirMomentoController implements Initializable {
         if (!t4.getText().isEmpty()) {
             tags.add(t4.getText());
         }
+
         String _fecha = dateFormatter.format(cal.getValue());
         String _color = color.getValue().toString();
         _color = _color.replace("0x", "#");
-        if(modificarMomento == null){
-        Momento momento = Momento.insert(_titular, _fecha, _descripcion, "-fx-background-color: " + _color);
-        if (imagenFile != null) {
-            momento.asociarDocumento(imagenFile);
+        if (modificarMomento == null) {
+            Momento momento = Momento.insert(_titular, _fecha, _descripcion, "-fx-background-color: " + _color, tags);
+            if (imagenFile != null) {
+                momento.asociarDocumento(imagenFile);
+                controllerPrincipal.mostrarImagenes();
+            }
+        } else {
+            modificarMomento.setTitulo(_titular);
+            modificarMomento.setDescripcion(_descripcion);
+            modificarMomento.setFecha(_fecha);
+            modificarMomento.setColor("-fx-background-color: " + _color);
+            modificarMomento.setTags(tags);
+            modificarMomento.Update();
+            if (modificarFile != null) {
+                if(imagenFile != null){
+                    imagenFile.deleteOnExit();
+                    imagenFile = null;
+                }
+                modificarMomento.asociarDocumento(modificarFile);
+            } else if (imagenFile != null) {
+                modificarMomento.asociarDocumento(imagenFile);
+            }
+            controllerMomento.imprimir(modificarMomento);
+            controllerMYN.cambiarDatos();
             controllerPrincipal.mostrarImagenes();
+            if(controllerMYN.isMostrandoTodo()) controllerMYN.mostrarTodo();
+            else controllerMYN.cambiarDatos();
         }
-        }
-        modificarMomento.Update();
-        if (imagenFile != null) {
-            modificarMomento.asociarDocumento(imagenFile);
-            controllerPrincipal.mostrarImagenes();
-        }
-        }
-       
-    
+        controllerPrincipal.colorearFechas();
+    }
 
     @FXML
     public void moverPantalla2() throws IOException {
         anclaje.setOnMouseDragged((MouseEvent me) -> {
-            FXMLPrincipalController.ventanaNoticia.setX(me.getScreenX() - initX);
-            FXMLPrincipalController.ventanaNoticia.setY(me.getScreenY() - initY);
+            FXMLPrincipalController.ventanaAnadirMomento.setX(me.getScreenX() - initX);
+            FXMLPrincipalController.ventanaAnadirMomento.setY(me.getScreenY() - initY);
         });
     }
 
     @FXML
     public void moverPantalla() throws IOException {
         anclaje.setOnMousePressed((MouseEvent me) -> {
-            initX = me.getScreenX() - FXMLPrincipalController.ventanaNoticia.getX();
-            initY = me.getScreenY() - FXMLPrincipalController.ventanaNoticia.getY();
+            initX = me.getScreenX() - FXMLPrincipalController.ventanaAnadirMomento.getX();
+            initY = me.getScreenY() - FXMLPrincipalController.ventanaAnadirMomento.getY();
         });
     }
 }

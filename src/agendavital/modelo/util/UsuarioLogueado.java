@@ -25,5 +25,9 @@ public class UsuarioLogueado {
     public UsuarioLogueado(Usuario _usuario){
         logueado = _usuario;
     }
+
+    public UsuarioLogueado() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

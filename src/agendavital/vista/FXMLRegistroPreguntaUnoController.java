@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -154,7 +155,7 @@ public class FXMLRegistroPreguntaUnoController implements Initializable {
                 new FileChooser.ExtensionFilter("BMP", "*.bmp"),
                 new FileChooser.ExtensionFilter("PNG", "*.png")
         );
-        File file = chooser.showOpenDialog(new Stage());
+        file = chooser.showOpenDialog(new Stage());
         InputStream is = null;
         try {
             is = new FileInputStream(file);
@@ -170,7 +171,9 @@ public class FXMLRegistroPreguntaUnoController implements Initializable {
     @FXML
     public void anadirmomento() throws ConexionBDIncorrecta, IOException{
         String fecha = dateFormatter.format(dpFecha.getValue());
-        momento = Momento.insert("De cuando empece la escuela...", fecha, txtDescripcion.getText(), "-fx-background-color: blue");
+        ArrayList<String> tags = new ArrayList<>();
+        tags.add("Escuela");
+        momento = Momento.insert("De cuando empece la escuela...", fecha, txtDescripcion.getText(), "-fx-background-color: blue", tags);
         momento.asociarDocumento(file);
         segundapregunta();
     }

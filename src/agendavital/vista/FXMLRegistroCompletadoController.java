@@ -1,20 +1,23 @@
 package agendavital.vista;
 
+import agendavital.modelo.util.UsuarioLogueado;
+import agendavital.modelo.util.UtilidadesRegistro;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -40,14 +43,24 @@ public class FXMLRegistroCompletadoController implements Initializable
         private double initX=ANCHO/2;
         private double initY=ALTO/2;    
         //------------------------------------------------------------//
-    @FXML
-    private Text text1;
-    @FXML
-    private Text text2;
+    @FXML private TextArea texto;
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-    }      
+      
+    } 
+    public void inicializarVentana(){
+    String anyoNac = UsuarioLogueado.getLogueado().getFecha_nac();
+        anyoNac = anyoNac.substring(6, anyoNac.length());
+        int anyo = Integer.parseInt(anyoNac);
+        System.out.println(anyo);
+        String acontecimiento = UtilidadesRegistro.acontecimientoMasRelevante(anyo);
+        Text tex = new Text(acontecimiento);
+        tex.setFont(new Font("Cooper Black", 20));
+        tex.setUnderline(true);
+        texto.setText(acontecimiento);
+    }
+    
 @FXML
     public void minimizar() throws IOException
     {

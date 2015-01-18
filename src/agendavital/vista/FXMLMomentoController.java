@@ -6,7 +6,8 @@
 package agendavital.vista;
 
 import agendavital.modelo.data.Momento;
-import static agendavital.vista.FXMLPrincipalController.ventanaNoticia;
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
+import static agendavital.vista.FXMLPrincipalController.ventanaAnadirMomento;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -86,6 +87,12 @@ public class FXMLMomentoController implements Initializable {
     private Button btnModificar;
     public Momento _momento = null;
     public FXMLPrincipalController controllerPrincipal;
+    public FXMLMomentosyNoticiasController controllerMYN;
+
+    public void setControllerMYN(FXMLMomentosyNoticiasController controllerMYN) {
+        this.controllerMYN = controllerMYN;
+    }
+    
 
     public void setMomento(Momento _momento) {
         this._momento = _momento;
@@ -97,14 +104,13 @@ public class FXMLMomentoController implements Initializable {
 
     /**
      * Initializes the controller class.
-     * @param url
-     * @param rb
+     * @throws java.io.IOException
      */
     
                         ///////////////////Menu de botones esquina superior derecha///////////////////
     @FXML
     public void minimizar() throws IOException {
-        FXMLPrincipalController.ventanaNoticia.setIconified(true);
+        FXMLMomentosyNoticiasController.ventanaMomento.setIconified(true);
     }
 
     @FXML
@@ -120,7 +126,7 @@ public class FXMLMomentoController implements Initializable {
     @FXML
     public void cerrar() throws IOException
     {
-        FXMLPrincipalController.ventanaNoticia.close();
+        FXMLMomentosyNoticiasController.ventanaMomento.close();
     }
     
     @FXML
@@ -166,8 +172,8 @@ public class FXMLMomentoController implements Initializable {
    @FXML
     public void moverPantalla() throws IOException {
         anclaje.setOnMousePressed((MouseEvent me) -> {
-            initX = me.getScreenX() - FXMLPrincipalController.ventanaNoticia.getX();
-            initY = me.getScreenY() - FXMLPrincipalController.ventanaNoticia.getY();
+            initX = me.getScreenX() - FXMLMomentosyNoticiasController.ventanaMomento.getX();
+            initY = me.getScreenY() - FXMLMomentosyNoticiasController.ventanaMomento.getY();
         });
      
     }
@@ -175,17 +181,21 @@ public class FXMLMomentoController implements Initializable {
     @FXML
     public void moverPantalla2() throws IOException {
         anclaje.setOnMouseDragged((MouseEvent me) -> {
-            FXMLPrincipalController.ventanaNoticia.setX(me.getScreenX() - initX);
-            FXMLPrincipalController.ventanaNoticia.setY(me.getScreenY() - initY);
+            FXMLMomentosyNoticiasController.ventanaMomento.setX(me.getScreenX() - initX);
+            FXMLMomentosyNoticiasController.ventanaMomento.setY(me.getScreenY() - initY);
         });
     }
     //-----------------------------------------------------------------------------------------------//
     public void modificar_momento(){
+        if(ventanaAnadirMomento.isShowing()){
+            ventanaAnadirMomento.setIconified(false);
+            ventanaAnadirMomento.toFront();
+            }else{
         Parent root = null;
-        ventanaNoticia = new Stage();
+        ventanaAnadirMomento = new Stage();
         Image icon = new Image(getClass().getResourceAsStream("logo.png"));
-        ventanaNoticia.getIcons().add(icon);
-        ventanaNoticia.setTitle("Modificar Noticia");
+        ventanaAnadirMomento.getIcons().add(icon);
+        ventanaAnadirMomento.setTitle("Modificar Momento");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAnadirMomento.fxml"));
         try {
             root = loader.load();
@@ -196,15 +206,23 @@ public class FXMLMomentoController implements Initializable {
         Scene escenaNoticia = new Scene(root);
         FXMLAnadirMomentoController controller = loader.getController();
         controller.setModificarMomento(_momento);
+        controller.setControllerMYN(controllerMYN);
         controller.setControllerMomento(this);        
         controller.setControllerPrincipal(controllerPrincipal);
         try{
             controller.inicializarVentana();
         } catch(SQLException e){
-            e.printStackTrace();
         }
-        ventanaNoticia.setScene(escenaNoticia);
-        ventanaNoticia.initStyle(StageStyle.UNDECORATED);
-        ventanaNoticia.show();
+        ventanaAnadirMomento.setScene(escenaNoticia);
+        ventanaAnadirMomento.initStyle(StageStyle.UNDECORATED);
+        ventanaAnadirMomento.show();
+    }
+    }
+    public void borrar_momento() throws ConexionBDIncorrecta{
+        _momento.Delete();
+        _momento = null;
+        if(controllerMYN.isMostrandoTodo()) controllerMYN.mostrarTodo();
+       else controllerMYN.cambiarDatos();
+       controllerPrincipal.colorearFechas();
     }
 }

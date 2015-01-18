@@ -25,8 +25,13 @@ import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import agendavital.modelo.excepciones.ContrasenaMalIntroducida;
 import agendavital.modelo.excepciones.NickMalIntroducido;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 /**
  * @author Enrique
@@ -62,7 +67,25 @@ public class FXMLLoginController implements Initializable
     //------------------------------------------------------------//
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {}    
+    public void initialize(URL url, ResourceBundle rb) {
+    anclaje.setOnKeyPressed(new EventHandler<KeyEvent>()
+    {
+        @Override
+        public void handle(KeyEvent ke)
+        {
+            if (ke.getCode().equals(KeyCode.ENTER))
+            {
+                try {
+                    login();
+                } catch (IOException ex) {
+                    Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ConexionBDIncorrecta ex) {
+                    Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    });
+    }    
     
     public void blanquearUsuario() throws IOException
     {

@@ -3,23 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLRegistroPreguntaDosController.java</file>
-            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLRegistroController.java</file>
-            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLRegistroCompletadoController.java</file>
-            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLPrincipalController.java</file>
-            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLLoginController.java</file>
-            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLRegistroPreguntaTresController.java</file>
-            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLRegistroPreguntaUnoController.java</file>
-        </group>
-    </open-files>
-</project-private>
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
+            <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/src/agendavital/vista/FXMLMomentoController.java</file>
             <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/src/agendavital/vista/FXMLAnadirMomentoController.java</file>
             <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/src/agendavital/modelo/data/Momento.java</file>
+            <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/src/agendavital/vista/FXMLMomentosyNoticiasController.java</file>
             <file>file:/C:/Users/Ramón/Documents/GitHub/agendavital/src/agendavital/vista/FXMLPrincipalController.java</file>
         </group>
     </open-files>

@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -169,7 +170,10 @@ public class FXMLRegistroPreguntaTresController implements Initializable {
      @FXML
     public void anadirmomento() throws ConexionBDIncorrecta, IOException{
         String fecha = dateFormatter.format(dpFecha.getValue());
-        momento = Momento.insert("Mi viaje a "+txtTitulo.getText(), fecha, txtDescripcion.getText(), "-fx-background-color: blue");
+        ArrayList<String> tags = new ArrayList<>();
+        tags.add("Viaje");
+        tags.add(txtTitulo.getText());
+        momento = Momento.insert("Mi viaje a "+txtTitulo.getText(), fecha, txtDescripcion.getText(), "-fx-background-color: blue", tags);
         momento.asociarDocumento(file);
         principal();
     }
@@ -182,6 +186,7 @@ public class FXMLRegistroPreguntaTresController implements Initializable {
                 Image icon = new Image(getClass().getResourceAsStream("logo.png"));
                 ventanaPrincipal.getIcons().add(icon);
                 ventanaPrincipal.setTitle("Agenda Vital");
+                
 
                 try {
                     root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));

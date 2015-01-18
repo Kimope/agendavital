@@ -1,5 +1,7 @@
 package agendavital.vista;
 
+import agendavital.modelo.util.UsuarioLogueado;
+import agendavital.modelo.util.UtilidadesRegistro;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -47,7 +49,17 @@ public class FXMLRegistroCompletadoController implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-    }      
+      
+    } 
+    public void inicializarVentana(){
+    String anyoNac = UsuarioLogueado.getLogueado().getFecha_nac();
+        anyoNac = anyoNac.substring(6, anyoNac.length());
+        int anyo = Integer.parseInt(anyoNac);
+        System.out.println(anyo);
+        String acontecimiento = UtilidadesRegistro.acontecimientoMasRelevante(anyo);
+        text2.setText(acontecimiento);
+    }
+    
 @FXML
     public void minimizar() throws IOException
     {

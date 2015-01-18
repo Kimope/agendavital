@@ -50,7 +50,7 @@ public class Usuario {
             this.nombre = rs.getString("nombre");
             this.apellido = rs.getString("apellido");
             this.contrasena = null;
-            this.fecha_nac = rs.getNString("fecha_nac");
+            this.fecha_nac = rs.getString("fecha_nac");
         } catch (SQLException ee) {
             throw new ConexionBDIncorrecta();
         } finally {

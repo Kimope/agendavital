@@ -258,6 +258,8 @@ public class Momento {
         try (Connection conexion = ConfigBD.conectar()) {
             String deleteTag = String.format("Delete from momentos_noticias_etiquetas WHERE id_momento = %d;", getId());
             conexion.createStatement().executeUpdate(deleteTag);
+            String deleteDocumento = String.format("DELETE from documentos WHERE id_documento IN (SELECT id_documento from momentos WHERE id_usuario = %d)", ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
+            conexion.createStatement().executeUpdate(deleteDocumento);
             String delete = String.format("Delete from momentos WHERE id_momento = %d;", getId());
             conexion.createStatement().executeUpdate(delete);
             
@@ -283,6 +285,13 @@ public class Momento {
             String insertDocumento = String.format("INSERT INTO Documentos (ruta_doc) VALUES (%s);", ConfigBD.String2Sql(destino3.getCanonicalPath(), false));
             conexion.createStatement().executeUpdate(insertDocumento);
             int idDoc = ConfigBD.LastId("documentos");
+            String consultaDoc = String.format("SELECT id_documento from Documentos WHERE id_documento IN (SELECT id_documento from momentos WHERE id_usuario = %s);", ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
+            rs = conexion.createStatement().executeQuery(consultaDoc);
+            rs.next();
+            if(rs.getRow() > 0){
+                int idEliminar = rs.getInt("id_documento");
+                String eliminarDocumento = String.format("DELETE from documentos where id_documento=%d;", idEliminar);
+            }
             id_documento = idDoc;
             String update = String.format("UPDATE momentos SET id_documento = %d WHERE id_momento = %d;", idDoc, getId());
             conexion.createStatement().executeUpdate(update);

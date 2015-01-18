@@ -143,7 +143,11 @@ public class FXMLPrincipalController implements Initializable {
                 }
             }
         };
-        mostrarImagenes();
+        try {
+            mostrarImagenes();
+        } catch (ConexionBDIncorrecta ex) {
+            Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         colorearFechas();
         
         cal.setConverter(converter);
@@ -178,16 +182,12 @@ public class FXMLPrincipalController implements Initializable {
         
     }
     
-    public void mostrarImagenes(){
+    public void mostrarImagenes() throws ConexionBDIncorrecta{
         panecentral.getChildren().remove(pagination);
-         String s = "Momentos/"+UsuarioLogueado.getLogueado().getNick();
-        //String s= "Momentos/"+UsuarioLogueado.getLogueado().getNick();
-        File f = new File(s);
-        
-        if (f.exists()) {
-            filesJpg = f.listFiles((File pathname) -> pathname.length() > 0 && !pathname.getName().contains("db"));
-        } else {
-            System.out.print("ERROR NO SE HA ENCONTRADO EL DIRECTORIO");
+        ArrayList<File> imagenes = UsuarioLogueado.getTodasImagenes();
+        filesJpg = new File[imagenes.size()];
+        for(int i = 0; i < imagenes.size(); i++){
+            filesJpg[i] = imagenes.get(i);
         }
         int numOfPage = filesJpg.length;
         if(numOfPage > 0){

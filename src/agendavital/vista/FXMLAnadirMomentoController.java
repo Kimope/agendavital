@@ -288,6 +288,7 @@ public class FXMLAnadirMomentoController implements Initializable {
                     System.out.println("Bien");
                     System.out.println(imagenFile.getName());
                     imagenFile.deleteOnExit();
+                    imagenFile.delete();
                     imagenFile = null;
                 }
                 modificarMomento.asociarDocumento(modificarFile);

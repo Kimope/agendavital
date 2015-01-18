@@ -119,7 +119,10 @@
       <Circle fill="#1f93ff00" layoutX="594.0" layoutY="94.0" radius="8.0" stroke="#0f5257" strokeType="INSIDE" strokeWidth="2.0" />
       <Line endX="100.0" layoutX="480.0" layoutY="94.0" startX="-30.0" stroke="#0f5257" strokeWidth="2.0" />
       <Line endX="100.0" layoutX="640.0" layoutY="94.0" startX="-30.0" stroke="#0f5257" strokeWidth="2.0" />
-      <Button layoutX="465.0" layoutY="470.0" mnemonicParsing="false" onAction="#anadirmomento" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #508991; -fx-background-radius: 80;" text="Añadir" />
+      <Button layoutX="465.0" layoutY="470.0" mnemonicParsing="false" onAction="#anadirmomento" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #508991; -fx-background-radius: 80;" text="Añadir">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Circle layoutX="379.0" layoutY="48.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle layoutX="379.0" layoutY="391.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Circle layoutX="379.0" layoutY="193.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
@@ -181,7 +184,10 @@
          </font>
       </Label>
       <DatePicker fx:id="dpFecha" layoutX="231.0" layoutY="223.0" prefHeight="25.0" prefWidth="108.0" style="-fx-border-color: #0f5257;" />
-      <Button layoutX="608.0" layoutY="470.0" mnemonicParsing="false" onAction="#principal" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #508991; -fx-background-radius: 80;" text="Saltar" />
+      <Button layoutX="608.0" layoutY="470.0" mnemonicParsing="false" onAction="#principal" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: #508991; -fx-background-radius: 80;" text="Saltar">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Button layoutX="533.0" layoutY="404.0" mnemonicParsing="false" onAction="#anadir" prefHeight="25.0" prefWidth="123.0" text="Modificar imagen" />
       <AnchorPane layoutX="440.0" layoutY="117.0" prefHeight="263.0" prefWidth="308.0">
          <children>

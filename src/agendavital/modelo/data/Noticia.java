@@ -215,6 +215,7 @@ public class Noticia {
      * @param tags
      * @return
      * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
+     * @throws java.sql.SQLException
      */
     public static Noticia Insert(String titulo, String link, String fecha, String categoria, String cuerpo, ArrayList<String> tags) throws ConexionBDIncorrecta, SQLException {
         int nuevoId = 0;

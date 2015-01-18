@@ -53,6 +53,12 @@ public class FXMLPrincipalController implements Initializable {
     public static Stage ventanaAcercaDe=new Stage();
     public static Stage ventanaAdministracion=new Stage();
     public static Stage ventanaDia=new Stage();
+    public boolean desdeRegistro;
+
+    public void setDesdeRegistro(boolean desdeRegistro) {
+        this.desdeRegistro = desdeRegistro;
+    }
+    
      
      
     public static String fechaSeleccionada = null;

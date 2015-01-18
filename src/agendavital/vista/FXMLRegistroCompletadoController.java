@@ -43,7 +43,7 @@ public class FXMLRegistroCompletadoController implements Initializable
         private double initX=ANCHO/2;
         private double initY=ALTO/2;    
         //------------------------------------------------------------//
-    @FXML private TextArea texto;
+    @FXML private Text texto2;
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
@@ -58,7 +58,7 @@ public class FXMLRegistroCompletadoController implements Initializable
         Text tex = new Text(acontecimiento);
         tex.setFont(new Font("Cooper Black", 20));
         tex.setUnderline(true);
-        texto.setText(acontecimiento);
+        texto2.setText(acontecimiento);
     }
     
 @FXML

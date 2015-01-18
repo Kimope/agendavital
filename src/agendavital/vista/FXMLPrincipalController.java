@@ -175,6 +175,7 @@ public class FXMLPrincipalController implements Initializable {
         });
         
     }
+    //
     
     public void mostrarImagenes() throws ConexionBDIncorrecta{
         panecentral.getChildren().remove(pagination);

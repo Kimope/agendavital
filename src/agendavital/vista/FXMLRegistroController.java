@@ -31,7 +31,7 @@ import agendavital.modelo.excepciones.ContrasenaSinNumeros;
 import agendavital.modelo.excepciones.FechaInvalida;
 import agendavital.modelo.excepciones.NickMuyCorto;
 import agendavital.modelo.excepciones.NickYaExiste;
-import static agendavital.vista.FXMLPrincipalController.ventanaNoticia;
+//import static agendavital.vista.FXMLPrincipalController.ventanaNoticia;
 import java.sql.SQLException;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;

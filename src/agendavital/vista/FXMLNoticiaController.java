@@ -7,6 +7,10 @@ package agendavital.vista;
 
 import agendavital.modelo.data.Noticia;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
+import static agendavital.vista.FXMLMomentoController._momento;
+import static agendavital.vista.FXMLMomentoController.controllerMYN;
+import static agendavital.vista.FXMLMomentoController.controllerPrincipal;
+import static agendavital.vista.FXMLMomentoController.ventanaConfirmarBorrar;
 import static agendavital.vista.FXMLPrincipalController.ventanaAnadirNoticia;
 import java.io.IOException;
 import java.net.URL;
@@ -83,9 +87,10 @@ public class FXMLNoticiaController implements Initializable {
     private ImageView prueba;
     @FXML
     private Pane paneluno;
-    Noticia _noticia;
-    FXMLMomentosyNoticiasController controllerMYN = null;
-    public FXMLPrincipalController controllerPrincipal;
+    static Noticia _noticia;
+    static FXMLMomentosyNoticiasController controllerMYN = null;
+    public static FXMLPrincipalController controllerPrincipal;
+    public static Stage ventanaConfirmarBorrarr;
 
     public void setControllerPrincipal(FXMLPrincipalController controllerPrincipal) {
         this.controllerPrincipal = controllerPrincipal;
@@ -201,10 +206,34 @@ public class FXMLNoticiaController implements Initializable {
         }
     }
    public void borrar_noticia() throws ConexionBDIncorrecta{
+       Parent root = null; //Creamos el parent
+            ventanaConfirmarBorrarr = new Stage(); //Creamos la ventana que tendrá la vista Principal de la aplicación
+            Image icon= new Image(getClass().getResourceAsStream("logo.png"));
+            ventanaConfirmarBorrarr.getIcons().add(icon);
+            
+            try{
+                root = FXMLLoader.load(getClass().getResource("FXMLConfirmarBorrarNoticia.fxml"));
+            }catch(IOException e)
+            {
+                System.out.println("No se puede encontrar el fichero FXML");
+            }
+            
+            ventanaConfirmarBorrarr.setResizable(false); //No se puede modificar el tamaño de la ventana
+            ventanaConfirmarBorrarr.setTitle("Borrar"); //Ponemos un título para el panel de Windows
+            ventanaConfirmarBorrarr.initStyle(StageStyle.TRANSPARENT);
+            Scene escenaConfirmarBorrarr = new Scene(root); //Creamos la escena
+            escenaConfirmarBorrarr.setFill( Color.TRANSPARENT );
+            ventanaConfirmarBorrarr.setScene(escenaConfirmarBorrarr); //Cargamos la escena
+            ventanaConfirmarBorrarr.show();
+   }
+   
+   public static void borrar() throws ConexionBDIncorrecta
+    {
        _noticia.Delete();
        _noticia = null;
        if(controllerMYN.isMostrandoTodo()) controllerMYN.mostrarTodo();
        else controllerMYN.cambiarDatos();
        controllerPrincipal.colorearFechas();
-   }
+        
+    }
 }

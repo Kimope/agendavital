@@ -154,10 +154,10 @@ public class FXMLLoginController implements Initializable
             //System.err.println("No se ha podido acceder a la BD"); //Pantalla de error con este texto
         } catch (NickMalIntroducido ex) {
             error_login.setText("Nombre de usuario incorrecto");
-            tfUsuario.setStyle("-fx-background-color:#F6F740");
+            tfUsuario.setStyle("-fx-background-color:#eb7264");
         } catch (ContrasenaMalIntroducida ex) {
             error_login.setText("Contraseña incorrecta");
-            tfContra.setStyle("-fx-background-color:#F6F740");
+            tfContra.setStyle("-fx-background-color:#eb7264");
             
         }
         /*Y cuando acabeis, quitad los System.err...*/
@@ -186,7 +186,6 @@ public class FXMLLoginController implements Initializable
         ventanaRegistro.setScene(escenaRegistro);
         AgendaVital.ventanaLogin.close();
         ventanaRegistro.show();
-        escenaRegistro.setCursor(Cursor.WAIT);
     }
     
     /////////////////////Métodos para mover la pantalla clickando en cualquier lugar/////////////////////

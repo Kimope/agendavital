@@ -36,7 +36,10 @@
          </cursor></Button>
       <Hyperlink layoutX="33.0" layoutY="320.0" onAction="#registro" style="-fx-underline: false;" text="Registrarme" textFill="#0f5257" visited="true" />
       <Circle fx:id="circulocerr" fill="#ff000000" layoutX="288.0" layoutY="27.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <Label fx:id="error_login" layoutX="147.0" layoutY="335.0" textFill="#e4dd00" />
+      <Label fx:id="error_login" layoutX="131.0" layoutY="335.0" textFill="#eb7264">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
       <ImageView fitHeight="81.0" fitWidth="187.0" layoutX="72.0" layoutY="14.0">
          <image>
             <Image url="@imagenes_interfaz/vital.png" />

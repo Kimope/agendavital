@@ -8,6 +8,8 @@ package agendavital.modelo.data;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import agendavital.modelo.excepciones.ErrorConexionFeedzilla;
 import agendavital.modelo.util.ConfigBD;
+import agendavital.modelo.util.UsuarioLogueado;
+import agendavital.modelo.util.UtilidadesBusqueda;
 import agendavital.modelo.util.UtilidadesNoticia;
 import java.io.IOException;
 import java.sql.Connection;
@@ -318,19 +320,35 @@ public class Noticia {
         return arrayNoticias;
     }
 
-    public static ArrayList<Noticia> buscar(String _tag) throws ConexionBDIncorrecta {
-        ArrayList<Noticia> busqueda = null;
+   public static ArrayList<Momento> buscar(String _parametro) throws ConexionBDIncorrecta {
+       ArrayList<String> _tags = UtilidadesBusqueda.separarPalabras(_parametro);
+        ArrayList<Momento> busqueda = null;
         try (Connection conexion = ConfigBD.conectar()) {
             busqueda = new ArrayList<>();
-            String buscar = String.format("SELECT id_Noticia from momentos_noticias_etiquetas "
-                    + "WHERE id_Etiqueta IN (SELECT id_Etiqueta from etiquetas "
-                    + "WHERE nombre LIKE %s);", ConfigBD.String2Sql(_tag, true));
-            ResultSet rs = conexion.createStatement().executeQuery(buscar);
-            while (rs.next()) {
-                busqueda.add(new Noticia(rs.getInt("id_Noticia")));
+            for (String _tag : _tags) {
+                String tag = ConfigBD.String2Sql(_tag, true);
+                String buscar = String.format("SELECT id_Noticia from noticias "
+                        + "WHERE id_noticia IN (SELECT id_noticia from momentos_noticias_etiquetas "
+                        + "WHERE id_etiqueta IN (SELECT id_etiqueta from etiquetas WHERE nombre LIKE %s)) "
+                        + "OR titulo LIKE %s "
+                        + "OR cuerpo LIKE %s "
+                        + "OR categoria LIKE %s "
+                        + "OR fecha LIKE %s "
+                        + "AND id_usuario = %s);", tag, tag, tag, tag,tag, ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
+                ResultSet rs = conexion.createStatement().executeQuery(buscar);
+                while (rs.next()) {
+                    busqueda.add(new Momento(rs.getInt("id_Noticia")));
+                }
             }
         } catch (SQLException e) {
             throw new ConexionBDIncorrecta();
+        }
+        for (int i = 0; i < busqueda.size() - 1; i++) {
+            for (int j = i + 1; j < busqueda.size(); j++) {
+                if (busqueda.get(i).getId() == busqueda.get(j).getId()) {
+                    busqueda.remove(j);
+                }
+            }
         }
         return busqueda;
     }

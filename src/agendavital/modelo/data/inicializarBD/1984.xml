@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Conoce la historia de Mark Zuckerberg, fundador de Facebook</titulo>
+        <fecha>14-05-1984</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://www.latercera.com/noticia/tendencias/2012/05/659-461191-9-conoce-la-historia-de-mark-zuckerberg-fundador-de-facebook-y-el-millonario-mas.shtml</link>
+        <tag>mark</tag>
+        <tag>zuckerberg</tag>
+        <tag>facebook</tag>
+        <cuerpo>Nacido el 14 de mayo de 1984, criado en Dobbs Ferry, a las afueras de Nueva York, por un padre dentista y una madre psiquiatra, se inició a los 11 años en la programación informática.</cuerpo>
+</Noticia>
+</Noticias>

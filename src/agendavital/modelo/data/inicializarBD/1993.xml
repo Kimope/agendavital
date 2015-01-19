@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Nace Marc Marquez</titulo>
+        <fecha>17-02-1993</fecha>
+        <categoria>Noticias Nacionales</categoria>
+        <link>http://www.buscabiografias.com/bios/biografia/verDetalle/9813/Marc%20Marquez%20Alenta</link>
+        <tag>marc</tag>
+        <tag>marquez</tag>
+        <cuerpo>Nació el 17 de febrero de 1993 en Cervera, Lérida, España. Corre con el número 93 haciendo referencia a su fecha de nacimiento. Se inició en 1998 cuando disputó su primera carrera de enduro aunque empezó a sobresalir en el motociclismo de velocidad desde el año 2002 hasta 2006 compitiendo en el campeonato de Cataluña, excepto en 2003, cuando participó y ganó el prestigioso Open RACC de 50 cc. En 2005 y 2006, ya en 125 cc, su superioridad le abrió las puertas del CEV (Campeonato de España de Velocidad), donde, en su única presencia, fue octavo. </cuerpo>
+    </Noticia>
+</Noticias>

@@ -5,7 +5,6 @@ import agendavital.modelo.data.Noticia;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import agendavital.modelo.util.UsuarioLogueado;
 import java.io.File;
-import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -18,11 +17,9 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DateCell;
@@ -142,15 +139,17 @@ public class FXMLPrincipalController implements Initializable {
                 }
             }
         };
-        mostrarImagenes();
+        try {
+            mostrarImagenes();
+        } catch (ConexionBDIncorrecta ex) {
+            Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         colorearFechas();
         
         cal.setConverter(converter);
         cal.setPromptText("dd-MM-yyyy");
         logueado.setText("Logueado como "+UsuarioLogueado.getLogueado().getNick());
-        cerrar_sesion.setOnMouseClicked(new EventHandler<MouseEvent>() {
-        @Override
-        public void handle(MouseEvent t) {
+        cerrar_sesion.setOnMouseClicked((MouseEvent t) -> {
             Parent root = null; //Creamos un parent, que es una clase que se encarga del escenario gráfico, que tendrá sus hijos, que serán las escenas
             agendavital.AgendaVital.ventanaLogin= new Stage();
             Image icon = new Image(getClass().getResourceAsStream("logo.png"));
@@ -162,31 +161,27 @@ public class FXMLPrincipalController implements Initializable {
             {
                 e.printStackTrace();
             }
-        
-        
-        agendavital.AgendaVital.ventanaLogin.initStyle( StageStyle.TRANSPARENT ); //No se muestra el menú de Windows
-        agendavital.AgendaVital.ventanaLogin.setAlwaysOnTop(true);  //Siempre va a estar visible, no se puede minimizar
-        Scene scene = new Scene(root); //Creamos una escena en el root creado, que es una clase contenedora del escenario gráfico, en este caso con la ventana que se muestra por pantalla
-        scene.setFill( Color.TRANSPARENT ); //Para que no se vea la escena (lo usamos para que no se vean los picos de los bordes
-        agendavital.AgendaVital.ventanaLogin.setScene(scene); //Cargamos la escena
-        agendavital.AgendaVital.ventanaLogin.centerOnScreen();
-        agendavital.AgendaVital.ventanaLogin.show(); //La mostramos por pantalla
-        FXMLLoginController.ventanaPrincipal.close();
-        }
-    });
+            
+            
+            agendavital.AgendaVital.ventanaLogin.initStyle( StageStyle.TRANSPARENT ); //No se muestra el menú de Windows
+            agendavital.AgendaVital.ventanaLogin.setAlwaysOnTop(true);  //Siempre va a estar visible, no se puede minimizar
+            Scene scene = new Scene(root); //Creamos una escena en el root creado, que es una clase contenedora del escenario gráfico, en este caso con la ventana que se muestra por pantalla
+            scene.setFill( Color.TRANSPARENT ); //Para que no se vea la escena (lo usamos para que no se vean los picos de los bordes
+            agendavital.AgendaVital.ventanaLogin.setScene(scene); //Cargamos la escena
+            agendavital.AgendaVital.ventanaLogin.centerOnScreen();
+            agendavital.AgendaVital.ventanaLogin.show(); //La mostramos por pantalla
+            FXMLLoginController.ventanaPrincipal.close();
+        });
         
     }
+    //
     
-    public void mostrarImagenes(){
+    public void mostrarImagenes() throws ConexionBDIncorrecta{
         panecentral.getChildren().remove(pagination);
-         String s = "Momentos/"+UsuarioLogueado.getLogueado().getNick();
-        //String s= "Momentos/"+UsuarioLogueado.getLogueado().getNick();
-        File f = new File(s);
-        
-        if (f.exists()) {
-            filesJpg = f.listFiles((File pathname) -> pathname.length() > 0 && !pathname.getName().contains("db"));
-        } else {
-            System.out.print("ERROR NO SE HA ENCONTRADO EL DIRECTORIO");
+        ArrayList<File> imagenes = UsuarioLogueado.getTodasImagenes();
+        filesJpg = new File[imagenes.size()];
+        for(int i = 0; i < imagenes.size(); i++){
+            filesJpg[i] = imagenes.get(i);
         }
         int numOfPage = filesJpg.length;
         if(numOfPage > 0){

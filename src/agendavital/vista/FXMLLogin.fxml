@@ -30,7 +30,10 @@
          </font>
       </Label>
       <PasswordField fx:id="tfContra" layoutX="79.0" layoutY="231.0" onMouseClicked="#blanquearContra" prefHeight="25.0" prefWidth="168.0" style="-fx-background-color: #FCF0CC;" />
-      <Button fx:id="btnLogin" layoutX="122.0" layoutY="283.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="84.0" style="-fx-background-color: #508991; -fx-background-radius: 80;" text="Login" />
+      <Button fx:id="btnLogin" layoutX="122.0" layoutY="283.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="84.0" style="-fx-background-color: #508991; -fx-background-radius: 80;" text="Login">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Hyperlink layoutX="33.0" layoutY="320.0" onAction="#registro" style="-fx-underline: false;" text="Registrarme" textFill="#0f5257" visited="true" />
       <Circle fx:id="circulocerr" fill="#ff000000" layoutX="288.0" layoutY="27.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
       <Label fx:id="error_login" layoutX="147.0" layoutY="335.0" textFill="#e4dd00" />

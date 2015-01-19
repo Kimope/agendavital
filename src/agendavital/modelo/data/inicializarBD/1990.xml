@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Es liberado Nelson Mandela en Sudáfrica</titulo>
+        <fecha>11-02-1990</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://ferriz.com.mx/efemerides/11-de-febrero-1990-es-liberado-nelson-mandela-en-sudafrica-por-el-gobierno-del-recientemente-electo-presidente-f-w-de-klerk-tras-27-anos-de-prision/</link>
+        <tag>nelson</tag>
+        <tag>mandela</tag>
+        <cuerpo>En Sudáfrica es liberado Nelson Mandela por el gobierno del recientemente electo presidente F.W. De Klerk, que ha tomado medidas para desmantelar el Apartheid, tras pasar 27 años en prisión. Mandela, miembro del Congreso Nacional Africano, siempre ha defendido la resistencia pacífica contra el Apartheid.</cuerpo>
+</Noticia>
+</Noticias>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Austria, Finlandia y Suecia se adhieren a la UE</titulo>
+        <fecha>01-01-1995</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://europa.eu/about-eu/eu-history/1990-1999/index_es.htm</link>
+        <tag>austria</tag>
+       <tag>suecia</tag>
+       <tag>finlandia</tag>
+       <tag>union europea</tag>
+        <cuerpo>Austria, Finlandia y Suecia se adhieren a la UE. Los quince Estados miembros cubren en adelante la casi totalidad de la Europa Occidental. En octubre de 1990, Alemania se unifica y la antigua Alemania Oriental se incorpora a la UE.</cuerpo>
+    </Noticia>
+</Noticias>

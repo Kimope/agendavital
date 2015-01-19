@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>¿Por qué se accidentó Ayrton Senna?</titulo>
+        <fecha>01-05-1994</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://blogs.lanacion.com.ar/ruido-de-motores/por-las-pistas/por-que-se-accidento-ayrton-senna/</link>
+        <tag>ayrton</tag>
+        <tag>senna</tag>
+        <cuerpo>Este 1° de mayo se cumplen 20 años de la muerte del legendario piloto brasileño. Para muchos, el mejor en la historia de la Fórmula 1. Aún hoy no se sabe a ciencia cierta por qué ocurrió el accidente que le costó la vida en la curva Tamburello del circuito de Imola. Las teorías son variadas, por eso reedito este post para volver a analizarlas y, por supuesto, rendir homenaje a un mito inmortal del automovilismo mundial. Una leyenda que el tiempo no puede borrar.</cuerpo>
+    </Noticia>
+</Noticias>

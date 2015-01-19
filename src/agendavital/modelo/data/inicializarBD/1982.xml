@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>El origen de: El corazón artificial</titulo>
+        <fecha>01-05-1982</fecha>
+        <categoria>Noticias Nacionales</categoria>
+        <link>https://www.fayerwayer.com/2012/06/el-origen-de-el-corazon-artificial/</link>
+        <tag>españa</tag>
+        <tag>gibraltar</tag>
+        <tag>frontera</tag>
+        <cuerpo>En 1982, el exitoso trasplante del doctor William DeVries a un paciente que sobrevivió 620 días con un Jarvik-7 permitió que todas las primeras planas de los medios se ocuparan del tema, considerándolo un hito en la medicina moderna.</cuerpo>
+    </Noticia>
+</Noticias>

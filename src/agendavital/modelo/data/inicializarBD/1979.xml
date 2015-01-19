@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Treinta aniversario de las primeras elecciones municipales de la democracia</titulo>
+        <fecha>03-04-1979</fecha>
+        <categoria>Noticias Nacionales</categoria>
+        <link>http://www.seap.minhap.gob.es/es/areas/politica_local/sistema_de_informacion_local_-SIL-/cargos_representativos/30_aniversario.html</link>
+        <tag>españa</tag>
+        <tag>elecciones</tag>
+        <tag>municipales</tag>
+        <cuerpo>El 3 de abril de 1979, tras el refrendo mayoritario del pueblo español a la Constitución de 1978, se celebraron las primeras elecciones municipales que constituyeron un paso adelante en la consolidación de la democracia, la libertad y los derechos de los ciudadanos. Tras más de cuarenta años de dictadura, los españoles pudieron volver a ejercer su derecho al voto y elegir a sus representantes más cercanos, así como ser elegidos para constituir los primeros gobiernos municipales democráticos.</cuerpo>
+    </Noticia>
+</Noticias>

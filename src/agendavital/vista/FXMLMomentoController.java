@@ -7,6 +7,7 @@ package agendavital.vista;
 
 import agendavital.modelo.data.Momento;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
+import static agendavital.vista.FXMLAnadirNoticiaController.ventanaAnadidoo;
 import static agendavital.vista.FXMLPrincipalController.ventanaAnadirMomento;
 import java.io.File;
 import java.io.FileInputStream;
@@ -85,9 +86,11 @@ public class FXMLMomentoController implements Initializable {
     private Text txtTag;
     @FXML
     private Button btnModificar;
-    public Momento _momento = null;
-    public FXMLPrincipalController controllerPrincipal;
-    public FXMLMomentosyNoticiasController controllerMYN;
+    public static Momento _momento = null;
+    public static FXMLPrincipalController controllerPrincipal;
+    public static FXMLMomentosyNoticiasController controllerMYN;
+    public static Stage ventanaConfirmarBorrar;
+
 
     public void setControllerMYN(FXMLMomentosyNoticiasController controllerMYN) {
         this.controllerMYN = controllerMYN;
@@ -219,6 +222,30 @@ public class FXMLMomentoController implements Initializable {
     }
     }
     public void borrar_momento() throws ConexionBDIncorrecta{
+       
+       Parent root = null; //Creamos el parent
+            ventanaConfirmarBorrar = new Stage(); //Creamos la ventana que tendrá la vista Principal de la aplicación
+            Image icon= new Image(getClass().getResourceAsStream("logo.png"));
+            ventanaConfirmarBorrar.getIcons().add(icon);
+            
+            try{
+                root = FXMLLoader.load(getClass().getResource("FXMLConfirmarBorrarMomento.fxml"));
+            }catch(IOException e)
+            {
+                System.out.println("No se puede encontrar el fichero FXML");
+            }
+            
+            ventanaConfirmarBorrar.setResizable(false); //No se puede modificar el tamaño de la ventana
+            ventanaConfirmarBorrar.setTitle("Borrar"); //Ponemos un título para el panel de Windows
+            ventanaConfirmarBorrar.initStyle(StageStyle.TRANSPARENT);
+            Scene escenaConfirmarBorrar = new Scene(root); //Creamos la escena
+            escenaConfirmarBorrar.setFill( Color.TRANSPARENT );
+            ventanaConfirmarBorrar.setScene(escenaConfirmarBorrar); //Cargamos la escena
+            ventanaConfirmarBorrar.show();
+    }
+    
+    public static void borrar() throws ConexionBDIncorrecta
+    {
         _momento.Delete();
         _momento = null;
         if(controllerMYN.isMostrandoTodo()) controllerMYN.mostrarTodo();

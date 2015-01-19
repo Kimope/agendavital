@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DateCell;
@@ -112,6 +113,7 @@ public class FXMLPrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ////////////COLOREADO DE FECHAS/////////////
+        
         cal.setValue(LocalDate.now());
         cal.setStyle("-fx-font: 16pt Arial;");
         StringConverter converter = new StringConverter<LocalDate>() {

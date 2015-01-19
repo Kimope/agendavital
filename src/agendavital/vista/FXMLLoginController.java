@@ -28,6 +28,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.EventHandler;
+import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -123,6 +124,7 @@ public class FXMLLoginController implements Initializable
     @FXML
     public void login() throws IOException, ConexionBDIncorrecta
     {
+        
         try{
             Parent root = null; //Creamos el parent
             ventanaPrincipal = new Stage(); //Creamos la ventana que tendrá la vista Principal de la aplicación
@@ -144,6 +146,8 @@ public class FXMLLoginController implements Initializable
             ventanaPrincipal.setScene(escenaPrincipal); //Cargamos la escena
             AgendaVital.ventanaLogin.close(); // Cerramos la pantalla del Login
             ventanaPrincipal.show(); //Mostramos la pantalla principal
+ 
+            
         }catch(SQLException ex)
         {
             
@@ -182,6 +186,7 @@ public class FXMLLoginController implements Initializable
         ventanaRegistro.setScene(escenaRegistro);
         AgendaVital.ventanaLogin.close();
         ventanaRegistro.show();
+        escenaRegistro.setCursor(Cursor.WAIT);
     }
     
     /////////////////////Métodos para mover la pantalla clickando en cualquier lugar/////////////////////

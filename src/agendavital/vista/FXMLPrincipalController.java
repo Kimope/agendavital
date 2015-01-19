@@ -89,6 +89,11 @@ public class FXMLPrincipalController implements Initializable {
     private Text logueado;
     @FXML
     private Text cerrar_sesion;
+    @FXML
+    private Text bienvenida;
+    @FXML
+    private AnchorPane lateralizq;
+    
 
     final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     public int nRecargas = 0;
@@ -182,12 +187,25 @@ public class FXMLPrincipalController implements Initializable {
             agendavital.AgendaVital.ventanaLogin.show(); //La mostramos por pantalla
             FXMLLoginController.ventanaPrincipal.close();
         });
-        campobuscar.setOnAction(new EventHandler<ActionEvent>() {
+        
+        buscar.setOnMouseEntered(new EventHandler<MouseEvent>() {
         @Override
-        public void handle(ActionEvent actionEvent) {
-            buscar.setVisible(false);
+        public void handle(MouseEvent actionEvent) {
+            buscar.setScaleX(1.2);
+            buscar.setScaleX(1.2);
+            buscar.setCursor(Cursor.HAND);
         }
     });
+        buscar.setOnMouseExited(new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent actionEvent) {
+            buscar.setScaleX(0.9);
+            buscar.setScaleX(0.9);
+        }
+    });
+        
+        bienvenida.setText("Hola "+UsuarioLogueado.getLogueado().getNombre()+",");
+        
     }
     //
     

@@ -14,12 +14,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import agendavital.modelo.data.InicializarBD;
-import agendavital.modelo.excepciones.ConexionBDIncorrecta;
-import java.net.URISyntaxException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.jdom2.JDOMException;
 
 /**
  *
@@ -27,28 +21,30 @@ import org.jdom2.JDOMException;
  */
 public class ConfigBD {
 
-    private static String ruta = "";
+    private static String ruta = "BD/agenda.db";
     private static final String SO = System.getProperty("os.name").toLowerCase();
 
-    public static void inicializarEstructura() throws SQLException, URISyntaxException{
-        if (SO.contains("win")) { 
-            File carpeta = new File(System.getenv("APPDATA") + "/AgendaVital");
-            carpeta.mkdir();
-            ruta = System.getenv("APPDATA") + "/AgendaVital/agenda.db";
+    public static boolean inicializarEstructura() throws IOException{
+        File origen = new File("BD2/agenda.db");
+        File destino = null;
+        File carpetaMomentos = null;
+        if(SO.contains("win")){
+            File Windows = new File(System.getenv("APPDATA")+"/AgendaVital");
+            Windows.mkdir();
+            destino = new File(System.getenv("APPDATA")+"/AgendaVital/agenda.db");
+           carpetaMomentos = new File(System.getenv("APPDATA")+"/AgendaVital/Momentos");
         }
-         else if (SO.contains("nix") || SO.contains("nux") || SO.contains("aix") || SO.contains("mac")) {
-            File carpeta = new File(System.getProperty("user.home") + "/.AgendaVital");
-            carpeta.mkdir();
-             ruta = System.getProperty("user.home") + "/.AgendaVital/agenda.db";
-        }  
-        System.out.println(ruta);
-        crearTablas();
-        try {
-            InicializarBD.cargarXMLS();
-        } catch (JDOMException | IOException | ConexionBDIncorrecta ex) {
-            Logger.getLogger(ConfigBD.class.getName()).log(Level.SEVERE, null, ex);
+        else if(SO.contains("nix")|| SO.contains("nux") || SO.contains("aix") || SO.contains("mac")){
+            File Linux = new File(System.getProperty( "user.home" )+"/.AgendaVital");
+            Linux.mkdir();
+            destino = new File(System.getProperty( "user.home" )+"/.AgendaVital/agenda.db");
+            carpetaMomentos = new File(System.getProperty( "user.home" )+"/.AgendaVital/Momentos");
         }
-        
+        else return false;  
+        copyFile(origen, destino);
+        ruta = destino.getAbsolutePath();
+        carpetaMomentos.mkdir();
+        return true;
     }
     
     public static void crearTablas() throws SQLException {

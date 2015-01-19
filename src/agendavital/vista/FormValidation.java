@@ -14,7 +14,7 @@ public class FormValidation
         if(i.getText().isEmpty())
         {
             r=false;
-            i.setStyle("-fx-background-color:#F6F740");
+            i.setStyle("-fx-background-color:#eb7264");
         }
         else
         {
@@ -29,7 +29,7 @@ public class FormValidation
         if(i.getText().matches("^[a-zA-Z]*$"))
         {
             r=true;
-            i.setStyle("-fx-background-color:#F6F740");
+            i.setStyle("-fx-background-color:#eb7264");
         }
         else
         {

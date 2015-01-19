@@ -15,8 +15,7 @@
       <TextField fx:id="titular" layoutX="56.0" layoutY="91.0" prefHeight="25.0" prefWidth="494.0" promptText="Titular" style="-fx-border-color: #0F5257;" />
       <TextArea fx:id="descripcion" layoutX="56.0" layoutY="133.0" prefHeight="191.0" prefWidth="255.0" promptText="Descripción" style="-fx-border-color: #0F5257;" wrapText="true" />
       <DatePicker fx:id="cal" layoutX="56.0" layoutY="339.0" prefHeight="25.0" prefWidth="109.0" promptText="Elegir día" style="-fx-border-color: #0F5257;" />
-      <ComboBox fx:id="cbcategoria" layoutX="184.0" layoutY="339.0" prefHeight="25.0" prefWidth="109.0" promptText="Categoría" style="-fx-border-color: #0F5257;" />
-      <Button layoutX="311.0" layoutY="339.0" mnemonicParsing="false" onAction="#anadir_imagen" prefHeight="25.0" prefWidth="109.0" style="-fx-border-color: #0F5257;" text="Añadir imagen" />
+      <Button layoutX="311.0" layoutY="337.0" mnemonicParsing="false" onAction="#anadir_imagen" prefHeight="25.0" prefWidth="109.0" style="-fx-border-color: #0F5257;" text="Añadir imagen" />
       <ColorPicker fx:id="color" layoutX="441.0" layoutY="339.0" prefHeight="25.0" prefWidth="109.0" promptText="Color " style="-fx-border-color: #0F5257;" />
       <TextField fx:id="t1" layoutX="56.0" layoutY="376.0" prefHeight="25.0" prefWidth="109.0" promptText="Tag1" style="-fx-border-color: #0F5257;" />
       <TextField fx:id="t2" layoutX="184.0" layoutY="376.0" prefHeight="25.0" prefWidth="109.0" promptText="Tag2" style="-fx-border-color: #0F5257;" />
@@ -34,7 +33,7 @@
       <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="536.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
       <ImageView fitHeight="63.0" fitWidth="200.0" layoutX="204.0" layoutY="9.0">
          <image>
-            <Image url="@vital.png" />
+            <Image url="@imagenes_interfaz/vital.png" />
          </image>
       </ImageView>
       <ImageView fx:id="imgImagen" fitHeight="191.0" fitWidth="215.0" layoutX="334.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true" />

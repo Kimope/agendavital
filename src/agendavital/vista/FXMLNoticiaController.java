@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -63,7 +64,7 @@ public class FXMLNoticiaController implements Initializable {
     @FXML
     private TextFlow tfCuerpo;
     @FXML
-    private Text txtCuerpo;
+    private TextField txtCuerpo;
     @FXML
     private TextFlow tfLink;
     @FXML
@@ -74,6 +75,7 @@ public class FXMLNoticiaController implements Initializable {
     private Text txtCategoria;
     @FXML
     private TextFlow tfTags;
+    
     @FXML
     private Text txtTag;
     @FXML
@@ -83,9 +85,10 @@ public class FXMLNoticiaController implements Initializable {
     private ImageView prueba;
     @FXML
     private Pane paneluno;
-    Noticia _noticia;
-    FXMLMomentosyNoticiasController controllerMYN = null;
-    public FXMLPrincipalController controllerPrincipal;
+    static Noticia _noticia;
+    static FXMLMomentosyNoticiasController controllerMYN = null;
+    public static FXMLPrincipalController controllerPrincipal;
+    public static Stage ventanaConfirmarBorrarr;
 
     public void setControllerPrincipal(FXMLPrincipalController controllerPrincipal) {
         this.controllerPrincipal = controllerPrincipal;
@@ -138,8 +141,35 @@ public class FXMLNoticiaController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        TextFlow td;
+        
+        
+       /*txtCuerpo.skinProperty().addListener(new ChangeListener<Skin<?>>() {
+        @Override
+        public void changed(
+          ObservableValue<? extends Skin<?>> ov, Skin<?> t, Skin<?> t1) {
+            if (t1 != null && t1.getNode() instanceof Region) {
+                Region r = (Region) t1.getNode();
+                r.setStyle("-fx-background-color: #F0ECEC");
+
+                r.getChildrenUnmodifiable().stream().
+                        filter(n -> n instanceof Region).
+                        map(n -> (Region) n).
+                        forEach(n -> n.setStyle("-fx-background-color: #F0ECEC"));
+
+                r.getChildrenUnmodifiable().stream().
+                        filter(n -> n instanceof Control).
+                        map(n -> (Control) n).
+                        forEach(c -> c.skinProperty().addListener(this)); // *
+            }
+        }
+    });*/
      
-    }    
+    }   
+    
+    
+        
     public void imprimir(Noticia noticia){
         tfTags.getChildren().clear();
         _noticia = noticia;
@@ -201,10 +231,34 @@ public class FXMLNoticiaController implements Initializable {
         }
     }
    public void borrar_noticia() throws ConexionBDIncorrecta{
+       Parent root = null; //Creamos el parent
+            ventanaConfirmarBorrarr = new Stage(); //Creamos la ventana que tendrá la vista Principal de la aplicación
+            Image icon= new Image(getClass().getResourceAsStream("logo.png"));
+            ventanaConfirmarBorrarr.getIcons().add(icon);
+            
+            try{
+                root = FXMLLoader.load(getClass().getResource("FXMLConfirmarBorrarNoticia.fxml"));
+            }catch(IOException e)
+            {
+                System.out.println("No se puede encontrar el fichero FXML");
+            }
+            
+            ventanaConfirmarBorrarr.setResizable(false); //No se puede modificar el tamaño de la ventana
+            ventanaConfirmarBorrarr.setTitle("Borrar"); //Ponemos un título para el panel de Windows
+            ventanaConfirmarBorrarr.initStyle(StageStyle.TRANSPARENT);
+            Scene escenaConfirmarBorrarr = new Scene(root); //Creamos la escena
+            escenaConfirmarBorrarr.setFill( Color.TRANSPARENT );
+            ventanaConfirmarBorrarr.setScene(escenaConfirmarBorrarr); //Cargamos la escena
+            ventanaConfirmarBorrarr.show();
+   }
+   
+   public static void borrar() throws ConexionBDIncorrecta
+    {
        _noticia.Delete();
        _noticia = null;
        if(controllerMYN.isMostrandoTodo()) controllerMYN.mostrarTodo();
        else controllerMYN.cambiarDatos();
        controllerPrincipal.colorearFechas();
-   }
+        
+    }
 }

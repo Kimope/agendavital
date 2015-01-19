@@ -24,7 +24,7 @@
             </TextFlow>
             <ImageView fitHeight="42.0" fitWidth="93.0" layoutX="607.0" layoutY="247.0">
                <image>
-                  <Image url="@vital.png" />
+                  <Image url="@imagenes_interfaz/vital.png" />
                </image>
             </ImageView>
             <TextFlow fx:id="tfTitular" layoutX="32.0" layoutY="40.0" prefHeight="122.0" prefWidth="416.0" style="-fx-border-color: black;">

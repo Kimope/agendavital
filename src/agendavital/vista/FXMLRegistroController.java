@@ -218,39 +218,31 @@ FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLRegistroCompletad
         ventanaRegistroCompletado.show();
                 FXMLLoginController.ventanaRegistro.close();
             } catch (SQLException ex) {
-                textError.setText("Fallo al acceder a la BD"); //Meter en la pantalla este texto
-                textError.setFill(Color.YELLOW);
+                textError.setText("Fallo al acceder a la BD");
             } catch (NickMuyCorto ex) {
                 textError.setText(ex.getMensaje());
-                tfnick.setStyle("-fx-background-color:#F6F740");
-                textError.setFill(Color.YELLOW);
+                tfnick.setStyle("-fx-background-color:#eb7264");
             } catch (NickYaExiste ex) {
                 textError.setText(ex.getMensaje());
-                tfnick.setStyle("-fx-background-color:#F6F740");
-                textError.setFill(Color.YELLOW);
+                tfnick.setStyle("-fx-background-color:#eb7264");
             } catch (FechaInvalida ex) {
                 textError.setText(ex.getMensaje());
-                textError.setStyle("-fx-background-color:#F6F740");
+                textError.setStyle("-fx-background-color:#eb7264");
             } catch (ContrasenaMalRepetida ex) {
                 textError.setText(ex.getMensaje());
-                tfcontraseña2.setStyle("-fx-background-color:#F6F740");
-                textError.setFill(Color.YELLOW);
+                tfcontraseña2.setStyle("-fx-background-color:#eb7264");
             } catch (ContrasenaMuyCorta ex) {
                 textError.setText(ex.getMensaje());
-                tfcontraseña.setStyle("-fx-background-color:#F6F740");
-                textError.setFill(Color.YELLOW);
+                tfcontraseña.setStyle("-fx-background-color:#eb7264");
             } catch (ContrasenaCaracteresRaros ex) {
                 textError.setText(ex.getMensaje());
-                tfnombre.setStyle("-fx-background-color:#F6F740");
-                textError.setFill(Color.YELLOW);
+                tfnombre.setStyle("-fx-background-color:#eb7264");
             } catch (ContrasenaSinMayuscula ex) {
                 textError.setText(ex.getMensaje());
-                tfcontraseña.setStyle("-fx-background-color:#F6F740");
-                textError.setFill(Color.YELLOW);
+                tfcontraseña.setStyle("-fx-background-color:#eb7264");
             } catch (ContrasenaSinNumeros ex) {
                 textError.setText(ex.getMensaje());
-                tfcontraseña.setStyle("-fx-background-color:#F6F740");
-                textError.setFill(Color.YELLOW);
+                tfcontraseña.setStyle("-fx-background-color:#eb7264");
             }
         }
         

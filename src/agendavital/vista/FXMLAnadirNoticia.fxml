@@ -27,7 +27,7 @@
       <DatePicker fx:id="cal" layoutX="56.0" layoutY="339.0" prefHeight="25.0" prefWidth="157.0" promptText="Elegir día" style="-fx-border-color: #0f5257;" />
       <ImageView fitHeight="63.0" fitWidth="200.0" layoutX="215.0" layoutY="16.0">
          <image>
-            <Image url="@vital.png" />
+            <Image url="@imagenes_interfaz/vital.png" />
          </image>
       </ImageView>
       <Circle fx:id="circulomin" fill="#ff000000" layoutX="540.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" onMouseExited="#minimizarSalida" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE" />

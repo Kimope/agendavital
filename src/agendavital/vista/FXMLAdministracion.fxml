@@ -106,7 +106,7 @@
       <Line fx:id="lineacerrar2" endX="9.0" fill="BLACK" layoutX="397.0" layoutY="24.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="45.0" strokeWidth="2.0" />
       <ImageView fitHeight="63.0" fitWidth="200.0" layoutX="125.0" layoutY="13.0">
          <image>
-            <Image url="@vital.png" />
+            <Image url="@imagenes_interfaz/vital.png" />
          </image>
       </ImageView>
    </children>

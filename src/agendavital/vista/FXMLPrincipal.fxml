@@ -46,22 +46,22 @@
                <children>
                   <ImageView fitHeight="69.0" fitWidth="266.0" layoutX="294.0" layoutY="13.0">
                      <image>
-                        <Image url="@agenda.png" />
+                        <Image url="@imagenes_interfaz/agenda.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="63.0" fitWidth="200.0" layoutX="790.0" layoutY="19.0">
                      <image>
-                        <Image url="@vital.png" />
+                        <Image url="@imagenes_interfaz/vital.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="94.0" fitWidth="125.0" layoutX="23.0" layoutY="4.0">
                      <image>
-                        <Image url="@logo.png" />
+                        <Image url="@imagenes_interfaz/logo.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="94.0" fitWidth="125.0" layoutX="1140.0" layoutY="4.0">
                      <image>
-                        <Image url="@logo.png" />
+                        <Image url="@imagenes_interfaz/logo.png" />
                      </image>
                   </ImageView>
                </children>

@@ -47,18 +47,9 @@
                   <Text fx:id="txtCategoria" strokeType="OUTSIDE" strokeWidth="0.0" />
                </children>
             </TextFlow>
-            <TextFlow fx:id="tfCuerpo" layoutX="10.0" layoutY="143.0" prefHeight="343.0" prefWidth="476.0" style="-fx-border-color: black;">
-               <children>
-                  <Text fx:id="txtCuerpo" strokeType="OUTSIDE" strokeWidth="0.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-               </children>
-            </TextFlow>
             <ImageView fitHeight="68.0" fitWidth="423.0" layoutX="154.0" layoutY="3.0">
                <image>
-                  <Image url="@agendavital.png" />
+                  <Image url="@imagenes_interfaz/agendavital.png" />
                </image>
             </ImageView>
             <Circle fx:id="circulocerr" fill="TRANSPARENT" layoutX="695.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
@@ -66,6 +57,7 @@
             <Line fx:id="lineacerrar1" endX="9.0" fill="BLACK" layoutX="691.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="45.0" strokeWidth="2.0" />
             <Circle fx:id="circulomin" fill="#ff000000" layoutX="670.0" layoutY="21.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" onMouseExited="#minimizarSalida" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
             <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="666.0" layoutY="21.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
+            <TextField fx:id="txtCuerpo" alignment="TOP_LEFT" layoutX="10.0" layoutY="155.0" prefHeight="325.0" prefWidth="476.0" style="-fx-background-color: transparent;" />
          </children>
       </AnchorPane>
    </children>

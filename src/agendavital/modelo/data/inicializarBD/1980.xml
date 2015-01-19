@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>España y Gran Bretaña acuerdan iniciar negociaciones sobre Gibraltar y abrir la verja</titulo>
+        <fecha>11-04-1980</fecha>
+        <categoria>Noticias Nacionales</categoria>
+        <link>http://elpais.com/diario/1980/04/11/espana/324252002_850215.html</link>
+        <tag>españa</tag>
+        <tag>gibraltar</tag>
+        <tag>frontera</tag>
+        <cuerpo>El Gobierno británico aceptó ayer la apertura de negociaciones oficiales con España sobre Gibraltar, de acuerdo con las resoluciones de las Naciones Unidas. Esta decisión, de indudable alcance histórico, fue anunciada a última hora de la tarde de ayer, al término de la entrevista que el ministro español de Asuntos, Exteriores, Marcelino Oreja, mantuvo con el secretario del Foreign Office, lord Carrington, en la que se acordó el próximo levantamiento de las restricciones impuestas al Peñón por una y otra parte.</cuerpo>
+    </Noticia>
+</Noticias>

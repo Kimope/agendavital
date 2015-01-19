@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>El Gobierno y los diputados, retenidos en el Congreso</titulo>
+        <fecha>23-02-1981</fecha>
+        <categoria>Noticias Nacionales</categoria>
+        <link>http://elpais.com/diario/1981/02/24/espana/351817201_850215.html</link>
+        <tag>españa</tag>
+        <tag>golpe</tag>
+        <tag>estado</tag>
+       <cuerpo>La segunda votación para la investidura de Leopoldo Calvo Sotelo en el Pleno del Congreso de los Diputados se vio ayer impedida por la irrupción en el hemiciclo de la Cámara de varios guardias civiles armados, que obligaron a suspender la sesión parlamentaria y manifestaron que no pasaría nada si todo el mundo se estaba quieto. Uno de los mandos de la fuerza armada subió poco después al podio de oradores y recomendó a todos tranquilidad, así como que era preciso esperar la llegada de la «autoridad competente» (recalcó: «por supuesto, militar») para que dijera lo que había que hacer después. La irrupción de la Guardia Civil en el hemiciclo se produjo a las 18.25 horas, y hacia las 19.15 horas se permitió la salida del público y los periodistas del edificio ocupado militarmente.</cuerpo>   </Noticia>
+   </Noticia>
+</Noticias>

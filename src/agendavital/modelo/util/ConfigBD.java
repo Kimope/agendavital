@@ -14,6 +14,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import agendavital.modelo.data.InicializarBD;
+import agendavital.modelo.excepciones.ConexionBDIncorrecta;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.jdom2.JDOMException;
 
 /**
  *
@@ -21,9 +27,30 @@ import java.sql.SQLException;
  */
 public class ConfigBD {
 
-    private static String ruta = "BD/agenda.db";
+    private static String ruta = "";
     private static final String SO = System.getProperty("os.name").toLowerCase();
 
+    public static void inicializarEstructura() throws SQLException, URISyntaxException{
+        if (SO.contains("win")) { 
+            File carpeta = new File(System.getenv("APPDATA") + "/AgendaVital");
+            carpeta.mkdir();
+            ruta = System.getenv("APPDATA") + "/AgendaVital/agenda.db";
+        }
+         else if (SO.contains("nix") || SO.contains("nux") || SO.contains("aix") || SO.contains("mac")) {
+            File carpeta = new File(System.getProperty("user.home") + "/.AgendaVital");
+            carpeta.mkdir();
+             ruta = System.getProperty("user.home") + "/.AgendaVital/agenda.db";
+        }  
+        System.out.println(ruta);
+        crearTablas();
+        try {
+            InicializarBD.cargarXMLS();
+        } catch (JDOMException | IOException | ConexionBDIncorrecta ex) {
+            Logger.getLogger(ConfigBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
     public static void crearTablas() throws SQLException {
         Connection conexion = conectar();
         String tabla = "CREATE TABLE documentos(";
@@ -70,28 +97,8 @@ public class ConfigBD {
         conexion.createStatement().executeUpdate(tabla);
     }
 
-    public static boolean inicializarEstructura() throws IOException {
-        File origen = new File("BD/agenda.db");
-        File destino = null;
-        if (SO.contains("win")) {
-            File Windows = new File(System.getenv("APPDATA") + "/AgendaVital");
-            Windows.mkdir();
-            destino = new File(System.getenv("APPDATA") + "/AgendaVital/agenda.db");
-        } else if (SO.contains("nix") || SO.contains("nux") || SO.contains("aix") || SO.contains("mac")) {
-            File Linux = new File(System.getProperty("user.home") + "/.AgendaVital");
-            Linux.mkdir();
-            destino = new File(System.getProperty("user.home") + "/.AgendaVital/agenda.db");
-        } else {
-            return false;
-        }
-        copyFile(origen, destino);
-        ruta = destino.getAbsolutePath();
-        return true;
-    }
-
     public static boolean estructuraInicializada() {
         File BD = null;
-        System.out.println(System.getenv("APPDATA") + "/AgendaVital/agenda.db");
         if (SO.contains("win")) {
             BD = new File(System.getenv("APPDATA") + "/AgendaVital/agenda.db");
         } else if (SO.contains("nix") || SO.contains("nux") || SO.contains("aix") || SO.contains("mac")) {
@@ -112,6 +119,7 @@ public class ConfigBD {
         try {
             conexion = DriverManager.getConnection("jdbc:sqlite:" + ruta);
         } catch (SQLException e) {
+            e.printStackTrace();
         }
         return conexion;
     }

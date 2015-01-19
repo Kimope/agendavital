@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Un petrolero a la deriva</titulo>
+        <fecha>13-11-2002</fecha>
+        <categoria>Noticias Nacionales</categoria>
+        <link>http://prestige.lavozdegalicia.es/2002/11/13/el-comienzo-del-fin/</link>
+        <tag>prestige</tag>
+        <tag>hundimiento</tag>
+        <cuerpo>El Prestige, armado 26 años atrás en un astillero japonés, gobernado por un capitán griego, tripulado por 22 filipinos y dos rumanos, y que navega bajo bandera de conveniencia (Bahamas), envía un S.O.S. a 30 millas (unos 50 kilómetros) de Fisterra. El tronco de un árbol que vagaba por el océano había impactado en el casco de la embarcación provocándole una brecha de 15 metros y abriéndole una vía de agua.</cuerpo>
+    </Noticia>
+</Noticias>

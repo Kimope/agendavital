@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Accidente nuclear de Chernobyl</titulo>
+        <fecha>25-04-1986</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://energia-nuclear.net/accidentes-nucleares/chernobyl.html</link>
+        <tag>chernobyl</tag>
+        <tag>accidente</tag>
+        <cuerpo>El 25 de abril, a la una de la madrugada, los ingenieros iniciaron la entrada de las barras de regulación en el núcleo del reactor, refrigerado por agua y moderado por grafito (que pertenece al tipo que los soviéticos llaman RMBK-1000), para llevar a cabo una prueba planeada con anterioridad, bajo la dirección de las oficinas centrales de Moscú. La potencia térmica en este caso desciende normalmente de 3.200 a 1.600 MW.</cuerpo>
+    </Noticia>
+</Noticias>

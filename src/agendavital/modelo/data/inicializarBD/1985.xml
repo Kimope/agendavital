@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>1985: El descubrimiento</titulo>
+        <fecha>01-09-1985</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://www.elmundo.es/especiales/2012/internacional/titanic/expediciones/1985.html</link>
+        <tag>titanic</tag>
+        <tag>descubrimiento</tag>
+        <cuerpo>El 1 de septiembre de 1985 los oceanógrafos Robert Ballard y Jean-Louis Michel localizaron los restos del Titanic. Se encontraban a 3.800 metros de profundidad, en las frías aguas del Atlántico Norte. Gracias al robot submarino 'Argo' lograron tomar las primeras fotografías de la zona del naufragio y mostrar al mundo el 'cadáver' del transatlántico que se había convertido en una leyenda.</cuerpo>
+</Noticia>
+</Noticias>

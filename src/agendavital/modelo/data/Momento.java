@@ -8,6 +8,7 @@ package agendavital.modelo.data;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import agendavital.modelo.util.ConfigBD;
 import agendavital.modelo.util.UsuarioLogueado;
+import agendavital.modelo.util.UtilidadesBusqueda;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
@@ -136,8 +137,8 @@ public class Momento {
         this.color = color;
     }
 
-    public static ArrayList<Momento> getTodosMomentos() throws ConexionBDIncorrecta{
-         ResultSet rs = null;
+    public static ArrayList<Momento> getTodosMomentos() throws ConexionBDIncorrecta {
+        ResultSet rs = null;
         ArrayList<Momento> momentos = null;
         try (Connection conexion = ConfigBD.conectar()) {
             momentos = new ArrayList<>();
@@ -151,7 +152,7 @@ public class Momento {
             throw new ConexionBDIncorrecta();
         }
     }
-    
+
     /**
      * Funcion que devuelves los momentos dada una fecha
      *
@@ -215,7 +216,6 @@ public class Momento {
         return null;
     }
 
-    
     /**
      * Funcion modificadora
      *
@@ -238,12 +238,11 @@ public class Momento {
                     idTag = ConfigBD.LastId("etiquetas");
                     String insertaMNE = String.format("INSERT INTO momentos_noticias_etiquetas (id_momento, id_etiqueta) VALUES(%d, %d)", id, idTag);
                     conexion.createStatement().executeUpdate(insertaMNE);
+                } else {
+                    String updateNoticiaEtiqueta = String.format("INSERT into momentos_noticias_etiquetas (id_etiqueta, id_momento) VALUES (%d, %d);", idTag, id);
+                    conexion.createStatement().executeUpdate(updateNoticiaEtiqueta);
                 }
-                else{
-                String updateNoticiaEtiqueta = String.format("INSERT into momentos_noticias_etiquetas (id_etiqueta, id_momento) VALUES (%d, %d);", idTag, id);
-                conexion.createStatement().executeUpdate(updateNoticiaEtiqueta);
-                }
-               
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -263,7 +262,7 @@ public class Momento {
             conexion.createStatement().executeUpdate(deleteDocumento);
             String delete = String.format("Delete from momentos WHERE id_momento = %d;", getId());
             conexion.createStatement().executeUpdate(delete);
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -278,7 +277,7 @@ public class Momento {
      * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      */
     public boolean asociarDocumento(File Documento) throws IOException, ConexionBDIncorrecta {
-  
+
         File destino3 = new File("Momentos/" + UsuarioLogueado.getLogueado().getNick() + "/" + Documento.getName());
         ConfigBD.copyFile(Documento, destino3);
         ResultSet rs = null;
@@ -289,7 +288,7 @@ public class Momento {
             String consultaDoc = String.format("SELECT id_documento from Documentos WHERE id_documento IN (SELECT id_documento from momentos WHERE id_usuario = %s);", ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
             rs = conexion.createStatement().executeQuery(consultaDoc);
             rs.next();
-            if(rs.getRow() > 0){
+            if (rs.getRow() > 0) {
                 int idEliminar = rs.getInt("id_documento");
                 String eliminarDocumento = String.format("DELETE from documentos where id_documento=%d;", idEliminar);
             }
@@ -341,19 +340,34 @@ public class Momento {
         return fechasMomentos;
     }
 
-    public static ArrayList<Momento> buscar(String _tag) throws ConexionBDIncorrecta {
+    public static ArrayList<Momento> buscar(String _parametro) throws ConexionBDIncorrecta {
+        ArrayList<String> _tags = UtilidadesBusqueda.separarPalabras(_parametro);
         ArrayList<Momento> busqueda = null;
         try (Connection conexion = ConfigBD.conectar()) {
             busqueda = new ArrayList<>();
-            String buscar = String.format("SELECT id_Momento from momentos_noticias_etiquetas "
-                    + "WHERE id_Etiqueta IN (SELECT id_Etiqueta from etiquetas "
-                    + "WHERE nombre LIKE %s) AND id_Momento IN (SELECT id_Momento from momentos WHERE id_usuario = %s);", ConfigBD.String2Sql(_tag, true), ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
-            ResultSet rs = conexion.createStatement().executeQuery(buscar);
-            while (rs.next()) {
-                busqueda.add(new Momento(rs.getInt("id_Momento")));
+            for (String _tag : _tags) {
+                String tag = ConfigBD.String2Sql(_tag, true);
+                String buscar = String.format("SELECT id_Momento from momentos "
+                        + "WHERE id_momento IN (SELECT id_momento from momentos_noticias_etiquetas "
+                        + "WHERE id_etiqueta IN (SELECT id_etiqueta from etiquetas WHERE nombre LIKE %s)) "
+                        + "OR titulo LIKE %s "
+                        + "OR descripcion LIKE %s"
+                        + "OR fecha LIKE %s"
+                        + "AND id_usuario = %s);", tag, tag, tag, tag, ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
+                ResultSet rs = conexion.createStatement().executeQuery(buscar);
+                while (rs.next()) {
+                    busqueda.add(new Momento(rs.getInt("id_Momento")));
+                }
             }
         } catch (SQLException e) {
             throw new ConexionBDIncorrecta();
+        }
+        for (int i = 0; i < busqueda.size() - 1; i++) {
+            for (int j = i + 1; j < busqueda.size(); j++) {
+                if (busqueda.get(i).getId() == busqueda.get(j).getId()) {
+                    busqueda.remove(j);
+                }
+            }
         }
         return busqueda;
     }

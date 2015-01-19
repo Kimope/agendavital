@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Sus últimas horas | Especial 20 años sin Freddie Mercury</titulo>
+        <fecha>23-11-1991</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://www.abc.es/especiales/freddie-mercury/ultimas-horas.asp</link>
+        <tag>freddie</tag>
+        <tag>mercury</tag>
+        <cuerpo>«He procurado mantener oculta esta situación para proteger mi vida privada y la de quienes me rodean, pero ha llegado el momento de que mis amigos y fans de todo el mundo conozcan la verdad, y espero que todos se unan a mí, a mis médicos y a todos cuantos luchan por combatir esta terrible enfermedad, para luchar contra ella». El 23 de noviembre de 1991, Freddie Mercury realizaba esta declaración pública, reconociendo que tenía sida y asegurando que, como había hecho casi siempre durante su carrera, continuaría con su política de «no dar entrevistas». No le dio tiempo. Al día siguiente, murió.</cuerpo>
+        </Noticia>
+</Noticias>

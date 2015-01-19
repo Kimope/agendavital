@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Barcelona 92: 11 momentos inolvidables de aquellos Juegos Olímpicos</titulo>
+        <fecha>25-07-1992</fecha>
+        <categoria>Noticias Nacionales</categoria>
+        <link>http://www.huffingtonpost.es/2012/07/25/barcelona-92-11-momentos-_n_1700871.html</link>
+        <tag>barcelona</tag>
+        <tag>juegos</tag>
+        <tag>olimpicos</tag>
+        <cuerpo>Este miércoles 25 de julio de 2012 se cumplen 20 años de los Juegos Olímpicos de Barcelona 92. Fueron las mejores olimpiadas en la historia del deporte español con 22 medallas (13 de oro, 7 de plata y 2 de bronce) además de ser consideradas, por parte de Juan Antonio Samaranch, entonces presidente del COI, como las mejores jamás disputadas.</cuerpo>
+</Noticia>
+</Noticias>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Nace Rihanna</titulo>
+        <fecha>20-02-1988</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://www.buscabiografias.com/bios/biografia/verDetalle/9726/Rihanna</link>
+        <tag>rihanna</tag>
+        <cuerpo>Nació el 20 de febrero de 1988 en Saint Michael, Barbados. Hija de madre afroguyanense, y padre barbadense de ascendencia irlandesa. Su niñez estuvo marcada por la adicción de su padre a la cocaína. Sus padres se divorciaron cuando Rihanna tenía catorce años.</cuerpo>
+        </Noticia>
+</Noticias>

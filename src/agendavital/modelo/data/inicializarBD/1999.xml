@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Hugo Chávez: cronología de casi 15 años de Gobierno bolivariano</titulo>
+        <fecha>15-12-1999</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <link>http://www.20minutos.es/noticia/1749945/0/hugo-chavez/muerte-cronologia/gobierno-venezuela/</link>
+        <tag>hugo</tag>
+        <tag>chavez</tag>
+        <tag>venezuela</tag>
+        <cuerpo>El mandatario venezolano, Hugo Chávez, que falleció este martes, a los 58 años de edad, no pudo asumir el que iba a ser su cuarto mandato presidencial, tras ser reelegido en octubre pasado por tercera vez desde que llegó al poder en 1999.</cuerpo>     
+    </Noticia>
+</Noticias>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>Muere Antonio Puerta</titulo>
+        <fecha>28-08-2007</fecha>
+        <categoria>Noticias Nacionales</categoria>
+        <link>http://deportes.elpais.com/deportes/2007/08/28/actualidad/1188285718_850215.html</link>
+        <tag>antonio</tag>
+        <tag>puerta</tag>
+        <cuerpo>A las dos y media de la tarde, la tragedia aplastó al Sevilla en Atenas. Su jugador Antonio Puerta acababa de morir en el hospital Virgen del Rocío, de la capital andaluza, donde permanecía ingresado desde la noche del sábado como consecuencia de las múltiples crisis cardiacas que sufrió durante y después del partido que enfrentaba a su equipo con el Getafe. Según el parte médico, la muerte del futbolista fue causada por "la encefalopatía postaxónica y el fracaso multiorgánico secundarios a la parada cardiaca". La UEFA accedió a que se suspendiera el partido de la previa de la Liga de Campeones entre el Sevilla y el AEK de Atenas, que debía disputarse esta noche. La expedición del equipo español tenía previsto llegar a Sevilla esta misma madrugada.</cuerpo>
+    </Noticia>
+</Noticias>

@@ -232,6 +232,8 @@ public class UtilidadesRegistro {
             case 2013:
                 return "cayó un meteorito en Rusia?";
             case 2014:
+                return "felizmente Teresa Romero se curó de ébola?";
+            case 2015:
                 return "un grupo Yihadista atacó una redacción en Paris?";
             default:
                 return "";

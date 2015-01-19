@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLPrincipalController.java</file>
             <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLNoticiaController.java</file>
             <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/modelo/util/UtilidadesLogin.java</file>
@@ -13,6 +14,13 @@
             <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/modelo/util/UtilidadesAdministracion.java</file>
             <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLLoginController.java</file>
             <file>file:/C:/Users/josesoler/Documents/GitHub/agendavital/src/agendavital/vista/FXMLRegistroPreguntaTresController.java</file>
+=======
+            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLMomentosyNoticiasController.java</file>
+            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLNoticiaAñadidaController.java</file>
+            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLPrincipalController.java</file>
+            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLAnadirMomentoController.java</file>
+            <file>file:/C:/Users/Enrique/Documents/GitHub/agendavital/src/agendavital/vista/FXMLLoginController.java</file>
+>>>>>>> b2b44deb05a161a333e9b76a3a3c64dc5aac5789
         </group>
     </open-files>
 </project-private>

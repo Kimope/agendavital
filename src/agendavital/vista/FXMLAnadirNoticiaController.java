@@ -7,6 +7,7 @@ package agendavital.vista;
 
 import agendavital.modelo.data.Noticia;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
+import static agendavital.vista.FXMLAnadirMomentoController.ventanaAnadido;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -15,18 +16,24 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 
 /**
@@ -74,6 +81,7 @@ public class FXMLAnadirNoticiaController implements Initializable {
     private TextField link;
     @FXML
     private DatePicker cal;
+    public static Stage ventanaAnadidoo;
 
     public FXMLPrincipalController controllerPrincipal;
     public FXMLNoticiaController controllerNoticia;
@@ -230,6 +238,25 @@ public class FXMLAnadirNoticiaController implements Initializable {
             else controllerMYN.cambiarDatos();
             if(colorear) controllerPrincipal.colorearFechas();
         }
+        Parent root = null; //Creamos el parent
+            ventanaAnadidoo = new Stage(); //Creamos la ventana que tendrá la vista Principal de la aplicación
+            Image icon= new Image(getClass().getResourceAsStream("logo.png"));
+            ventanaAnadidoo.getIcons().add(icon);
+            
+            try{
+                root = FXMLLoader.load(getClass().getResource("FXMLNoticiaAñadida.fxml"));
+            }catch(IOException e)
+            {
+                System.out.println("No se puede encontrar el fichero FXML");
+            }
+            
+            ventanaAnadidoo.setResizable(false); //No se puede modificar el tamaño de la ventana
+            ventanaAnadidoo.setTitle("Añadido"); //Ponemos un título para el panel de Windows
+            ventanaAnadidoo.initStyle(StageStyle.TRANSPARENT);
+            Scene escenaAnadidoo = new Scene(root); //Creamos la escena
+            escenaAnadidoo.setFill( Color.TRANSPARENT );
+            ventanaAnadidoo.setScene(escenaAnadidoo); //Cargamos la escena
+            ventanaAnadidoo.show();
     }
 
     /////////////////////Métodos para mover la pantalla clickando en cualquier lugar/////////////////////

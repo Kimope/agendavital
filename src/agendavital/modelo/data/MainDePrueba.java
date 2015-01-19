@@ -10,6 +10,7 @@ import agendavital.modelo.util.ConfigBD;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
+import org.jdom2.JDOMException;
 
 /**
  *
@@ -18,7 +19,7 @@ import java.sql.SQLException;
 public class MainDePrueba {
    
 
-    public static void main(String[] args) throws SQLException, IOException, java.text.ParseException, ConexionBDIncorrecta, URISyntaxException {
+    public static void main(String[] args) throws SQLException, IOException, java.text.ParseException, ConexionBDIncorrecta, URISyntaxException, JDOMException {
         /*  String fecha = "01-11-2014";
          String descripcion = "HOLAAAALALALALAA";
          String color = "red";

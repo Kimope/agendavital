@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+  <Noticia>
+         <titulo>Cómo surgió el Estado Islámico</titulo>
+         <fecha>01-01-2003</fecha>
+         <categoria>Noticias Internacionales</categoria>
+         <link>http://noticieros.televisa.com/mundo/1410/como-surgio-estado-islamico/</link>
+         <cuerpo>Se formó con la alianza de 8 grupos fundamentalistas, entonces bajo el nombre de de "Estado Islámico de Irak". Sus métodos se basaron en secuestros, asesinatos y atentados terroristas, para luego convertirse formalmente en un grupo guerrillero</cuerpo>
+         <tag>irak</tag>
+         <tag>siria</tag>
+         <tag>estado</tag>
+         <tag>islamico</tag>
+       </Noticia>
+  <Noticia>
+     <titulo>Comienzan los bombardeos de EEUU sobre Irak</titulo>
+         <fecha>20-03-2003</fecha>
+         <categoria>Noticias Internacionales</categoria>
+         <link>http://noticias.universia.es/movilidad-academica/noticia/2003/03/20/619638/comienzan-bombardeos-eeuu-irak.html</link>
+         <cuerpo>EEUU ha iniciado los bombardeos sobre Irak 90 minutos después del fin del ultimátum. Los primeros misiles podrían haber tenido como objetivo eliminar a altas autoridades iraquíes, incluido el propio Sadam. Las universidades españolas han realizado un paro de 5 minutos a las 12:00 de la mañana en señal de rechazo y mantendrán sus banderas a media asta hasta que acabe la guerra</cuerpo>
+         <tag>guerra</tag>
+         <tag>eeuu</tag>
+         <tag>irak</tag>
+     </Noticia>
+</Noticias>

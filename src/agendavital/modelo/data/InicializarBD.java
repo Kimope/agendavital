@@ -5,13 +5,9 @@
  */
 package agendavital.modelo.data;
 
-import agendavital.modelo.data.Noticia;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import java.io.File;
-import java.io.FileFilter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.List;
 import org.jdom2.Document;
@@ -26,33 +22,39 @@ import java.util.ArrayList;
  */
 public class InicializarBD {
 
-    public static void cargarXMLS() throws JDOMException, IOException, SQLException, ConexionBDIncorrecta, URISyntaxException {
+    public static void cargarXMLS() throws JDOMException, IOException, SQLException, ConexionBDIncorrecta {
         SAXBuilder builder = new SAXBuilder();
-        File xmlFolder = new File (InicializarBD.class.getResource("inicializarBD").toURI());
-        System.out.println(xmlFolder.getAbsolutePath());
+       File xmlFolder = new File("Noticias");
         File[] xmlFile = xmlFolder.listFiles();
-        for(int i = 0; i < xmlFile.length; i++){
-            System.out.println(xmlFile[i].getName());
-        }
-        for (File xmlFile1 : xmlFile) {
-            Document document = (Document) builder.build(xmlFile1);
+        System.out.println("LONGITUD "+xmlFile.length);
+        for (int i = 0; i < xmlFile.length; i++) {
+            
+            
+            Document document = (Document) builder.build(xmlFile[i]);
             Element rootNode = document.getRootElement();
             List list = rootNode.getChildren("Noticia");
             for (Object list1 : list) {
                 Element noticia = (Element) list1;
                 List noticiaCampos = noticia.getChildren();
                 String titulo = noticia.getChildTextTrim("titulo");
+              
                 String fecha = noticia.getChildTextTrim("fecha");
+              
                 String link = noticia.getChildTextTrim("link");
+               
                 String categorias = noticia.getChildTextTrim("categoria"); 
+               
+                String cuerpo = noticia.getChildTextTrim("cuerpo"); 
+               
                 List tags = noticia.getChildren("tag");
                 ArrayList<String> etiquetas = new ArrayList<>();
                 for (Object tags1 : tags) {
                     Element tag = (Element) tags1;
+                 
                     etiquetas.add(tag.getTextTrim());
                 }
-                Noticia.Insert(titulo, link, fecha, categorias, fecha, etiquetas);
+               Noticia.Insert(titulo, link, fecha, categorias, cuerpo, etiquetas);
             }
         }
-    }
+}
 }

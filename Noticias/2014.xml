@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<Noticias>
+    <Noticia>
+        <titulo>El Ébola se extiende a las ciudades</titulo>
+        <fecha>27-07-2014</fecha>
+        <categoria>Noticias Internacionales</categoria>
+        <categoria>Salud</categoria>
+        <link>http://www.elmundo.es/internacional/2014/07/26/53d3dcaae2704e59248b4577.html</link>
+        <cuerpo>Sucedió más o menos así. Un ciudadano de Guinea Conakry que vive en el campo (paciente cero) llega al hospital de la ciudad con vómitos de sangre, diarreas, los nervios destrozados y fiebre alta. Para el doctor está claro al primer vistazo: una malaria. Pero el enfermo muere a los pocos días sin reaccionar al tratamiento y sin que nadie sepa lo que tiene. El médico, que ha dado la mano al paciente, vuelve a casa y contagia a su familia, que a su vez infecta a otros vecinos en el mercado</cuerpo>
+        <tag>africa</tag>
+        <tag>ebola</tag>
+    </Noticia>
+    <Noticia>
+        <titulo>Así llego el Ébola a España</titulo>
+        <fecha>07-08-2014</fecha>
+        <categoria>Noticias Locales</categoria>
+        <categoria>Salud</categoria>
+        <link>http://www.lavozdegalicia.es/noticia/sociedad/2014/10/13/llego-ebola-espana/00031413217951923256444.htm</link>
+        <cuerpo>El primer contagio del ébola en España ha supuesto un verdadero cambio de actitud entre la población, que en tan solo dos meses -desde que se produjo la repatriación del religioso Miguel Pajares- ha pasado de ver el tema de una manera bastante normal a comenzar a sentir verdadera inquietud y un sinfín de temores por lo que pueda pasar tras el contagio de la auxiliar de enfermería gallega, Teresa Romero.</cuerpo>
+        <tag>españa</tag>
+        <tag>ebola</tag>
+    </Noticia>
+    <Noticia>
+        <titulo>Ébola: hospitalizada una tercera enfermera</titulo>
+        <fecha>08-10-2014</fecha>
+        <categoria>Noticias Locales</categoria>
+        <categoria>Salud</categoria>
+        <link>http://es.blastingnews.com/noticias/2014/10/ebola-hospitalizada-una-tercera-enfermera-00138447.html</link>
+        <cuerpo>Una tercera victima tiene Ébola , esta que atendía a un médico que había sido trasladado a España y que ha fallecido, había sido ingresado en el hospital de La Paz Carlos III de Madrid.</cuerpo>
+        <tag>españa</tag>
+        <tag>ebola</tag>
+        <tag>teresa</tag>
+        <tag>romero</tag>
+    </Noticia>
+    <Noticia>
+        <titulo>Teresa Romero recibirá el alta hospitalaria mañana</titulo>
+        <fecha>04-11-2014</fecha>
+        <categoria>Noticias Locales</categoria>
+        <categoria>Salud</categoria>
+        <link>http://www.elmundo.es/salud/2014/11/04/5458bb58268e3e9d2f8b457e.html</link>
+        <cuerpo>La auxiliar de enfermería Teresa Romero recibirá este miércoles el alta hospitalaria tras haber superado el ébola, según la previsión de los médicos que la atienden en el Hospital Carlos III de Madrid, han indicado fuentes sanitarias.</cuerpo>
+        <tag>españa</tag>
+        <tag>ebola</tag>
+        <tag>teresa</tag>
+        <tag>romero</tag>
+    </Noticia>
+</Noticias>

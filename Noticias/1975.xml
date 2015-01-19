@@ -26,7 +26,8 @@ and open the template in the editor.
         <tag>Guerra</tag>
         <cuerpo>La ofensiva final comunista tuvo lugar en la primavera de 1975. El 17 de abril, Phnom Penh cayó en manos de los Khmers Rojos y el 30 los comunistas tomaron Saigón. La guerra había terminado.</cuerpo>
     </Noticia>
-    <Noticia>Muere el dictador español Francisco Franco</titulo>
+    <Noticia>
+        <titulo>Muere el dictador español Francisco Franco</titulo>
         <fecha>20-11-1975</fecha>
         <categoria>Noticias Nacionales</categoria>
         <link>http://es.wikipedia.org/wiki/Francisco_Franco</link>
@@ -34,7 +35,8 @@ and open the template in the editor.
         <tag>Política</tag>
         <cuerpo>El 15 de noviembre, Franco es operado por tercera y última vez, y el 18, el doctor Manuel Hidalgo Huerta anuncia que no volverá a intervernir al dictador, llegándole finalmente la muerte por choque séptico a las 4:20 horas del 20 de noviembre.</cuerpo>
     </Noticia>
-    <Noticia>Se prolama Rey de España a Juan Carlos I</titulo>
+    <Noticia>
+        <titulo>Se prolama Rey de España a Juan Carlos I</titulo>
         <fecha>22-11-1975</fecha>
         <categoria>Noticias Nacionales</categoria>
         <link>http://es.wikipedia.org/wiki/Juan_Carlos_I_de_Espa%C3%B1a</link>

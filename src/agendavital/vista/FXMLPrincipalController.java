@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,6 +28,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Pagination;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -61,8 +64,13 @@ public class FXMLPrincipalController implements Initializable {
      
     public static String fechaSeleccionada = null;
     File filesJpg[];
+    
     @FXML
     private Line lineamenu1;
+    @FXML
+    private TextField campobuscar;
+    @FXML
+    private ImageView buscar;
     @FXML
     private Line lineamenu2;
     @FXML
@@ -174,7 +182,12 @@ public class FXMLPrincipalController implements Initializable {
             agendavital.AgendaVital.ventanaLogin.show(); //La mostramos por pantalla
             FXMLLoginController.ventanaPrincipal.close();
         });
-        
+        campobuscar.setOnAction(new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent actionEvent) {
+            buscar.setVisible(false);
+        }
+    });
     }
     //
     

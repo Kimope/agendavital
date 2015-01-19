@@ -73,7 +73,7 @@
                   <Line endX="-30.0" layoutX="112.0" layoutY="250.0" startX="-100.0" stroke="#0f5257" strokeWidth="2.0" />
                   <Line endX="-30.0" fill="BLACK" layoutX="218.0" layoutY="250.0" startX="-100.0" stroke="#0f5257" strokeWidth="2.0" />
                   <Circle fill="#1f93ff00" layoutX="100.0" layoutY="250.0" radius="10.0" stroke="#0f5257" strokeType="INSIDE" strokeWidth="2.0" />
-                  <TextField layoutX="18.0" layoutY="286.0" promptText="        Buscar" style="-fx-background-radius: 30;">
+                  <TextField fx:id="campobuscar" layoutX="18.0" layoutY="286.0" promptText="        Buscar" style="-fx-background-radius: 30;">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -189,7 +189,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Pane>
-                  <ImageView fitHeight="17.0" fitWidth="17.0" layoutX="28.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="buscar" fitHeight="17.0" fitWidth="17.0" layoutX="28.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@imagenes_interfaz/search1.gif" />
                      </image>

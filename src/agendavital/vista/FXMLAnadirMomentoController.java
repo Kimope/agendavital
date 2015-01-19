@@ -101,6 +101,7 @@ public class FXMLAnadirMomentoController implements Initializable {
     public FXMLPrincipalController controllerPrincipal;
     public FXMLMomentosyNoticiasController controllerMYN;
     public Momento modificarMomento = null;
+    private File file = null;
 
     public void setControllerMomento(FXMLMomentoController controllerMomento) {
         this.controllerMomento = controllerMomento;
@@ -126,6 +127,17 @@ public class FXMLAnadirMomentoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        file = new File("imagenes/logo.png");
+        InputStream is = null;
+        try {
+            is = new FileInputStream(file);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        double width = 191;
+        double heigth = 167;
+        Image imagen = new Image(is,width,heigth,false,true);
+        imgImagen.setImage(imagen);
         cal.setValue(LocalDate.now());
         Callback<DatePicker, DateCell> dayCellFactory = (DatePicker dp) -> new DateCell() {
             @Override

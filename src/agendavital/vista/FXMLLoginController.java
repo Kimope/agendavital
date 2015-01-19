@@ -142,9 +142,9 @@ public class FXMLLoginController implements Initializable
             
             //ventanaPrincipal.setResizable(false); //No se puede modificar el tamaño de la ventana
             ventanaPrincipal.setTitle("Bienvenido a su Agenda Vital"); //Ponemos un título para el panel de Windows
-            Scene escenaPrincipal = new Scene(root,1300,640); //Creamos la escena
+            Scene escenaPrincipal = new Scene(root,1300,680); //Creamos la escena
             ventanaPrincipal.setScene(escenaPrincipal); //Cargamos la escena
-            ventanaPrincipal.setResizable(false);
+            ventanaPrincipal.initStyle(StageStyle.UNDECORATED);
             AgendaVital.ventanaLogin.close(); // Cerramos la pantalla del Login
             ventanaPrincipal.show(); //Mostramos la pantalla principal
  

@@ -16,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #786f52;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLPrincipalController">
    <children>
-      <BorderPane layoutX="175.0" layoutY="141.0" prefHeight="600.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane layoutX="175.0" layoutY="141.0" prefHeight="600.0" prefWidth="1200.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -42,7 +42,7 @@
             </AnchorPane>
          </right>
          <top>
-            <AnchorPane prefHeight="100.0" prefWidth="1300.0" style="-fx-background-color: #508991;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="100.0" prefWidth="1300.0" style="-fx-background-color: #508991; -fx-border-color: #0F5257; -fx-border-width: 6px;" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fitHeight="69.0" fitWidth="266.0" layoutX="294.0" layoutY="13.0">
                      <image>
@@ -54,12 +54,7 @@
                         <Image url="@imagenes_interfaz/vital.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="94.0" fitWidth="125.0" layoutX="23.0" layoutY="4.0">
-                     <image>
-                        <Image url="@imagenes_interfaz/logo.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="94.0" fitWidth="125.0" layoutX="1140.0" layoutY="4.0">
+                  <ImageView fitHeight="66.0" fitWidth="96.0" layoutX="602.0" layoutY="15.0">
                      <image>
                         <Image url="@imagenes_interfaz/logo.png" />
                      </image>
@@ -240,7 +235,7 @@
                </BorderPane.margin>
                <children>
                   <DatePicker fx:id="cal" layoutX="58.0" layoutY="165.0" AnchorPane.topAnchor="50.0" />
-                  <Line endY="534.0" layoutX="451.0" layoutY="176.0" stroke="#0f5257" strokeWidth="10.0" AnchorPane.topAnchor="0.0" />
+                  <Line endY="560.0" layoutX="451.0" layoutY="176.0" stroke="#0f5257" strokeWidth="10.0" AnchorPane.topAnchor="0.0" />
                   <QuadCurve controlX="24.73" controlY="69.7" endX="10.0" endY="80.0" fill="#1f93ff00" layoutX="424.0" layoutY="-58.0" startX="44.84" startY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
                   <QuadCurve controlX="24.73" controlY="69.7" endX="10.0" endY="80.0" fill="#1f93ff00" layoutX="424.0" layoutY="-53.0" startX="44.84" startY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
                   <QuadCurve controlX="24.73" controlY="69.7" endX="10.0" endY="80.0" fill="#1f93ff00" layoutX="424.0" layoutY="-38.0" startX="44.84" startY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
@@ -365,6 +360,14 @@
                      </font>
                   </Text>
                   <TextArea layoutX="44.0" layoutY="260.0" prefHeight="200.0" prefWidth="346.0" style="-fx-border-width: 3; -fx-border-color: #C0C0C0;" wrapText="true" AnchorPane.bottomAnchor="65.0" />
+                  <Circle layoutX="465.0" layoutY="541.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                  <Circle layoutX="436.0" layoutY="541.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                  <QuadCurve controlX="24.73" controlY="69.7" endX="10.0" endY="80.0" fill="#1f93ff00" layoutX="424.0" layoutY="466.0" startX="44.84" startY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                  <QuadCurve controlX="24.73" controlY="69.7" endX="10.0" endY="80.0" fill="#1f93ff00" layoutX="424.0" layoutY="461.0" startX="44.84" startY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                  <Circle layoutX="465.0" layoutY="561.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                  <Circle layoutX="436.0" layoutY="561.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                  <QuadCurve controlX="24.73" controlY="69.7" endX="10.0" endY="80.0" fill="#1f93ff00" layoutX="424.0" layoutY="486.0" startX="44.84" startY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
+                  <QuadCurve controlX="24.73" controlY="69.7" endX="10.0" endY="80.0" fill="#1f93ff00" layoutX="424.0" layoutY="481.0" startX="44.84" startY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
                </children>
             </AnchorPane>
          </center>

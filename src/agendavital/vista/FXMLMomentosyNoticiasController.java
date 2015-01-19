@@ -132,18 +132,19 @@ public class FXMLMomentosyNoticiasController implements Initializable {
         }
         if (!noticias.isEmpty()) {
             for (Noticia noticia : noticias) {
-                Text text = new Text(noticia.getTitulo()+". Ocurrio el; "+noticia.getFecha());
+                Text text = new Text("("+noticia.getFecha()+") " +noticia.getTitulo());
                 text.setStyle("-fx-color:black");
                 addLink(text.getText(), noticia);
             }
         } else {
             Text text = new Text("No hay registrada ninguna noticia en la Base de Datos.");
             text.setStyle("-fx-color:black");
+            text.setStyle("-fx-background-color:red");
             addLink(text.getText(), null);
         }
         if (!momentos.isEmpty()) {
             for (Momento momento : momentos) {
-                Text text = new Text(momento.getTitulo()+". Ocurrio el: "+momento.getFecha());
+                Text text = new Text("("+momento.getFecha()+") " +momento.getTitulo());
                 text.setStyle("-fx-color:black");
                 addLink2(text.getText(), momento);
             }
@@ -160,18 +161,19 @@ public class FXMLMomentosyNoticiasController implements Initializable {
         panecentral.getChildren().add(vBox);
         panecentral.getChildren().add(vBox2);
         AnchorPane.setTopAnchor(vBox, 60.0);
-        AnchorPane.setRightAnchor(vBox, 10.0);
+        AnchorPane.setRightAnchor(vBox, 20.0);
         AnchorPane.setBottomAnchor(vBox, 320.0);
-        AnchorPane.setLeftAnchor(vBox, 10.0);
+        AnchorPane.setLeftAnchor(vBox, 20.0);
         AnchorPane.setTopAnchor(vBox2, 325.0);
-        AnchorPane.setRightAnchor(vBox2, 10.0);
+        AnchorPane.setRightAnchor(vBox2, 20.0);
         AnchorPane.setBottomAnchor(vBox2, 45.0);
-        AnchorPane.setLeftAnchor(vBox2, 10.0);
+        AnchorPane.setLeftAnchor(vBox2, 20.0);
     }
     
     public void cambiarDatos() {
         listView.getItems().clear();
         listView2.getItems().clear();
+        
         
         ArrayList<Noticia> noticias = null;
         ArrayList<Momento> momentos = null;

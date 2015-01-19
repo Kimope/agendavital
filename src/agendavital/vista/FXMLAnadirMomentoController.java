@@ -21,7 +21,10 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
@@ -38,6 +41,7 @@ import javafx.stage.Stage;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 
 /**
@@ -46,6 +50,8 @@ import javafx.util.Callback;
  * @author Enrique
  */
 public class FXMLAnadirMomentoController implements Initializable {
+
+    public static Stage ventanaAnadido;
 
     //////////////Variables de la ventana de registro//////////////
     public static final double ANCHO = 596;
@@ -250,7 +256,7 @@ public class FXMLAnadirMomentoController implements Initializable {
     }
 
     @FXML
-    public void registra_momento() throws ConexionBDIncorrecta, IOException, SQLException {
+    public void registra_momento() throws ConexionBDIncorrecta, IOException, SQLException, InterruptedException {
         String _titular = titular.getText();
         String _descripcion = descripcion.getText();
         ArrayList<String> tags = new ArrayList<>();
@@ -302,6 +308,27 @@ public class FXMLAnadirMomentoController implements Initializable {
             else controllerMYN.cambiarDatos();
         }
         controllerPrincipal.colorearFechas();
+        
+        //Enseñar momento añadido
+        Parent root = null; //Creamos el parent
+            ventanaAnadido = new Stage(); //Creamos la ventana que tendrá la vista Principal de la aplicación
+            Image icon= new Image(getClass().getResourceAsStream("logo.png"));
+            ventanaAnadido.getIcons().add(icon);
+            
+            try{
+                root = FXMLLoader.load(getClass().getResource("FXMLMomentoAñadido.fxml"));
+            }catch(IOException e)
+            {
+                System.out.println("No se puede encontrar el fichero FXML");
+            }
+            
+            ventanaAnadido.setResizable(false); //No se puede modificar el tamaño de la ventana
+            ventanaAnadido.setTitle("Añadido"); //Ponemos un título para el panel de Windows
+            ventanaAnadido.initStyle(StageStyle.TRANSPARENT);
+            Scene escenaAnadido = new Scene(root); //Creamos la escena
+            escenaAnadido.setFill( Color.TRANSPARENT );
+            ventanaAnadido.setScene(escenaAnadido); //Cargamos la escena
+            ventanaAnadido.show();
     }
 
     @FXML

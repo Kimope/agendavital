@@ -253,7 +253,7 @@
                   <Insets />
                </BorderPane.margin>
                <children>
-                  <DatePicker fx:id="cal" layoutX="58.0" layoutY="205.0" />
+                  <DatePicker fx:id="cal" layoutX="58.0" layoutY="165.0" />
                   <Line endY="534.0" layoutX="451.0" layoutY="176.0" stroke="#0f5257" strokeWidth="10.0" AnchorPane.topAnchor="0.0" />
                   <QuadCurve controlX="24.73" controlY="69.7" endX="10.0" endY="80.0" fill="#1f93ff00" layoutX="424.0" layoutY="-58.0" startX="44.84" startY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
                   <QuadCurve controlX="24.73" controlY="69.7" endX="10.0" endY="80.0" fill="#1f93ff00" layoutX="424.0" layoutY="-53.0" startX="44.84" startY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />
@@ -359,8 +359,11 @@
                   <Circle layoutX="465.0" layoutY="342.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
                   <Circle layoutX="436.0" layoutY="342.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
                   <Circle layoutX="436.0" layoutY="362.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-                  <Button alignment="TOP_LEFT" layoutX="180.0" layoutY="379.0" mnemonicParsing="false" onAction="#consultar_todo" text="Consultar todas las noticias/momentos" />
-                  <Button layoutX="154.0" layoutY="104.0" mnemonicParsing="false" onAction="#momentosynoticias" text="momentosynoticias" />
+                  <Button alignment="TOP_LEFT" layoutX="276.0" layoutY="254.0" mnemonicParsing="false" onAction="#consultar_todo" scaleX="1.2" scaleY="1.2" style="-fx-background-color: #508991; -fx-background-radius: 80;" text="Ver todo" />
+                  <Button layoutX="58.0" layoutY="254.0" mnemonicParsing="false" onAction="#momentosynoticias" scaleX="1.2" scaleY="1.2" scaleZ="1.2" style="-fx-background-color: #508991; -fx-background-radius: 80;" text="Ver día">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                </children>
             </AnchorPane>
          </center>

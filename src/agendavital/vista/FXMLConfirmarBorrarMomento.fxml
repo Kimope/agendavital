@@ -10,14 +10,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="88.0" prefWidth="365.0" style="-fx-background-color: #93C6D6; -fx-background-radius: 7; -fx-border-color: #0f5257; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLAnadirNoticiaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="88.0" prefWidth="365.0" style="-fx-background-color: #93C6D6; -fx-background-radius: 7; -fx-border-color: #0f5257; -fx-border-radius: 7; -fx-border-width: 6px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLConfirmarBorrarMomentoController">
    <children>
-      <Text layoutX="24.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Seguro que quiere eliminar esta noticia?" wrappingWidth="328.0">
+      <Text layoutX="18.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Seguro que quiere eliminar este momento?" wrappingWidth="335.0">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Text>
-      <Button layoutX="76.0" layoutY="49.0" mnemonicParsing="false" style="-fx-background-radius: 80; -fx-background-color: #508991;" text="Confirmar" />
-      <Button layoutX="233.0" layoutY="49.0" mnemonicParsing="false" style="-fx-background-radius: 80; -fx-background-color: #508991;" text="Cancelar" />
+      <Button layoutX="76.0" layoutY="49.0" mnemonicParsing="false" onAction="#confirmar" style="-fx-background-radius: 80; -fx-background-color: #508991;" text="Confirmar" />
+      <Button layoutX="233.0" layoutY="49.0" mnemonicParsing="false" onAction="#cancelar" style="-fx-background-radius: 80; -fx-background-color: #508991;" text="Cancelar" />
    </children>
 </AnchorPane>

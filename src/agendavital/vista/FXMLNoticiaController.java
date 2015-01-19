@@ -7,10 +7,6 @@ package agendavital.vista;
 
 import agendavital.modelo.data.Noticia;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
-import static agendavital.vista.FXMLMomentoController._momento;
-import static agendavital.vista.FXMLMomentoController.controllerMYN;
-import static agendavital.vista.FXMLMomentoController.controllerPrincipal;
-import static agendavital.vista.FXMLMomentoController.ventanaConfirmarBorrar;
 import static agendavital.vista.FXMLPrincipalController.ventanaAnadirNoticia;
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -67,7 +64,7 @@ public class FXMLNoticiaController implements Initializable {
     @FXML
     private TextFlow tfCuerpo;
     @FXML
-    private Text txtCuerpo;
+    private TextField txtCuerpo;
     @FXML
     private TextFlow tfLink;
     @FXML
@@ -78,6 +75,7 @@ public class FXMLNoticiaController implements Initializable {
     private Text txtCategoria;
     @FXML
     private TextFlow tfTags;
+    
     @FXML
     private Text txtTag;
     @FXML
@@ -143,8 +141,35 @@ public class FXMLNoticiaController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        TextFlow td;
+        
+        
+       /*txtCuerpo.skinProperty().addListener(new ChangeListener<Skin<?>>() {
+        @Override
+        public void changed(
+          ObservableValue<? extends Skin<?>> ov, Skin<?> t, Skin<?> t1) {
+            if (t1 != null && t1.getNode() instanceof Region) {
+                Region r = (Region) t1.getNode();
+                r.setStyle("-fx-background-color: #F0ECEC");
+
+                r.getChildrenUnmodifiable().stream().
+                        filter(n -> n instanceof Region).
+                        map(n -> (Region) n).
+                        forEach(n -> n.setStyle("-fx-background-color: #F0ECEC"));
+
+                r.getChildrenUnmodifiable().stream().
+                        filter(n -> n instanceof Control).
+                        map(n -> (Control) n).
+                        forEach(c -> c.skinProperty().addListener(this)); // *
+            }
+        }
+    });*/
      
-    }    
+    }   
+    
+    
+        
     public void imprimir(Noticia noticia){
         tfTags.getChildren().clear();
         _noticia = noticia;

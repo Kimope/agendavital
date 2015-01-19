@@ -39,7 +39,7 @@
       <Label fx:id="error_login" layoutX="147.0" layoutY="335.0" textFill="#e4dd00" />
       <ImageView fitHeight="81.0" fitWidth="187.0" layoutX="72.0" layoutY="14.0">
          <image>
-            <Image url="@vital.png" />
+            <Image url="@imagenes_interfaz/vital.png" />
          </image>
       </ImageView>
       <ImageView fx:id="cruz" fitHeight="17.0" fitWidth="12.0" layoutX="282.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" opacity="0.7" pickOnBounds="true" preserveRatio="true">

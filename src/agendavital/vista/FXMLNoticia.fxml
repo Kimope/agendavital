@@ -58,7 +58,7 @@
             </TextFlow>
             <ImageView fitHeight="68.0" fitWidth="423.0" layoutX="154.0" layoutY="3.0">
                <image>
-                  <Image url="@agendavital.png" />
+                  <Image url="@imagenes_interfaz/agendavital.png" />
                </image>
             </ImageView>
             <Circle fx:id="circulocerr" fill="TRANSPARENT" layoutX="695.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />

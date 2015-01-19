@@ -34,7 +34,7 @@
       <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="536.0" layoutY="29.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
       <ImageView fitHeight="63.0" fitWidth="200.0" layoutX="204.0" layoutY="9.0">
          <image>
-            <Image url="@vital.png" />
+            <Image url="@imagenes_interfaz/vital.png" />
          </image>
       </ImageView>
       <ImageView fx:id="imgImagen" fitHeight="191.0" fitWidth="215.0" layoutX="334.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true" />

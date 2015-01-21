@@ -134,6 +134,8 @@ public class ConfigBD {
                 return "id_momento";
             case "documentos":
                 return "id_documento";
+            case "sesiones":
+                return "id_sesion";
         }
         return "";
     }

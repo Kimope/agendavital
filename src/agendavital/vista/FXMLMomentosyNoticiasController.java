@@ -12,9 +12,12 @@ import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.EventHandler;
@@ -68,6 +71,7 @@ public class FXMLMomentosyNoticiasController implements Initializable {
     private Circle circulomin;
     @FXML
     private AnchorPane panecentral;
+    final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     public FXMLPrincipalController controllerPrincipal;
     public boolean mostrandoTodo;
 
@@ -222,6 +226,59 @@ public class FXMLMomentosyNoticiasController implements Initializable {
         AnchorPane.setBottomAnchor(vBox2, 45.0);
         AnchorPane.setLeftAnchor(vBox2, 10.0);
     }
+    
+    public void cambiarDatosBusqueda(String _busqueda) throws ConexionBDIncorrecta, SQLException{
+         TreeMap<LocalDate, ArrayList<Noticia>> busquedaNoticia = Noticia.buscar(_busqueda);
+         if(!busquedaNoticia.isEmpty()){
+        busquedaNoticia.keySet().stream().map((date) -> {
+            return date;
+        }).forEach((date) -> {
+            for(int i = 0; i < busquedaNoticia.get(date).size(); i++){
+                Text text = new Text("("+dateFormatter.format(date)+")"+busquedaNoticia.get(date).get(i).getTitulo());
+                text.setStyle("-fx-color:black");
+                addLink(text.getText(), busquedaNoticia.get(date).get(i));
+            }
+        });
+         }
+         else{
+            Text text = new Text("No hay registrada ninguna noticia para este criterio de busqueda");
+            text.setStyle("-fx-color:black");
+            addLink(text.getText(), null);
+         }
+        
+        TreeMap<LocalDate, ArrayList<Momento>> busquedaMomento = Momento.buscar(_busqueda);
+        if(!busquedaMomento.isEmpty()){
+        busquedaMomento.keySet().stream().map((date) -> {
+            return date;
+        }).forEach((date) -> {
+            for(int i = 0; i < busquedaMomento.get(date).size(); i++){
+                Text text = new Text("("+dateFormatter.format(date)+")"+busquedaMomento.get(date).get(i).getTitulo());
+                text.setStyle("-fx-color:black");
+                addLink2(text.getText(), busquedaMomento.get(date).get(i));
+            }
+        });
+        }
+        else{
+            Text text = new Text("No hay registrada ningun momento para este criterio de busqueda");
+            text.setStyle("-fx-color:black");
+            addLink(text.getText(), null);
+         }
+         VBox vBox = new VBox();
+        VBox vBox2 = new VBox();
+        vBox.getChildren().add(listView);
+        vBox2.getChildren().add(listView2);
+        panecentral.getChildren().add(vBox);
+        panecentral.getChildren().add(vBox2);
+        AnchorPane.setTopAnchor(vBox, 60.0);
+        AnchorPane.setRightAnchor(vBox, 10.0);
+        AnchorPane.setBottomAnchor(vBox, 320.0);
+        AnchorPane.setLeftAnchor(vBox, 10.0);
+        AnchorPane.setTopAnchor(vBox2, 325.0);
+        AnchorPane.setRightAnchor(vBox2, 10.0);
+        AnchorPane.setBottomAnchor(vBox2, 45.0);
+        AnchorPane.setLeftAnchor(vBox2, 10.0);
+        
+    }
 
     private void addLink(final String url, Noticia noticia) {
         final Text link = new Text(url);
@@ -235,7 +292,7 @@ public class FXMLMomentosyNoticiasController implements Initializable {
                     } else {
                         Parent root = null;
                         ventanaNoticia = new Stage();
-                        Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+                        Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
                         ventanaNoticia.getIcons().add(icon);
                         ventanaNoticia.setTitle("Acerca De");
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLNoticia.fxml"));
@@ -271,7 +328,7 @@ public class FXMLMomentosyNoticiasController implements Initializable {
                     } else {
                         Parent root = null;
                         ventanaMomento = new Stage();
-                        Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+                        Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
                         ventanaMomento.getIcons().add(icon);
                         ventanaMomento.setTitle("Acerca De");
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMomento.fxml"));

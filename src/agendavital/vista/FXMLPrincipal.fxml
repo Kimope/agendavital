@@ -225,6 +225,7 @@
                   <Circle layoutX="25.0" layoutY="451.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                   <Circle layoutX="25.0" layoutY="487.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                   <Circle layoutX="26.0" layoutY="521.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                  <Button fx:id="botonBuscar" layoutX="41.0" layoutY="543.0" mnemonicParsing="false" onAction="#buscar" text="Buscar" />
                </children>
             </AnchorPane>
          </left>
@@ -359,7 +360,6 @@
                         <Font name="Comic Sans MS" size="19.0" />
                      </font>
                   </Text>
-                  <TextArea layoutX="44.0" layoutY="260.0" prefHeight="200.0" prefWidth="346.0" style="-fx-border-width: 3; -fx-border-color: #C0C0C0;" wrapText="true" AnchorPane.bottomAnchor="65.0" />
                   <Circle layoutX="465.0" layoutY="541.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
                   <Circle layoutX="436.0" layoutY="541.0" radius="6.0" stroke="TRANSPARENT" strokeType="INSIDE" />
                   <QuadCurve controlX="24.73" controlY="69.7" endX="10.0" endY="80.0" fill="#1f93ff00" layoutX="424.0" layoutY="466.0" startX="44.84" startY="80.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" />

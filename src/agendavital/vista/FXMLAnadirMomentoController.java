@@ -127,7 +127,7 @@ public class FXMLAnadirMomentoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        file = new File("imagenes/logo.png");
+        file = new File("imagenes/imagenes_interfaz/logo.png");
         InputStream is = null;
         try {
             is = new FileInputStream(file);
@@ -324,7 +324,7 @@ public class FXMLAnadirMomentoController implements Initializable {
         //Enseñar momento añadido
         Parent root = null; //Creamos el parent
             ventanaAnadido = new Stage(); //Creamos la ventana que tendrá la vista Principal de la aplicación
-            Image icon= new Image(getClass().getResourceAsStream("logo.png"));
+            Image icon= new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
             ventanaAnadido.getIcons().add(icon);
             
             try{

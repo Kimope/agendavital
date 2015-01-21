@@ -128,7 +128,7 @@ public class FXMLLoginController implements Initializable
         try{
             Parent root = null; //Creamos el parent
             ventanaPrincipal = new Stage(); //Creamos la ventana que tendrá la vista Principal de la aplicación
-            Image icon= new Image(getClass().getResourceAsStream("logo.png"));
+            Image icon= new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
             ventanaPrincipal.getIcons().add(icon);
             /*PUNTO CLAVE*/
             Usuario.usuarioExiste(tfUsuario.getText(), tfContra.getText());
@@ -170,7 +170,7 @@ public class FXMLLoginController implements Initializable
     {
         Parent root = null;
         ventanaRegistro = new Stage();
-        Image icon= new Image(getClass().getResourceAsStream("logo.png"));
+        Image icon= new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaRegistro.getIcons().add(icon);
 
         try{

@@ -102,7 +102,7 @@ public class FXMLRegistroCompletadoController implements Initializable
     {
                 Parent root = null;
                 ventanaPrimeraPregunta = new Stage();
-                Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+                Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
                 ventanaPrimeraPregunta.getIcons().add(icon);
                 ventanaPrimeraPregunta.setTitle("Primeros Pasos");
 

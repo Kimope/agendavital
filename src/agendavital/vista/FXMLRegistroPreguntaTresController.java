@@ -183,7 +183,7 @@ public class FXMLRegistroPreguntaTresController implements Initializable {
     {
                 Parent root = null;
                 ventanaPrincipal = new Stage();
-                Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+                Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
                 ventanaPrincipal.getIcons().add(icon);
                 ventanaPrincipal.setTitle("Agenda Vital");
                 

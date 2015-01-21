@@ -186,7 +186,7 @@ public class FXMLRegistroPreguntaDosController implements Initializable {
     {
                 Parent root = null;
                 ventanaTerceraPregunta = new Stage();
-                Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+                Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
                 ventanaTerceraPregunta.getIcons().add(icon);
                 ventanaTerceraPregunta.setTitle("Primeros Pasos");
 

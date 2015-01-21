@@ -182,7 +182,7 @@ public class FXMLRegistroPreguntaUnoController implements Initializable {
     public void segundapregunta() throws IOException {
         Parent root = null;
         ventanaSegundaPregunta = new Stage();
-        Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+        Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaSegundaPregunta.getIcons().add(icon);
         ventanaSegundaPregunta.setTitle("Primeros Pasos");
 

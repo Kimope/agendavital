@@ -128,7 +128,7 @@ public class FXMLLoginController implements Initializable
         try{
             Parent root = null; //Creamos el parent
             ventanaPrincipal = new Stage(); //Creamos la ventana que tendrá la vista Principal de la aplicación
-            Image icon= new Image(getClass().getResourceAsStream("logo.png"));
+            Image icon= new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
             ventanaPrincipal.getIcons().add(icon);
             /*PUNTO CLAVE*/
             Usuario.usuarioExiste(tfUsuario.getText(), tfContra.getText());
@@ -142,8 +142,9 @@ public class FXMLLoginController implements Initializable
             
             //ventanaPrincipal.setResizable(false); //No se puede modificar el tamaño de la ventana
             ventanaPrincipal.setTitle("Bienvenido a su Agenda Vital"); //Ponemos un título para el panel de Windows
-            Scene escenaPrincipal = new Scene(root); //Creamos la escena
+            Scene escenaPrincipal = new Scene(root,1300,680); //Creamos la escena
             ventanaPrincipal.setScene(escenaPrincipal); //Cargamos la escena
+            ventanaPrincipal.initStyle(StageStyle.UNDECORATED);
             AgendaVital.ventanaLogin.close(); // Cerramos la pantalla del Login
             ventanaPrincipal.initStyle(StageStyle.UNDECORATED);
             ventanaPrincipal.show(); //Mostramos la pantalla principal
@@ -170,7 +171,7 @@ public class FXMLLoginController implements Initializable
     {
         Parent root = null;
         ventanaRegistro = new Stage();
-        Image icon= new Image(getClass().getResourceAsStream("logo.png"));
+        Image icon= new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaRegistro.getIcons().add(icon);
 
         try{

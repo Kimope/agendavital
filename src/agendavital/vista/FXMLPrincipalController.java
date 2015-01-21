@@ -11,12 +11,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import javafx.stage.Stage;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,6 +29,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Pagination;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -46,7 +50,6 @@ public class FXMLPrincipalController implements Initializable {
 
     //Se declaran los atributos de FXMLPrincipal, con el nombre del #id que tienen en JavaFX
     public static Stage ventanaRegistro;
-    public static Stage ventanaLogin=new Stage();
     public static Stage ventanaAnadirNoticia=new Stage();
     public static Stage ventanaAnadirMomento=new Stage();
     public static Stage ventanaAcercaDe=new Stage();
@@ -62,8 +65,13 @@ public class FXMLPrincipalController implements Initializable {
      
     public static String fechaSeleccionada = null;
     File filesJpg[];
+    
     @FXML
     private Line lineamenu1;
+    @FXML
+    private TextField campobuscar;
+    @FXML
+    private ImageView buscar;
     @FXML
     private Line lineamenu2;
     @FXML
@@ -82,6 +90,11 @@ public class FXMLPrincipalController implements Initializable {
     private Text logueado;
     @FXML
     private Text cerrar_sesion;
+    @FXML
+    private Text bienvenida;
+    @FXML
+    private AnchorPane lateralizq;
+    
 
     final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     public int nRecargas = 0;
@@ -155,7 +168,7 @@ public class FXMLPrincipalController implements Initializable {
         cerrar_sesion.setOnMouseClicked((MouseEvent t) -> {
             Parent root = null; //Creamos un parent, que es una clase que se encarga del escenario gráfico, que tendrá sus hijos, que serán las escenas
             agendavital.AgendaVital.ventanaLogin= new Stage();
-            Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+            Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
             agendavital.AgendaVital.ventanaLogin.getIcons().add(icon);
             agendavital.AgendaVital.ventanaLogin.setTitle("Login");
             try{
@@ -175,6 +188,24 @@ public class FXMLPrincipalController implements Initializable {
             agendavital.AgendaVital.ventanaLogin.show(); //La mostramos por pantalla
             FXMLLoginController.ventanaPrincipal.close();
         });
+        
+        buscar.setOnMouseEntered(new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent actionEvent) {
+            buscar.setScaleX(1.2);
+            buscar.setScaleX(1.2);
+            buscar.setCursor(Cursor.HAND);
+        }
+    });
+        buscar.setOnMouseExited(new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent actionEvent) {
+            buscar.setScaleX(0.9);
+            buscar.setScaleX(0.9);
+        }
+    });
+        
+        bienvenida.setText("Hola "+UsuarioLogueado.getLogueado().getNombre()+",");
         
     }
     //
@@ -297,7 +328,7 @@ public class FXMLPrincipalController implements Initializable {
         }else{
         Parent root = null;
         ventanaAnadirNoticia = new Stage();
-        Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+        Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaAnadirNoticia.getIcons().add(icon);
         ventanaAnadirNoticia.setTitle("Nueva Noticia");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAnadirNoticia.fxml"));
@@ -324,7 +355,7 @@ public class FXMLPrincipalController implements Initializable {
         }else{
         Parent root = null;
         ventanaAnadirMomento = new Stage();
-        Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+        Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaAnadirMomento.getIcons().add(icon);
         ventanaAnadirMomento.setTitle("Nuevo Momento");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAnadirMomento.fxml"));
@@ -351,7 +382,7 @@ public class FXMLPrincipalController implements Initializable {
         }else{
         Parent root = null;
         ventanaAcercaDe = new Stage();
-        Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+        Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaAcercaDe.getIcons().add(icon);
         ventanaAcercaDe.setTitle("Acerca De");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAcercaDe.fxml"));
@@ -373,7 +404,7 @@ public class FXMLPrincipalController implements Initializable {
         
         Parent root = null;
         ventanaNoticia = new Stage();
-        Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+        Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaNoticia.getIcons().add(icon);
         ventanaNoticia.setTitle("Ayuda");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMomento.fxml"));
@@ -399,7 +430,7 @@ public class FXMLPrincipalController implements Initializable {
         }else{
         Parent root = null;
         ventanaAdministracion = new Stage();
-        Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+        Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaAdministracion.getIcons().add(icon);
         ventanaAdministracion.setTitle("Ayuda");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAdministracion.fxml"));
@@ -426,7 +457,7 @@ public class FXMLPrincipalController implements Initializable {
         Parent root = null;
         ventanaDia = new Stage();
         fechaSeleccionada = dateFormatter.format(cal.getValue());
-        Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+        Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaDia.getIcons().add(icon);
         ventanaDia.setTitle("Todas las noticias y momentos");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMomentosyNoticias.fxml"));
@@ -457,7 +488,7 @@ public class FXMLPrincipalController implements Initializable {
         Parent root = null;
         ventanaDia = new Stage();
         fechaSeleccionada = dateFormatter.format(cal.getValue());
-        Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+        Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaDia.getIcons().add(icon);
         ventanaDia.setTitle("Noticia");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMomentosyNoticias.fxml"));
@@ -472,6 +503,37 @@ public class FXMLPrincipalController implements Initializable {
         FXMLMomentosyNoticiasController controller = loader.getController();
         controller.setMostrandoTodo(false);
         controller.cambiarDatos();
+        controller.setControllerPrincipal(this);
+        escenaNoticia.setFill(Color.TRANSPARENT);
+        ventanaDia.setScene(escenaNoticia);
+        ventanaDia.show();
+        }
+    }
+    
+    public void buscar() throws ConexionBDIncorrecta, SQLException{
+        if(ventanaDia.isShowing()){
+            ventanaDia.setIconified(false);
+            ventanaDia.toFront();
+            
+        }else{
+        Parent root = null;
+        ventanaDia = new Stage();
+        fechaSeleccionada = dateFormatter.format(cal.getValue());
+        Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
+        ventanaDia.getIcons().add(icon);
+        ventanaDia.setTitle("Noticias y momentos encontrados");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMomentosyNoticias.fxml"));
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            System.out.println("No se puede encontrar el fichero FXML");
+        }
+
+        Scene escenaNoticia = new Scene(root);
+        ventanaDia.initStyle(StageStyle.TRANSPARENT);
+        FXMLMomentosyNoticiasController controller = loader.getController();
+        controller.setMostrandoTodo(false);
+        controller.cambiarDatosBusqueda(campobuscar.getText());
         controller.setControllerPrincipal(this);
         escenaNoticia.setFill(Color.TRANSPARENT);
         ventanaDia.setScene(escenaNoticia);

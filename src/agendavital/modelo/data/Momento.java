@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.TreeMap;
 import javafx.util.Pair;
 
 /**
@@ -340,35 +341,41 @@ public class Momento {
         return fechasMomentos;
     }
 
-    public static ArrayList<Momento> buscar(String _parametro) throws ConexionBDIncorrecta {
+    public static  TreeMap<LocalDate, ArrayList<Momento>> buscar(String _parametro) throws ConexionBDIncorrecta {
+        final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         ArrayList<String> _tags = UtilidadesBusqueda.separarPalabras(_parametro);
-        ArrayList<Momento> busqueda = null;
+        TreeMap<LocalDate, ArrayList<Momento>> busqueda = null;
         try (Connection conexion = ConfigBD.conectar()) {
-            busqueda = new ArrayList<>();
+            busqueda = new TreeMap<>();
             for (String _tag : _tags) {
                 String tag = ConfigBD.String2Sql(_tag, true);
-                String buscar = String.format("SELECT id_Momento from momentos "
-                        + "WHERE id_momento IN (SELECT id_momento from momentos_noticias_etiquetas "
+                String buscar = String.format("SELECT id_Momento, fecha from momentos "
+                        + "WHERE id_usuario = %s AND (id_momento IN (SELECT id_momento from momentos_noticias_etiquetas "
                         + "WHERE id_etiqueta IN (SELECT id_etiqueta from etiquetas WHERE nombre LIKE %s)) "
                         + "OR titulo LIKE %s "
                         + "OR descripcion LIKE %s"
-                        + "OR fecha LIKE %s"
-                        + "AND id_usuario = %s);", tag, tag, tag, tag, ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
+                        + "OR fecha LIKE %s)"
+                        + ";",  ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false), tag, tag, tag, tag);
                 ResultSet rs = conexion.createStatement().executeQuery(buscar);
                 while (rs.next()) {
-                    busqueda.add(new Momento(rs.getInt("id_Momento")));
+                    LocalDate date = LocalDate.parse(rs.getString("fecha"), dateFormatter);
+                    Momento insertarMomento = new Momento(rs.getInt("id_momento"));
+                    if(busqueda.containsKey(date)){
+                    boolean encontrado = false;
+                    for(int i = 0; i < busqueda.get(date).size() && !encontrado; i++)
+                        if(busqueda.get(date).get(i).getId() == insertarMomento.getId()) encontrado = true;
+                        if(!encontrado) busqueda.get(date).add(insertarMomento);
+                    }
+                    else{
+                        busqueda.put(date, new ArrayList<>());
+                        busqueda.get(date).add(insertarMomento);
+                    }
                 }
             }
         } catch (SQLException e) {
-            throw new ConexionBDIncorrecta();
+            e.printStackTrace();
         }
-        for (int i = 0; i < busqueda.size() - 1; i++) {
-            for (int j = i + 1; j < busqueda.size(); j++) {
-                if (busqueda.get(i).getId() == busqueda.get(j).getId()) {
-                    busqueda.remove(j);
-                }
-            }
-        }
+        
         return busqueda;
     }
 }

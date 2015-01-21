@@ -17,8 +17,6 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import agendavital.modelo.util.ConfigBD;
-import java.io.File;
 
 /**
  * @author Enrique
@@ -26,8 +24,8 @@ import java.io.File;
 public class AgendaVital extends Application 
 {
     public static Stage ventanaLogin; //Declaramos el stage como static para poderlo usar en el Controller
-    private double xOffset=0; //Esto sirve para mover las pantallas
-    private double yOffset=0; //Esto sirve para mover las pantallas
+    private final double xOffset=0; //Esto sirve para mover las pantallas
+    private final double yOffset=0; //Esto sirve para mover las pantallas
     
     //Método para iniciar el programa
     @Override
@@ -47,7 +45,6 @@ public class AgendaVital extends Application
             root = FXMLLoader.load(getClass().getResource("vista/FXMLLogin.fxml")); //Cargamos el fichero FXML relacionado con este archivo, que es el que tiene los paneles, textos, etc, es decir, lo que se muestra por pantalla
         }catch(IOException e)
         {
-            e.printStackTrace();
         }
         
         
@@ -56,7 +53,7 @@ public class AgendaVital extends Application
         Scene scene = new Scene(root); //Creamos una escena en el root creado, que es una clase contenedora del escenario gráfico, en este caso con la ventana que se muestra por pantalla
         scene.setFill( Color.TRANSPARENT ); //Para que no se vea la escena (lo usamos para que no se vean los picos de los bordes
         stage.setScene(scene); //Cargamos la escena
-        Image icon = new Image(getClass().getResourceAsStream("vista/logo.png")); //Creamos y cargamos un icono de la carpeta
+        Image icon = new Image(getClass().getResourceAsStream("vista/imagenes_interfaz/logo.png")); //Creamos y cargamos un icono de la carpeta
         stage.getIcons().add(icon); //Cargamos la imagen como icono de la app
         stage.centerOnScreen();
         

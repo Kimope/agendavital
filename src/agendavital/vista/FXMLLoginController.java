@@ -1,6 +1,7 @@
 package agendavital.vista;
 
 import agendavital.AgendaVital;
+import agendavital.modelo.data.Sesion;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,7 +18,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import agendavital.modelo.data.Usuario;
@@ -25,10 +25,11 @@ import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import agendavital.modelo.excepciones.ContrasenaMalIntroducida;
 import agendavital.modelo.excepciones.NickMalIntroducido;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.EventHandler;
-import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -42,6 +43,7 @@ public class FXMLLoginController implements Initializable
     //Ventanas//
     public static Stage ventanaPrincipal; //Declaramos la ventana de Principal como static
     public static Stage ventanaRegistro; //Declaramos la ventana de Registro como static
+    public static Stage ventanaNuevasNoticias;
     
     //////////////Variables de la ventana de registro//////////////
     public static final double ANCHO = 325;
@@ -78,9 +80,7 @@ public class FXMLLoginController implements Initializable
             {
                 try {
                     login();
-                } catch (IOException ex) {
-                    Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ConexionBDIncorrecta ex) {
+                } catch (IOException | ConexionBDIncorrecta | SQLException ex) {
                     Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -122,17 +122,43 @@ public class FXMLLoginController implements Initializable
     ///////////////////////////////////////////////////////////////////
     //Método que sirve para realizar las acciones que ocurrirán al pulsar el botón de login
     @FXML
-    public void login() throws IOException, ConexionBDIncorrecta
+    public void login() throws IOException, ConexionBDIncorrecta, SQLException
     {
+        try {
+            Usuario.usuarioExiste(tfUsuario.getText(), tfContra.getText());
+        } catch (NickMalIntroducido ex) {
+            Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ContrasenaMalIntroducida ex) {
+            Logger.getLogger(FXMLLoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        LocalDate ultimaSesion = Sesion.getFechaSesion();
+        if(LocalDate.now().getDayOfWeek().getValue() == 7 && Period.between(ultimaSesion, LocalDate.now()).getDays() <= 6){
+            Parent root = null;
+            ventanaNuevasNoticias = new Stage();
+            Image icon= new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
+            ventanaNuevasNoticias.getIcons().add(icon);
+            try{
+                root = FXMLLoader.load(getClass().getResource("FXMLNuevasNoticias.fxml"));
+            }catch(IOException e)
+            {
+                System.out.println("No se puede encontrar el fichero FXML");
+              
+            }
+            ventanaNuevasNoticias.setTitle("Nuevas noticias");
+            Scene escenaNuevasNoticias = new Scene(root);
+            ventanaNuevasNoticias.setScene(escenaNuevasNoticias); //Cargamos la escena
+            ventanaNuevasNoticias.initStyle(StageStyle.UNDECORATED);
+            AgendaVital.ventanaLogin.close(); // Cerramos la pantalla del Login
+            ventanaNuevasNoticias.initStyle(StageStyle.UNDECORATED);
+            ventanaNuevasNoticias.show(); //Mostramos la pantalla principal
+        } else{
         
-        try{
+        
             Parent root = null; //Creamos el parent
             ventanaPrincipal = new Stage(); //Creamos la ventana que tendrá la vista Principal de la aplicación
             Image icon= new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
             ventanaPrincipal.getIcons().add(icon);
-            /*PUNTO CLAVE*/
-            Usuario.usuarioExiste(tfUsuario.getText(), tfContra.getText());
-            
+
             try{
                 root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
             }catch(IOException e)
@@ -149,21 +175,13 @@ public class FXMLLoginController implements Initializable
             AgendaVital.ventanaLogin.close(); // Cerramos la pantalla del Login
             ventanaPrincipal.initStyle(StageStyle.UNDECORATED);
             ventanaPrincipal.show(); //Mostramos la pantalla principal
- 
+        
             
-        }catch(SQLException ex)
-        {
-            
-            //System.err.println("No se ha podido acceder a la BD"); //Pantalla de error con este texto
-        } catch (NickMalIntroducido ex) {
-            error_login.setText("Nombre de usuario incorrecto");
-            tfUsuario.setStyle("-fx-background-color:#eb7264");
-        } catch (ContrasenaMalIntroducida ex) {
-            error_login.setText("Contraseña incorrecta");
-            tfContra.setStyle("-fx-background-color:#eb7264");
-            
-        }
+       
+        
         /*Y cuando acabeis, quitad los System.err...*/
+        }
+    
     }
     
     //Método que sirve para realizar las acciones que ocurrirán al pulsar el botón de Registrarme

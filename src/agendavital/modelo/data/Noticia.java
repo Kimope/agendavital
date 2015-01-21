@@ -295,7 +295,7 @@ public class Noticia {
 
     public static ArrayList<Noticia> getNoticiasFeedZilla() throws java.text.ParseException, ErrorConexionFeedzilla {
         HttpClient httpClient = new DefaultHttpClient();
-        HttpGet httpGet = new HttpGet("http://api.feedzilla.com/v1/categories/100/articles.json");
+        HttpGet httpGet = new HttpGet("http://api.feedzilla.com/v1/categories/100/articles.json?count=13");
         httpGet.setHeader("Content-Type", "application/json");
         String respStr = null;
         ArrayList<Noticia> arrayNoticias = null;
@@ -312,7 +312,7 @@ public class Noticia {
                 noticia.setCategoria("Noticias Internacionales");
                 noticia.setCuerpo(jsonNoticia.getString("summary"));
                 noticia.setLink(jsonNoticia.getString("url"));
-                System.out.println(UtilidadesNoticia.formatearFecha(jsonNoticia.getString("publish_date")));
+                noticia.setFecha(UtilidadesNoticia.formatearFecha(jsonNoticia.getString("publish_date")));
                 arrayNoticias.add(noticia);
             }
 

@@ -21,11 +21,11 @@ import java.sql.SQLException;
  */
 public class ConfigBD {
 
-    private static String ruta = "BD/agenda.db";
+    private static String ruta = "";
     private static final String SO = System.getProperty("os.name").toLowerCase();
 
     public static boolean inicializarEstructura() throws IOException{
-        File origen = new File("BD2/agenda.db");
+        File origen = new File("BD/agenda.db");
         File destino = null;
         File carpetaMomentos = null;
         if(SO.contains("win")){
@@ -47,52 +47,6 @@ public class ConfigBD {
         return true;
     }
     
-    public static void crearTablas() throws SQLException {
-        Connection conexion = conectar();
-        String tabla = "CREATE TABLE documentos(";
-        tabla += "id_documento INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,";
-        tabla += "ruta_doc TEXT);";
-        tabla += ";";
-        tabla += "CREATE TABLE momentos_noticias_etiquetas(";
-        tabla += "id_momento_noticia_etiqueta INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,";
-        tabla += "id_momento INT,";
-        tabla += "id_noticia INT,";
-        tabla += "id_etiqueta INT,";
-        tabla += "FOREIGN KEY(id_momento) REFERENCES momentos(id_momento),";
-        tabla += "FOREIGN KEY(id_noticia) REFERENCES noticias(id_noticia),";
-        tabla += "FOREIGN KEY(id_etiqueta) REFERENCES etiquetas(id_etiqueta));";
-        tabla += ";";
-        tabla += "CREATE TABLE usuarios(";
-        tabla += "nick VARCHAR(50) PRIMARY KEY,";
-        tabla += "nombre VARCHAR(100),";
-        tabla += "apellido VARCHAR(200),";
-        tabla += "contrasena VARCHAR(50),";
-        tabla += "fecha_nac TEXT, ciudad varchar(50), correo varchar(70));";
-        tabla += ";";
-        tabla += "CREATE TABLE momentos(";
-        tabla += "id_momento INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,";
-        tabla += "fecha TEXT,";
-        tabla += "descripcion TEXT,";
-        tabla += "id_documento INT,";
-        tabla += "id_noticia INT,";
-        tabla += "FOREIGN KEY(id_documento) REFERENCES documentos(id_documento),";
-        tabla += "FOREIGN KEY(id_noticia) REFERENCES noticias(id_noticia));";
-        tabla += ";";
-        tabla += "CREATE TABLE noticias (";
-        tabla += "id_noticia INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,";
-        tabla += "titulo TEXT,";
-        tabla += "link TEXT,";
-        tabla += "cuerpo TEXT,";
-        tabla += "categoria TEXT,";
-        tabla += "fecha TEXT";
-        tabla += ");";
-        tabla += "CREATE TABLE etiquetas (";
-        tabla += "id_etiqueta INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,";
-        tabla += "nombre TEXT";
-        tabla += ");";
-        conexion.createStatement().executeUpdate(tabla);
-    }
-
     public static boolean estructuraInicializada() {
         File BD = null;
         if (SO.contains("win")) {

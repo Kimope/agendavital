@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import javafx.stage.Stage;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -21,12 +22,12 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Pagination;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -95,7 +96,9 @@ public class FXMLPrincipalController implements Initializable {
     private Text t5;
     @FXML
     private Text t6;
-
+    @FXML
+    private TextField txtBuscar;
+            
     final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     public int nRecargas = 0;
     Pagination pagination = null;
@@ -130,29 +133,29 @@ public class FXMLPrincipalController implements Initializable {
         if (etiquetas.size() == 1){
             t1.setText(etiquetas.get(0));
         }
-        if (etiquetas.size() == 2){
+       else if (etiquetas.size() == 2){
             t1.setText(etiquetas.get(0));
             t2.setText(etiquetas.get(1));
         }
-        if (etiquetas.size() == 3){
+       else if (etiquetas.size() == 3){
             t1.setText(etiquetas.get(0));
             t2.setText(etiquetas.get(1));
             t3.setText(etiquetas.get(2));
         }
-        if (etiquetas.size() == 4){
+       else if (etiquetas.size() == 4){
             t1.setText(etiquetas.get(0));
             t2.setText(etiquetas.get(1));
             t3.setText(etiquetas.get(2));
             t4.setText(etiquetas.get(3));
         }
-        if (etiquetas.size() == 5){
+       else if (etiquetas.size() == 5){
            t1.setText(etiquetas.get(0));
             t2.setText(etiquetas.get(1));
             t3.setText(etiquetas.get(2));
             t4.setText(etiquetas.get(3));
             t5.setText(etiquetas.get(4));
         }
-        if (etiquetas.size() == 6){
+       else if (etiquetas.size() == 6){
             t1.setText(etiquetas.get(0));
             t2.setText(etiquetas.get(1));
             t3.setText(etiquetas.get(2));
@@ -527,4 +530,33 @@ public class FXMLPrincipalController implements Initializable {
         }
     }
 
+    public void buscar() throws ConexionBDIncorrecta, SQLException{
+         if(ventanaDia.isShowing()){
+            ventanaDia.setIconified(false);
+            ventanaDia.toFront();
+            
+        }else{
+        Parent root = null;
+        ventanaDia = new Stage();
+        Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
+        ventanaDia.getIcons().add(icon);
+        ventanaDia.setTitle("Noticia");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMomentosyNoticias.fxml"));
+        try {
+            root = loader.load();
+        } catch (IOException e) {
+            System.out.println("No se puede encontrar el fichero FXML");
+        }
+
+        Scene escenaNoticia = new Scene(root);
+        ventanaDia.initStyle(StageStyle.TRANSPARENT);
+        FXMLMomentosyNoticiasController controller = loader.getController();
+        controller.setMostrandoTodo(false);
+        controller.cambiarDatosBusqueda(txtBuscar.getText());
+        controller.setControllerPrincipal(this);
+        escenaNoticia.setFill(Color.TRANSPARENT);
+        ventanaDia.setScene(escenaNoticia);
+        ventanaDia.show();
+    }
+}
 }

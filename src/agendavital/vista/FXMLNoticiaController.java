@@ -18,21 +18,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-<<<<<<< HEAD
-import javafx.scene.control.TextArea;
-=======
 import javafx.scene.control.ScrollPane;
->>>>>>> 41f179e56a82bab33c03766e51a1a4fbbd0d2d8a
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
@@ -70,13 +64,9 @@ public class FXMLNoticiaController implements Initializable {
     @FXML
     private TextFlow tfCuerpo;
     @FXML
-<<<<<<< HEAD
-    private TextArea txtCuerpo;
-=======
     private Text txtCuerpo;
     @FXML
     private ScrollPane scroll;
->>>>>>> 41f179e56a82bab33c03766e51a1a4fbbd0d2d8a
     @FXML
     private TextFlow tfLink;
     @FXML
@@ -153,8 +143,6 @@ public class FXMLNoticiaController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-<<<<<<< HEAD
-=======
         
        
         
@@ -181,7 +169,6 @@ public class FXMLNoticiaController implements Initializable {
         }
     });
      */
->>>>>>> 41f179e56a82bab33c03766e51a1a4fbbd0d2d8a
     }   
     
     
@@ -228,7 +215,7 @@ public class FXMLNoticiaController implements Initializable {
             }else{
         Parent root = null;
         ventanaAnadirNoticia = new Stage();
-        Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
+        Image icon = new Image(getClass().getResourceAsStream("logo.png"));
         ventanaAnadirNoticia.getIcons().add(icon);
         ventanaAnadirNoticia.setTitle("Modificar Noticia");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAnadirNoticia.fxml"));
@@ -252,7 +239,7 @@ public class FXMLNoticiaController implements Initializable {
    public void borrar_noticia() throws ConexionBDIncorrecta{
        Parent root = null; //Creamos el parent
             ventanaConfirmarBorrarr = new Stage(); //Creamos la ventana que tendrá la vista Principal de la aplicación
-            Image icon= new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
+            Image icon= new Image(getClass().getResourceAsStream("logo.png"));
             ventanaConfirmarBorrarr.getIcons().add(icon);
             
             try{

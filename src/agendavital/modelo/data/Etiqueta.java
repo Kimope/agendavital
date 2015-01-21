@@ -20,6 +20,7 @@ public class Etiqueta {
     public static ArrayList<String> getEtiqueta(){
         ArrayList<String> etiquetas = null;
         try(Connection conexion = ConfigBD.conectar()){
+            etiquetas = new ArrayList<>();
             ResultSet rs = null;
             String consulta = "SELECT nombre from etiquetas ORDER BY id_etiqueta DESC LIMIT 6";
             rs = conexion.createStatement().executeQuery(consulta);

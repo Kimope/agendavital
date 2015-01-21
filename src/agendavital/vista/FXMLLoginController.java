@@ -138,6 +138,7 @@ public class FXMLLoginController implements Initializable
             }catch(IOException e)
             {
                 System.out.println("No se puede encontrar el fichero FXML");
+                e.printStackTrace();
             }
             
             //ventanaPrincipal.setResizable(false); //No se puede modificar el tamaño de la ventana
@@ -177,7 +178,7 @@ public class FXMLLoginController implements Initializable
             root = FXMLLoader.load(getClass().getResource("FXMLRegistro.fxml"));
         }catch(IOException e)
         {
-            System.out.println("No se puede encontrar el fichero FXML");
+            e.printStackTrace();
         }
  
         ventanaRegistro.initStyle(StageStyle.TRANSPARENT);

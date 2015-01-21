@@ -302,6 +302,7 @@ public class FXMLMomentosyNoticiasController implements Initializable {
                         }
                         
                         Scene escenaNoticia = new Scene(root);
+                        escenaNoticia.getStylesheets().add("textarea.css");
                         FXMLNoticiaController controller = loader.getController();
                         controller.setControllerMYN(FXMLMomentosyNoticiasController.this);
                         controller.setControllerPrincipal(controllerPrincipal);

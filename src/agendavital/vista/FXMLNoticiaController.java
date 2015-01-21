@@ -18,15 +18,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
@@ -64,7 +66,7 @@ public class FXMLNoticiaController implements Initializable {
     @FXML
     private TextFlow tfCuerpo;
     @FXML
-    private TextField txtCuerpo;
+    private TextArea txtCuerpo;
     @FXML
     private TextFlow tfLink;
     @FXML
@@ -141,31 +143,6 @@ public class FXMLNoticiaController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        TextFlow td;
-        
-        
-       /*txtCuerpo.skinProperty().addListener(new ChangeListener<Skin<?>>() {
-        @Override
-        public void changed(
-          ObservableValue<? extends Skin<?>> ov, Skin<?> t, Skin<?> t1) {
-            if (t1 != null && t1.getNode() instanceof Region) {
-                Region r = (Region) t1.getNode();
-                r.setStyle("-fx-background-color: #F0ECEC");
-
-                r.getChildrenUnmodifiable().stream().
-                        filter(n -> n instanceof Region).
-                        map(n -> (Region) n).
-                        forEach(n -> n.setStyle("-fx-background-color: #F0ECEC"));
-
-                r.getChildrenUnmodifiable().stream().
-                        filter(n -> n instanceof Control).
-                        map(n -> (Control) n).
-                        forEach(c -> c.skinProperty().addListener(this)); // *
-            }
-        }
-    });*/
-     
     }   
     
     

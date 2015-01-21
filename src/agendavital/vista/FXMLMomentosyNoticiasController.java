@@ -20,7 +20,6 @@ import java.util.ResourceBundle;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -234,7 +233,7 @@ public class FXMLMomentosyNoticiasController implements Initializable {
             return date;
         }).forEach((date) -> {
             for(int i = 0; i < busquedaNoticia.get(date).size(); i++){
-                Text text = new Text("("+dateFormatter.format(date)+")"+busquedaNoticia.get(date).get(i).getTitulo());
+                Text text = new Text("("+dateFormatter.format(date)+") "+busquedaNoticia.get(date).get(i).getTitulo());
                 text.setStyle("-fx-color:black");
                 addLink(text.getText(), busquedaNoticia.get(date).get(i));
             }
@@ -252,7 +251,7 @@ public class FXMLMomentosyNoticiasController implements Initializable {
             return date;
         }).forEach((date) -> {
             for(int i = 0; i < busquedaMomento.get(date).size(); i++){
-                Text text = new Text("("+dateFormatter.format(date)+")"+busquedaMomento.get(date).get(i).getTitulo());
+                Text text = new Text("("+dateFormatter.format(date)+") "+busquedaMomento.get(date).get(i).getTitulo());
                 text.setStyle("-fx-color:black");
                 addLink2(text.getText(), busquedaMomento.get(date).get(i));
             }
@@ -261,7 +260,7 @@ public class FXMLMomentosyNoticiasController implements Initializable {
         else{
             Text text = new Text("No hay registrada ningun momento para este criterio de busqueda");
             text.setStyle("-fx-color:black");
-            addLink(text.getText(), null);
+            addLink2(text.getText(), null);
          }
          VBox vBox = new VBox();
         VBox vBox2 = new VBox();
@@ -303,6 +302,7 @@ public class FXMLMomentosyNoticiasController implements Initializable {
                         }
                         
                         Scene escenaNoticia = new Scene(root);
+                        escenaNoticia.getStylesheets().add("textarea.css");
                         FXMLNoticiaController controller = loader.getController();
                         controller.setControllerMYN(FXMLMomentosyNoticiasController.this);
                         controller.setControllerPrincipal(controllerPrincipal);

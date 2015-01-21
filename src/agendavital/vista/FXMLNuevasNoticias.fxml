@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="panecentral" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#moverPantalla2" onMousePressed="#moverPantalla" prefHeight="609.0" prefWidth="783.0" style="-fx-background-color: #93C6D6; -fx-background-radius: 7; -fx-border-color: #0F5257; -fx-border-radius: 2; -fx-border-width: 3px;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="agendavital.vista.FXMLNuevasNoticiasController">
+   <children>
+      <Text fill="#0f5257" layoutX="300.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NUEVAS NOTICIAS">
+         <font>
+            <Font name="Cooper Black" size="18.0" />
+         </font></Text>
+      <Circle fx:id="circulocerr" fill="#ff000000" layoutX="758.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" onMouseExited="#cerrarSalida" radius="10.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Line fx:id="lineacerrar2" endX="9.0" fill="BLACK" layoutX="754.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="-45.0" strokeWidth="2.0" />
+      <Line fx:id="lineacerrar1" endX="9.0" fill="BLACK" layoutX="754.0" layoutY="21.0" onMouseClicked="#cerrar" onMouseEntered="#cerrarEncima" rotate="45.0" strokeWidth="2.0" />
+      <Circle fx:id="circulomin" fill="#ff000000" layoutX="733.0" layoutY="21.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" onMouseExited="#minimizarSalida" radius="9.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Line fx:id="lineamin" endX="8.0" fill="BLACK" layoutX="729.0" layoutY="21.0" onMouseClicked="#minimizar" onMouseEntered="#minimizarEncima" strokeWidth="2.0" />
+      <CheckBox fx:id="cb1" layoutX="60.0" layoutY="219.0" mnemonicParsing="false" text="CheckBox" />
+      <CheckBox fx:id="cb2" layoutX="60.0" layoutY="255.0" mnemonicParsing="false" text="CheckBox" />
+      <CheckBox fx:id="cb3" layoutX="60.0" layoutY="291.0" mnemonicParsing="false" text="CheckBox" />
+      <CheckBox fx:id="cb4" layoutX="60.0" layoutY="327.0" mnemonicParsing="false" text="CheckBox" />
+      <CheckBox fx:id="cb5" layoutX="60.0" layoutY="508.0" mnemonicParsing="false" text="CheckBox" />
+      <CheckBox fx:id="cb6" layoutX="60.0" layoutY="471.0" mnemonicParsing="false" text="CheckBox" />
+      <CheckBox fx:id="cb7" layoutX="60.0" layoutY="435.0" mnemonicParsing="false" text="CheckBox" />
+      <CheckBox fx:id="cb8" layoutX="60.0" layoutY="399.0" mnemonicParsing="false" text="CheckBox" />
+      <CheckBox fx:id="cb9" layoutX="60.0" layoutY="363.0" mnemonicParsing="false" text="CheckBox" />
+      <CheckBox fx:id="cb10" layoutX="60.0" layoutY="75.0" mnemonicParsing="false" text="CheckBox" />
+      <CheckBox fx:id="cb11" layoutX="60.0" layoutY="111.0" mnemonicParsing="false" text="CheckBox" />
+      <CheckBox fx:id="cb12" layoutX="60.0" layoutY="147.0" mnemonicParsing="false" text="CheckBox" />
+      <CheckBox fx:id="cb13" layoutX="60.0" layoutY="183.0" mnemonicParsing="false" text="CheckBox" />
+      <Button layoutX="318.0" layoutY="560.0" mnemonicParsing="false" onAction="#nuevas_noticias" text="Registrar nuevas noticias" />
+   </children>
+</AnchorPane>

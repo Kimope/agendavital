@@ -8,6 +8,7 @@
 
 package agendavital;
 
+import agendavital.modelo.util.ConfigBD;
 import javafx.scene.image.Image;
 import java.io.IOException;
 import javafx.application.Application;
@@ -45,6 +46,7 @@ public class AgendaVital extends Application
             root = FXMLLoader.load(getClass().getResource("vista/FXMLLogin.fxml")); //Cargamos el fichero FXML relacionado con este archivo, que es el que tiene los paneles, textos, etc, es decir, lo que se muestra por pantalla
         }catch(IOException e)
         {
+            e.printStackTrace();
         }
         
         
@@ -70,7 +72,7 @@ public class AgendaVital extends Application
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
-       // if(!ConfigBD.estructuraInicializada()) ConfigBD.inicializarEstructura();
+        if(!ConfigBD.estructuraInicializada()) ConfigBD.inicializarEstructura();
         launch();
     }
     

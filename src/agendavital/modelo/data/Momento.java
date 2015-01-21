@@ -31,7 +31,6 @@ public class Momento {
     private String fecha;
     private String descripcion;
     private int id_documento;
-    private int id_noticia;
     private String color;
     private ArrayList<String> tags;
 
@@ -55,7 +54,7 @@ public class Momento {
             this.fecha = (rs.getString("fecha"));
             this.descripcion = (rs.getString("descripcion"));
             this.id_documento = (rs.getInt("id_documento"));
-            this.id_noticia = (rs.getInt("id_noticia"));
+            
             this.color = (rs.getString("color"));
             rs = conexion.createStatement().executeQuery(String.format("SELECT nombre from etiquetas WHERE id_etiqueta IN (SELECT id_etiqueta from momentos_noticias_etiquetas WHERE id_momento = %d)", id));
             while (rs.next()) {
@@ -63,7 +62,7 @@ public class Momento {
             }
 
         } catch (SQLException ee) {
-            throw new ConexionBDIncorrecta();
+            ee.printStackTrace();
         } finally {
             if (rs != null) {
                 rs.close();
@@ -120,14 +119,6 @@ public class Momento {
 
     public void setId_documento(int id_documento) {
         this.id_documento = id_documento;
-    }
-
-    public int getId_noticia() {
-        return id_noticia;
-    }
-
-    public void setId_noticia(int id_noticia) {
-        this.id_noticia = id_noticia;
     }
 
     public String getColor() {
@@ -322,9 +313,9 @@ public class Momento {
      * @return
      * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      */
-    public static ArrayList<Pair<LocalDate, String>> getNoticiasFecha() throws ConexionBDIncorrecta {
+    public static TreeMap<LocalDate, String> getNoticiasFecha() throws ConexionBDIncorrecta {
         ResultSet rs = null;
-        ArrayList<Pair<LocalDate, String>> fechasMomentos = new ArrayList<>();
+        TreeMap<LocalDate, String> fechasMomentos = new TreeMap<>();
         try (Connection conexion = ConfigBD.conectar()) {
             String consulta = String.format("SELECT fecha, color from momentos WHERE id_usuario = %s;", ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
             rs = conexion.createStatement().executeQuery(consulta);
@@ -333,7 +324,7 @@ public class Momento {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 LocalDate date = LocalDate.parse(fecha, formatter);
                 String color = rs.getString("color");
-                fechasMomentos.add(new Pair<>(date, color));
+                fechasMomentos.put(date, color);
             }
         } catch (SQLException e) {
             throw new ConexionBDIncorrecta();

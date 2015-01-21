@@ -9,7 +9,6 @@ import agendavital.modelo.data.Momento;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import static agendavital.vista.FXMLPrincipalController.ventanaAnadirMomento;
 import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -172,16 +171,16 @@ public class FXMLMomentoController implements Initializable {
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(FXMLRegistroPreguntaUnoController.class.getName()).log(Level.SEVERE, null, ex);
             }
+             
             
             double width = 191;
             double heigth = 167;
             imagen = new Image(is, width, heigth, false, false);
             ivImagen.setImage(imagen);
-           
-       final BufferedImage bi = ImageIO.read(fileImagen);
-      imagenwidth = bi.getWidth();
-      imagenheight =  bi.getHeight();
-      imagenMostrar = new Image(is);
+            final BufferedImage bi = ImageIO.read(fileImagen);
+            imagenwidth = bi.getWidth();
+         imagenheight =  bi.getHeight();
+      
                     }
     }
     
@@ -211,7 +210,7 @@ public class FXMLMomentoController implements Initializable {
             }else{
         Parent root = null;
         ventanaAnadirMomento = new Stage();
-        Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+        Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaAnadirMomento.getIcons().add(icon);
         ventanaAnadirMomento.setTitle("Modificar Momento");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAnadirMomento.fxml"));
@@ -240,7 +239,7 @@ public class FXMLMomentoController implements Initializable {
        
        Parent root = null; //Creamos el parent
             ventanaConfirmarBorrar = new Stage(); //Creamos la ventana que tendrá la vista Principal de la aplicación
-            Image icon= new Image(getClass().getResourceAsStream("logo.png"));
+            Image icon= new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
             ventanaConfirmarBorrar.getIcons().add(icon);
             
             try{
@@ -283,11 +282,11 @@ public class FXMLMomentoController implements Initializable {
                 System.out.println("No se puede encontrar el fichero FXML");
             }          
             FXMLVerImagenController controller =  loader.getController();
-            Scene escenaVer = new Scene(root,imagenwidth,imagenheight); //Creamos la escena
+            Scene escenaVer = new Scene(root,imagenwidth+10,imagenheight+10); //Creamos la escena
            
             escenaVer.setFill( Color.TRANSPARENT );
             ventanaVer.setScene(escenaVer); //Cargamos la escena
-             controller.imprimir_imagen(imagenMostrar);
+             controller.imprimir_imagen(_momento.getRutaDocumento());
             ventanaVer.show();
     }
 }

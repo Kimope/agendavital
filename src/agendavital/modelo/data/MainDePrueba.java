@@ -6,16 +6,10 @@
 package agendavital.modelo.data;
 
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
-import agendavital.modelo.util.ConfigBD;
-import agendavital.modelo.util.UsuarioLogueado;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.TreeMap;
 import org.jdom2.JDOMException;
 
 /**
@@ -26,7 +20,7 @@ public class MainDePrueba {
    
 
     public static void main(String[] args) throws SQLException, IOException, java.text.ParseException, ConexionBDIncorrecta, URISyntaxException, JDOMException {
-        UsuarioLogueado.setLogueado(new Usuario ("rrgonzalez50"));
+      /*  UsuarioLogueado.setLogueado(new Usuario ("rrgonzalez50"));
         TreeMap<LocalDate, ArrayList<Momento>> busqueda = Momento.buscar("a");
         final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         busqueda.keySet().stream().map((date) -> {
@@ -38,6 +32,7 @@ public class MainDePrueba {
             }
         });
         
+    }*/
+        ArrayList<String> etiquetas = Etiqueta.getEtiqueta();
     }
-
 }

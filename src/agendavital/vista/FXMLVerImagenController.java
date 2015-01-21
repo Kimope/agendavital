@@ -5,8 +5,15 @@
  */
 package agendavital.vista;
 
+import static agendavital.vista.FXMLMomentoController.imagen;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
@@ -32,10 +39,18 @@ public class FXMLVerImagenController implements Initializable {
             public void initialize(URL url, ResourceBundle rb) {
     }    
     
-    public void imprimir_imagen(Image imagen){
-        
-        im.setImage(imagen);
-    }
+    public void imprimir_imagen(String ruta){
+        File fileImagen = new File(ruta);
+            InputStream is = null;
+            try {
+                is = new FileInputStream(fileImagen);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(FXMLRegistroPreguntaUnoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+            imagen = new Image(is);
+            im.setImage(imagen);
+ }
 
     @FXML
     private void moverPantalla2(MouseEvent event) {

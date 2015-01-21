@@ -23,6 +23,8 @@ import agendavital.modelo.util.UsuarioLogueado;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -37,6 +39,7 @@ public class Usuario {
     private String apellido;
     private String contrasena;
     private String fecha_nac;
+     final static DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     public Usuario(String _nick) throws SQLException, ConexionBDIncorrecta {
         nick = _nick;
@@ -143,6 +146,7 @@ public class Usuario {
         }
         UsuarioLogueado.setLogueado(new Usuario(_nick));
         UsuarioLogueado.getLogueado().setContrasena(_contrasena);
+        Sesion.setSesion(dateFormatter.format(LocalDate.now()));
         return true;
     }
 
@@ -183,15 +187,16 @@ public class Usuario {
         if (!UtilidadesRegistro.IntroduccionContrasena(_contrasena, _contrasena2)) {
             throw new ContrasenaMalRepetida();
         }
+       
         try (Connection conexion = ConfigBD.conectar()) {
             String insert = String.format("INSERT INTO usuarios (nick, nombre, apellido, contrasena, fecha_nac) VALUES (%s, %s, %s, %s, %s)", ConfigBD.String2Sql(_nick, false), ConfigBD.String2Sql(_nombre, false), ConfigBD.String2Sql(_apellido, false), ConfigBD.String2Sql(UtilidadesRegistro.getStringMessageDigest(_contrasena), false),ConfigBD.String2Sql(_fecha_nac, false));
             conexion.createStatement().executeUpdate(insert);
            nuevo = new Usuario(_nick);
         } catch (SQLException e) {
-            throw new ConexionBDIncorrecta();
         }
-        UsuarioLogueado.setLogueado(new Usuario(_nick));
+        UsuarioLogueado.setLogueado(nuevo);
         UsuarioLogueado.getLogueado().setContrasena(_contrasena);
+        Sesion.setSesion(dateFormatter.format(LocalDate.now()));
         return nuevo;
     }
 }

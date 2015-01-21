@@ -214,7 +214,7 @@ public class FXMLNoticiaController implements Initializable {
             }else{
         Parent root = null;
         ventanaAnadirNoticia = new Stage();
-        Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
+        Image icon = new Image(getClass().getResourceAsStream("logo.png"));
         ventanaAnadirNoticia.getIcons().add(icon);
         ventanaAnadirNoticia.setTitle("Modificar Noticia");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAnadirNoticia.fxml"));
@@ -238,7 +238,7 @@ public class FXMLNoticiaController implements Initializable {
    public void borrar_noticia() throws ConexionBDIncorrecta{
        Parent root = null; //Creamos el parent
             ventanaConfirmarBorrarr = new Stage(); //Creamos la ventana que tendrá la vista Principal de la aplicación
-            Image icon= new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
+            Image icon= new Image(getClass().getResourceAsStream("logo.png"));
             ventanaConfirmarBorrarr.getIcons().add(icon);
             
             try{

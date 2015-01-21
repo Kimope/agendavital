@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
@@ -48,22 +49,13 @@ public class FXMLPrincipalController implements Initializable {
 
     //Se declaran los atributos de FXMLPrincipal, con el nombre del #id que tienen en JavaFX
     public static Stage ventanaRegistro;
-    public static Stage ventanaLogin=new Stage();
-    public static Stage ventanaAnadirNoticia=new Stage();
-    public static Stage ventanaAnadirMomento=new Stage();
-    public static Stage ventanaAcercaDe=new Stage();
-    public static Stage ventanaAdministracion=new Stage();
-    public static Stage ventanaDia=new Stage();
-    public boolean desdeRegistro;
-
-    public void setDesdeRegistro(boolean desdeRegistro) {
-        this.desdeRegistro = desdeRegistro;
-    }
-    
-     
-     
+    public static Stage ventanaLogin;
+    public static Stage ventanaAnadirNoticia;
+    public static Stage ventanaAnadirMomento;
+    public static Stage ventanaAcercaDe;
+    public static Stage ventanaAdministracion;
+    public static Stage ventanaDia;
     public static String fechaSeleccionada = null;
-    File filesJpg[];
     @FXML
     private Line lineamenu1;
     @FXML
@@ -98,9 +90,10 @@ public class FXMLPrincipalController implements Initializable {
     private Text t6;
     @FXML
     private TextField txtBuscar;
-            
+     TreeMap<LocalDate, String> fechas = null;
+     TreeMap<LocalDate, String> momentos = null;
+     ArrayList<File> imagenes = null;
     final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-    public int nRecargas = 0;
     Pagination pagination = null;
 
     public int itemsPerPage() {
@@ -110,7 +103,7 @@ public class FXMLPrincipalController implements Initializable {
     public VBox createPage(int pageIndex) {
         VBox box = new VBox();
         ImageView im = new ImageView();
-        File file = filesJpg[pageIndex];
+        File file = imagenes.get(pageIndex);
         InputStream is = null;
         try {
             is = new FileInputStream(file);
@@ -129,6 +122,14 @@ public class FXMLPrincipalController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ////////////COLOREADO DE FECHAS/////////////
+       
+        try {
+                    fechas = Noticia.getNoticiasFecha();
+                    momentos = Momento.getNoticiasFecha();
+                } catch (ConexionBDIncorrecta ex) {
+                    Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+       System.out.println("ArrayLists Fechas acabados");
         ArrayList<String> etiquetas = Etiqueta.getEtiqueta();
         if (etiquetas.size() == 1){
             t1.setText(etiquetas.get(0));
@@ -163,6 +164,7 @@ public class FXMLPrincipalController implements Initializable {
             t5.setText(etiquetas.get(4));
             t6.setText(etiquetas.get(5));
         }
+        System.out.println("Tags colocados");
         cal.setValue(LocalDate.now());
         cal.setStyle("-fx-font: 16pt Arial;");
         StringConverter converter = new StringConverter<LocalDate>() {
@@ -196,8 +198,9 @@ public class FXMLPrincipalController implements Initializable {
         } catch (ConexionBDIncorrecta ex) {
             Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println("Imagenes mostradas");
         colorearFechas();
-        
+        System.out.println("Fechas coloreadas");
         cal.setConverter(converter);
         cal.setPromptText("dd-MM-yyyy");
         logueado.setText("Logueado como "+UsuarioLogueado.getLogueado().getNick());
@@ -232,15 +235,10 @@ public class FXMLPrincipalController implements Initializable {
     
     public void mostrarImagenes() throws ConexionBDIncorrecta{
         panecentral.getChildren().remove(pagination);
-        ArrayList<File> imagenes = UsuarioLogueado.getTodasImagenes();
-        filesJpg = new File[imagenes.size()];
-        for(int i = 0; i < imagenes.size(); i++){
-            filesJpg[i] = imagenes.get(i);
-        }
-        int numOfPage = filesJpg.length;
+        imagenes = UsuarioLogueado.getTodasImagenes();
+        int numOfPage = imagenes.size();
         if(numOfPage > 0){
          pagination = new Pagination(numOfPage);
-         
         pagination.setPageFactory((Integer pageIndex) -> createPage(pageIndex));
         AnchorPane.setTopAnchor(pagination, 30.0);
         AnchorPane.setRightAnchor(pagination, 25.0);
@@ -251,22 +249,15 @@ public class FXMLPrincipalController implements Initializable {
     }
     
     public void colorearFechas(){
+        
          Callback<DatePicker, DateCell> dayCellFactory =( DatePicker dp) -> new DateCell() {
             @Override
             public void updateItem(LocalDate item, boolean empty) {
+                System.out.println("RECIEN ENTRADO");
                 super.updateItem(item, empty);
-                if(item.isAfter(LocalDate.now())) setDisable(true);
-                ArrayList<Pair<LocalDate, Noticia>> fechas = null;
-                ArrayList<Pair<LocalDate, String>> momentos = null;
-                try {
-                    fechas = Noticia.getNoticiasFecha();
-                    momentos = Momento.getNoticiasFecha();
-                } catch (ConexionBDIncorrecta ex) {
-                    Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                for (Pair<LocalDate, Noticia> fecha : fechas) {
-                    if (item.equals(fecha.getKey())) {
-                        switch (fecha.getValue().getCategoria()) {
+                if(momentos.containsKey(item)) setStyle(momentos.get(item));
+                else if (fechas.containsKey(item)) {
+                        switch (fechas.get(item)) {
                             case "Noticias Internacionales":
                                 setStyle("-fx-background-color: #A8F9FF");
                                 break;
@@ -276,14 +267,10 @@ public class FXMLPrincipalController implements Initializable {
                             default:
                                 setStyle("-fx-background-color: blue");
                                 break;
-                        }
+                        
                     }
                 }
-                 for (Pair<LocalDate, String> momento : momentos) {
-                     if(item.equals(momento.getKey())){
-                         setStyle(momento.getValue());
-                     }
-                 }
+   
              }
             
         };
@@ -341,13 +328,14 @@ public class FXMLPrincipalController implements Initializable {
     }
 
     public void botonnoticia() throws IOException {
+        ventanaAnadirNoticia = new Stage();
         if(ventanaAnadirNoticia.isShowing()){
             ventanaAnadirNoticia.setIconified(false);
             ventanaAnadirNoticia.toFront();
             
         }else{
         Parent root = null;
-        ventanaAnadirNoticia = new Stage();
+
         Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaAnadirNoticia.getIcons().add(icon);
         ventanaAnadirNoticia.setTitle("Nueva Noticia");
@@ -368,13 +356,13 @@ public class FXMLPrincipalController implements Initializable {
     }
 
     public void botonmomento() throws IOException {
+        ventanaAnadirMomento = new Stage();
         if(ventanaAnadirMomento.isShowing()){
             ventanaAnadirMomento.setIconified(false);
             ventanaAnadirMomento.toFront();
             
         }else{
         Parent root = null;
-        ventanaAnadirMomento = new Stage();
         Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaAnadirMomento.getIcons().add(icon);
         ventanaAnadirMomento.setTitle("Nuevo Momento");
@@ -395,13 +383,13 @@ public class FXMLPrincipalController implements Initializable {
     }
 
     public void botonacerca() throws IOException {
+        ventanaAcercaDe = new Stage();
         if(ventanaAcercaDe.isShowing()){
             ventanaAcercaDe.setIconified(false);
             ventanaAcercaDe.toFront();
             
         }else{
         Parent root = null;
-        ventanaAcercaDe = new Stage();
         Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaAcercaDe.getIcons().add(icon);
         ventanaAcercaDe.setTitle("Acerca De");
@@ -420,36 +408,14 @@ public class FXMLPrincipalController implements Initializable {
         }
     }
 
-   /* public void botonayuda() throws IOException {
-        
-        Parent root = null;
-        ventanaNoticia = new Stage();
-        Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
-        ventanaNoticia.getIcons().add(icon);
-        ventanaNoticia.setTitle("Ayuda");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMomento.fxml"));
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            System.out.println("No se puede encontrar el fichero FXML");
-        }
-
-        Scene escenaNoticia = new Scene(root);
-        //FXMLNoticiaController controller = loader.getController();
-        ventanaNoticia.setScene(escenaNoticia);
-        ventanaNoticia.initStyle(StageStyle.UNDECORATED);
-        ventanaNoticia.show();
-        //Muestra ventana
-    }*/
-
     public void botonaadmin() throws IOException {
+        ventanaAdministracion = new Stage();
         if(ventanaAdministracion.isShowing()){
             ventanaAdministracion.setIconified(false);
             ventanaAdministracion.toFront();
             
         }else{
         Parent root = null;
-        ventanaAdministracion = new Stage();
         Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaAdministracion.getIcons().add(icon);
         ventanaAdministracion.setTitle("Ayuda");
@@ -469,13 +435,13 @@ public class FXMLPrincipalController implements Initializable {
     }
 
     public void consultar_todo() throws IOException {
+        ventanaDia = new Stage();
         if(ventanaDia.isShowing()){
             ventanaDia.setIconified(false);
             ventanaDia.toFront();
             
         }else{
         Parent root = null;
-        ventanaDia = new Stage();
         fechaSeleccionada = dateFormatter.format(cal.getValue());
         Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaDia.getIcons().add(icon);
@@ -500,13 +466,13 @@ public class FXMLPrincipalController implements Initializable {
     }
 
     public void momentosynoticias() throws IOException {
+        ventanaDia = new Stage();
         if(ventanaDia.isShowing()){
             ventanaDia.setIconified(false);
             ventanaDia.toFront();
             
         }else{
         Parent root = null;
-        ventanaDia = new Stage();
         fechaSeleccionada = dateFormatter.format(cal.getValue());
         Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaDia.getIcons().add(icon);
@@ -531,13 +497,13 @@ public class FXMLPrincipalController implements Initializable {
     }
 
     public void buscar() throws ConexionBDIncorrecta, SQLException{
-         if(ventanaDia.isShowing()){
+        ventanaDia = new Stage();
+        if(ventanaDia.isShowing()){
             ventanaDia.setIconified(false);
             ventanaDia.toFront();
             
         }else{
         Parent root = null;
-        ventanaDia = new Stage();
         Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaDia.getIcons().add(icon);
         ventanaDia.setTitle("Noticia");

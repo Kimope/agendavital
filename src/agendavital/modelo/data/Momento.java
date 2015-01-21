@@ -313,9 +313,9 @@ public class Momento {
      * @return
      * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      */
-    public static ArrayList<Pair<LocalDate, String>> getNoticiasFecha() throws ConexionBDIncorrecta {
+    public static TreeMap<LocalDate, String> getNoticiasFecha() throws ConexionBDIncorrecta {
         ResultSet rs = null;
-        ArrayList<Pair<LocalDate, String>> fechasMomentos = new ArrayList<>();
+        TreeMap<LocalDate, String> fechasMomentos = new TreeMap<>();
         try (Connection conexion = ConfigBD.conectar()) {
             String consulta = String.format("SELECT fecha, color from momentos WHERE id_usuario = %s;", ConfigBD.String2Sql(UsuarioLogueado.getLogueado().getNick(), false));
             rs = conexion.createStatement().executeQuery(consulta);
@@ -324,7 +324,7 @@ public class Momento {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 LocalDate date = LocalDate.parse(fecha, formatter);
                 String color = rs.getString("color");
-                fechasMomentos.add(new Pair<>(date, color));
+                fechasMomentos.put(date, color);
             }
         } catch (SQLException e) {
             throw new ConexionBDIncorrecta();

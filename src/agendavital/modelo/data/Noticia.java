@@ -189,18 +189,18 @@ public class Noticia {
      * @throws agendavital.modelo.excepciones.ConexionBDIncorrecta
      *
      */
-    public static ArrayList<Pair<LocalDate, Noticia>> getNoticiasFecha() throws ConexionBDIncorrecta {
+    public static TreeMap<LocalDate, String> getNoticiasFecha() throws ConexionBDIncorrecta {
         ResultSet rs = null;
-        ArrayList<Pair<LocalDate, Noticia>> noticias = new ArrayList<>();
+        TreeMap<LocalDate, String> noticias = new TreeMap<>();
         try (Connection conexion = ConfigBD.conectar()) {
-            String consulta = String.format("SELECT id_noticia, fecha from Noticias;");
+            String consulta = String.format("SELECT categoria, fecha from Noticias;");
             rs = conexion.createStatement().executeQuery(consulta);
             while (rs.next()) {
-                int id = rs.getInt("id_noticia");
+                String categoria = rs.getString("categoria");
                 String fecha = rs.getString("fecha");
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 LocalDate date = LocalDate.parse(fecha, formatter);
-                noticias.add(new Pair<>(date, new Noticia((id))));
+                noticias.put(date, categoria);
             }
         } catch (SQLException e) {
             throw new ConexionBDIncorrecta();

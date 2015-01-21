@@ -9,7 +9,6 @@ import agendavital.modelo.data.Momento;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
 import static agendavital.vista.FXMLPrincipalController.ventanaAnadirMomento;
 import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -211,7 +210,7 @@ public class FXMLMomentoController implements Initializable {
             }else{
         Parent root = null;
         ventanaAnadirMomento = new Stage();
-        Image icon = new Image(getClass().getResourceAsStream("logo.png"));
+        Image icon = new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
         ventanaAnadirMomento.getIcons().add(icon);
         ventanaAnadirMomento.setTitle("Modificar Momento");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLAnadirMomento.fxml"));
@@ -240,7 +239,7 @@ public class FXMLMomentoController implements Initializable {
        
        Parent root = null; //Creamos el parent
             ventanaConfirmarBorrar = new Stage(); //Creamos la ventana que tendrá la vista Principal de la aplicación
-            Image icon= new Image(getClass().getResourceAsStream("logo.png"));
+            Image icon= new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
             ventanaConfirmarBorrar.getIcons().add(icon);
             
             try{

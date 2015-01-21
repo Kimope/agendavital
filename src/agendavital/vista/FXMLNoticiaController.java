@@ -18,7 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -64,7 +64,9 @@ public class FXMLNoticiaController implements Initializable {
     @FXML
     private TextFlow tfCuerpo;
     @FXML
-    private TextField txtCuerpo;
+    private Text txtCuerpo;
+    @FXML
+    private ScrollPane scroll;
     @FXML
     private TextFlow tfLink;
     @FXML
@@ -142,7 +144,8 @@ public class FXMLNoticiaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        TextFlow td;
+       
+        
         
         
        /*txtCuerpo.skinProperty().addListener(new ChangeListener<Skin<?>>() {
@@ -164,8 +167,8 @@ public class FXMLNoticiaController implements Initializable {
                         forEach(c -> c.skinProperty().addListener(this)); // *
             }
         }
-    });*/
-     
+    });
+     */
     }   
     
     
@@ -176,7 +179,10 @@ public class FXMLNoticiaController implements Initializable {
         txtTitular.setText(noticia.getTitulo());
         txtCategoria.setText(noticia.getCategoria());
         txtLink.setText(noticia.getLink());
-        txtCuerpo.setText(noticia.getCuerpo());
+        Text textf = new Text(noticia.getCuerpo());
+        scroll.setContent(textf);
+        
+       // txtCuerpo.setText(noticia.getCuerpo());
         ArrayList<String> tags = noticia.getTags();
             for (String tag : tags) {
                 Text text = new Text(tag);

@@ -145,6 +145,7 @@ public class FXMLLoginController implements Initializable
             Scene escenaPrincipal = new Scene(root); //Creamos la escena
             ventanaPrincipal.setScene(escenaPrincipal); //Cargamos la escena
             AgendaVital.ventanaLogin.close(); // Cerramos la pantalla del Login
+            ventanaPrincipal.initStyle(StageStyle.UNDECORATED);
             ventanaPrincipal.show(); //Mostramos la pantalla principal
  
             

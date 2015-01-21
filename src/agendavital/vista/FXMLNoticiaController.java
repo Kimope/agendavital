@@ -18,7 +18,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+<<<<<<< HEAD
 import javafx.scene.control.TextArea;
+=======
+import javafx.scene.control.ScrollPane;
+>>>>>>> 41f179e56a82bab33c03766e51a1a4fbbd0d2d8a
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -66,7 +70,13 @@ public class FXMLNoticiaController implements Initializable {
     @FXML
     private TextFlow tfCuerpo;
     @FXML
+<<<<<<< HEAD
     private TextArea txtCuerpo;
+=======
+    private Text txtCuerpo;
+    @FXML
+    private ScrollPane scroll;
+>>>>>>> 41f179e56a82bab33c03766e51a1a4fbbd0d2d8a
     @FXML
     private TextFlow tfLink;
     @FXML
@@ -143,6 +153,35 @@ public class FXMLNoticiaController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+<<<<<<< HEAD
+=======
+        
+       
+        
+        
+        
+       /*txtCuerpo.skinProperty().addListener(new ChangeListener<Skin<?>>() {
+        @Override
+        public void changed(
+          ObservableValue<? extends Skin<?>> ov, Skin<?> t, Skin<?> t1) {
+            if (t1 != null && t1.getNode() instanceof Region) {
+                Region r = (Region) t1.getNode();
+                r.setStyle("-fx-background-color: #F0ECEC");
+
+                r.getChildrenUnmodifiable().stream().
+                        filter(n -> n instanceof Region).
+                        map(n -> (Region) n).
+                        forEach(n -> n.setStyle("-fx-background-color: #F0ECEC"));
+
+                r.getChildrenUnmodifiable().stream().
+                        filter(n -> n instanceof Control).
+                        map(n -> (Control) n).
+                        forEach(c -> c.skinProperty().addListener(this)); // *
+            }
+        }
+    });
+     */
+>>>>>>> 41f179e56a82bab33c03766e51a1a4fbbd0d2d8a
     }   
     
     
@@ -153,7 +192,10 @@ public class FXMLNoticiaController implements Initializable {
         txtTitular.setText(noticia.getTitulo());
         txtCategoria.setText(noticia.getCategoria());
         txtLink.setText(noticia.getLink());
-        txtCuerpo.setText(noticia.getCuerpo());
+        Text textf = new Text(noticia.getCuerpo());
+        scroll.setContent(textf);
+        
+       // txtCuerpo.setText(noticia.getCuerpo());
         ArrayList<String> tags = noticia.getTags();
             for (String tag : tags) {
                 Text text = new Text(tag);

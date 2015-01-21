@@ -90,7 +90,10 @@ public class FXMLMomentoController implements Initializable {
     public static FXMLPrincipalController controllerPrincipal;
     public static FXMLMomentosyNoticiasController controllerMYN;
     public static Stage ventanaConfirmarBorrar;
-
+    public static Stage ventanaVer;
+    public static Image imagen;
+    public static Image imagenreal;
+    
 
     public void setControllerMYN(FXMLMomentosyNoticiasController controllerMYN) {
         this.controllerMYN = controllerMYN;
@@ -149,7 +152,7 @@ public class FXMLMomentoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
      public void imprimir(Momento momento) throws SQLException{
          _momento = momento;
         txtTitular.setText(momento.getTitulo());
@@ -163,9 +166,11 @@ public class FXMLMomentoController implements Initializable {
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(FXMLRegistroPreguntaUnoController.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
             double width = 191;
             double heigth = 167;
-            Image imagen = new Image(is, width, heigth, false, false);
+            imagen = new Image(is, width, heigth, false, false);
+            imagenreal = new Image(is);
             ivImagen.setImage(imagen);
         }
     }
@@ -252,5 +257,28 @@ public class FXMLMomentoController implements Initializable {
        else controllerMYN.cambiarDatos();
        controllerPrincipal.colorearFechas();
        controllerPrincipal.mostrarImagenes();
+    }
+    
+    public void verimagen() throws SQLException
+    {
+            Parent root = null; //Creamos el parent
+            ventanaVer = new Stage(); //Creamos la ventana que tendrá la vista Principal de la aplicación           
+            ventanaVer.setResizable(false); //No se puede modificar el tamaño de la ventana
+            ventanaVer.initStyle(StageStyle.TRANSPARENT);
+            
+            try{
+                root = FXMLLoader.load(getClass().getResource("FXMLVerImagen.fxml"));
+            }catch(IOException e)
+            {
+                System.out.println("No se puede encontrar el fichero FXML");
+            }          
+            
+            double h = imagenreal.getHeight();
+            double w = imagenreal.getWidth();
+            
+            Scene escenaVer = new Scene(root,h,w); //Creamos la escena
+            escenaVer.setFill( Color.TRANSPARENT );
+            ventanaVer.setScene(escenaVer); //Cargamos la escena
+            ventanaVer.show();
     }
 }

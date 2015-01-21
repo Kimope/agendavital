@@ -7,8 +7,9 @@ package agendavital.vista;
 
 import agendavital.modelo.data.Momento;
 import agendavital.modelo.excepciones.ConexionBDIncorrecta;
-import static agendavital.vista.FXMLAnadirNoticiaController.ventanaAnadidoo;
 import static agendavital.vista.FXMLPrincipalController.ventanaAnadirMomento;
+import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -25,6 +26,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -36,6 +38,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javax.imageio.ImageIO;
 
 /**
  * FXML Controller class
@@ -69,7 +72,7 @@ public class FXMLMomentoController implements Initializable {
     @FXML
     private TextFlow tfCuerpo;
     @FXML
-    private Text txtCuerpo;
+    private TextArea txtCuerpo;
     @FXML
     private TextFlow tfLocalizacion;
     @FXML
@@ -92,7 +95,10 @@ public class FXMLMomentoController implements Initializable {
     public static Stage ventanaConfirmarBorrar;
     public static Stage ventanaVer;
     public static Image imagen;
-    public static Image imagenreal;
+    public static Image imagenMostrar = null;
+    public BufferedImage imagenreal;
+    public int imagenwidth = 0;
+    public int imagenheight = 0;
     
 
     public void setControllerMYN(FXMLMomentosyNoticiasController controllerMYN) {
@@ -153,7 +159,7 @@ public class FXMLMomentoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-     public void imprimir(Momento momento) throws SQLException{
+     public void imprimir(Momento momento) throws SQLException, IOException{
          _momento = momento;
         txtTitular.setText(momento.getTitulo());
         txtCategoria.setText(momento.getFecha());
@@ -170,9 +176,13 @@ public class FXMLMomentoController implements Initializable {
             double width = 191;
             double heigth = 167;
             imagen = new Image(is, width, heigth, false, false);
-            imagenreal = new Image(is);
             ivImagen.setImage(imagen);
-        }
+           
+       final BufferedImage bi = ImageIO.read(fileImagen);
+      imagenwidth = bi.getWidth();
+      imagenheight =  bi.getHeight();
+      imagenMostrar = new Image(is);
+                    }
     }
     
 
@@ -265,20 +275,19 @@ public class FXMLMomentoController implements Initializable {
             ventanaVer = new Stage(); //Creamos la ventana que tendrá la vista Principal de la aplicación           
             ventanaVer.setResizable(false); //No se puede modificar el tamaño de la ventana
             ventanaVer.initStyle(StageStyle.TRANSPARENT);
-            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLVerImagen.fxml"));
             try{
-                root = FXMLLoader.load(getClass().getResource("FXMLVerImagen.fxml"));
+                root = loader.load();
             }catch(IOException e)
             {
                 System.out.println("No se puede encontrar el fichero FXML");
             }          
-            
-            double h = imagenreal.getHeight();
-            double w = imagenreal.getWidth();
-            
-            Scene escenaVer = new Scene(root,h,w); //Creamos la escena
+            FXMLVerImagenController controller =  loader.getController();
+            Scene escenaVer = new Scene(root,imagenwidth,imagenheight); //Creamos la escena
+           
             escenaVer.setFill( Color.TRANSPARENT );
             ventanaVer.setScene(escenaVer); //Cargamos la escena
+             controller.imprimir_imagen(imagenMostrar);
             ventanaVer.show();
     }
 }

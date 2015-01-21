@@ -299,6 +299,7 @@ public class FXMLMomentosyNoticiasController implements Initializable {
                         try {
                             root = loader.load();
                         } catch (IOException e) {
+                            e.printStackTrace();
                         }
                         
                         Scene escenaNoticia = new Scene(root);
@@ -342,7 +343,11 @@ public class FXMLMomentosyNoticiasController implements Initializable {
                         controller.setControllerMYN(FXMLMomentosyNoticiasController.this);
                         controller.setControllerPrincipal(controllerPrincipal);
                         try {
-                            controller.imprimir(momento);
+                            try {
+                                controller.imprimir(momento);
+                            } catch (IOException ex) {
+                                Logger.getLogger(FXMLMomentosyNoticiasController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                         } catch (SQLException ex) {
                             Logger.getLogger(FXMLMomentosyNoticiasController.class.getName()).log(Level.SEVERE, null, ex);
                         }

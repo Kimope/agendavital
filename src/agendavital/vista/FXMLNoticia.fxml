@@ -14,7 +14,7 @@
    <children>
       <Pane layoutX="29.0" layoutY="15.0" prefHeight="567.0" prefWidth="722.0" style="-fx-background-color: #BDBDBD; -fx-border-color: black; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" />
       <Pane fx:id="paneluno" layoutX="22.0" layoutY="22.0" prefHeight="567.0" prefWidth="722.0" style="-fx-background-color: #d7d2d2; -fx-border-color: black; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" />
-      <AnchorPane layoutX="15.0" layoutY="30.0" prefHeight="567.0" prefWidth="722.0" style="-fx-background-color: white; -fx-border-color: black; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
+      <AnchorPane layoutX="15.0" layoutY="30.0" prefHeight="567.0" prefWidth="722.0" style="-fx-background-color: #F0ECEC; -fx-border-color: black; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
          <children>
             <TextFlow fx:id="tfTags" layoutX="495.0" layoutY="347.0" prefHeight="138.0" prefWidth="221.0" style="-fx-border-color: black;">
                <children>

@@ -240,7 +240,7 @@ public class FXMLAnadirNoticiaController implements Initializable {
         }
         Parent root = null; //Creamos el parent
             ventanaAnadidoo = new Stage(); //Creamos la ventana que tendrá la vista Principal de la aplicación
-            Image icon= new Image(getClass().getResourceAsStream("imagenes_interfaz/logo.png"));
+            Image icon= new Image(getClass().getResourceAsStream("imagenes_interfaz/imagenes_interfaz/logo.png"));
             ventanaAnadidoo.getIcons().add(icon);
             
             try{

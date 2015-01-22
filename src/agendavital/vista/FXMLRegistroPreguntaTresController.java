@@ -191,7 +191,7 @@ public class FXMLRegistroPreguntaTresController implements Initializable {
                 try {
                     root = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
                 } catch (IOException e) {
-                    System.out.println("No se puede encontrar el fichero FXML");
+                    e.printStackTrace();
                 }
 
                 Scene escenaPrincipal = new Scene(root);

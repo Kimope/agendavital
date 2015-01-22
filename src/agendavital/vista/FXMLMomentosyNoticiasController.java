@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -343,12 +344,10 @@ public class FXMLMomentosyNoticiasController implements Initializable {
                         controller.setControllerMYN(FXMLMomentosyNoticiasController.this);
                         controller.setControllerPrincipal(controllerPrincipal);
                         try {
-                            try {
-                                controller.imprimir(momento);
-                            } catch (IOException ex) {
-                                Logger.getLogger(FXMLMomentosyNoticiasController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+                            controller.imprimir(momento);
                         } catch (SQLException ex) {
+                            Logger.getLogger(FXMLMomentosyNoticiasController.class.getName()).log(Level.SEVERE, null, ex);
+                        } catch (IOException ex) {
                             Logger.getLogger(FXMLMomentosyNoticiasController.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         ventanaMomento.setScene(escenaNoticia);

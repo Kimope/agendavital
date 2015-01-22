@@ -19,7 +19,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -65,7 +64,7 @@ public class FXMLNoticiaController implements Initializable {
     @FXML
     private TextFlow tfCuerpo;
     @FXML
-    private TextArea txtCuerpo;
+    private Text txtCuerpo;
     @FXML
     private ScrollPane scroll;
     @FXML
@@ -180,8 +179,10 @@ public class FXMLNoticiaController implements Initializable {
         txtTitular.setText(noticia.getTitulo());
         txtCategoria.setText(noticia.getCategoria());
         txtLink.setText(noticia.getLink());
-        txtCuerpo.setText(noticia.getCuerpo());
-        txtCuerpo.setEditable(false);
+        Text textf = new Text(noticia.getCuerpo());
+        scroll.setContent(textf);
+        
+       // txtCuerpo.setText(noticia.getCuerpo());
         ArrayList<String> tags = noticia.getTags();
             for (String tag : tags) {
                 Text text = new Text(tag);

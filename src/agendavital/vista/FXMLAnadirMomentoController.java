@@ -127,7 +127,7 @@ public class FXMLAnadirMomentoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      /*  file = new File("imagenes_interfaz/logo.png");
+        file = new File("imagenes/imagenes_interfaz/logo.png");
         InputStream is = null;
         try {
             is = new FileInputStream(file);
@@ -137,7 +137,7 @@ public class FXMLAnadirMomentoController implements Initializable {
         double width = 191;
         double heigth = 167;
         Image imagen = new Image(is,width,heigth,false,true);
-        imgImagen.setImage(imagen);*/
+        imgImagen.setImage(imagen);
         cal.setValue(LocalDate.now());
         Callback<DatePicker, DateCell> dayCellFactory = (DatePicker dp) -> new DateCell() {
             @Override

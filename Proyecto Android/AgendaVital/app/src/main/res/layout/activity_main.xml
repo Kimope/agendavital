@@ -1,0 +1,77 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#93c6d6" >
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:facebook="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="30dip"
+    android:weightSum="1"
+    android:background="#93c6d6">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/vital"
+        android:paddingBottom="30dp"/>
+
+    <Button
+        android:id="@+id/BtnComenzar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/comenzar"
+        android:background="@drawable/buttonshape"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="6dp"/>
+
+    <Button android:id="@+id/BtnConf"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:text="@string/conf"
+        android:background="@drawable/buttonshape"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="6dp"/>
+
+    <Button android:id="@+id/BtnResp"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:text="@string/resp"
+        android:background="@drawable/buttonshape"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="6dp"
+    />
+
+
+    <Button android:id="@+id/BtnSalir"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:text="@string/salir"
+        android:background="@drawable/buttonshape"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="6dp"
+        />
+
+    <com.facebook.widget.LoginButton
+        android:id="@+id/fb_login_button"
+        android:layout_width="312dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        facebook:confirm_logout="false"
+        facebook:fetch_user_info="true" />
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:textSize="18sp" />
+
+</LinearLayout>
+</ScrollView>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.uca.agendavital" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".GlobalClass"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Preguntas"
+            android:label="@string/title_activity_preguntas" >
+        </activity>
+        <activity
+            android:name=".Configuracion"
+            android:label="@string/title_activity_configuracion" >
+        </activity>
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id" />
+
+        <activity
+            android:name=".Respuestas"
+            android:label="@string/title_activity_respuestas" >
+        </activity>
+    </application>
+
+</manifest>
